@@ -1,0 +1,101 @@
+\section{Polarized linear logic}\label{polarized-linear-logic}
+
+\textbf{Polarized linear logic} (LLP) is a logic close to plain linear
+logic in which structural rules, usually restricted to \(\wn\)-formulas,
+have been
+\href{Positive_formula\#Generalized_structural_rules}{extended} to the
+whole class of so called \emph{negative} formulae.
+
+\subsection{Polarization}\label{polarization}
+
+LLP relies on the notion of \emph{polarization}, that is, it
+discriminates between two types of formulae, \emph{negative} (noted
+\(M, N...\)) vs. \emph{\href{Positive_formula}{positive}} (\(P, Q...\)).
+They are mutually defined as follows:
+
+\(M, N ::= X \mid M \parr N \mid \bot \mid M \with N \mid \top \mid \wn{P}\)
+
+\(P, Q ::= X\orth \mid P \otimes Q \mid 1 \mid P \oplus Q \mid 0 \mid \oc{N}\)
+
+The dual operation \((-)\orth\) extended to propositions exchanges the
+roles of connectors and reverses the polarity of formulae.
+
+\subsection{Deduction rules}\label{deduction-rules}
+
+They are several design choices for the structure of sequents. In
+particular, LLP proofs are \emph{focalized}, i.e. they contain at most
+one positive formula. We choose to represent this explicitly using
+sequents of the form \(\vdash\Gamma\mid\Delta\), where \(\Gamma\) is a
+multiset of negative formulae, and \(\Delta\) is a \emph{stoup} that
+contains at most one positive formula (though it may be empty).
+
+\(\LabelRule{\rulename{ax}}
+\NulRule{\vdash P\orth \mid P}
+\DisplayProof
+\qquad
+\AxRule{\vdash \Gamma_1, N \mid \Delta}
+\AxRule{\vdash \Gamma_2 \mid N\orth}
+\LabelRule{\rulename{cut}}
+\BinRule{\vdash\Gamma_1, \Gamma_2 \mid \Delta}
+\DisplayProof\)
+
+\(\AxRule{\vdash\Gamma, N\mid\cdot}
+\LabelRule{p}
+\UnaRule{\vdash\Gamma\mid \oc{N}}
+\DisplayProof
+\qquad
+\AxRule{\vdash\Gamma\mid P}
+\LabelRule{d}
+\UnaRule{\vdash\Gamma,\wn{P}\mid \cdot}
+\DisplayProof
+\qquad
+\AxRule{\vdash\Gamma,N,N\mid \Delta}
+\LabelRule{c}
+\UnaRule{\vdash\Gamma, N\mid\Delta}
+\DisplayProof
+\qquad
+\AxRule{\vdash\Gamma\mid \Delta}
+\LabelRule{w}
+\UnaRule{\vdash\Gamma,N\mid\Delta}
+\DisplayProof\)
+
+\(\AxRule{\vdash\Gamma_1\mid P}
+\AxRule{\vdash\Gamma_2\mid Q}
+\LabelRule{\tens}
+\BinRule{\vdash\Gamma_1,\Gamma_2\mid P\otimes Q}
+\DisplayProof
+\qquad
+\LabelRule{\one}
+\NulRule{\vdash\cdot\mid\one}
+\DisplayProof
+\qquad
+\AxRule{\vdash\Gamma, M, N\mid \Delta}
+\LabelRule{\parr}
+\UnaRule{\vdash\Gamma, M\parr N\mid \Delta}
+\DisplayProof
+\qquad
+\AxRule{\vdash\Gamma\mid \Delta}
+\LabelRule{\bot}
+\UnaRule{\vdash\Gamma, \bot\mid\Delta}
+\DisplayProof\)
+
+\(\AxRule{\vdash\Gamma\mid P}
+\LabelRule{\plus_1}
+\UnaRule{\vdash\Gamma\mid P\plus Q}
+\DisplayProof
+\qquad
+\AxRule{\vdash\Gamma\mid Q}
+\LabelRule{\plus_2}
+\UnaRule{\vdash\Gamma\mid P\plus Q}
+\DisplayProof
+\qquad
+\AxRule{\vdash\Gamma,M\mid \Delta}
+\AxRule{\vdash\Gamma,N\mid \Delta}
+\LabelRule{\with}
+\BinRule{\vdash\Gamma,M\with N\mid \Delta}
+\DisplayProof
+\qquad
+\LabelRule{\top}
+\NulRule{\vdash\Gamma,\top\mid \Delta}
+\DisplayProof\)
+

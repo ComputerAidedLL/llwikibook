@@ -1,0 +1,468 @@
+\section{Fragment}\label{fragment}
+
+In general, a \textbf{fragment} of a logical system \emph{S} is a
+logical system obtained by restricting the language of \emph{S}, and by
+restricting the rules of \emph{S} accordingly. In linear logic, the most
+well known fragments are obtained by combining/removing in different
+ways the classes of connectives present in the
+\href{Sequent_calculus}{language of linear logic} itself:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Multiplicative connectives:} the conjunction \(\tens\)
+  (\emph{tensor}) and the disjunction \(\parr\) (\emph{par}), with their
+  respective units \(\one\) (\emph{one}) and \(\bot\) (\emph{bottom});
+  these connectives are the combinatorial base of linear logic
+  (permutations, circuits, etc.).
+\item
+  \textbf{Additive connectives:} the conjunction \(\with\) (\emph{with})
+  and the disjunction \(\plus\) (\emph{plus}), with their respective
+  units \(\top\) (\emph{top}) and \(\zero\) (\emph{zero}); the
+  computational content of these connectives, which behave more closely
+  to their intuitionistic counterparts (\emph{e.g.}, \(A\with B\limp A\)
+  and \(A\with B\limp B\) are provable), is strongly related to choice
+  (\emph{if...then...else}, product and sum types, etc.).
+\item
+  \textbf{Exponential connectives:} the modalities \(\oc\) (\emph{of
+  course}) and \(\wn\) (\emph{why not}) handle the structural rules in
+  linear logic, and are necessary to recover the expressive power of
+  intuitionistic or classical logic.
+\item
+  \textbf{Quantifiers:} just as in classical logic, quantifiers may be
+  added to propositional linear logic, at any order. The most frequently
+  considered are the second order ones (in analogy with System F).
+\end{itemize}
+
+The additive and exponential connectives, if taken alone, yield
+fragments of limited interest, so one usually considers only fragments
+containing at least the multiplicative connectives (perhaps without
+units). It is important to observe that the
+\href{Sequent_calculus\#Cut_elimination_and_consequences}{cut
+elimination rules} of linear logic do not introduce connectives
+belonging to a different class than that of the pair of dual formulas
+whose cut is being reduced. Hence, any fragment defined by combining the
+above classes will enjoy cut elimination. Since cut elimination implies
+the subformula property, all of the
+\href{Sequent_calculus\#Equivalences}{fundamental equivalences} provable
+in full linear logic remain valid within such fragments, as soon as the
+formulas concerned belong to the fragment itself.
+
+Conventionally, if \(LL\) denotes full linear logic, its fragments are
+denoted by prefixing \(LL\) with letters corresponding to the classes of
+connectives being considered: \(M\) for multiplicative connectives,
+\(A\) for additive connectives, and \(E\) for exponential connectives.
+Additional subscripts may specify whether units and/or quantifiers are
+present or not, and, for quantifiers, of what order (see the article on
+\url{notations}).
+
+\subsection{Motivations}\label{motivations}
+
+The main interest of studying fragments of linear logic is that these
+are usually simpler than the whole system, so that certain properties
+may be first analyzed on fragments, and then extended or adapted to
+increasingly larger fragments. It may also be interesting to see, given
+a property that does not hold for full linear logic, whether it holds
+for a fragment, and where the "breaking point" is situated. Examples of
+such questions include:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{logical complexity:} proving cut elimination for full linear
+  logic with second order quantification is equivalent to proving the
+  consistency of second order Peano arithmetic (Girard, via
+  \href{Translations_of_intuitionistic_logic}{translations of System F}
+  in linear logic). One may expect that smaller fragments have lower
+  logical complexity.
+\item
+  \textbf{provability:} the \emph{provability problem} for a logical
+  system \emph{S} is defined as follows: given a formula \(A\) in the
+  language of \emph{S}, is \(A\) provable in \emph{S}? This problem is
+  undecidable in full linear logic with quantifiers, of whatever order
+  (again, because \href{Translations_of_classical_logic}{classical logic
+  can be translated} in linear logic). On what fragments does it become
+  decidable? And if it does, what is its computational complexity?
+\item
+  \textbf{computational complexity of cut elimination:} the \emph{cut
+  elimination problem} (Mairson-Terui) for a logical system \emph{S} is
+  defined as follows: given two proofs of \(A\) in \emph{S}, do they
+  reduce to the same cut-free proof? Although decidable (thanks to
+  strong normalization), this problem is not elementary recursive in
+  full propositional linear logic (Statman, again via the
+  above-mentioned translations). Does the problem fall into any
+  interesting complexity class when applied to fragments?
+\item
+  \textbf{proof nets:} the definition of proof nets, and in particular
+  the formulation of correctness criteria and the study of their
+  complexity, is a good example of how a methodology can be applied to a
+  small fragment of linear logic and later adapted (more or less
+  successfully) to wider fragments.
+\item
+  \textbf{denotational semantics:} several problems related to
+  denotational semantics (formulation of
+  \href{Categorical_semantics}{categorical models}, full abstraction,
+  full completeness, injectivity, etc.) may be first attacked in the
+  simpler case of fragments, and then extended to wider subsystems.
+\end{itemize}
+
+\subsection{Multiplicative fragments}\label{multiplicative-fragments}
+
+Multiplicative linear logic (\(MLL\)) is the simplest of the well known
+fragments of linear logic. Its formulas are obtained by combining
+propositional atoms with the connectives \emph{tensor} and \emph{par}
+only. As a consequence, the
+\href{Sequent_calculus\#Sequents_and_proofs}{sequent calculus} of
+\(MLL\) is limited to the rules \(\rulename{axiom}\),
+\(\rulename{cut}\), \(\tens\), and \(\parr\). These rules actually
+determine the multiplicative connectives: if a dual pair of connectives
+\(\tens'\) and \(\parr'\) is introduced, with the same rules as
+\(\tens\) and \(\parr\), respectively, then one can show \(A\tens' B\)
+to be provably equivalent to \(A\tens B\) (and, dually, \(A\parr'B\) to
+be provably equivalent to \(A\parr B\)).
+
+The cut elimination problem for \(MLL\) is \(\mathbf P\)-complete
+(Mairson-Terui), even though there exists a deterministic algorithm
+solving the problem in logarithmic space if one considers only
+\href{Sequent_calculus\#Expansion_of_identities}{eta-expanded} proofs
+(Mairson-Terui). On the other hand, provability for \(MLL\) is
+\(\mathbf{NP}\)-complete, and it remains so even in presence of first
+order quantifiers.
+
+Another multiplicative fragment, less considered in the literature, can
+be defined by using the units \(\one\) and \(\bot\) instead of the
+propositional atoms. In this fragment, denoted by \(MLL_u\), one can
+also eliminate the \(\rulename{axiom}\) rule from sequent calculus,
+since it is redundant. \(MLL_u\) is even simpler than \(MLL\): its
+provability problem is in \(\mathbf P\), and, since all proofs are
+eta-expandend, its cut elimination problem is in \(\mathbf L\).
+
+The union of \(MLL\) and \(MLL_u\) is the full propositional
+multiplicative fragment of linear logic, and is denoted by \(MLL_0\). It
+has the same properties as \(MLL\), which shows that the
+presence/absence of propositional atoms (and of the \(\rulename{axiom}\)
+rule) has a non-trivial effect on the complexity of provability and cut
+elimination, \emph{i.e.}, the complexity is not altered iff
+\(\mathbf P\subsetneq\mathbf{NP}\) and \(\mathbf L\subsetneq\mathbf P\),
+respectively.
+
+If we add second order quantifiers to \(MLL\) (resp. \(MLL_u\)), we
+obtain a system denoted by \(MLL_2\) (resp. \(MLL_{02}\)). In
+\(MLL_{02}\) one can show that \(\one\) and \(\bot\) are provably
+equivalent to \(\forall X.(X\orth\parr X)\) and
+\(\exists X.(X\orth\tens X)\), respectively. Hence, \(MLL_2\) is as
+expressive as \(MLL_{02}\). In these second order fragments, provability
+is undecidable, while cut elimination is still \(\mathbf P\)-complete.
+
+\subsection{Additive fragments}\label{additive-fragments}
+
+The most studied additive fragments of linear logic are defined by
+taking \(MLL\) or \(MLL_0\) and by enriching their language with the
+additive connectives, with or without units. The same can be done in
+presence of quantifiers. We thus obtain:
+
+\begin{itemize}
+\tightlist
+\item
+  \(MALL\): formulas built from propositional atoms using
+  \(\tens,\parr,\with,\plus\);
+\item
+  \(MALL_0\): formulas built from propositional atoms and
+  \(\one,\bot,\top,\zero\), using \(\tens,\parr,\with,\plus\);
+\item
+  \(MALL_n\): \(MALL\) with quantifiers of order \(n\);
+\item
+  \(MALL_{0n}\): \(MALL_0\) with quantifiers of order \(n\).
+\end{itemize}
+
+The \href{Additive_linear_logic}{purely additive framents} are less
+common:
+
+\begin{itemize}
+\tightlist
+\item
+  \(ALL\): formulas built from propositional atoms using
+  \(\with,\plus\);
+\item
+  \(ALL_0\): formulas built from propositional atoms and \(\top,\zero\),
+  using \(\with,\plus\);
+\item
+  \(ALL_n\): \(ALL\) with quantifiers of order \(n\);
+\item
+  \(ALL_{0n}\): \(ALL_0\) with quantifiers of order \(n\).
+\end{itemize}
+
+As for the multiplicative connectives, the additive connectives are also
+defined by their rules: adding a pair of dual connectives
+\(\with',\plus'\) to \(MALL\), and giving them the same rules as
+\(\with,\plus\), makes the new connectives provably equivalent to the
+old ones.
+
+In \(MALL_{02}\), the additive units \(\top\) and \(\zero\) are provably
+equivalent to \(\exists X.X\orth\) and \(\forall X.X\), respectively.
+Since multiplicative units are also definable in terms of second order
+quantification, we obtain that \(MALL_2\) is as expressive as
+\(MALL_{02}\).
+
+The cut elimination problem is \(\mathbf{coNP}\)-complete for all of the
+fragments defined above (Mairson-Terui).
+
+Provability is undecidable in any additive fragment as soon as second
+order quantification is considered. It is decidable, although quite
+complex, in the propositional and first order case: it is
+\(\mathbf{PSPACE}\)-complete in \(MALL_0\), and
+\(\mathbf{NEXP}\)-complete in \(MALL_{01}\). This latter result is
+indicative of the fact that the undecidability of predicate calculus is
+not ascribable to existential quantification alone, but rather to the
+simultaneous presence of existential quantification and contraction.
+
+\subsection{Exponential fragments}\label{exponential-fragments}
+
+The most common proper fragments of linear logic containing the
+exponential connectives are defined as in the case of the additive
+fragments, \emph{i.e.}, by adding the modalities on top of \(MLL\) and
+its variants:
+
+\begin{itemize}
+\tightlist
+\item
+  \(MELL\): formulas built from propositional atoms using
+  \(\tens,\parr,\oc,\wn\);
+\item
+  \(MELL_0\): formulas built from propositional atoms and \(\one,\bot\),
+  using \(\tens,\parr,\oc,\wn\);
+\item
+  \(MELL_n\): \(MELL\) with quantifiers of order \(n\);
+\item
+  \(MELL_{0n}\): \(MELL_0\) with quantifiers of order \(n\).
+\end{itemize}
+
+If, instead of taking \(MLL\), we add the modalities to \(MALL\), we
+obtain of course various versions of full linear logic:
+
+\begin{itemize}
+\tightlist
+\item
+  \(LL\): full linear logic, without units;
+\item
+  \(LL_0\): full linear logic, with units;
+\item
+  \(LL_n\): \(LL\) with quantifiers of order \(n\);
+\item
+  \(LL_{0n}\): \(LL_0\) with quantifiers of order \(n\).
+\end{itemize}
+
+In \(LL_{02}\) the formulas \(A\with B\) and \(A\plus B\) are provably
+equivalent to
+\(\exists X.(\oc{(X\orth\parr A)}\tens\oc{(X\orth\parr B)}\tens X)\) and
+\(\forall X.(\wn{(X\orth\tens A)}\parr\wn{(X\orth \tens B)}\parr X)\),
+respectively, for all \(A,B\). Thanks to the second-order definability
+of units discussed above, we obtain that \(MELL_2\) is as expressive as
+\(LL_{02}\), \emph{i.e.}, full propositional second order linear logic
+embeds in its second order multiplicative exponential fragment without
+units.
+
+Girard showed how cut elimination for \(LL_{02}\) \emph{without the
+contraction rule} can be proved by a simple induction up to \(\omega\),
+\emph{i.e.}, in first order Peano arithmetic. This gives a huge gap
+between the logical complexity of full linear logic and its
+contraction-free subsystem: in fact, still by Girard's results, we know
+that cut elimination in \(MELL_2\) is equivalent to the consistency of
+second order Peano arithmetic, for which no ordinal analysis is known.
+There are nevertheless subsystems of \(MELL_2\), the so-called
+\href{Light_linear_logics}{light subsystems} of linear logic, in which
+the exponential connectives are weakened, whose cut elimination can be
+proved in seconder order Peano arithmetic even in presence of
+contraction.
+
+The cut elimination problem is never elementary recursive in presence of
+exponential connectives: the simply typed \(\lambda\)-calculus with
+arrow types only can be encoded in \(MELL\), and this is enough for
+Statman's lower bound to apply. However, it becomes elementary recursive
+in the above mentioned \href{Light_linear_logics}{light logics}.
+
+Albeit perhaps surprisingly, provability in \(LL\) is already
+undecidable. This result, obtained by coding Minsky machines with linear
+logic formulas, contrasts with the situation in classical logic, whose
+propositional fragment is notoriously decidable. It is indicative of the
+fact that modalities are themselves a form of quantification, although
+this claim is far from being clear: as a matter of fact, the
+decidability of propositional provability in the absence of additives,
+\emph{i.e.}, in \(MELL\) alone, is still an open problem. It is known
+that adding first order quantification to \(MELL\) makes it undecidable.
+
+\subsubsection{About exponential rules}\label{about-exponential-rules}
+
+In this section, provability is assumed to be in \(LL_{02}\),
+\emph{i.e.}, full propositional second order linear logic.
+
+In contrast with multiplicative and additive connectives, the modalities
+of linear logic are not defined by their rules: one may introduce a pair
+of dual modalities \(\oc',\wn'\), each with the same rules as
+\(\oc,\wn\), without \(\oc'A\) (resp. \(\wn'A\)) being in general
+provably equivalent to \(\oc A\) (resp. \(\wn A\)).
+
+The \href{Sequent_calculus\#Sequents_and_proofs}{promotion rule} is
+derivable from the following two rules, called \emph{functorial
+promotion} and \emph{digging}, respectively:
+
+\(\AxRule{\vdash\Gamma,A}
+\LabelRule{f\oc}
+\UnaRule{\vdash\wn\Gamma,\oc A}
+\DisplayProof
+\qquad\qquad\qquad
+\AxRule{\vdash\Gamma,\wn{\wn A}}
+\LabelRule{dig}
+\UnaRule{\vdash\Gamma,\wn A}
+\DisplayProof\)
+
+Functorial promotion is itself derivable from dereliction and promotion;
+the digging rule is also derivable, but only using the
+\(\rulename{cut}\) rule (in fact, digging does not enjoy the subformula
+property). It may be convenient to consider this pair of rules instead
+of the standard promotion rule in the context of
+\href{categorical_semantics}{categorical semantics} of linear logic.
+
+In presence of the digging rule, dereliction, weakening, and contraction
+can be derived from the following rule, called \emph{multiplexing}, in
+which \(A^{(n)}\) stands for the sequence \(A,\ldots,A\) containing
+\(n\) occurrences of \(A\):
+
+\(\AxRule{\vdash\Gamma,A^{(n)}}
+\LabelRule{mux}
+\UnaRule{\vdash\Gamma,\wn A}
+\DisplayProof\)
+
+Of course, multiplexing is itself derivable from dereliction, weakening,
+and contraction. Hence, there are several alternative but equivalent
+presentations of the exponential fragment of linear logic, such as
+
+\begin{enumerate}
+\tightlist
+\item
+  remove promotion, and replace it with functorial promotion and
+  digging;
+\item
+  remove promotion, dereliction, weakening, and contraction, and replace
+  them with functorial promotion, digging, and multiplexing.
+\end{enumerate}
+
+Apart from their usefulness in \href{categorical_semantics}{categorical
+semantics}, these alternative formulations are of interest in the
+context of the so-called \href{light_linear_logics}{light linear logics}
+mentioned above. For example, \emph{elementary linear logic} is obtained
+by removing dereliction and digging from formulation 1, and \emph{soft
+linear logic} is obtained by removing digging from formulation 2.
+
+Multiplexing is invertible in certain circumstances. A sequent
+\(\vdash\Gamma,\wn A\) containing no occurrence of \(\with\), \(\oc\),
+or second order \(\exists\) is provable iff \(\vdash\Gamma,A^{(n)}\) is
+provable for some \(n\) (this is easily checked by induction on cut-free
+proofs). To see that this does not hold in general, take for instance
+\(A=X\orth\) and \(\Gamma=X\with\one\), or \(\Gamma=\oc X\). The
+restriction on the presence of additive conjunction can be removed by
+slightly changing the statement: a sequent \(\vdash\Gamma,\wn A\)
+containing no occurrence of \(\oc\) or second order \(\exists\) is
+provable iff \(\vdash\Gamma,(A\plus\bot)^{(n)}\) is provable for some
+\(n\).
+
+The latter result can be generalized as follows. If \(A\) is a formula,
+\(\oc_nA\) stands for the formula
+\((A\with\one)\tens\cdots\tens(A\with\one)\) (\(n\) times) and
+\(\wn_nA\) for the formula \((A\plus\bot)\parr\cdots\parr(A\plus\bot)\)
+(\(n\) times). Then, we have
+
+A \emph{structural formula} is a formula \(C\) such that
+\(C\limp C\tens C\) and \(C\limp\one\) are provable. Obviously, any
+formula of the form \(\wn B\) is structural. However, the promotion rule
+cannot be extended to arbitrary structural formulas, \emph{i.e.}, the
+following rule is \emph{not} admissible:
+
+\(\AxRule{C\vdash A}
+\AxRule{C\vdash C\tens C}
+\AxRule{C\vdash\one}
+\TriRule{C\vdash\oc A}
+\DisplayProof\)
+
+For instance, if
+\(A=C=\alpha\tens\oc{(\alpha\limp\alpha\tens\alpha)}\tens\oc{(\alpha\limp\one)}\),
+the three premises are provable but not the conclusion.
+
+The following rule, called \emph{absorption}, is derivable in the
+standard sequent calculus:
+
+\(\AxRule{\vdash\Gamma,\wn A,A}
+\UnaRule{\vdash\Gamma,\wn A}
+\DisplayProof\)
+
+The absorption rule is useful in the context of proof search in linear
+logic.
+
+\subsection{The provability problem}\label{the-provability-problem}
+
+It is well known that the decidability of the provability problem is
+connected to the \href{Phase_semantics}{finite model property}: if a
+fragment of a logic with a truth semantics enjoys the finite model
+property, then the provability in that fragment is decidable. Note of
+course that the converse may fail.
+
+In this section, we summarize the known results about the validity of
+the final model property and the decidability of provability, with its
+complexity, for the various fragments of linear logic introduced above.
+Question marks in the tables below denote open problems. For brevity,
+all fragments are assumed to have units and propositional atoms,
+\emph{e.g.}, \(MLL\) actually denotes what we called \(MLL_0\) above.
+
+\subsubsection{The finite model
+property}\label{the-finite-model-property}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\(MLL\) & \(MALL\) & \(MELL\) & \(LL\)\tabularnewline
+yes & yes & no & no\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsubsection{Provability}\label{provability}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule
+& \(MLL\) & \(MALL\) & \(MELL\) & \(LL\)\tabularnewline
+propositional case & \(\mathbf{NP}\)-complete &
+\(\mathbf{PSPACE}\)-complete & ? & undecidable\tabularnewline
+first order case & \(\mathbf{NP}\)-complete & \(\mathbf{NEXP}\)-complete
+& undecidable & undecidable\tabularnewline
+second order case & undecidable & undecidable & undecidable &
+undecidable\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsection{The cut elimination
+problem}\label{the-cut-elimination-problem}
+
+In this section, we summarize the known results about the complexity of
+the cut elimination problem for the various fragments of linear logic
+introduced above, plus some \href{light_linear_logics}{light linear
+logics}. All fragments are assumed to be propositional; the results do
+not change in presence of quantification of any order.
+
+\begin{longtable}[]{@{}llllll@{}}
+\toprule
+\(MLL_u\) & \(MLL\) & \(MALL\) & \(MSLL\) & \(MLLL\) &
+\(MELL\)\tabularnewline
+\(\mathbf L\) & \(\mathbf{P}\)-complete & \(\mathbf{coNP}\)-complete &
+\(\mathbf{EXP}\)-complete & \(\mathbf{2EXP}\)-complete & not elementary
+recursive\tabularnewline
+\bottomrule
+\end{longtable}
+
+Notations used in the above table:
+
+\begin{itemize}
+\tightlist
+\item
+  \(MSLL\): multiplicative soft linear logic;
+\item
+  \(MLLL\): multiplicative light linear logic.
+\end{itemize}
+

@@ -1,0 +1,278 @@
+\section{Intuitionistic linear logic}\label{intuitionistic-linear-logic}
+
+Intuitionistic Linear Logic (\(ILL\)) is the
+\href{intuitionnistic_restriction}{intuitionnistic restriction} of
+linear logic: the sequent calculus of \(ILL\) is obtained from the
+\href{Sequent_calculus\#Sequents_and_proofs}{two-sided sequent calculus
+of linear logic} by constraining sequents to have exactly one formula on
+the right-hand side: \(\Gamma\vdash A\).
+
+The connectives \(\parr\), \(\bot\) and \(\wn\) are not available
+anymore, but the linear implication \(\limp\) is.
+
+\subsection{Sequent Calculus}\label{sequent-calculus}
+
+\(\LabelRule{\rulename{ax}}
+\NulRule{A\vdash A}
+\DisplayProof
+\qquad
+\AxRule{\Gamma\vdash A}
+\AxRule{\Delta,A\vdash C}
+\LabelRule{\rulename{cut}}
+\BinRule{\Gamma,\Delta\vdash C}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash A}
+\AxRule{\Delta\vdash B}
+\LabelRule{\tens R}
+\BinRule{\Gamma,\Delta\vdash A\tens B}
+\DisplayProof
+\qquad
+\AxRule{\Gamma,A,B\vdash C}
+\LabelRule{\tens L}
+\UnaRule{\Gamma,A\tens B\vdash C}
+\DisplayProof
+\qquad
+\LabelRule{\one R}
+\NulRule{{}\vdash\one}
+\DisplayProof
+\qquad
+\AxRule{\Gamma\vdash C}
+\LabelRule{\one L}
+\UnaRule{\Gamma,\one\vdash C}
+\DisplayProof\)
+
+\(\AxRule{\Gamma,A\vdash B}
+\LabelRule{\limp R}
+\UnaRule{\Gamma\vdash A\limp B}
+\DisplayProof
+\qquad
+\AxRule{\Gamma\vdash A}
+\AxRule{\Delta,B\vdash C}
+\LabelRule{\limp L}
+\BinRule{\Gamma,\Delta,A\limp B\vdash C}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash A}
+\AxRule{\Gamma\vdash B}
+\LabelRule{\with R}
+\BinRule{\Gamma\vdash A\with B}
+\DisplayProof
+\qquad
+\AxRule{\Gamma,A\vdash C}
+\LabelRule{\with_1 L}
+\UnaRule{\Gamma,A\with B\vdash C}
+\DisplayProof
+\qquad
+\AxRule{\Gamma,B\vdash C}
+\LabelRule{\with_2 L}
+\UnaRule{\Gamma,A\with B\vdash C}
+\DisplayProof
+\qquad
+\LabelRule{\top R}
+\NulRule{\Gamma\vdash\top}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash A}
+\LabelRule{\plus_1 R}
+\UnaRule{\Gamma\vdash A\plus B}
+\DisplayProof
+\qquad
+\AxRule{\Gamma\vdash B}
+\LabelRule{\plus_2 R}
+\UnaRule{\Gamma\vdash A\plus B}
+\DisplayProof
+\qquad
+\AxRule{\Gamma,A\vdash C}
+\AxRule{\Gamma,B\vdash C}
+\LabelRule{\plus L}
+\BinRule{\Gamma,A\plus B\vdash C}
+\DisplayProof
+\qquad
+\LabelRule{\zero L}
+\NulRule{\Gamma,\zero\vdash C}
+\DisplayProof\)
+
+\(\AxRule{\oc{\Gamma}\vdash A}
+\LabelRule{\oc R}
+\UnaRule{\oc{\Gamma}\vdash\oc{A}}
+\DisplayProof
+\qquad
+\AxRule{\Gamma,A\vdash C}
+\LabelRule{\oc d L}
+\UnaRule{\Gamma,\oc{A}\vdash C}
+\DisplayProof
+\qquad
+\AxRule{\Gamma,\oc{A},\oc{A}\vdash C}
+\LabelRule{\oc c L}
+\UnaRule{\Gamma,\oc{A}\vdash C}
+\DisplayProof
+\qquad
+\AxRule{\Gamma\vdash C}
+\LabelRule{\oc w L}
+\UnaRule{\Gamma,\oc{A}\vdash C}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash A}
+\LabelRule{\forall R}
+\UnaRule{\Gamma\vdash \forall\xi A}
+\DisplayProof
+\qquad
+\AxRule{\Gamma,A[\tau/\xi]\vdash C}
+\LabelRule{\forall L}
+\UnaRule{\Gamma,\forall\xi A\vdash C}
+\DisplayProof
+\qquad
+\AxRule{\Gamma\vdash A[\tau/\xi]}
+\LabelRule{\exists R}
+\UnaRule{\Gamma\vdash\exists\xi A}
+\DisplayProof
+\qquad
+\AxRule{\Gamma,A\vdash C}
+\LabelRule{\exists L}
+\UnaRule{\Gamma,\exists\xi A\vdash C}
+\DisplayProof\)
+
+with \(\xi\) not free in \(\Gamma,C\) in the rules \(\forall R\) and
+\(\exists L\).
+
+\subsection{The intuitionistic fragment of linear logic}\label{the-intuitionistic-fragment-of-linear-logic}
+
+In order to characterize intuitionistic linear logic inside linear
+logic, we define the intuitionistic restriction of linear formulas:
+
+\(J ::= X \mid J\tens J \mid \one \mid J\limp J \mid J\with J \mid \top \mid J\plus J \mid \zero \mid \oc{J} \mid \forall\xi J \mid \exists\xi J\)
+
+\(JLL\) is the \url{fragment} of linear logic obtained by restriction to
+intuitionistic formulas.
+
+The theorem is also valid for formulas containing \(\one\) or \(\top\)
+but not anymore with \(\zero\).
+\({}\vdash((X\limp Y)\limp\zero)\limp(X\tens(\zero\limp Z))\) is
+provable in \(JLL_0\):
+
+\(\LabelRule{\rulename{ax}}
+\NulRule{X\vdash X}
+\LabelRule{\zero L}
+\NulRule{\zero\vdash Y,Z}
+\LabelRule{\limp R}
+\UnaRule{{}\vdash Y,\zero\limp Z}
+\LabelRule{\tens R}
+\BinRule{X\vdash Y,X\tens(\zero\limp Z)}
+\LabelRule{\limp R}
+\UnaRule{{}\vdash X\limp Y,X\tens(\zero\limp Z)}
+\LabelRule{\zero L}
+\NulRule{\zero\vdash {}}
+\LabelRule{\limp L}
+\BinRule{(X\limp Y)\limp\zero\vdash X\tens(\zero\limp Z)}
+\LabelRule{\limp R}
+\UnaRule{{}\vdash((X\limp Y)\limp\zero)\limp(X\tens(\zero\limp Z))}
+\DisplayProof\)
+
+but not in \(ILL_0\).
+
+\subsection{Input / output polarities}\label{input-output-polarities}
+
+In order to go to \(LL\) without \(\limp\), we consider two classes of
+formulas: \emph{input formulas} (\(I\)) and \emph{output formulas}
+(\(O\)).
+
+\(I ::= X\orth \mid I\parr I \mid \bot \mid I\tens O \mid O\tens I \mid I\plus I \mid \zero \mid I\with I \mid \top \mid \wn{I} \mid \exists\xi I \mid \forall\xi I\)
+\(O ::= X \mid O\tens O \mid \one \mid O\parr I \mid I\parr O \mid O\with O \mid \top \mid O\plus O \mid \zero \mid \oc{O} \mid \forall\xi O \mid \exists\xi O\)
+
+By applying the definition of the linear implication
+\(A\limp B = A\orth\parr B\), any formula of \(JLL\) is mapped to an
+output formula (and the dual of a \(JLL\) formula to an input formula).
+Conversely, any output formula is coming from a \(JLL\) formula in this
+way (up to commutativity of \(\parr\): \(O\parr I = I\parr O\)).
+
+The \url{fragment} of linear logic obtained by restriction to
+input/output formulas is thus equivalent to \(JLL\), but the closure of
+the set of input/output formulas under orthogonal allows for a one-sided
+presentation.
+
+\(\LabelRule{\rulename{ax}}
+\NulRule{\vdash O\orth,O}
+\DisplayProof
+\qquad
+\AxRule{{}\vdash \Gamma,O}
+\AxRule{{}\vdash\Delta,O\orth}
+\LabelRule{\rulename{cut}}
+\BinRule{{}\vdash\Gamma,\Delta}
+\DisplayProof\)
+
+\(\AxRule{{}\vdash\Gamma,A}
+\AxRule{{}\vdash\Delta,B}
+\LabelRule{\tens}
+\BinRule{{}\vdash\Gamma,\Delta,A\tens B}
+\DisplayProof
+\qquad
+\AxRule{{}\vdash\Gamma,A,B}
+\LabelRule{\parr}
+\UnaRule{{}\vdash\Gamma,A\parr B}
+\DisplayProof
+\qquad
+\LabelRule{\one}
+\NulRule{{}\vdash\one}
+\DisplayProof
+\qquad
+\AxRule{{}\vdash\Gamma}
+\LabelRule{\bot}
+\UnaRule{{}\vdash\Gamma,\bot}
+\DisplayProof\)
+
+\(\AxRule{{}\vdash\Gamma,A}
+\AxRule{{}\vdash\Gamma,B}
+\LabelRule{\with}
+\BinRule{{}\vdash\Gamma,A\with B}
+\DisplayProof
+\qquad
+\AxRule{{}\vdash\Gamma,A}
+\LabelRule{\plus_1}
+\UnaRule{{}\vdash\Gamma,A\plus B}
+\DisplayProof
+\qquad
+\AxRule{{}\vdash\Gamma,B}
+\LabelRule{\plus_2}
+\UnaRule{{}\vdash\Gamma,A\plus B}
+\DisplayProof
+\qquad
+\LabelRule{\top}
+\NulRule{{}\vdash\Gamma,\top}
+\DisplayProof\)
+
+\(\AxRule{{}\vdash\wn{\Gamma},O}
+\LabelRule{\oc}
+\UnaRule{{}\vdash\wn{\Gamma},\oc{O}}
+\DisplayProof
+\qquad
+\AxRule{{}\vdash\Gamma,I}
+\LabelRule{\wn d}
+\UnaRule{{}\vdash\Gamma,\wn{I}}
+\DisplayProof
+\qquad
+\AxRule{{}\vdash\Gamma,\wn{I},\wn{I}}
+\LabelRule{\wn c}
+\UnaRule{{}\vdash\Gamma,\wn{I}}
+\DisplayProof
+\qquad
+\AxRule{{}\vdash\Gamma}
+\LabelRule{\wn w}
+\UnaRule{{}\vdash\Gamma,\wn{I}}
+\DisplayProof\)
+
+\(\AxRule{{}\vdash\Gamma,A}
+\LabelRule{\forall}
+\UnaRule{{}\vdash\Gamma,\forall\xi A}
+\DisplayProof
+\qquad
+\AxRule{{}\vdash\Gamma,A[\tau/\xi]}
+\LabelRule{\exists}
+\UnaRule{{}\vdash\Gamma,\exists\xi A}
+\DisplayProof\)
+
+with \(A\) and \(B\) arbitrary input or output formulas (under the
+condition that the composite formulas containing them are input or
+output formulas) and \(\xi\) not free in \(\Gamma\) in the rule
+\(\forall\).
+

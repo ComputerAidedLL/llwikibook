@@ -1,0 +1,176 @@
+\section{Reversibility and focalization}\label{reversibility-and-focalization}
+
+\subsection{Reversibility}\label{reversibility}
+
+Remark that this result is proved using only commutation rules, except
+when the formula is introduced by an axiom rule. Furthermore, if axioms
+are applied only on atoms, this particular case disappears.
+
+A consequence of this fact is that, when searching for a proof of some
+sequent \(\vdash\Gamma\), one can always start by decomposing negative
+connectives in \(\Gamma\) without losing provability. Applying this
+result to successive connectives, we can get generalized formulations
+for more complex formulas. For instance:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\vdash\Gamma,(A\parr B)\parr(B\with C)\) is provable
+\item
+  iff \(\vdash\Gamma,A\parr B,B\with C\) is provable
+\item
+  iff \(\vdash\Gamma,A\parr B,B\) and \(\vdash\Gamma,A\parr B,C\) are
+  provable
+\item
+  iff \(\vdash\Gamma,A,B,B\) and \(\vdash\Gamma,A,B,C\) are provable
+\end{itemize}
+
+So without loss of generality, we can assume that any proof of
+\(\vdash\Gamma,(A\parr B)\parr(B\with C)\) ends like
+
+\(\AxRule{ \vdash \Gamma, A, B, B }
+  \UnaRule{ \vdash \Gamma, A\parr B, B }
+  \AxRule{ \vdash \Gamma, A, B, C }
+  \UnaRule{ \vdash \Gamma, A\parr B, C }
+  \BinRule{ \vdash \Gamma, A\parr B, B\with C }
+  \UnaRule{ \vdash \Gamma, (A\parr B)\parr(B\with C) }
+  \DisplayProof\)
+
+In order to define a general statement for compound formulas, as well as
+an analogous result for positive connectives, we need to give a proper
+status to clusters of connectives of the same polarity.
+
+\subsection{Generalized connectives and
+rules}\label{generalized-connectives-and-rules}
+
+It is clear that dualization of generalized connectives is involutive
+and exchanges polarities. We do not include quantifiers in this
+definition, mainly for simplicity. Extending the notion to quantifiers
+would only require taking proper care of the scope of variables.
+
+Sequent calculus provides introduction rules for each connective.
+Negative connectives have one rule, positive ones may have any number of
+rules, namely 2 for \(\plus\) and 0 for \(\zero\). We can derive
+introduction rules for the generalized connectives by combining the
+different possible introduction rules for each of their components.
+
+Considering the previous example
+\(N[X_1,X_2,X_3]=(X_1\parr X_2)\parr(X_2\with X_3)\), we can derive an
+introduction rule for \(N\) as
+
+\(\AxRule{ \vdash \Gamma, X_1, X_2, X_2 }
+  \UnaRule{ \vdash \Gamma, X_1\parr X_2, X_2 }
+  \AxRule{ \vdash \Gamma, X_1, X_2, X_3 }
+  \UnaRule{ \vdash \Gamma, X_1\parr X_2, X_3 }
+  \BinRule{ \vdash \Gamma, X_1\parr X_2, X_2\with X_3 }
+  \UnaRule{ \vdash \Gamma, (X_1\parr X_2)\parr(X_2\with X_3) }
+  \DisplayProof
+\quad\text{or}\quad
+  \AxRule{ \vdash \Gamma, X_1, X_2, X_2 }
+  \AxRule{ \vdash \Gamma, X_1, X_2, X_3 }
+  \BinRule{ \vdash \Gamma, X_1, X_2, X_2\with X_3 }
+  \UnaRule{ \vdash \Gamma, X_1\parr X_2, X_2\with X_3 }
+  \UnaRule{ \vdash \Gamma, (X_1\parr X_2)\parr(X_2\with X_3) }
+  \DisplayProof\)
+
+but these rules only differ by the commutation of independent rules. In
+particular, their premisses are the same. The dual of \(N\) is
+\(P[X_1,X_2,X_3]=(X_1\tens X_2)\tens(X_2\plus X_3)\), for which we have
+two possible derivations:
+
+\(\AxRule{ \vdash \Gamma_1, X_1 }
+  \AxRule{ \vdash \Gamma_2, X_2 }
+  \BinRule{ \vdash \Gamma_1, \Gamma_2, X_1\tens X_2 }
+  \AxRule{ \vdash \Gamma_3, X_2 }
+  \UnaRule{ \vdash \Gamma_3, X_2\plus X_3 }
+  \BinRule{ \vdash \Gamma_1, \Gamma_2, \Gamma_3, (X_1\tens X_2)\tens(X_2\plus X_3) }
+  \DisplayProof
+\qquad
+  \AxRule{ \vdash \Gamma_1, X_1 }
+  \AxRule{ \vdash \Gamma_2, X_2 }
+  \BinRule{ \vdash \Gamma_1, \Gamma_2, X_1\tens X_2 }
+  \AxRule{ \vdash \Gamma_3, X_3 }
+  \UnaRule{ \vdash \Gamma_3, X_2\plus X_3 }
+  \BinRule{ \vdash \Gamma_1, \Gamma_2, \Gamma_3, (X_1\tens X_2)\tens(X_2\plus X_3) }
+  \DisplayProof\)
+
+These are actually different, in particular their premisses differ. Each
+possible derivation corresponds to the choice of one side of the
+\(\plus\) connective.
+
+We can remark that the branches of the negative inference precisely
+correspond to the possible positive inferences:
+
+\begin{itemize}
+\tightlist
+\item
+  the first branch of the negative inference has a premiss
+  \(X_1,X_2,X_2\) and the first positive inference has three premisses,
+  holding \(X_1\), \(X_2\) and \(X_2\) respectively.
+\item
+  the second branch of the negative inference has a premiss
+  \(X_1,X_2,X_3\) and the second positive inference has three premisses,
+  holding \(X_1\), \(X_2\) and \(X_3\) respectively.
+\end{itemize}
+
+This phenomenon extends to all generalized connectives.
+
+In the example above, the branching will be \([[1,2,2],[1,2,3]]\), which
+corresponds to the granches of the negative inference and to the cases
+of positive inference.
+
+, \textbackslash{}ldots, A\_\{i\_\{1,\textbackslash{}ell\_1\}\} \}
+
+\texttt{~~~\textbackslash{}AxRule\{~\textbackslash{}cdots~\}}\\
+\texttt{~~~\textbackslash{}AxRule\{~\textbackslash{}vdash~\textbackslash{}Gamma,~A\_\{i\_\{k,1\}\},~\textbackslash{}ldots,~A\_\{i\_\{k,\textbackslash{}ell\_k\}\}~\}}\\
+\texttt{~~~\textbackslash{}LabelRule\{N\}}\\
+\texttt{~~~\textbackslash{}TriRule\{~\textbackslash{}vdash~\textbackslash{}Gamma,~N{[}A\_1,\textbackslash{}ldots,A\_n{]}~\}}\\
+\texttt{~~~\textbackslash{}DisplayProof}\\
+\texttt{~}
+
+For each branch \(I=[i_1,\ldots,i_\ell]\) of a positive generalized
+connective \(P\), the derived rule for branch \(I\) of \(P\) is
+
+\(\AxRule{ \vdash \Gamma_1, A_{i_1} }
+    \AxRule{ \cdots }
+    \AxRule{ \vdash \Gamma_\ell, A_{i_\ell} }
+    \LabelRule{P_I}
+    \TriRule{ \vdash \Gamma_1, \ldots, \Gamma_\ell, P[A_1,\ldots,A_n] }
+    \DisplayProof\) \}\}
+
+The reversibility property of negative connectives can be rephrased in a
+generalized way as
+
+The corresponding property for positive connectives is the focalization
+property, defined in the next section.
+
+\subsection{Focalization}\label{focalization}
+
+If we extended the theory to include quantifiers in generalized
+connectives, then the definition of positive and negative formulas would
+be extended to include them too.
+
+\texttt{~~~\textbackslash{}TriRule\{~\textbackslash{}vdash~~\textbackslash{}Gamma\_1,~\textbackslash{}ldots,~\textbackslash{}Gamma\_\textbackslash{}ell,~P{[}A\_1,\textbackslash{}ldots,A\_n{]}~\}}\\
+\texttt{~~~\textbackslash{}DisplayProof}\\
+\texttt{~}
+
+where \(P\) is a positive generalized connective, the \(A_i\) ar
+non-positive and \(A=P[A_1,\ldots,A_n]\). The formula \(A\) is called
+the \emph{focus} of the proof \(\pi\). \}\}
+
+In other words, a proof is positively focused on a conclusion \(A\) if
+its last rules build \(A\) from some of its non-positive subformulas in
+one cluster of inferences. Note that this notion only makes sense for a
+sequent made only of positive formulas, since by this definition a proof
+is obviously positively focused on any of its non-positive conclusions,
+using the degenerate generalized connective \(P[X]=X\).
+
+As in the reversibility theorem, this proof only makes use of
+commutation of independent rules.
+
+These results say nothing about exponential modalities, because they
+respect neither reversibility nor focalization. However, if we consider
+the fragment of LL which consists only of multiplicative and additive
+connectives, we can restrict the proof rules to enforce focalization
+without loss of expressiveness.
+

@@ -1,0 +1,135 @@
+\section{Geometry of interaction}\label{geometry-of-interaction}
+
+The \emph{geometry of interaction}, GoI in short, was defined in the
+early nineties by Girard as an interpretation of linear logic into
+operators algebra: formulae were interpreted by Hilbert spaces and
+proofs by partial isometries.
+
+This was a striking novelty as it was the first time that a mathematical
+model of logic (lambda-calculus) didn't interpret a proof of
+\(A\limp B\) as a morphism \emph{from} \(A\) \emph{to} \(B\) and proof
+composition (cut rule) as the composition of morphisms. Rather the proof
+was interpreted as an operator acting \emph{on} \(A\limp B\), that is a
+morphism from \(A\limp B\) to \(A\limp B\). For proof composition the
+problem was then, given an operator on \(A\limp B\) and another one on
+\(B\limp C\) to construct a new operator on \(A\limp C\). This problem
+was solved by the \emph{execution formula} that bares some formal
+analogies with Kleene's formula for recursive functions. For this reason
+GoI was claimed to be an \emph{operational semantics}, as opposed to
+traditionnal \href{Semantics}{denotational semantics}.
+
+The first instance of the GoI was restricted to the \(MELL\) fragment of
+linear logic (Multiplicative and Exponential fragment) which is enough
+to encode lambda-calculus. Since then Girard proposed several
+improvements: firstly the extension to the additive connectives known as
+\emph{Geometry of Interaction 3} and more recently a complete
+reformulation using Von Neumann algebras that allows to deal with some
+aspects of \href{Light_linear_logics}{implicit complexity}
+
+The GoI has been a source of inspiration for various authors. Danos and
+Regnier have reformulated the original model exhibiting its
+combinatorial nature using a theory of reduction of paths in proof-nets
+and showing the link with abstract machines; the execution formula
+appears as the composition of two automata interacting through a common
+interface. Also the execution formula has rapidly been understood as
+expressing the composition of strategies in game semantics. It has been
+used in the theory of sharing reduction for lambda-calculus in the
+Abadi-Gonthier-Lévy reformulation and simplification of Lamping's
+representation of sharing. Finally the original GoI for the \(MELL\)
+fragment has been reformulated in the framework of traced monoidal
+categories following an idea originally proposed by Joyal.
+
+
+\subsection{The Geometry of Interaction as operators}\label{the-geometry-of-interaction-as-operators}
+
+The original construction of GoI by Girard follows a general pattern
+already mentionned in the section on \href{coherent_semantics}{coherent
+semantics} under the name \emph{symmetric reducibility} and that was
+first put to use in \href{phase_semantics}{phase semantics}. First set a
+general space \(P\) called the \emph{proof space} because this is where
+the interpretations of proofs will live. Make sure that \(P\) is a (not
+necessarily commutative) monoid. In the case of GoI, the proof space is
+a subset of the space of bounded operators on \(\ell^2\).
+
+Second define a particular subset of \(P\) that will be denoted by
+\(\bot\); then derive a duality on \(P\): for \(u,v\in P\), \(u\) and
+\(v\) are dual\footnote{In modern terms one says that \(u\) and \(v\)
+  are \emph{polar}.}iff \(uv\in\bot\).
+
+Such a duality defines an \href{orthogonality_relation}{orthogonality
+relation}, with the usual derived definitions and properties.
+
+For the GoI, two dualities have proved to work; we will consider the
+first one: nilpotency, \emph{ie}, \(\bot\) is the set of nilpotent
+operators in \(P\). Let us explicit this: two operators \(u\) and \(v\)
+are dual if there is a nonnegative integer \(n\) such that
+\((uv)^n = 0\). This duality is symmetric: if \(uv\) is nilpotent then
+\(vu\) is nilpotent also.
+
+Last define a \emph{type} as a subset \(T\) of the proof space that is
+equal to its bidual: \(T = T\biorth\). This means that \(u\in T\) iff
+for all operator \(v\in T\orth\), that is such that \(u'v\in\bot\) for
+all \(u'\in T\), we have \(uv\in\bot\).
+
+The real work\footnote{The difficulty is to find the right duality that
+  will make logical operations interpretable. General conditions that
+  allows to achieve this have been formulated by Hyland and Schalk
+  thanks to their theory of \emph{\href{double_glueing}{double
+  glueing}}.}is now to interpret logical operations, that is to
+associate a type to each formula, an object to each proof and show the
+\emph{adequacy lemma}: if \(u\) is the interpretation of a proof of the
+formula \(A\) then \(u\) belongs to the type associated to \(A\).
+
+\subsubsection{\texorpdfstring{\href{GoI_for_MELL:_partial_isometries}{Partial isometries}}{Partial isometries}}\label{partial-isometries}
+
+The first step is to build the proof space. This is constructed as a
+special set of partial isometries on a separable Hilbert space \(H\)
+which turns out to be generated by partial permutations on the canonical
+basis of \(H\).
+
+These so-called \emph{\(p\)-isometries} enjoy some nice properties, the
+most important one being that a \(p\)-isometry is a sum of
+\(p\)-isometries iff all the terms of the sum have disjoint domains and
+disjoint codomains. As a consequence we get that a sum of
+\(p\)-isometries is null iff each term of the sum is null.
+
+A second important property is that operators on \(H\) can be
+\emph{externalized} using \(p\)-isometries into operators acting on
+\(H\oplus H\), and conversely operators on \(H\oplus H\) may be
+\emph{internalized} into operators on \(H\). This is widely used in the
+sequel.
+
+\subsubsection{\texorpdfstring{\href{GoI_for_MELL:_the_*-autonomous_structure}{The *-autonomous structure}}{The *-autonomous structure}}\label{the--autonomous-structure}
+
+The second step is to interpret the linear logic multiplicative
+operations, most importantly the cut rule.
+
+Internalization/externalization is the key for this: typically the type
+\(A\tens B\) is interpreted by a set of \(p\)-isometries which are
+internalizations of operators acting on \(H\oplus H\).
+
+The (interpretation of) the cut-rule is defined in two steps: firstly we
+use nilpotency to define an operation corresponding to lambda-calculus
+application which given two \(p\)-isometries in respectively
+\(A\limp B\) and \(A\) produces an operator in \(B\). From this we
+deduce the composition and finally obtain a structure of *-autonomous
+category, that is a model of multiplicative linear logic.
+
+\subsubsection{\texorpdfstring{\href{GoI_for_MELL:_exponentials}{The exponentials}}{The exponentials}}\label{the-exponentials}
+
+Finally we turn to define exponentials, that is connectives managing
+duplication. To do this we introduce an isomorphism (induced by a
+\(p\)-isometry) between \(H\) and \(H\tens H\): the first component of
+the tensor is intended to hold the address of the the copy whereas the
+second component contains the content of the copy.
+
+We eventually get a quasi-model of full MELL; quasi in the sense that if
+we can construct \(p\)-isometries for usual structural operations in
+MELL (contraction, dereliction, digging), the interpretation of linear
+logic proofs is not invariant w.r.t. cut elimination in general. It is
+however invariant in some good cases, which are enough to get a
+correction theorem for the interpretation.
+
+
+\subsection{The Geometry of Interaction as an abstract machine}\label{the-geometry-of-interaction-as-an-abstract-machine}
+

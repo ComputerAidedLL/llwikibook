@@ -1,0 +1,284 @@
+\section{Relational semantics}\label{relational-semantics}
+
+\subsection{Relational semantics}\label{relational-semantics-1}
+
+This is the simplest denotational semantics of linear logic. It consists
+in interpreting a formula \(A\) as a set \(A^*\) and a proof \(\pi\) of
+\(A\) as a subset \(\pi^*\) of \(A^*\).
+
+\subsubsection{The category of sets and
+relations}\label{the-category-of-sets-and-relations}
+
+It is the category \(\mathbf{Rel}\) whose objects are sets, and such
+that \(\mathbf{Rel}(X,Y)=\powerset{X\times Y}\). Composition is the
+ordinary composition of relations: given \(s\in\mathbf{Rel}(X,Y)\) and
+\(t\in\mathbf{Rel}(Y,Z)\), one sets
+\(t\circ s=\set{(a,c)\in X\times Z}{\exists b\in Y\ (a,b)\in s\ \text{and}\ (b,c)\in t}\)
+and the identity morphism is the diagonal relation
+\(\mathsf{Id}_X=\set{(a,a)}{a\in X}\).
+
+An isomorphism in the category \(\mathbf{Rel}\) is a relation which is a
+bijection, as easily checked.
+
+\paragraph{Monoidal structure}\label{monoidal-structure}
+
+The tensor product is the usual cartesian product of sets
+\(X\tens Y=X\times Y\) (which is not a cartesian product in the category
+\(\mathbf{Rel}\) in the categorical sense). It is a bifunctor: given
+\(s_i\in\mathbf{Rel}(X_i,Y_i)\) (for \(i=1,2\)), one sets
+\(s_1\tens s_2=\set{((a_1,a_2),(b_1,b_2))}{(a_i,b_i)\in s_i\ \text{for}\ i=1,2}\).
+The unit of this tensor product is \(\one=\{*\}\) where \(*\) is an
+arbitrary element.
+
+For defining a monoidal category, it is not sufficient to provide the
+definition of the tensor product functor \(\tens\) and its unit
+\(\one\), one has also to provide natural isomorphisms
+\(\lambda_X\in\mathbf{Rel}(\one\tens X,X)\),
+\(\rho_X\in\mathbf{Rel}(X\tens\one,X)\) (left and right neutrality of
+\(\one\) for \(\tens\)) and
+\(\alpha_{X,Y,Z}\in\mathbf{Rel}((X\tens Y)\tens Z,X\tens(Y\tens Z))\)
+(associativity of \(\tens\)). All these isomorphisms have to satisfy a
+number of commutations. In the present case, they are defined in the
+obvious way.
+
+This monoidal category \((\mathbf{Rel},\tens,\one,\lambda,\rho)\) is
+symmetric, meaning that it is endowed with an additional natural
+isomorphism \(\sigma_{X,Y}\in\mathbf{Rel}(X\tens Y,Y\tens X)\), also
+subject to some commutations. Here, again, this isomorphism is defined
+in the obvious way (symmetry of the cartesian product). So, to be
+precise, the SMCC (symmetric monoidal closed category) \(\mathbf{Rel}\)
+is the tuple \((\mathbf{Rel},\tens,\one,\lambda,\rho,\alpha,\sigma)\),
+but we shall simply denote it as \(\mathbf{Rel}\).
+
+The SMCC \(\mathbf{Rel}\) is closed. This means that, given any object
+\(X\) of \(\mathbf{Rel}\) (a set), the functor \(Z\mapsto Z\tens X\)
+(from \(\mathbf{Rel}\) to \(\mathbf{Rel}\)) admits a right adjoint
+\(Y\mapsto (X\limp Y)\) (from \(\mathbf{Rel}\) to \(\mathbf{Rel}\)). In
+other words, for any objects \(X\) and \(Y\), we are given an object
+\(X\limp Y\) and a morphism
+\(\mathsf{ev}_{X,Y}\in\mathbf{Rel}((X\limp Y)\tens X,Y)\) with the
+following universal property: for any morphism
+\(s\in\mathbf{Rel}(Z\tens X,Y)\), there is a unique morphism
+\(\mathsf{fun}(s)\in\mathbf{Rel}(Z,X\limp Y)\) such that
+\(\mathsf{ev}_{X,Y}\circ(\mathsf{fun}(s)\tens\mathsf{Id}_X)=s\).
+
+The definition of all these data is quite simple in \(\mathbf{Rel}\):
+\(X\limp Y=X\times Y\),
+\(\mathsf{ev}_{X,Y}=\set{(((a,b),a),b)}{(a,b)\in X\times Y}\) and
+\(\mathsf{fun}(s)=\set{(c,(a,b))}{((c,a),b)\in s}\).
+
+Let \(\bot=\one=\{*\}\). Then we have
+\(\mathsf{ev}\circ\sigma:\mathbf{Rel}(X\tens(X\limp\bot),\bot)\) and
+hence
+\(\eta_X=\mathsf{fun}(\mathsf{ev}\circ\sigma)\in\mathbf{Rel}(X,(X\limp\bot)\limp\bot)\).
+It is clear that \(\eta=\set{(a,((a,*),*))}{a\in X}\) and hence \(\eta\)
+is a natural isomorphism: one says that the SMCC \(\mathbf{Rel}\) is a
+*-autonomous category, with \(\bot\) as dualizing object.
+
+\paragraph{Additives}\label{additives-2}
+
+Given a family \((X_i)_{i\in I}\), let
+\(\with_{i\in I}X_i=\cup_{i\in I}\{i\}\times X_i\). Let
+\(\pi_j\in\mathbf{Rel}(\with_{i\in I}X_i,X_j)\) given by
+\(\pi_j=\set{((j,a),a)}{a\in X_j}\). Then
+\((\with_{i\in I}X_i,(\pi_i)_{i\in I})\) is the cartesian product of the
+\(X_i\)s in the category \(\mathbf{Rel}\).
+
+\paragraph{Exponentials}\label{exponentials-4}
+
+One defines \(\oc X\) as the set of all finite multisets of elements of
+\(X\). Given \(s\in\mathbf{Rel}(X,Y)\), one defines
+\(\oc s=\set{([a_1,\dots,a_n],[b_1,\dots,b_n])}{n\in\mathbb N\ \text{and}\ \forall i\ (a_i,b_i)\in s}\)
+where \([a_1,\dots,a_n]\) is the multiset containing \(a_1,\dots,a_n\),
+taking multiplicities into account. This defines a functor
+\(\mathbf{Rel}\to\mathbf{Rel}\), that we endow with a comonad structure
+as follows:
+
+\begin{itemize}
+\tightlist
+\item
+  the counit, called dereliction, is the natural transformation
+  \(\mathsf{der}_X\in\mathbf{Rel}(\oc X,X)\), given by
+  \(\mathsf{der}_X=\set{([a],a)}{a\in X}\)
+\item
+  the comultiplication, called digging, is the natural transformation
+  \(\mathsf{digg}_X\in\mathbf{Rel}(\oc X,\oc\oc X)\), given by
+  \(\mathsf{digg}_X=\set{(m_1+\cdots+m_n,[m_1,\dots,m_n])}{n\in\mathbb N\ \text{and}\ m_1,\dots,m_n\in\oc X}\)
+\end{itemize}
+
+\subsubsection{\texorpdfstring{Interpretation of propositional linear
+logic
+(\(LL_0\))}{Interpretation of propositional linear logic (LL\_0)}}\label{interpretation-of-propositional-linear-logic-ll_0}
+
+The structure described above gives rise to the following interpretation
+of formulas and proofs of linear logic.
+
+For all propositional variable \(X\), fix a set \(\web X\). Then with
+each formula \(A\), we associate a set \(\web A\) as follows:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\web{A\orth}=\web A\);
+\item
+  \(\web{A\tens B}=\web{A\parr B}=\web A\times\web B\);
+\item
+  \(\web{A\with B}=\web{A\plus B}=(\{1\}\times\web A)\cup(\{2\}\times\web B)\);
+\item
+  \(\web{\oc A}=\web{\wn A}=\finmulset{\web A}\).
+\end{itemize}
+
+We then interpret the proofs of \(LL_0\) as follows: with each proof
+\(\pi\) of sequent \(\vdash A_1,\ldots,A_n\), we associate a subset
+\(\sem\pi\subseteq\web{A_1}\times\cdots\times\web{A_n}\).
+
+\begin{itemize}
+\tightlist
+\item
+  Identity group:
+
+  \begin{description}
+  \tightlist
+  \item[]
+  \textbackslash{}sem\{
+  \end{description}
+\end{itemize}
+
+\textbackslash{}LabelRule\{ \textbackslash{}rulename\{axiom\} \}
+\textbackslash{}NulRule\{ \textbackslash{}vdash A\textbackslash{}orth, A
+\}
+\textbackslash{}DisplayProof\}=\textbackslash{}set\{(a,a)\}\{a\textbackslash{}in\textbackslash{}web
+A\}
+
+*: \(\sem{
+\AxRule{}
+\VdotsRule{ \pi }{ \vdash \Gamma, A }
+\AxRule{}
+\VdotsRule{ \rho }{ \vdash \Delta, A\orth }
+\LabelRule{ \rulename{cut} }
+\BinRule{ \vdash \Gamma, \Delta }
+\DisplayProof} = \set{(\gamma,\delta)}{\exists a\in\web A,\ (\gamma,a)\in\sem\pi\land(\delta,a)\in\sem\rho}\)
+
+\begin{itemize}
+\tightlist
+\item
+  Multiplicative group:
+
+  \begin{description}
+  \tightlist
+  \item[]
+  \end{description}
+\end{itemize}
+
+\textbackslash{}sem\{ \textbackslash{}AxRule\{\}
+\textbackslash{}VdotsRule\{ \textbackslash{}pi \}\{
+\textbackslash{}vdash \textbackslash{}Gamma, A \}
+\textbackslash{}AxRule\{\} \textbackslash{}VdotsRule\{
+\textbackslash{}rho \}\{ \textbackslash{}vdash \textbackslash{}Delta, B
+\} \textbackslash{}LabelRule\{ \textbackslash{}tens \}
+\textbackslash{}BinRule\{ \textbackslash{}vdash \textbackslash{}Gamma,
+\textbackslash{}Delta, A \textbackslash{}tens B \}
+\textbackslash{}DisplayProof\} =
+\textbackslash{}set\{(\textbackslash{}gamma,\textbackslash{}delta,a,b)\}\{(\textbackslash{}gamma,a)\textbackslash{}in\textbackslash{}sem\textbackslash{}pi\textbackslash{}land(\textbackslash{}delta,b)\textbackslash{}in\textbackslash{}sem\textbackslash{}rho\}
+
+*: \(\sem{
+\AxRule{ }
+\VdotsRule{ \pi }{ \vdash \Gamma, A, B }
+\LabelRule{ \parr }
+\UnaRule{ \vdash \Gamma, A \parr B }
+\DisplayProof} =  \set{(\gamma,(a,b))}{(\gamma,a,b)\in\sem\pi}\)
+
+*: \(\sem{
+\LabelRule{ \one }
+\NulRule{ \vdash \one }
+\DisplayProof} = \{ * \}\)
+
+*: \(\sem{
+\AxRule{}
+\VdotsRule{ \pi }{ \vdash \Gamma }
+\LabelRule{ \bot }
+\UnaRule{ \vdash \Gamma, \bot }
+\DisplayProof} = \set{(\gamma,*)}{\gamma\in\sem\pi}\)
+
+\begin{itemize}
+\tightlist
+\item
+  Additive group:
+
+  \begin{description}
+  \tightlist
+  \item[]
+  \end{description}
+\end{itemize}
+
+\textbackslash{}sem\{ \textbackslash{}AxRule\{\}
+\textbackslash{}VdotsRule\{ \textbackslash{}pi \}\{
+\textbackslash{}vdash \textbackslash{}Gamma, A \}
+\textbackslash{}LabelRule\{ \textbackslash{}plus\_1 \}
+\textbackslash{}UnaRule\{ \textbackslash{}vdash \textbackslash{}Gamma, A
+\textbackslash{}plus B \} \textbackslash{}DisplayProof\} =
+\textbackslash{}set\{(\textbackslash{}gamma,(1,a))\}\{(\textbackslash{}gamma,a)\textbackslash{}in\textbackslash{}sem\textbackslash{}pi\}
+
+*: \(\sem{
+\AxRule{}
+\VdotsRule{ \pi }{ \vdash \Gamma, B }
+\LabelRule{ \plus_2 }
+\UnaRule{ \vdash \Gamma, A \plus B }
+\DisplayProof} = \set{(\gamma,(2,b))}{(\gamma,b)\in\sem\pi}\)
+
+*: \(\sem{
+\AxRule{}
+\VdotsRule{ \pi }{ \vdash \Gamma, A }
+\AxRule{}
+\VdotsRule{ \rho }{ \vdash \Gamma, B }
+\LabelRule{ \with }
+\BinRule{ \vdash \Gamma, A \with B }
+\DisplayProof} = \set{(\gamma,(1,a))}{(\gamma,a)\in\sem\pi} \cup \set{(\gamma,(2,b))}{(\gamma,b)\in\sem\rho}\)
+
+*: \(\sem{
+\LabelRule{ \top }
+\NulRule{ \vdash \Gamma, \top }
+\DisplayProof} = \emptyset\)
+
+\begin{itemize}
+\tightlist
+\item
+  Exponential group:
+
+  \begin{description}
+  \tightlist
+  \item[]
+  \end{description}
+\end{itemize}
+
+\textbackslash{}sem\{ \textbackslash{}AxRule\{\}
+\textbackslash{}VdotsRule\{ \textbackslash{}pi \}\{
+\textbackslash{}vdash \textbackslash{}Gamma, A \}
+\textbackslash{}LabelRule\{ d \} \textbackslash{}UnaRule\{
+\textbackslash{}vdash \textbackslash{}Gamma, \textbackslash{}wn A \}
+\textbackslash{}DisplayProof\} =
+\textbackslash{}set\{(\textbackslash{}gamma,{[}a{]})\}\{(\textbackslash{}gamma,a)\textbackslash{}in\textbackslash{}sem\textbackslash{}pi\}
+
+*: \(\sem{
+\AxRule{}
+\VdotsRule{ \pi }{ \vdash \Gamma }
+\LabelRule{ w }
+\UnaRule{ \vdash \Gamma, \wn A }
+\DisplayProof} =  \set{(\gamma,[])}{\gamma\in\sem\pi}\)
+
+*: \(\sem{
+\AxRule{}
+\VdotsRule{ \pi }{ \vdash \Gamma, \wn A, \wn A }
+\LabelRule{ c }
+\UnaRule{ \vdash \Gamma, \wn A }
+\DisplayProof} =  \set{(\gamma,m+n)}{(\gamma,m,n)\in\sem\pi}\)
+
+*: \(\sem{
+\AxRule{}
+\VdotsRule{ \pi }{ \vdash \wn A_1,\ldots,\wn A_n,B }
+\LabelRule{ \oc }
+\UnaRule{ \vdash \wn A_1,\ldots,\wn A_n,\oc B }
+\DisplayProof} = \set{
+\left(\sum_{i=1}^k m_1^i,\ldots,\sum_{i=1}^k m_n^i,[b_1,\ldots,b_k]\right)}
+{k \in \mathbb{N} \ \text{and} \ \forall 1 \leq i \leq k,\ (m_1^i,\ldots,m_n^i,b_i)\in\sem\pi}\)
+

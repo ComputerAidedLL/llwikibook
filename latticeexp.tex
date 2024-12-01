@@ -1,0 +1,77 @@
+\section{Lattice of exponential modalities}\label{lattice-of-exponential-modalities}
+
+\(\xymatrix{
+ &amp; &amp; {\wn} \\
+ &amp; &amp; &amp; &amp; {\wn\oc\wn}\ar[ull] \\
+\varepsilon\ar[uurr] &amp; &amp; &amp; {\oc\wn} \ar[ur] &amp; &amp; {\wn\oc} \ar[ul] \\
+ &amp; &amp; &amp; &amp; {\oc\wn\oc} \ar[ul]\ar[ur] \\
+ &amp; &amp; {\oc} \ar[uull]\ar[urr]
+}\)
+
+An \emph{exponential modality} is an arbitrary (possibly empty) sequence
+of the two exponential connectives \(\oc\) and \(\wn\). It can be
+considered itself as a unary connective. This leads to the notation
+\(\mu A\) for applying an exponential modality \(\mu\) to a formula
+\(A\).
+
+There is a preorder relation on exponential modalities defined by
+\(\mu\lesssim\nu\) if and only if for any formula \(A\) we have
+\(\mu A\vdash \nu A\). It induces an
+\href{List_of_equivalences}{equivalence} relation on exponential
+modalities by \(\mu \sim \nu\) if and only if \(\mu\lesssim\nu\) and
+\(\nu\lesssim\mu\).
+
+ and \(\wn{\wn{A}}\vdash\wn{A}\). \}\}
+
+\} and \(\wn{\oc{\wn{A}}}\vdash\wn{A}\). \}\}
+
+This allows to prove that any exponential modality is equivalent to one
+of the following seven modalities: \(\varepsilon\) (the empty modality),
+\(\oc\), \(\wn\), \(\oc\wn\), \(\wn\oc\), \(\oc\wn\oc\) or
+\(\wn\oc\wn\). Indeed any sequence of consecutive \(\oc\) or \(\wn\) in
+a modality can be simplified into only one occurrence, and then any
+alternating sequence of length at least four can be simplified into a
+smaller one.
+
+\textbackslash{}vdash\textbackslash{}oc\{A\} by functoriality from
+\(\oc{A}\vdash A\) (and similarly for \(\wn{A}\vdash\wn{\wn{A}}\)). From
+\(\oc{A}\vdash \oc{\wn{\oc{A}}}\), we deduce
+\(\wn{\oc{A}}\vdash \wn{\oc{\wn{\oc{A}}}}\) by functoriality and
+\(\oc{\wn{B}}\vdash \oc{\wn{\oc{\wn{B}}}}\) (with \(A=\wn{B}\)). In a
+similar way we have \(\oc{\wn{\oc{\wn{A}}}}\vdash \oc{\wn{A}}\) and
+\(\wn{\oc{\wn{\oc{A}}}}\vdash \wn{\oc{A}}\). \}\}
+
+The order relation induced on equivalence classes of exponential
+modalities with respect to \(\sim\) can be proved to be the one
+represented on the picture in the top of this page. All the represented
+relations are valid.
+
+\}. By functoriality we deduce \(\oc{\wn{\oc{A}}}\vdash \oc{\wn{A}}\)
+and by \(A=\wn{\oc{B}}\) we deduce
+\(\oc{\wn{\oc{B}}}\vdash \wn{\oc{B}}\).
+
+The others are obtained from these ones by duality: \(A\vdash B\)
+entails \(B\orth\vdash A\orth\). \}\}
+
+\}. \}\}
+
+We can prove that no other relation between classes is true (by relying
+on the previous lemma).
+
+\}.
+
+Then \(\wn\) cannot be smaller than any other of the seven modalities
+(since they are all smaller than \(\varepsilon\) or \(\wn\oc\wn\)). For
+the same reason, \(\varepsilon\) cannot be smaller than \(\oc\),
+\(\oc\wn\), \(\wn\oc\) or \(\oc\wn\oc\). This entails that \(\wn\oc\wn\)
+is only smaller than \(\wn\) since it is not smaller than
+\(\varepsilon\) (by duality from \(\varepsilon\) not smaller than
+\(\oc\wn\oc\)).
+
+From these, \(\wn{\oc{\alpha}}\not\vdash\oc{\wn{\alpha}}\) and
+\(\oc{\wn{\alpha}}\not\vdash\wn{\oc{\alpha}}\), we deduce that no other
+relation is possible. \}\}
+
+The order relation on equivalence classes of exponential modalities is a
+lattice.
+

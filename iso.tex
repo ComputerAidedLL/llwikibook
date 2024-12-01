@@ -1,0 +1,25 @@
+\section{Isomorphism}\label{isomorphism}
+
+Two formulas \(A\) and \(B\) are isomorphic (denoted \(A\cong B\)), when
+there are two proofs \(\pi\) of \(A \vdash B\) and \(\rho\) of
+\(B \vdash A\) such that eliminating the cut on \(A\) in
+
+\(\AxRule{}\VdotsRule{\pi}{A \vdash B}\AxRule{}\VdotsRule{\rho}{B \vdash A}\LabelRule{\rulename{cut}}\BinRule{B\vdash B}\DisplayProof\)
+
+leads to an
+\href{Sequent_calculus\#Expansion_of_identities}{\(\eta\)-expansion} of
+
+\(\LabelRule{\rulename{ax}}\NulRule{B\vdash B}\DisplayProof\),
+
+and eliminating the cut on \(B\) in
+
+\(\AxRule{}\VdotsRule{\pi}{A \vdash B}\AxRule{}\VdotsRule{\rho}{B \vdash A}\LabelRule{\rulename{cut}}\BinRule{A\vdash A}\DisplayProof\)
+
+leads to an
+\href{Sequent_calculus\#Expansion_of_identities}{\(\eta\)-expansion} of
+
+\(\LabelRule{\rulename{ax}}\NulRule{A\vdash A}\DisplayProof\).
+
+Linear logic admits \href{List_of_isomorphisms}{many isomorphisms}, but
+it is not known wether all of them have been discovered or not.
+

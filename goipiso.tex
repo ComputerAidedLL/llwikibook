@@ -1,0 +1,395 @@
+\section{GoI for MELL: partial isometries}\label{goi-for-mell-partial-isometries}
+
+
+\subsection{Operators, partial isometries}\label{operators-partial-isometries}
+
+We will denote by \(H\) the Hilbert space \(\ell^2(\mathbb{N})\) of
+sequences \((x_n)_{n\in\mathbb{N}}\) of complex numbers such that the
+series \(\sum_{n\in\mathbb{N}}|x_n|^2\) converges. If
+\(x = (x_n)_{n\in\mathbb{N}}\) and \(y = (y_n)_{n\in\mathbb{N}}\) are
+two vectors of \(H\) their \emph{scalar product} is:
+
+\begin{description}
+\tightlist
+\item[]
+\(\langle x, y\rangle = \sum_{n\in\mathbb{N}} x_n\bar y_n\).
+\end{description}
+
+Two vectors of \(H\) are \emph{othogonal} if their scalar product is
+nul. We will say that two subspaces are \emph{disjoint} when any two
+vectors taken in each subspace are orthorgonal. Note that this notion is
+different from the set theoretic one, in particular two disjoint
+subspaces always have exactly one vector in common: \(0\).
+
+The \emph{norm} of a vector is the square root of the scalar product
+with itself:
+
+\begin{description}
+\tightlist
+\item[]
+\(\|x\| = \sqrt{\langle x, x\rangle}\).
+\end{description}
+
+Let us denote by \((e_k)_{k\in\mathbb{N}}\) the canonical
+\emph{hilbertian basis} of \(H\):
+\(e_k = (\delta_{kn})_{n\in\mathbb{N}}\) where \(\delta_{kn}\) is the
+Kroenecker symbol: \(\delta_{kn}=1\) if \(k=n\), \(0\) otherwise. Thus
+if \(x=(x_n)_{n\in\mathbb{N}}\) is a sequence in \(H\) we have:
+
+\begin{description}
+\tightlist
+\item[]
+\(x = \sum_{n\in\mathbb{N}} x_ne_n\).
+\end{description}
+
+An \emph{operator} on \(H\) is a \emph{continuous} linear map from \(H\)
+to \(H\).Continuity is equivalent to the fact that operators are
+\emph{bounded}, which means that one may define the \emph{norm} of an
+operator \(u\) as the sup on the unit ball of the norms of its values:
+
+\begin{description}
+\tightlist
+\item[]
+\(\|u\| = \sup_{\{x\in H,\, \|x\| = 1\}}\|u(x)\|\).The set of (bounded)
+operators is denoted by \(\mathcal{B}(H)\).
+\end{description}
+
+The \emph{range} or \emph{codomain} of the operator \(u\) is the set of
+images of vectors; the \emph{kernel} of \(u\) is the set of vectors that
+are anihilated by \(u\); the \emph{domain} of \(u\) is the set of
+vectors orthogonal to the kernel, \emph{ie}, the maximal subspace
+disjoint with the kernel:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\mathrm{Codom}(u) = \{u(x),\, x\in H\}\);
+\item
+  \(\mathrm{Ker}(u) = \{x\in H,\, u(x) = 0\}\);
+\item
+  \(\mathrm{Dom}(u) = \{x\in H,\, \forall y\in\mathrm{Ker}(u), \langle x, y\rangle = 0\}\).
+\end{itemize}
+
+These three sets are closed subspaces of \(H\).
+
+The \emph{adjoint} of an operator \(u\) is the operator \(u^*\) defined
+by \(\langle u(x), y\rangle = \langle x, u^*(y)\rangle\) for any
+\(x,y\in H\). Adjointness is well behaved w.r.t. composition of
+operators:
+
+\begin{description}
+\tightlist
+\item[]
+\((uv)^* = v^*u^*\).
+\end{description}
+
+A \emph{projector} is an idempotent operator of norm \(0\) (the
+projector on the null subspace) or \(1\), that is an operator \(p\) such
+that \(p^2 = p\) and \(\|p\| = 0\) or \(1\). A projector is auto-adjoint
+and its domain is equal to its codomain.
+
+A \emph{partial isometry} is an operator \(u\) satisfying \(uu^* u =
+u\); this condition entails that we also have \(u^*uu^* =
+u^*\). As a consequence \(uu^*\) and \(uu^*\) are both projectors,
+called respectively the \emph{initial} and the \emph{final} projector of
+\(u\) because their (co)domains are respectively the domain and the
+codomain of \(u\):
+
+\begin{itemize}
+\tightlist
+\item
+  \(\mathrm{Dom}(u^*u) = \mathrm{Codom}(u^*u) = \mathrm{Dom}(u)\);
+\item
+  \(\mathrm{Dom}(uu^*) = \mathrm{Codom}(uu^*) = \mathrm{Codom}(u)\).
+\end{itemize}
+
+The restriction of \(u\) to its domain is an isometry. Projectors are
+particular examples of partial isometries.
+
+If \(u\) is a partial isometry then \(u^*\) is also a partial isometry
+the domain of which is the codomain of \(u\) and the codomain of which
+is the domain of \(u\).
+
+If the domain of \(u\) is \(H\) that is if \(u^* u = 1\) we say that
+\(u\) has \emph{full domain}, and similarly for codomain. If \(u\) and
+\(v\) are two partial isometries then we have:
+
+\begin{itemize}
+\tightlist
+\item
+  \(uv^* = 0\) iff \(u^*uv^*v = 0\) iff the domains of \(u\) and \(v\)
+  are disjoint;
+\item
+  \(u^*v = 0\) iff \(uu^*vv^* = 0\) iff the codomains of \(u\) and \(v\)
+  are disjoint;
+\item
+  \(uu^* + vv^* = 1\) iff the codomains of \(u\) and \(v\) are disjoint
+  and their their direct sum is \(H\).
+\end{itemize}
+
+
+\subsection{Partial permutations}\label{partial-permutations}
+
+We will now define our proof space which turns out to be the set of
+partial isometries acting as permutations on the canonical basis
+\((e_n)_{n\in\mathbb{N}}\).
+
+More precisely a \emph{partial permutation} \(\varphi\) on
+\(\mathbb{N}\) is a one-to-one map defined on a subset \(D_\varphi\) of
+\(\mathbb{N}\) onto a subset \(C_\varphi\) of \(\mathbb{N}\).
+\(D_\varphi\) is called the \emph{domain} of \(\varphi\) and
+\(C_\varphi\) its \emph{codomain}. Partial permutations may be composed:
+if \(\psi\) is another partial permutation on \(\mathbb{N}\) then
+\(\varphi\circ\psi\) is defined by:
+
+\begin{itemize}
+\tightlist
+\item
+  \(n\in D_{\varphi\circ\psi}\) iff \(n\in D_\psi\) and
+  \(\psi(n)\in D_\varphi\);
+\item
+  if \(n\in D_{\varphi\circ\psi}\) then
+  \(\varphi\circ\psi(n) = \varphi(\psi(n))\);
+\item
+  the codomain of \(\varphi\circ\psi\) is the image of the domain:
+  \(C_{\varphi\circ\psi} = \{\varphi(\psi(n)), n\in D_{\varphi\circ\psi}\}\).
+\end{itemize}
+
+Partial permutations are well known to form a structure of \emph{inverse
+monoid} that we detail now.
+
+Given a a subset \(D\) of \(\mathbb{N}\), the \emph{partial identity} on
+\(D\) is the partial permutation \(\varphi\) defined by:
+
+\begin{itemize}
+\tightlist
+\item
+  \(D_\varphi = D\);
+\item
+  \(\varphi(n) = n\) for any \(n\in D_\varphi\).
+\end{itemize}
+
+Thus the codomain of \(\varphi\) is \(D\).
+
+The partial identity on \(D\) will be denoted by \(1_D\). Partial
+identities are idempotent for composition.
+
+Among partial identities one finds the identity on the empty subset,
+that is the empty map, that we will denote by \(0\) and the identity on
+\(\mathbb{N}\) that we will denote by \(1\). This latter permutation is
+the neutral for composition.
+
+If \(\varphi\) is a partial permutation there is an inverse partial
+permutation \(\varphi^{-1}\) whose domain is
+\(D_{\varphi^{-1}} = C_{\varphi}\) and who satisfies:
+
+\begin{description}
+\tightlist
+\item[]
+\(\varphi^{-1}\circ\varphi = 1_{D_\varphi}\)
+
+\(\varphi\circ\varphi^{-1} = 1_{C_\varphi}\)
+\end{description}
+
+
+\subsection{The proof space}\label{the-proof-space}
+
+Given a partial permutation \(\varphi\) one defines a partial isometry
+\(u_\varphi\) by:
+
+\begin{description}
+\tightlist
+\item[]
+u\_\textbackslash{}varphi(e\_n) =
+\end{description}
+
+\texttt{~~\textbackslash{}begin\{cases\}}\\
+\texttt{~~~~e\_\{\textbackslash{}varphi(n)\}~\&~\textbackslash{}text\{~if~\}n\textbackslash{}in~D\_\textbackslash{}varphi,\textbackslash{}\textbackslash{}}\\
+\texttt{~~~~0~~~~~~~~~~~~~~\&~\textbackslash{}text\{~otherwise.\}}\\
+\texttt{~~\textbackslash{}end\{cases\}}\\
+\texttt{~}
+
+In other terms if \(x=(x_n)_{n\in\mathbb{N}}\) is a sequence in
+\(\ell^2\) then \(u_\varphi(x)\) is the sequence
+\((y_n)_{n\in\mathbb{N}}\) defined by:
+
+\begin{description}
+\tightlist
+\item[]
+\(y_n = x_{\varphi^{-1}(n)}\) if \(n\in C_\varphi\), \(0\) otherwise.
+\end{description}
+
+We will (not so abusively) write \(e_{\varphi(n)} = 0\) when
+\(\varphi(n)\) is undefined so that the definition of \(u_\varphi\)
+reads:
+
+\begin{description}
+\tightlist
+\item[]
+\(u_\varphi(e_n) = e_{\varphi(n)}\).
+\end{description}
+
+The domain of \(u_\varphi\) is the subspace spanned by the family
+\((e_n)_{n\in D_\varphi}\) and the codomain of \(u_\varphi\) is the
+subspace spanned by \((e_n)_{n\in C_\varphi}\). In particular if
+\(\varphi\) is \(1_D\) then \(u_\varphi\) is the projector on the
+subspace spanned by \((e_n)_{n\in D}\).
+
+.
+
+In particular the initial projector of \(u_{\varphi}\) is given by:
+
+\begin{description}
+\tightlist
+\item[]
+\(u_\varphi u^*_\varphi = u_{1_{D_\varphi}}\).
+\end{description}
+
+and the final projector of \(u_\varphi\) is:
+
+\begin{description}
+\tightlist
+\item[]
+\(u^*_\varphi u_\varphi = u_{1_{C_\varphi}}\).
+\end{description}
+
+If \(p\) is a projector in \(\mathcal{P}\) then there is a partial
+identity \(1_D\) such that \(p= u_{1_D}\).
+
+Projectors commute, in particular we have:
+
+\begin{description}
+\tightlist
+\item[]
+\(u_\varphi u_\varphi^*u_\psi u_\psi^* = u_\psi u_\psi^*u_\varphi u_\varphi^*\).
+\end{description}
+
+\}\}
+
+Note that this entails all the other commutations of projectors:
+\(u^*_\varphi u_\varphi u_\psi u^*_\psi = u_\psi u^*_\psi u^*_\varphi u_\varphi\)
+and
+\(u^*_\varphi u_\varphi u^*_\psi u\psi = u^*_\psi u_\psi u^*_\varphi u_\varphi\).
+
+In particular note that \(0\) is a \(p\)-isometry. The set
+\(\mathcal{P}\) is a submonoid of \(\mathcal{B}(H)\) but it is not a
+subalgebra.\footnote{\(\mathcal{P}\) is the normalizing groupoid of the
+  maximal commutative subalgebra of \(\mathcal{B}(H)\) consisiting of
+  all operators \emph{diagonalizable} in the canonical basis.}In general
+given \(u,v\in\mathcal{P}\) we don't necessarily have
+\(u+v\in\mathcal{P}\). However we have:
+
+As a corollary note that if \(u+v=0\) then \(u=v=0\).
+
+
+\subsection{From operators to matrices: internalization/externalization}\label{from-operators-to-matrices-internalizationexternalization}
+
+It will be convenient to view operators on \(H\) as acting on
+\(H\oplus H\), and conversely. For this purpose we define an isomorphism
+\(H\oplus H \cong H\) by \(x\oplus y\rightsquigarrow p(x)+q(y)\) where
+\(p:H\mapsto H\) and \(q:H\mapsto H\) are partial isometries given by:
+
+\begin{description}
+\tightlist
+\item[]
+\(p(e_n) = e_{2n}\),
+
+\(q(e_n) = e_{2n+1}\).
+\end{description}
+
+From the definition \(p\) and \(q\) have full domain, that is satisfy
+\(p^* p = q^* q = 1\). On the other hand their codomains are disjoint,
+thus we have \(p^*q = q^*p = 0\). As the sum of their codomains is the
+full space \(H\) we also have \(pp^* + qq^* = 1\).
+
+Note that we have choosen \(p\) and \(q\) in \(\mathcal{P}\). However
+the choice is arbitrary: any two \(p\)-isometries with full domain and
+disjoint codomains would do the job.
+
+Given an operator \(u\) on \(H\) we may \emph{externalize} it obtaining
+an operator \(U\) on \(H\oplus H\) defined by the matrix:
+
+\begin{description}
+\tightlist
+\item[]
+U = \textbackslash{}begin\{pmatrix\}
+\end{description}
+
+\texttt{~u\_\{11\}~\&~u\_\{12\}\textbackslash{}\textbackslash{}}\\
+\texttt{~u\_\{21\}~\&~u\_\{22\}}\\
+\texttt{~\textbackslash{}end\{pmatrix\}}
+
+where the \(u_{ij}\)'s are given by:
+
+\begin{description}
+\tightlist
+\item[]
+\(u_{11} = p^*up\);
+
+\(u_{12} = p^*uq\);
+
+\(u_{21} = q^*up\);
+
+\(u_{22} = q^*uq\).
+\end{description}
+
+The \(u_{ij}\)'s are called the \emph{external components} of \(u\). The
+externalization is functorial in the sense that if \(v\) is another
+operator externalized as:
+
+\begin{description}
+\tightlist
+\item[]
+V = \textbackslash{}begin\{pmatrix\}
+\end{description}
+
+\texttt{~v\_\{11\}~\&~v\_\{12\}\textbackslash{}\textbackslash{}}\\
+\texttt{~v\_\{21\}~\&~v\_\{22\}}\\
+\texttt{~\textbackslash{}end\{pmatrix\}~}
+
+= \textbackslash{}begin\{pmatrix\}
+
+\texttt{~p\^{}*vp~\&~p\^{}*vq\textbackslash{}\textbackslash{}}\\
+\texttt{~q\^{}*vp~\&~q\^{}*vq}\\
+\texttt{~\textbackslash{}end\{pmatrix\}}
+
+ then the externalization of \(uv\) is the matrix product \(UV\).
+
+As \(pp^* + qq^* = 1\) we have:
+
+\begin{description}
+\tightlist
+\item[]
+\(u = (pp^*+qq^*)u(pp^*+qq^*) = pu_{11}p^* + pu_{12}q^* + qu_{21}p^* + qu_{22}q^*\)
+\end{description}
+
+which entails that externalization is reversible, its converse being
+called \emph{internalization}.
+
+If we suppose that \(u\) is a \(p\)-isometry then so are the components
+\(u_{ij}\)'s. Thus the formula above entails that the four terms of the
+sum have pairwise disjoint domains and pairwise disjoint codomains from
+which we deduce:
+
+As an example of computation in \(\mathcal{P}\) let us check that the
+product of the final projectors of \(pu_{11}p^*\) and \(pu_{12}q^*\) is
+null:
+
+\begin{description}
+\tightlist
+\item[]
+\textbackslash{}begin\{align\}
+\end{description}
+
+\texttt{~~~(pu\_\{11\}p\^{}*)(pu\^{}*\_\{11\}p\^{}*)(pu\_\{12\}q\^{}*)(qu\_\{12\}\^{}*p\^{}*)}\\
+\texttt{~~~\&=~pu\_\{11\}u\_\{11\}\^{}*u\_\{12\}u\_\{12\}\^{}*p\^{}*\textbackslash{}\textbackslash{}}\\
+\texttt{~~~\&=~pp\^{}*upp\^{}*u\^{}*pp\^{}*uqq\^{}*u\^{}*pp\^{}*\textbackslash{}\textbackslash{}}\\
+\texttt{~~~\&=~pp\^{}*u(pp\^{}*)(u\^{}*pp\^{}*u)qq\^{}*u\^{}*pp\^{}*\textbackslash{}\textbackslash{}}\\
+\texttt{~~~\&=~pp\^{}*u(u\^{}*pp\^{}*u)(pp\^{}*)qq\^{}*u\^{}*pp\^{}*\textbackslash{}\textbackslash{}}\\
+\texttt{~~~\&=~pp\^{}*uu\^{}*pp\^{}*u(pp\^{}*)(qq\^{}*)u\^{}*pp\^{}*\textbackslash{}\textbackslash{}}\\
+\texttt{~~~\&=~0}\\
+\texttt{~\textbackslash{}end\{align\}}
+
+where we used the fact that all projectors in \(\mathcal{P}\) commute,
+which is in particular the case of \(pp^*\) and \(u^*pp^*u\).
+

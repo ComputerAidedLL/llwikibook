@@ -1,0 +1,113 @@
+\section{Mix}\label{mix}
+
+The usual notion of \(\rulename{Mix}\) is the binary version of the rule
+but a nullary version also exists.
+
+\subsection{\texorpdfstring{Binary \(\rulename{Mix}\)
+rule}{Binary \textbackslash{}rulename\{Mix\} rule}}\label{binary-rulenamemix-rule}
+
+\(\AxRule{\vdash\Gamma}
+\AxRule{\vdash\Delta}
+\LabelRule{Mix_2}
+\BinRule{\vdash\Gamma,\Delta}
+\DisplayProof\)
+
+The \(\rulename{Mix_2}\) rule is equivalent to \(\bot\vdash\one\):
+
+\(\LabelRule{\one}
+\NulRule{\vdash\one}
+\LabelRule{\one}
+\NulRule{\vdash\one}
+\LabelRule{Mix_2}
+\BinRule{\vdash\one,\one}
+\DisplayProof
+\qquad
+\AxRule{\vdash\Gamma}
+\LabelRule{\bot}
+\UnaRule{\vdash\Gamma,\bot}
+\AxRule{\vdash\one,\one}
+\LabelRule{\rulename{cut}}
+\BinRule{\vdash\Gamma,\one}
+\AxRule{\vdash\Delta}
+\LabelRule{\bot}
+\UnaRule{\vdash\Delta,\bot}
+\LabelRule{\rulename{cut}}
+\BinRule{\vdash\Gamma,\Delta}
+\DisplayProof\)
+
+They are also equivalent to the principle \(A\tens B \vdash A\parr B\):
+
+\(\LabelRule{\one}
+\NulRule{\vdash\one}
+\LabelRule{\one}
+\NulRule{\vdash\one}
+\LabelRule{\tens}
+\BinRule{\vdash\one\tens\one}
+\AxRule{\vdash\bot\parr\bot,\one\parr\one}
+\LabelRule{\rulename{cut}}
+\BinRule{\vdash\one\parr\one}
+\LabelRule{\rulename{ax}}
+\NulRule{\vdash\bot,\one}
+\LabelRule{\rulename{ax}}
+\NulRule{\vdash\bot,\one}
+\LabelRule{\tens}
+\BinRule{\vdash\bot\tens\bot,\one,\one}
+\LabelRule{\rulename{cut}}
+\BinRule{\vdash\one,\one}
+\DisplayProof
+\qquad
+\LabelRule{\rulename{ax}}
+\NulRule{\vdash A\orth,A}
+\LabelRule{\rulename{ax}}
+\NulRule{\vdash B\orth,B}
+\LabelRule{Mix_2}
+\BinRule{\vdash A\orth,A,B\orth,B}
+\LabelRule{\parr}
+\UnaRule{\vdash A\orth,B\orth,A\parr B}
+\LabelRule{\parr}
+\UnaRule{\vdash A\orth\parr B\orth,A\parr B}
+\DisplayProof\)
+
+\subsection{\texorpdfstring{Nullary \(\rulename{Mix}\)
+rule}{Nullary \textbackslash{}rulename\{Mix\} rule}}\label{nullary-rulenamemix-rule}
+
+\(\LabelRule{Mix_0}
+\NulRule{\vdash}
+\DisplayProof\)
+
+The \(\rulename{Mix_0}\) rule is equivalent to \(\one\vdash\bot\):
+
+\(\LabelRule{Mix_0}
+\NulRule{\vdash}
+\LabelRule{\bot}
+\UnaRule{\vdash\bot}
+\LabelRule{\bot}
+\UnaRule{\vdash\bot,\bot}
+\DisplayProof
+\qquad
+\LabelRule{\one}
+\NulRule{\vdash\one}
+\AxRule{\vdash\bot,\bot}
+\LabelRule{\rulename{cut}}
+\BinRule{\vdash\bot}
+\LabelRule{\one}
+\NulRule{\vdash\one}
+\LabelRule{\rulename{cut}}
+\BinRule{\vdash}
+\DisplayProof\)
+
+The nullary \(\rulename{Mix}\) acts as a unit for the binary one:
+
+\(\AxRule{\vdash\Gamma}
+\LabelRule{Mix_0}
+\NulRule{\vdash}
+\LabelRule{Mix_2}
+\BinRule{\vdash\Gamma}
+\DisplayProof\)
+
+If \(\pi\) is a proof which uses no \(\bot\) rule and no weakening rule,
+then (up to the simplification of the pattern
+\(\rulename{Mix_0}/\rulename{Mix_2}\) above into nothing) \(\pi\) is
+either reduced to a \(\rulename{Mix_0}\) rule or does not contain any
+\(\rulename{Mix_0}\) rule.
+

@@ -1,0 +1,144 @@
+\section{Phase semantics}\label{phase-semantics}
+
+\subsection{Introduction}\label{introduction}
+
+The semantics given by phase spaces is a kind of "formula and
+provability semantics", and is thus quite different in spirit from the
+more usual denotational semantics of linear logic. (Those are rather
+some "formulas and \emph{proofs} semantics".)
+
+\texttt{~-\/-\/-~probably~a~whole~lot~more~of~blabla~to~put~here...~-\/-\/-}
+
+\subsection{Preliminaries: relation and closure
+operators}\label{preliminaries-relation-and-closure-operators}
+
+Part of the structure obtained from phase semantics works in a very
+general framework and relies solely on the notion of relation between
+two sets.
+
+\subsubsection{Relations and operators on
+subsets}\label{relations-and-operators-on-subsets}
+
+The starting point of phase semantics is the notion of \emph{duality}.
+The structure needed to talk about duality is very simple: one just
+needs a relation \(R\) between two sets \(X\) and \(Y\). Using standard
+mathematical practice, we can write either \((a,b) \in R\) or
+\(a\mathrel{R} b\) to say that \(a\in X\) and \(b\in Y\) are related.
+
+Such a relation yields three interesting operators sending subsets of
+\(X\) to subsets of \(Y\):
+
+The operator \(\langle R\rangle\) is usually called the \emph{direct
+image} of the relation, \([R]\) is sometimes called the \emph{universal
+image} of the relation.
+
+It is trivial to check that \(\langle R\rangle\) and \([R]\) are
+covariant (increasing for the \(\subseteq\) relation) while \(\_^R\) is
+contravariant (decreasing for the \(\subseteq\) relation). More
+interesting:
+
+This implies directly that \(\langle R\rangle\) commutes with arbitrary
+unions and \([R]\) commutes with arbitrary intersections. (And in fact,
+any operator commuting with arbitrary unions (resp. intersections) is of
+the form \(\langle R\rangle\) (resp. \([R]\)).
+
+\textbackslash{}to \textbackslash{}mathcal\{P\}(X)...\}\}
+
+\subsubsection{Closure operators}\label{closure-operators}
+
+Closure operators are quite common in mathematics and computer science.
+They correspond exactly to the notion of \emph{monad} on a preorder...
+
+It follows directly from the definition that for any closure operator
+\(P\), the image \(P(x)\) is a fixed point of \(P\). Moreover:
+
+One other important property is the following:
+
+Since any complete inf-lattice is automatically a complete sup-lattice,
+\(\mathcal{F}(P)\) is also a complete sup-lattice. However, the sup
+operation isn't given by plain union:
+
+A rather direct consequence of the Galois connections of the previous
+section is:
+
+A last trivial lemma:
+
+\subsection{Phase Semantics}\label{phase-semantics-1}
+
+\subsubsection{Phase spaces}\label{phase-spaces}
+
+Thanks to the preliminary work, we have:
+
+\subsubsection{Additive connectives}\label{additive-connectives}
+
+The previous corollary makes the following definition correct:
+
+Once again, the next lemma follows from previous observations:
+
+\subsubsection{Multiplicative
+connectives}\label{multiplicative-connectives}
+
+In order to define the multiplicative connectives, we actually need to
+use the monoid structure of our phase space. One interpretation that is
+reminiscent in phase semantics is that our spaces are collections of
+\emph{tests} / programs / proofs / \emph{strategies} that can interact
+with each other. The result of the interaction between \(a\) and \(b\)
+is simply \(a\cdot b\).
+
+The set \(\Bot\) can be thought of as the set of "good" things, and we
+thus have \(a\in x\orth\) iff "\(a\) interacts correctly with all the
+elements of \(x\)".
+
+Thus \(x\cdot y\) contains all the possible interactions between one
+element of \(x\) and one element of \(y\).
+
+The tensor connective of linear logic is now defined as:
+
+Note that by unfolding the definition of \(\limp\), we have the
+following, "intuitive" definition of \(x\limp y\):
+
+Readers familiar with realisability will appreciate...
+
+\subsubsection{Properties}\label{properties}
+
+All the expected properties hold:
+
+\subsubsection{Exponentials}\label{exponentials-3}
+
+This definition captures precisely the intuition behind the
+exponentials:
+
+\begin{itemize}
+\tightlist
+\item
+  we need to have contraction, hence we restrict to indempotents in
+  \(x\),
+\item
+  and weakening, hence we restrict to \(\one\).
+\end{itemize}
+
+Since \(I\) isn't necessarily a fact, we then take the biorthogonal to
+get a fact...
+
+\subsection{Soundness}\label{soundness}
+
+\subsection{Completeness}\label{completeness}
+
+Phase semantics is complete w.r.t. linear logic. In order to prove this,
+we need to build a particular commutative monoid.
+
+The equivalence relation intuitively means that we do not care about the
+multiplicity of \(\wn\)-formulae.
+
+We instantiate the pole as \(\Bot := \{\Gamma \mid \vdash\Gamma\}\).
+
+\subsection{Cut elimination}\label{cut-elimination}
+
+Actually, the completeness result is stronger, as the proof does not use
+the cut-rule in the reconstruction of \(\vdash\Gamma\). By refining the
+pole as the set of \emph{cut-free} provable formulae, we get:
+
+From soundness, one can retrieve the cut-elimination theorem.
+
+\subsection{The Rest}\label{the-rest}
+

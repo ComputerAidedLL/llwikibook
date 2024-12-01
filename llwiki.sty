@@ -1,0 +1,102 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{llwiki}[2012/08/31 Linear Logic Wiki package]
+
+\RequirePackage[arrow,matrix]{xy}
+
+\RequirePackage{latexsym}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{stmaryrd}
+
+\RequirePackage{cmll}
+%% http://www.ctan.org/tex-archive/fonts/cmll/
+
+\RequirePackage{bussproofs}
+%% http://www.math.ucsd.edu/~sbuss/ResearchWeb/bussproofs/
+
+
+%%% Linear logical connectives
+
+\newcommand{\orth}{^\bot}
+%% \newcommand{\orth}[1]{{#1}^\bot} ???
+\newcommand{\biorth}{^{\bot\bot}}
+\newcommand{\triorth}{^{\bot\bot\bot}}
+\newcommand{\tens}{\otimes}
+% cmll: \parr
+\newcommand{\plus}{\oplus}
+% cmll: \with
+\newcommand{\one}{1}
+%% boldface ?
+% std: \bot
+\newcommand{\zero}{0}
+%% boldface ?
+% std: \top
+% cmll: \oc
+% cmll: \wn
+\newcommand{\limp}{\multimap}
+\newcommand{\nlimp}{\nmultimap}
+\newcommand{\limpinv}{\multimapinv}
+\newcommand{\nlimpinv}{\nmultimapinv}
+\newcommand{\linequiv}{\multimapboth}
+\newcommand{\nlinequiv}{\nmultimapboth}
+% cmll: \shpos
+% cmll: \shneg
+% cmll: \shift
+\newcommand{\pg}{\mathord{\S}}
+
+
+%%% Other connectives
+
+\newcommand{\imp}{\rightarrow}
+
+
+%%% Semantics
+
+\newcommand{\sem}[1]{\left\llbracket #1\right\rrbracket}
+\newcommand{\web}[1]{\left|#1\right|}
+
+
+%%% Coherence spaces
+
+% cmll: \coh
+% cmll: \scoh
+% cmll: \incoh
+% cmll: \sincoh
+\newcommand{\cliq}{\sqsubset}
+
+%%% Misc
+
+\newcommand{\set}[2]{\left\{\,{#1}\mathrel{;}{#2}\,\right\}}
+\newcommand{\powerset}[1]{\mathfrak{P}\left(#1\right)}
+\newcommand{\finpowerset}[1]{\mathfrak{P}_f\left(#1\right)}
+\newcommand{\mulset}[1]{\mathfrak{M}\left(#1\right)}
+\newcommand{\finmulset}[1]{\mathfrak{M}_f\left(#1\right)}
+% cmll: \Bot
+% cmll: \Perp
+
+
+%%% Sequent calculus proofs
+%% using bussproofs.sty
+
+\newcommand{\AxRule}[1]{\AxiomC{\ensuremath{#1}}}
+\newcommand{\NulRule}[1]{\AxiomC{}\UnaryInfC{\ensuremath{#1}}}
+\newcommand{\UnaRule}[1]{\UnaryInfC{\ensuremath{#1}}}
+\newcommand{\BinRule}[1]{\BinaryInfC{\ensuremath{#1}}}
+\newcommand{\TriRule}[1]{\TrinaryInfC{\ensuremath{#1}}}
+\newcommand{\VdotsRule}[2]{%
+    \noLine%
+    \UnaryInfC{\raisebox{0pt}[10pt]{\ensuremath{\vdots}\makebox[0pt][l]{~\raisebox{1pt}{\ensuremath{#1}}}}}%
+    \noLine%
+    \UnaryInfC{\ensuremath{#2}}%
+  }
+\newcommand{\LabelRule}[1]{\RightLabel{\ensuremath{#1}}}
+% bussproofs: \DisplayProof
+\newcommand{\rulename}[1]{\operatorname{#1}}
+
+
+%%% Proof nets
+
+\newcommand{\pinj}{\mathbin{\lhook\!\rightharpoonup}}
+\newcommand{\inner}[2]{\left\langle #1\middle|#2\right\rangle}
+\newcommand{\Inner}[2]{\left\langle\!\left\langle #1\middle|#2\right\rangle\!\right\rangle}
+\newcommand{\dblcolon}{\mathrel{::}}

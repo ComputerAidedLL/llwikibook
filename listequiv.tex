@@ -1,0 +1,83 @@
+\section{List of equivalences}\label{list-of-equivalences}
+
+Each \href{List_of_isomorphisms}{isomorphism} gives an equivalence of
+formulas. The following equivalences are \emph{not} isomorphisms.
+
+\subsection{Multiplicatives}\label{multiplicatives-1}
+
+\(\begin{array}{rcccl}
+A &amp;\linequiv&amp; A \tens (A\orth\parr A) &amp;\linequiv&amp; (A\tens A\orth)\parr A \\
+&amp; &amp; A\parr A\orth &amp;\linequiv&amp; (A\parr A\orth)\tens(A\parr A\orth)
+\end{array}\)
+
+\subsection{Additives}\label{additives-1}
+
+\(\begin{array}{rclcrcl}
+A \with A &amp;\linequiv&amp; A \\
+A \plus A &amp;\linequiv&amp; A \\
+\\
+  A \with (A \plus B) &amp;\linequiv&amp; A &amp;\quad&amp; A \plus \top &amp;\linequiv&amp; \top \\
+  A \plus (A \with B) &amp;\linequiv&amp; A &amp;\quad&amp; A \with \zero &amp;\linequiv&amp; \zero
+\end{array}\)
+
+\subsection{Quantifiers}\label{quantifiers}
+
+\(\begin{array}{rcll}
+  \forall X.A &amp;\linequiv&amp; A &amp;\quad (X\notin A) \\
+  \exists X.A &amp;\linequiv&amp; A &amp;\quad (X\notin A)
+\end{array}\)
+
+\subsection{Exponentials}\label{exponentials-2}
+
+\(\begin{array}{rclcrcl}
+  \oc A &amp;\linequiv&amp; \oc A\tens\oc A &amp;\quad&amp; 
+  \wn A &amp;\linequiv&amp; \wn A\parr\wn A\\
+  \oc A &amp;\linequiv&amp; \oc\oc A &amp;\quad&amp; \wn A &amp;\linequiv&amp; \wn\wn A\\
+  \oc\wn A &amp;\linequiv&amp; \oc\wn\oc\wn A &amp;\quad&amp; \wn\oc A &amp;\linequiv&amp; \wn\oc\wn\oc A\\
+\end{array}\)
+
+Some of these equivalences are related with the
+\href{lattice_of_exponential_modalities}{lattice of exponential
+modalities}.
+
+\subsection{Polarities}\label{polarities}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\(\wn N \linequiv N\) & \&nbsp;\&nbsp;(N
+\href{Negative_formula}{negative})\tabularnewline
+\(\oc P \linequiv P\) & \&nbsp;\&nbsp;(P
+\href{Positive_formula}{positive})\tabularnewline
+\(\wn\oc R \linequiv R\) & \&nbsp;\&nbsp;(R
+\href{Regular_formula}{regular})\tabularnewline
+\(\oc\wn L \linequiv L\) & \&nbsp;\&nbsp;(L
+\href{Co-regular_formula}{co-regular})\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsection{Second order encodings}\label{second-order-encodings}
+
+\(\begin{array}{rclcrcl}
+  A &amp;\linequiv &amp;\forall X . (A \tens X\orth) \parr X \\
+  A &amp;\linequiv &amp;\exists X . (A \parr X\orth) \tens X \\
+\\
+  A \with B &amp;\linequiv&amp; \exists X . \oc{(A \parr X\orth)} \tens \oc{(B \parr X\orth)} \tens X &amp;\quad&amp; \top &amp;\linequiv&amp; \exists X . X \\
+  A \plus B &amp;\linequiv&amp; \forall X . \wn{(A \tens X\orth)} \parr \wn{(B \tens X\orth)} \parr X &amp;\quad&amp; \zero &amp;\linequiv&amp; \forall X . X \\
+\\
+ \bot &amp;\linequiv&amp; \exists X . X\tens X\orth \\
+ \one &amp;\linequiv&amp; \forall X . X\orth\parr X \\
+\\
+  \forall \xi . A &amp;\linequiv&amp; \exists X . (\forall \xi . (A \parr X\orth)) \tens X \\
+  \exists \xi . A &amp;\linequiv&amp; \forall X . (\exists \xi . (A \tens X\orth)) \parr X
+\end{array}\)
+
+\subsection{Miscellaneous}\label{miscellaneous}
+
+\(\begin{array}{rcl}
+  \one &amp;\linequiv&amp; \oc{(A\orth\parr A)} \\
+  \bot &amp;\linequiv&amp; \wn{(A\orth\tens A)} \\
+\\
+  \oc{\wn{(\oc{A}\with\oc{B})}} &amp;\linequiv&amp; \oc{(\wn{\oc{A}}\with\wn{\oc{B}})} \\
+  \wn{\oc{(\wn{A}\plus\wn{B})}} &amp;\linequiv&amp; \wn{(\oc{\wn{A}}\plus\oc{\wn{B}})}
+\end{array}\)
+

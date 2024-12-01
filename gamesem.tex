@@ -1,0 +1,94 @@
+\section{Game semantics}\label{game-semantics}
+
+This article presents the game-theoretic
+\href{fully_complete_model}{fully complete model} of \(MLL\). Formulas
+are interpreted by games between two players, Player and Opponent, and
+proofs are interpreted by strategies for Player.
+
+\subsection{Preliminary definitions and
+notations}\label{preliminary-definitions-and-notations}
+
+\subsubsection{Sequences, Polarities}\label{sequences-polarities}
+
+We introduce some convenient notations on sequences.
+
+\begin{itemize}
+\tightlist
+\item
+  If \(s\in M^*\), \(|s|\) will denote the \emph{length} of \(s\);
+\item
+  If \(1\leq i\leq |s|\), \(s_i\) will denote the i-th move of \(s\);
+\item
+  We denote by \(\sqsubseteq\) the prefix partial order on \(M^*\);
+\item
+  If \(s_1\) is an even-length prefix of \(s_2\), we denote it by
+  \(s_1\sqsubseteq^P s_2\);
+\item
+  The empty sequence will be denoted by \(\epsilon\).
+\end{itemize}
+
+All moves will be equipped with a \textbf{polarity}, which will be
+either Player (\(P\)) or Opponent (\(O\)).
+
+\begin{itemize}
+\tightlist
+\item
+  We define \(\overline{(\_)}:\{O,P\}\to \{O,P\}\) with
+  \(\overline{O} = P\) and \(\overline{P} = O\).
+\item
+  This operation extends in a pointwise way to functions onto
+  \(\{O,P\}\).
+\end{itemize}
+
+\subsubsection{Sequences on Components}\label{sequences-on-components}
+
+We will often need to speak of sequences over (the disjoint sum of)
+multiple sets of moves, along with a restriction operation.
+
+\begin{itemize}
+\tightlist
+\item
+  If \(M_1\) and \(M_2\) are two sets, \(M_1 + M_2\) will denote their
+  disjoint sum, implemented as
+  \(M_1 + M_2 = \{1\}\times M_1 \cup \{2\}\times M_2\);
+\item
+  In this case, if we have two functions \(\lambda_1:M_1 \to R\) and
+  \(\lambda_2:M_2\to R\), we denote by
+  \([\lambda_1,\lambda_2]:M_1 + M_2 \to R\) their \emph{co-pairing};
+\item
+  If \(s\in (M_A + M_B)^*\), the \textbf{restriction} of \(s\) to
+  \(M_A\) (resp. \(M_B\)) is denoted by \(s\upharpoonright M_A\)
+  (resp.\(s \upharpoonright M_B\)). Later, if \(A\) and \(B\) are games,
+  this will be abbreviated \(s\upharpoonright A\) and
+  \(s\upharpoonright B\).
+\end{itemize}
+
+\subsection{Games and Strategies}\label{games-and-strategies}
+
+\subsubsection{Game constructions}\label{game-constructions}
+
+We first give the definition for a game, then all the constructions used
+to interpret the connectives and operations of \(MLL\)
+
+The \emph{par} connective can be defined either as
+\(A\parr B = (A^\bot \tens B^\bot)^\bot\), or similarly to the
+\emph{tensor} except that the switching convention is in favor of
+Player. We will refer to this as the \emph{switching convention for par
+game}. Likewise, we define \(A\limp B = A
+^\bot\parr B\).
+
+\subsubsection{Strategies}\label{strategies}
+
+Composition is defined by parallel interaction plus hiding. We take all
+valid sequences on \(A, B\) and \(C\) which behave accordingly to
+\(\sigma\) (resp. \(\tau\)) on \(A, B\) (resp. \(B,C\)). Then, we hide
+all the communication in \(B\).
+
+We also define the identities, which are simple copycat strategies :
+they immediately copy on the left (resp. right) component the last
+Opponent's move on the right (resp.left) component. In the following
+definition, let \(L\) (resp. \(R\)) denote the left (resp. right)
+occurrence of \(A\) in \(A\limp A\).
+
+With these definitions, we get the following theorem:
+

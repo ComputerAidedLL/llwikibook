@@ -1,0 +1,681 @@
+\section{Translations of classical logic}\label{translations-of-classical-logic}
+
+\subsection{\texorpdfstring{T-translation \(A\imp B \mapsto \oc{\wn{A}}\limp\wn{B}\)}{T-translation A\textbackslash{}imp B \textbackslash{}mapsto \textbackslash{}oc\{\textbackslash{}wn\{A\}\}\textbackslash{}limp\textbackslash{}wn\{B\}}}\label{t-translation-aimp-b-mapsto-ocwnalimpwnb}
+
+Formulas are translated as:
+
+\(\begin{array}{rcl}
+X^T &amp; = &amp; X \\
+(A\imp B)^T &amp; = &amp; \oc{\wn{A^T}}\limp\wn{B^T} \\
+(A\wedge B)^T &amp; = &amp; \wn{A^T} \with \wn{B^T} \\
+T^T &amp; = &amp; \top \\
+(A\vee B)^T &amp; = &amp; \wn{A^T}\parr\wn{B^T} \\
+F^T &amp; = &amp; \bot \\
+(\neg A)^T &amp; = &amp; \wn{\oc{(A^T)\orth}} \\
+(\forall\xi A)^T &amp; = &amp; \forall\xi \wn{A^T} \\
+(\exists\xi A)^T &amp; = &amp; \exists\xi \oc{\wn{A^T}}
+\end{array}\)
+
+This is extended to sequents by
+\((\Gamma\vdash\Delta)^T = \oc{\wn{\Gamma^T}}\vdash\wn{\Delta^T}\).
+
+This allows one to translate the rules of classical logic into linear
+logic:
+
+\(\LabelRule{\rulename{ax}}
+\NulRule{A\vdash A}
+\DisplayProof
+\qquad\mapsto\qquad
+\LabelRule{\rulename{ax}}
+\NulRule{\wn{A^T}\vdash\wn{A^T}}
+\LabelRule{\oc L}
+\UnaRule{\oc{\wn{A^T}}\vdash\wn{A^T}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash A,\Delta}
+\AxRule{\Gamma',A\vdash\Delta'}
+\LabelRule{\rulename{cut}}
+\BinRule{\Gamma,\Gamma'\vdash\Delta,\Delta'}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\oc{\wn{\Gamma^T}}\vdash\wn{A^T},\wn{\Delta^T}}
+\LabelRule{\oc R}
+\UnaRule{\oc{\wn{\Gamma^T}}\vdash\oc{\wn{A^T}},\wn{\Delta^T}}
+\AxRule{\oc{\wn{\Gamma'^T}},\oc{\wn{A^T}}\vdash\wn{\Delta'^T}}
+\LabelRule{\rulename{cut}}
+\BinRule{\oc{\wn{\Gamma^T}},\oc{\wn{\Gamma'^T}}\vdash\wn{\Delta^T},\wn{\Delta'^T}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma,A,A\vdash\Delta}
+\LabelRule{c L}
+\UnaRule{\Gamma,A\vdash\Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\oc{\wn{\Gamma^T}},\oc{\wn{A^T}},\oc{\wn{A^T}}\vdash\wn{\Delta^T}}
+\LabelRule{\oc c L}
+\UnaRule{\oc{\wn{\Gamma^T}},\oc{\wn{A^T}}\vdash\wn{\Delta^T}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash A,A,\Delta}
+\LabelRule{c R}
+\UnaRule{\Gamma\vdash A,\Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\oc{\wn{\Gamma^T}}\vdash\wn{A^T},\wn{A^T},\wn{\Delta^T}}
+\LabelRule{\wn c R}
+\UnaRule{\oc{\wn{\Gamma^T}}\vdash\wn{A^T},\wn{\Delta^T}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash\Delta}
+\LabelRule{w L}
+\UnaRule{\Gamma,A\vdash\Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\oc{\wn{\Gamma^T}}\vdash\wn{\Delta^T}}
+\LabelRule{\oc w L}
+\UnaRule{\oc{\wn{\Gamma^T}},\oc{\wn{A^T}}\vdash\wn{\Delta^T}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash\Delta}
+\LabelRule{w R}
+\UnaRule{\Gamma\vdash A,\Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\oc{\wn{\Gamma^T}}\vdash\wn{\Delta^T}}
+\LabelRule{\wn w R}
+\UnaRule{\oc{\wn{\Gamma^T}}\vdash\wn{A^T},\wn{\Delta^T}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma,A\vdash B,\Delta}
+\LabelRule{\imp R}
+\UnaRule{\Gamma\vdash A\imp B,\Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\oc{\wn{\Gamma^T}},\oc{\wn{A^T}}\vdash\wn{B^T},\wn{\Delta^T}}
+\LabelRule{\limp R}
+\UnaRule{\oc{\wn{\Gamma^T}}\vdash \oc{\wn{A^T}}\limp\wn{B^T},\wn{\Delta^T}}
+\LabelRule{\wn d R}
+\UnaRule{\oc{\wn{\Gamma^T}}\vdash \wn{(\oc{\wn{A^T}}\limp\wn{B^T})},\wn{\Delta^T}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash A,\Delta}
+\AxRule{\Gamma',B\vdash\Delta'}
+\LabelRule{\imp L}
+\BinRule{\Gamma,\Gamma',A\imp B\vdash\Delta,\Delta'}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\oc{\wn{\Gamma^T}}\vdash\wn{A^T},\wn{\Delta^T}}
+\LabelRule{\oc R}
+\UnaRule{\oc{\wn{\Gamma^T}}\vdash\oc{\wn{A^T}},\wn{\Delta^T}}
+\LabelRule{\rulename{ax}}
+\NulRule{\wn{B^T}\vdash\wn{B^T}}
+\LabelRule{\limp L}
+\BinRule{\oc{\wn{\Gamma^T}},\oc{\wn{A^T}}\limp\wn{B^T}\vdash\wn{B^T},\wn{\Delta^T}}
+\LabelRule{\wn L}
+\UnaRule{\oc{\wn{\Gamma^T}},\wn{(\oc{\wn{A^T}}\limp\wn{B^T})}\vdash\wn{B^T},\wn{\Delta^T}}
+\LabelRule{\oc d L}
+\UnaRule{\oc{\wn{\Gamma^T}},\oc{\wn{(\oc{\wn{A^T}}\limp\wn{B^T})}}\vdash\wn{B^T},\wn{\Delta^T}}
+\LabelRule{\oc R}
+\UnaRule{\oc{\wn{\Gamma^T}},\oc{\wn{(\oc{\wn{A^T}}\limp\wn{B^T})}}\vdash\oc{\wn{B^T}},\wn{\Delta^T}}
+\AxRule{\oc{\wn{\Gamma'^T}},\oc{\wn{B^T}}\vdash\wn{\Delta'^T}}
+\LabelRule{\rulename{cut}}
+\BinRule{\oc{\wn{\Gamma^T}},\oc{\wn{\Gamma'^T}},\oc{\wn{(\oc{\wn{A^T}}\limp\wn{B^T})}}\vdash\wn{\Delta^T},\wn{\Delta'^T}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash A,\Delta}
+\AxRule{\Gamma\vdash B,\Delta}
+\LabelRule{\wedge R}
+\BinRule{\Gamma\vdash A\wedge B,\Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\oc{\wn{\Gamma^T}}\vdash \wn{A^T},\wn{\Delta^T}}
+\AxRule{\oc{\wn{\Gamma^T}}\vdash \wn{B^T},\wn{\Delta^T}}
+\LabelRule{\with R}
+\BinRule{\oc{\wn{\Gamma^T}}\vdash \wn{A^T}\with \wn{B^T},\wn{\Delta^T}}
+\LabelRule{\wn d R}
+\UnaRule{\oc{\wn{\Gamma^T}}\vdash \wn{(\wn{A^T}\with \wn{B^T})},\wn{\Delta^T}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma,A\vdash \Delta}
+\LabelRule{\wedge_1 L}
+\UnaRule{\Gamma,A\wedge B\vdash \Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\LabelRule{\rulename{ax}}
+\NulRule{\wn{A^T}\vdash \wn{A^T}}
+\LabelRule{\with_1 L}
+\UnaRule{\wn{A^T}\with \wn{B^T}\vdash \wn{A^T}}
+\LabelRule{\wn L}
+\UnaRule{\wn{(\wn{A^T}\with \wn{B^T})}\vdash \wn{A^T}}
+\LabelRule{\oc d L}
+\UnaRule{\oc{\wn{(\wn{A^T}\with \wn{B^T})}}\vdash \wn{A^T}}
+\LabelRule{\oc R}
+\UnaRule{\oc{\wn{(\wn{A^T}\with \wn{B^T})}}\vdash \oc{\wn{A^T}}}
+\AxRule{\oc{\wn{\Gamma^T}},\oc{\wn{A^T}}\vdash \wn{\Delta^T}}
+\LabelRule{\rulename{cut}}
+\BinRule{\oc{\wn{\Gamma^T}},\oc{\wn{(\wn{A^T}\with \wn{B^T})}}\vdash \wn{\Delta^T}}
+\DisplayProof\)
+
+\(\LabelRule{T R}
+\NulRule{\Gamma\vdash T,\Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\LabelRule{\top R}
+\NulRule{\oc{\wn{\Gamma^T}}\vdash \top,\wn{\Delta^T}}
+\LabelRule{\wn d R}
+\UnaRule{\oc{\wn{\Gamma^T}}\vdash \wn{\top},\wn{\Delta^T}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash A,B,\Delta}
+\LabelRule{\vee R}
+\UnaRule{\Gamma\vdash A\vee B,\Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\oc{\wn{\Gamma^T}}\vdash \wn{A^T},\wn{B^T},\wn{\Delta^T}}
+\LabelRule{\parr R}
+\UnaRule{\oc{\wn{\Gamma^T}}\vdash \wn{A^T}\parr\wn{B^T},\wn{\Delta^T}}
+\LabelRule{\wn d R}
+\UnaRule{\oc{\wn{\Gamma^T}}\vdash \wn{(\wn{A^T}\parr\wn{B^T})},\wn{\Delta^T}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma,A\vdash \Delta}
+\AxRule{\Gamma',B\vdash \Delta'}
+\LabelRule{\vee L}
+\BinRule{\Gamma,\Gamma',A\vee B\vdash \Delta,\Delta'}
+\DisplayProof
+\qquad\mapsto\qquad
+\LabelRule{\rulename{ax}}
+\NulRule{\wn{A^T}\vdash \wn{A^T}}
+\LabelRule{\rulename{ax}}
+\NulRule{\wn{B^T}\vdash \wn{B^T}}
+\LabelRule{\parr L}
+\BinRule{\wn{A^T}\parr \wn{B^T}\vdash \wn{A^T},\wn{B^T}}
+\LabelRule{\wn L}
+\UnaRule{\wn{(\wn{A^T}\parr \wn{B^T})}\vdash \wn{A^T},\wn{B^T}}
+\LabelRule{\oc d L}
+\UnaRule{\oc{\wn{(\wn{A^T}\parr \wn{B^T})}}\vdash \wn{A^T},\wn{B^T}}
+\LabelRule{\oc R}
+\UnaRule{\oc{\wn{(\wn{A^T}\parr \wn{B^T})}}\vdash \wn{A^T},\oc{\wn{B^T}}}
+\AxRule{\oc{\wn{\Gamma'^T}},\oc{\wn{B^T}}\vdash \wn{\Delta'^T}}
+\LabelRule{\rulename{cut}}
+\BinRule{\oc{\wn{\Gamma'^T}},\oc{\wn{(\wn{A^T}\parr \wn{B^T})}}\vdash \wn{A^T},\wn{\Delta'^T}}
+\LabelRule{\oc R}
+\UnaRule{\oc{\wn{\Gamma'^T}},\oc{\wn{(\wn{A^T}\parr \wn{B^T})}}\vdash \oc{\wn{A^T}},\wn{\Delta'^T}}
+\AxRule{\oc{\wn{\Gamma^T}},\oc{\wn{A^T}}\vdash \wn{\Delta^T}}
+\LabelRule{\rulename{cut}}
+\BinRule{\oc{\wn{\Gamma^T}},\oc{\wn{\Gamma'^T}},\oc{\wn{(\wn{A^T}\parr \wn{B^T})}}\vdash \wn{\Delta^T},\wn{\Delta'^T}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash \Delta}
+\LabelRule{F R}
+\UnaRule{\Gamma\vdash F,\Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\oc{\wn{\Gamma^T}}\vdash \wn{\Delta^T}}
+\LabelRule{\bot R}
+\UnaRule{\oc{\wn{\Gamma^T}}\vdash \bot,\wn{\Delta^T}}
+\LabelRule{\wn R}
+\UnaRule{\oc{\wn{\Gamma^T}}\vdash \wn{\bot},\wn{\Delta^T}}
+\DisplayProof\)
+
+\(\LabelRule{F L}
+\NulRule{F\vdash {}}
+\DisplayProof
+\qquad\mapsto\qquad
+\LabelRule{\bot L}
+\NulRule{\bot\vdash {}}
+\LabelRule{\wn L}
+\UnaRule{\wn{\bot}\vdash {}}
+\LabelRule{\oc d L}
+\UnaRule{\oc{\wn{\bot}}\vdash {}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma,A\vdash \Delta}
+\LabelRule{\neg R}
+\UnaRule{\Gamma\vdash \neg A,\Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\oc{\wn{\Gamma^T}},\oc{\wn{A^T}}\vdash \wn{\Delta^T}}
+\LabelRule{(.)\orth R}
+\UnaRule{\oc{\wn{\Gamma^T}}\vdash \wn{\oc{(A^T)\orth}},\wn{\Delta^T}}
+\LabelRule{\wn d R}
+\UnaRule{\oc{\wn{\Gamma^T}}\vdash \wn{\wn{\oc{(A^T)\orth}}},\wn{\Delta^T}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash A,\Delta}
+\LabelRule{\neg L}
+\UnaRule{\Gamma,\neg A\vdash \Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\oc{\wn{\Gamma^T}}\vdash \wn{A^T},\wn{\Delta^T}}
+\LabelRule{(.)\orth L}
+\UnaRule{\oc{\wn{\Gamma^T}},\oc{(A^T)\orth}\vdash \wn{\Delta^T}}
+\LabelRule{\wn L}
+\UnaRule{\oc{\wn{\Gamma^T}},\wn{\oc{(A^T)\orth}}\vdash \wn{\Delta^T}}
+\LabelRule{\wn L}
+\UnaRule{\oc{\wn{\Gamma^T}},\wn{\wn{\oc{(A^T)\orth}}}\vdash \wn{\Delta^T}}
+\LabelRule{\oc d L}
+\UnaRule{\oc{\wn{\Gamma^T}},\oc{\wn{\wn{\oc{(A^T)\orth}}}}\vdash \wn{\Delta^T}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash A,\Delta}
+\LabelRule{\forall R}
+\UnaRule{\Gamma\vdash \forall\xi A,\Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\oc{\wn{\Gamma^T}}\vdash \wn{A^T},\wn{\Delta^T}}
+\LabelRule{\forall R}
+\UnaRule{\oc{\wn{\Gamma^T}}\vdash \forall\xi \wn{A^T},\wn{\Delta^T}}
+\LabelRule{\wn d R}
+\UnaRule{\oc{\wn{\Gamma^T}}\vdash \wn{\forall\xi \wn{A^T}},\wn{\Delta^T}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma,A[\tau/\xi]\vdash \Delta}
+\LabelRule{\forall L}
+\UnaRule{\Gamma,\forall\xi A\vdash \Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\LabelRule{\rulename{ax}}
+\NulRule{\wn{A^T}[\tau^T/\xi]\vdash \wn{A^T}[\tau^T/\xi]}
+\LabelRule{\forall L}
+\UnaRule{\forall\xi \wn{A^T}\vdash \wn{A^T}[\tau^T/\xi]}
+\LabelRule{\wn L}
+\UnaRule{\wn{\forall\xi \wn{A^T}}\vdash \wn{A^T}[\tau^T/\xi]}
+\LabelRule{\oc d L}
+\UnaRule{\oc{\wn{\forall\xi \wn{A^T}}}\vdash \wn{A^T}[\tau^T/\xi]}
+\LabelRule{\oc R}
+\UnaRule{\oc{\wn{\forall\xi \wn{A^T}}}\vdash \oc{\wn{A^T}}[\tau^T/\xi]}
+\AxRule{\oc{\wn{\Gamma^T}},\oc{\wn{(A^T[\tau^T/\xi])}}\vdash \wn{\Delta^T}}
+\LabelRule{\rulename{cut}}
+\BinRule{\oc{\wn{\Gamma^T}},\oc{\wn{\forall\xi \wn{A^T}}}\vdash \wn{\Delta^T}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash A[\tau/\xi],\Delta}
+\LabelRule{\exists R}
+\UnaRule{\Gamma\vdash \exists\xi A,\Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\oc{\wn{\Gamma^T}}\vdash \wn{A^T[\tau^T/\xi]},\wn{\Delta^T}}
+\LabelRule{\oc R}
+\UnaRule{\oc{\wn{\Gamma^T}}\vdash \oc{\wn{A^T[\tau^T/\xi]}},\wn{\Delta^T}}
+\LabelRule{\exists R}
+\UnaRule{\oc{\wn{\Gamma^T}}\vdash \exists\xi \oc{\wn{A^T}},\wn{\Delta^T}}
+\LabelRule{\wn d R}
+\UnaRule{\oc{\wn{\Gamma^T}}\vdash \wn{\exists\xi \oc{\wn{A^T}}},\wn{\Delta^T}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma,A\vdash \Delta}
+\LabelRule{\exists L}
+\UnaRule{\Gamma,\exists\xi A\vdash \Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\oc{\wn{\Gamma^T}},\oc{\wn{A^T}}\vdash \wn{\Delta^T}}
+\LabelRule{\exists L}
+\UnaRule{\oc{\wn{\Gamma^T}},\exists\xi\oc{\wn{A^T}}\vdash \wn{\Delta^T}}
+\LabelRule{\wn L}
+\UnaRule{\oc{\wn{\Gamma^T}},\wn{\exists\xi\oc{\wn{A^T}}}\vdash \wn{\Delta^T}}
+\LabelRule{\oc d L}
+\UnaRule{\oc{\wn{\Gamma^T}},\oc{\wn{\exists\xi\oc{\wn{A^T}}}}\vdash \wn{\Delta^T}}
+\DisplayProof\)
+
+\subsubsection{Alternative presentation}\label{alternative-presentation}
+
+It is also possible to define \(A^{\overline{T}}\) by:
+
+\(\begin{array}{rcl}
+X^{\overline{T}} &amp; = &amp; \wn{X} \\
+(A\imp B)^{\overline{T}} &amp; = &amp; \wn{(\oc{A^{\overline{T}}}\limp B^{\overline{T}})} \\
+(A\wedge B)^{\overline{T}} &amp; = &amp; \wn{(A^{\overline{T}} \with B^{\overline{T}})} \\
+T^{\overline{T}} &amp; = &amp; \wn{\top} \\
+(A\vee B)^{\overline{T}} &amp; = &amp; \wn{(A^{\overline{T}}\parr B^{\overline{T}})} \\
+F^{\overline{T}} &amp; = &amp; \wn{\bot} \\
+(\neg A)^{\overline{T}} &amp; = &amp; \wn{\wn{(A^{\overline{T}})\orth}} \\
+(\forall\xi A)^{\overline{T}} &amp; = &amp; \wn{\forall\xi A^{\overline{T}}} \\
+(\exists\xi A)^{\overline{T}} &amp; = &amp; \wn{\exists\xi \oc{A^{\overline{T}}}}
+\end{array}\)
+
+If we define
+\((\Gamma\vdash\Delta)^{\overline{T}} = \oc{\Gamma^{\overline{T}}}\vdash \Delta^{\overline{T}}\),
+we have \((\Gamma\vdash\Delta)^{\overline{T}} = (\Gamma\vdash\Delta)^T\)
+and thus we obtain the same translation of proofs.
+
+\subsection{\texorpdfstring{Q-translation \(A\imp B \mapsto \oc{(A\limp\wn{B})}\)}{Q-translation A\textbackslash{}imp B \textbackslash{}mapsto \textbackslash{}oc\{(A\textbackslash{}limp\textbackslash{}wn\{B\})\}}}\label{q-translation-aimp-b-mapsto-ocalimpwnb}
+
+Formulas are translated as:
+
+\(\begin{array}{rcl}
+X^Q &amp; = &amp; \oc{X} \\
+(A\imp B)^Q &amp; = &amp; \oc{(A^Q\limp\wn{B^Q})} \\
+(A\wedge B)^Q &amp; = &amp; \oc{(A^Q \tens B^Q)} \\
+T^Q &amp; = &amp; \oc{\one} \\
+(A\vee B)^Q &amp; = &amp; \oc{(A^Q\plus B^Q)} \\
+F^Q &amp; = &amp; \oc{\zero} \\
+(\neg A)^Q &amp; = &amp; \oc{(A^Q)\orth} \\
+(\forall\xi A)^Q &amp; = &amp; \oc{\forall\xi \wn{A^Q}} \\
+(\exists\xi A)^Q &amp; = &amp; \oc{\exists\xi A^Q}
+\end{array}\)
+
+The translation of any formula starts with \(\oc\), we define
+\(A^{\underline{Q}}\) such that \(A^Q=\oc{A^{\underline{Q}}}\).
+
+The translation of sequents is
+\((\Gamma\vdash\Delta)^Q = \Gamma^Q\vdash\wn{\Delta^Q}\).
+
+This allows one to translate the rules of classical logic into linear
+logic:
+
+\(\LabelRule{\rulename{ax}}
+\NulRule{A\vdash A}
+\DisplayProof
+\qquad\mapsto\qquad
+\LabelRule{\rulename{ax}}
+\NulRule{A^Q\vdash A^Q}
+\LabelRule{\wn d R}
+\UnaRule{A^Q\vdash \wn{A^Q}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash A,\Delta}
+\AxRule{\Gamma',A\vdash \Delta'}
+\LabelRule{\rulename{cut}}
+\BinRule{\Gamma,\Gamma'\vdash \Delta,\Delta'}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\Gamma^Q\vdash \wn{A^Q},\wn{\Delta^Q}}
+\AxRule{\Gamma'^Q,A^Q\vdash \wn{\Delta'^Q}}
+\LabelRule{\wn L}
+\UnaRule{\Gamma'^Q,\wn{A^Q}\vdash \wn{\Delta'^Q}}
+\LabelRule{\rulename{cut}}
+\BinRule{\Gamma^Q,\Gamma'^Q\vdash \wn{\Delta^Q},\wn{\Delta'^Q}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma,A,A\vdash \Delta}
+\LabelRule{c L}
+\UnaRule{\Gamma,A\vdash \Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\Gamma^Q,A^Q,A^Q\vdash \wn{\Delta^Q}}
+\LabelRule{\oc c L}
+\UnaRule{\Gamma^Q,A^Q\vdash \wn{\Delta^Q}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash A,A,\Delta}
+\LabelRule{c R}
+\UnaRule{\Gamma\vdash A,\Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\Gamma^Q\vdash \wn{A^Q},\wn{A^Q},\wn{\Delta^Q}}
+\LabelRule{\wn c R}
+\UnaRule{\Gamma^Q\vdash \wn{A^Q},\wn{\Delta^Q}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash \Delta}
+\LabelRule{w L}
+\UnaRule{\Gamma,A\vdash \Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\Gamma^Q\vdash \wn{\Delta^Q}}
+\LabelRule{\oc w L}
+\UnaRule{\Gamma^Q,A^Q\vdash \wn{\Delta^Q}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash \Delta}
+\LabelRule{w R}
+\UnaRule{\Gamma\vdash A,\Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\Gamma^Q\vdash \wn{\Delta^Q}}
+\LabelRule{\wn w R}
+\UnaRule{\Gamma^Q\vdash \wn{A^Q},\wn{\Delta^Q}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma,A\vdash B,\Delta}
+\LabelRule{\imp R}
+\UnaRule{\Gamma\vdash A\imp B,\Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\Gamma^Q,A^Q\vdash \wn{B^Q},\wn{\Delta^Q}}
+\LabelRule{\limp R}
+\UnaRule{\Gamma^Q\vdash A^Q\limp \wn{B^Q},\wn{\Delta^Q}}
+\LabelRule{\oc R}
+\UnaRule{\Gamma^Q\vdash \oc{(A^Q\limp \wn{B^Q})},\wn{\Delta^Q}}
+\LabelRule{\wn d R}
+\UnaRule{\Gamma^Q\vdash \wn{\oc{(A^Q\limp \wn{B^Q})}},\wn{\Delta^Q}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash A,\Delta}
+\AxRule{\Gamma',B\vdash \Delta'}
+\LabelRule{\imp L}
+\BinRule{\Gamma,\Gamma',A\imp B\vdash \Delta,\Delta'}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\Gamma^Q\vdash \wn{A^Q},\wn{\Delta^Q}}
+\LabelRule{\rulename{ax}}
+\NulRule{A^Q\vdash A^Q}
+\AxRule{\Gamma'^Q,B^Q\vdash \wn{\Delta'^Q}}
+\LabelRule{\wn L}
+\UnaRule{\Gamma'^Q,\wn{B^Q}\vdash \wn{\Delta'^Q}}
+\LabelRule{\limp L}
+\BinRule{\Gamma'^Q,A^Q\limp \wn{B^Q},A^Q\vdash \wn{\Delta'^Q}}
+\LabelRule{\oc d L}
+\UnaRule{\Gamma'^Q,\oc{(A^Q\limp \wn{B^Q})},A^Q\vdash \wn{\Delta'^Q}}
+\LabelRule{\wn L}
+\UnaRule{\Gamma'^Q,\oc{(A^Q\limp \wn{B^Q})},\wn{A^Q}\vdash \wn{\Delta'^Q}}
+\LabelRule{\rulename{cut}}
+\BinRule{\Gamma^Q,\Gamma'^Q,\oc{(A^Q\limp \wn{B^Q})}\vdash \wn{\Delta^Q},\wn{\Delta'^Q}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash A,\Delta}
+\AxRule{\Gamma'\vdash B,\Delta'}
+\LabelRule{\wedge R}
+\BinRule{\Gamma,\Gamma'\vdash A\wedge B,\Delta,\Delta'}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\Gamma^Q\vdash \wn{A^Q},\wn{\Delta^Q}}
+\AxRule{\Gamma'^Q\vdash \wn{B^Q},\wn{\Delta'^Q}}
+\LabelRule{\rulename{ax}}
+\NulRule{A^Q\vdash A^Q}
+\LabelRule{\rulename{ax}}
+\NulRule{B^Q\vdash B^Q}
+\LabelRule{\tens R}
+\BinRule{A^Q,B^Q\vdash A^Q\tens B^Q}
+\LabelRule{\oc R}
+\UnaRule{A^Q,B^Q\vdash \oc{(A^Q\tens B^Q)}}
+\LabelRule{\wn d R}
+\UnaRule{A^Q,B^Q\vdash \wn{\oc{(A^Q\tens B^Q)}}}
+\LabelRule{\wn L}
+\UnaRule{A^Q,\wn{B^Q}\vdash \wn{\oc{(A^Q\tens B^Q)}}}
+\LabelRule{\rulename{cut}}
+\BinRule{\Gamma'^Q,A^Q\vdash \wn{\oc{(A^Q\tens B^Q)}},\wn{\Delta'^Q}}
+\LabelRule{\wn L}
+\UnaRule{\Gamma'^Q,\wn{A^Q}\vdash \wn{\oc{(A^Q\tens B^Q)}},\wn{\Delta'^Q}}
+\LabelRule{\rulename{cut}}
+\BinRule{\Gamma^Q,\Gamma'^Q\vdash \wn{\oc{(A^Q\tens B^Q)}},\wn{\Delta^Q},\wn{\Delta'^Q}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma,A,B\vdash \Delta}
+\LabelRule{\wedge L}
+\UnaRule{\Gamma,A\wedge B\vdash \Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\Gamma^Q,A^Q,B^Q\vdash \wn{\Delta^Q}}
+\LabelRule{\tens L}
+\UnaRule{\Gamma^Q,A^Q\tens B^Q\vdash \wn{\Delta^Q}}
+\LabelRule{\oc d L}
+\UnaRule{\Gamma^Q,\oc{(A^Q\tens B^Q)}\vdash \wn{\Delta^Q}}
+\DisplayProof\)
+
+\(\LabelRule{T R}
+\NulRule{{}\vdash T}
+\DisplayProof
+\qquad\mapsto\qquad
+\LabelRule{\one R}
+\NulRule{{}\vdash \one}
+\LabelRule{\oc R}
+\UnaRule{{}\vdash \oc{\one}}
+\LabelRule{\wn d R}
+\UnaRule{{}\vdash \wn{\oc{\one}}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash \Delta}
+\LabelRule{T L}
+\UnaRule{\Gamma,T\vdash \Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\Gamma^Q\vdash \wn{\Delta^Q}}
+\LabelRule{\one L}
+\UnaRule{\Gamma^Q,\one\vdash \wn{\Delta^Q}}
+\LabelRule{\oc d L}
+\UnaRule{\Gamma^Q,\oc{\one}\vdash \wn{\Delta^Q}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash A,\Delta}
+\LabelRule{\vee_1 R}
+\UnaRule{\Gamma\vdash A\vee B,\Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\Gamma^Q\vdash \wn{A^Q},\wn{\Delta^Q}}
+\LabelRule{\rulename{ax}}
+\NulRule{A^Q\vdash A^Q}
+\LabelRule{\plus_1 R}
+\UnaRule{A^Q\vdash A^Q\plus B^Q}
+\LabelRule{\oc R}
+\UnaRule{A^Q\vdash \oc{(A^Q\plus B^Q)}}
+\LabelRule{\wn d R}
+\UnaRule{A^Q\vdash \wn{\oc{(A^Q\plus B^Q)}}}
+\LabelRule{\wn L}
+\UnaRule{\wn{A^Q}\vdash \wn{\oc{(A^Q\plus B^Q)}}}
+\LabelRule{\rulename{cut}}
+\BinRule{\Gamma^Q\vdash \wn{\oc{(A^Q\plus B^Q)}},\wn{\Delta^Q}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma,A\vdash \Delta}
+\AxRule{\Gamma,B\vdash \Delta}
+\LabelRule{\vee L}
+\BinRule{\Gamma,A\vee B\vdash \Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\Gamma^Q,A^Q\vdash \wn{\Delta^Q}}
+\AxRule{\Gamma^Q,B^Q\vdash \wn{\Delta^Q}}
+\LabelRule{\plus L}
+\BinRule{\Gamma^Q,A^Q\plus B^Q\vdash \wn{\Delta^Q}}
+\LabelRule{\oc d L}
+\UnaRule{\Gamma^Q,\oc{(A^Q\plus B^Q)}\vdash \wn{\Delta^Q}}
+\DisplayProof\)
+
+\(\LabelRule{F L}
+\NulRule{\Gamma,F\vdash \Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\LabelRule{\zero L}
+\NulRule{\Gamma^Q,\zero\vdash \wn{\Delta^Q}}
+\LabelRule{\oc d L}
+\UnaRule{\Gamma^Q,\oc{\zero}\vdash \wn{\Delta^Q}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma,A\vdash \Delta}
+\LabelRule{\neg R}
+\UnaRule{\Gamma\vdash \neg A,\Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\Gamma^Q,A^Q\vdash \wn{\Delta^Q}}
+\LabelRule{(.)\orth R}
+\UnaRule{\Gamma^Q\vdash (A^Q)\orth,\wn{\Delta^Q}}
+\LabelRule{\oc R}
+\UnaRule{\Gamma^Q\vdash \oc{(A^Q)\orth},\wn{\Delta^Q}}
+\LabelRule{\wn d R}
+\UnaRule{\Gamma^Q\vdash \wn{\oc{(A^Q)\orth}},\wn{\Delta^Q}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash A,\Delta}
+\LabelRule{\neg L}
+\UnaRule{\Gamma,\neg A\vdash \Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\Gamma^Q\vdash \wn{A^Q},\wn{\Delta^Q}}
+\LabelRule{(.)\orth L}
+\UnaRule{\Gamma^Q,\oc{(A^Q)\orth}\vdash \wn{\Delta^Q}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash A,\Delta}
+\LabelRule{\forall R}
+\UnaRule{\Gamma\vdash \forall\xi A,\Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\Gamma^Q\vdash \wn{A^Q},\wn{\Delta^Q}}
+\LabelRule{\forall R}
+\UnaRule{\Gamma^Q\vdash \forall\xi \wn{A^Q},\wn{\Delta^Q}}
+\LabelRule{\oc R}
+\UnaRule{\Gamma^Q\vdash \oc{\forall\xi \wn{A^Q}},\wn{\Delta^Q}}
+\DisplayProof\)
+
+We use \((A[\tau/\xi])^Q=A^Q[\tau^{\underline{Q}}/\xi]\).
+
+\(\AxRule{\Gamma,A[\tau/\xi]\vdash \Delta}
+\LabelRule{\forall L}
+\UnaRule{\Gamma,\forall\xi A\vdash \Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\Gamma^Q,A^Q[\tau^{\underline{Q}}/\xi]\vdash \wn{\Delta^Q}}
+\LabelRule{\wn L}
+\UnaRule{\Gamma^Q,\wn{A^Q[\tau^{\underline{Q}}/\xi]}\vdash \wn{\Delta^Q}}
+\LabelRule{\forall L}
+\UnaRule{\Gamma^Q,\forall\xi \wn{A^Q}\vdash \wn{\Delta^Q}}
+\LabelRule{\oc d L}
+\UnaRule{\Gamma^Q,\oc{\forall\xi \wn{A^Q}}\vdash \wn{\Delta^Q}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma\vdash A[\tau/\xi],\Delta}
+\LabelRule{\exists R}
+\UnaRule{\Gamma\vdash \exists\xi A,\Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\Gamma^Q\vdash \wn{A^Q[\tau^{\underline{Q}}/\xi]},\wn{\Delta^Q}}
+\LabelRule{\rulename{ax}}
+\NulRule{A^Q[\tau^{\underline{Q}}/\xi]\vdash A^Q[\tau^{\underline{Q}}/\xi]}
+\LabelRule{\exists R}
+\UnaRule{A^Q[\tau^{\underline{Q}}/\xi]\vdash \exists\xi A^Q}
+\LabelRule{\oc R}
+\UnaRule{A^Q[\tau^{\underline{Q}}/\xi]\vdash \oc{\exists\xi A^Q}}
+\LabelRule{\wn d R}
+\UnaRule{A^Q[\tau^{\underline{Q}}/\xi]\vdash \wn{\oc{\exists\xi A^Q}}}
+\LabelRule{\wn L}
+\UnaRule{\wn{A^Q[\tau^{\underline{Q}}/\xi]}\vdash \wn{\oc{\exists\xi A^Q}}}
+\LabelRule{\rulename{cut}}
+\BinRule{\Gamma^Q\vdash \wn{\oc{\exists\xi A^Q}},\wn{\Delta^Q}}
+\DisplayProof\)
+
+\(\AxRule{\Gamma,A\vdash \Delta}
+\LabelRule{\exists L}
+\UnaRule{\Gamma,\exists\xi A\vdash \Delta}
+\DisplayProof
+\qquad\mapsto\qquad
+\AxRule{\Gamma^Q,A^Q\vdash \wn{\Delta^Q}}
+\LabelRule{\exists L}
+\UnaRule{\Gamma^Q,\exists\xi A^Q\vdash \wn{\Delta^Q}}
+\LabelRule{\oc d L}
+\UnaRule{\Gamma^Q,\oc{\exists\xi A^Q}\vdash \wn{\Delta^Q}}
+\DisplayProof\)
+
+\subsubsection{Alternative presentation}\label{alternative-presentation-1}
+
+It is also possible to define \(A^{\underline{Q}}\) as the primitive
+construction.
+
+\(\begin{array}{rcl}
+X^{\underline{Q}} &amp; = &amp; X \\
+(A\imp B)^{\underline{Q}} &amp; = &amp; \oc{A^{\underline{Q}}}\limp\wn{\oc{B^{\underline{Q}}}} \\
+(A\wedge B)^{\underline{Q}} &amp; = &amp; \oc{A^{\underline{Q}}}\tens\oc{B^{\underline{Q}}} \\
+T^{\underline{Q}} &amp; = &amp; \one \\
+(A\vee B)^{\underline{Q}} &amp; = &amp; \oc{A^{\underline{Q}}}\plus\oc{B^{\underline{Q}}} \\
+F^{\underline{Q}} &amp; = &amp; \zero \\
+(\neg A)^{\underline{Q}} &amp; = &amp; \wn{(A^{\underline{Q}})\orth} \\
+(\forall\xi A)^{\underline{Q}} &amp; = &amp; \forall\xi \wn{\oc{A^{\underline{Q}}}} \\
+(\exists\xi A)^{\underline{Q}} &amp; = &amp; \exists\xi \oc{A^{\underline{Q}}}
+\end{array}\)
+
+If we define
+\((\Gamma\vdash\Delta)^{\underline{Q}} = \oc{\Gamma^{\underline{Q}}}\vdash\wn{\oc{\Delta^{\underline{Q}}}}\),
+we have
+\((\Gamma\vdash\Delta)^{\underline{Q}} = (\Gamma\vdash\Delta)^Q\) and
+thus we obtain the same translation of proofs.
+
