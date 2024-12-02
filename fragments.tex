@@ -1,4 +1,4 @@
-\section{Fragment}\label{fragment}
+\chapter{Fragment}\label{fragment}
 
 In general, a \textbf{fragment} of a logical system \emph{S} is a
 logical system obtained by restricting the language of \emph{S}, and by
@@ -56,7 +56,7 @@ Additional subscripts may specify whether units and/or quantifiers are
 present or not, and, for quantifiers, of what order (see the article on
 \url{notations}).
 
-\subsection{Motivations}\label{motivations}
+\section{Motivations}\label{motivations}
 
 The main interest of studying fragments of linear logic is that these
 are usually simpler than the whole system, so that certain properties
@@ -106,7 +106,7 @@ such questions include:
   simpler case of fragments, and then extended to wider subsystems.
 \end{itemize}
 
-\subsection{Multiplicative fragments}\label{multiplicative-fragments}
+\section{Multiplicative fragments}\label{multiplicative-fragments}
 
 Multiplicative linear logic (\(MLL\)) is the simplest of the well known
 fragments of linear logic. Its formulas are obtained by combining
@@ -154,7 +154,7 @@ equivalent to \(\forall X.(X\orth\parr X)\) and
 expressive as \(MLL_{02}\). In these second order fragments, provability
 is undecidable, while cut elimination is still \(\mathbf P\)-complete.
 
-\subsection{Additive fragments}\label{additive-fragments}
+\section{Additive fragments}\label{additive-fragments}
 
 The most studied additive fragments of linear logic are defined by
 taking \(MLL\) or \(MLL_0\) and by enriching their language with the
@@ -216,7 +216,7 @@ indicative of the fact that the undecidability of predicate calculus is
 not ascribable to existential quantification alone, but rather to the
 simultaneous presence of existential quantification and contraction.
 
-\subsection{Exponential fragments}\label{exponential-fragments}
+\section{Exponential fragments}\label{exponential-fragments}
 
 The most common proper fragments of linear logic containing the
 exponential connectives are defined as in the case of the additive
@@ -291,7 +291,7 @@ decidability of propositional provability in the absence of additives,
 \emph{i.e.}, in \(MELL\) alone, is still an open problem. It is known
 that adding first order quantification to \(MELL\) makes it undecidable.
 
-\subsubsection{About exponential rules}\label{about-exponential-rules}
+\subsection{About exponential rules}\label{about-exponential-rules}
 
 In this section, provability is assumed to be in \(LL_{02}\),
 \emph{i.e.}, full propositional second order linear logic.
@@ -398,7 +398,7 @@ standard sequent calculus:
 The absorption rule is useful in the context of proof search in linear
 logic.
 
-\subsection{The provability problem}\label{the-provability-problem}
+\section{The provability problem}\label{the-provability-problem}
 
 It is well known that the decidability of the provability problem is
 connected to the \href{Phase_semantics}{finite model property}: if a
@@ -413,7 +413,7 @@ Question marks in the tables below denote open problems. For brevity,
 all fragments are assumed to have units and propositional atoms,
 \emph{e.g.}, \(MLL\) actually denotes what we called \(MLL_0\) above.
 
-\subsubsection{The finite model
+\subsection{The finite model
 property}\label{the-finite-model-property}
 
 \begin{longtable}[]{@{}llll@{}}
@@ -423,7 +423,7 @@ yes & yes & no & no\tabularnewline
 \bottomrule
 \end{longtable}
 
-\subsubsection{Provability}\label{provability}
+\subsection{Provability}\label{provability}
 
 \begin{longtable}[]{@{}lllll@{}}
 \toprule
@@ -437,7 +437,7 @@ undecidable\tabularnewline
 \bottomrule
 \end{longtable}
 
-\subsection{The cut elimination
+\section{The cut elimination
 problem}\label{the-cut-elimination-problem}
 
 In this section, we summarize the known results about the complexity of
@@ -466,3 +466,8 @@ Notations used in the above table:
   \(MLLL\): multiplicative light linear logic.
 \end{itemize}
 
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:

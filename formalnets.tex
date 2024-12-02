@@ -1,13 +1,13 @@
-\section{A formal account of nets}\label{a-formal-account-of-nets}
+% \section{A formal account of nets}\label{a-formal-account-of-nets}
 
 The aim of this page is to provide a common framework for describing
 linear logic proof nets, interaction nets, multiport interaction nets,
 and the likes, while factoring out most of the tedious, uninteresting
 details (clearly not the fanciest page of LLWiki).
 
-\subsection{Preliminaries}\label{preliminaries}
+\section{Preliminaries}\label{preliminaries}
 
-\subsubsection{The short story}\label{the-short-story}
+\subsection{The short story}\label{the-short-story}
 
 \begin{itemize}
 \tightlist
@@ -31,9 +31,9 @@ details (clearly not the fanciest page of LLWiki).
   so that axiom-cuts do not vanish.
 \end{itemize}
 
-\subsection{Nets}\label{nets}
+\section{Nets}\label{nets}
 
-\subsubsection{Wires}\label{wires}
+\subsection{Wires}\label{wires}
 
 A \emph{wiring} is the data of a finite set \(P\) of ports and of a
 partition \({W}\) of \(P\) by pairs (the \emph{wires}): if
@@ -116,7 +116,7 @@ In a symmetric monoidal category, a left closed structure induces a
 right closed structure and conversely, allowing us to simply speak of a
 \emph{closed symmetric monoidal category}.
 
-\subsection{Modeling the additives}\label{modeling-the-additives}
+\section{Modeling the additives}\label{modeling-the-additives}
 
 A category has \emph{finite products} when it has products and a
 terminal object.
@@ -135,8 +135,7 @@ I\tens M\ar[r]^{\eta\tens M}\ar[dr]_{\lambda_M}&amp;M\tens M\ar[d]_\mu&amp;\ar[l
 &amp;M&amp;
 }\] commute. \}\}
 
-\subsection{\texorpdfstring{Modeling
-\url{ILL}}{Modeling ILL}}\label{modeling-ill}
+\section{\texorpdfstring{Modeling \hyperref[intuitionistic-linear-logic]{ILL}}{Modeling ILL}}\label{modeling-ill}
 
 Introduced in\footnote{}.
 
@@ -175,12 +174,11 @@ GB\textbackslash{}\textbackslash{}
   FI\ar[rr]_{\theta_I}&amp;&amp;GI
 }\) commute for every objects \(A\) and \(B\) of \(\mathcal{D}\). \}\}
 
-\subsection{Modeling negation}\label{modeling-negation}
+\section{Modeling negation}\label{modeling-negation}
 
-\subsubsection{*-autonomous categories}\label{autonomous-categories}
+\subsection{*-autonomous categories}\label{autonomous-categories}
 
-\subsubsection{Compact closed
-categories}\label{compact-closed-categories}
+\subsection{Compact closed categories}\label{compact-closed-categories}
 
 \&(A\textbackslash{}tens B)\textbackslash{}tens
 A\textbackslash{}ar{[}dr{]}\^{}\{\textbackslash{}varepsilon\textbackslash{}tens
@@ -213,16 +211,20 @@ A\tens B\ar[r]^-{A\tens g}&amp;A\tens(A^*\tens C)\ar[r]^-{\alpha_{A,A^*,C}^{-1}}
 \(\ulcorner\llcorner g\lrcorner\urcorner=g\) from which we deduce the
 required bijection. \}\}
 
-\subsection{Other categorical models}\label{other-categorical-models}
+\section{Other categorical models}\label{other-categorical-models}
 
-\subsubsection{Lafont categories}\label{lafont-categories}
+\subsection{Lafont categories}\label{lafont-categories}
 
-\subsubsection{Seely categories}\label{seely-categories}
+\subsection{Seely categories}\label{seely-categories}
 
-\subsubsection{Linear categories}\label{linear-categories}
+\subsection{Linear categories}\label{linear-categories}
 
-\subsection{Properties of categorical
-models}\label{properties-of-categorical-models}
+\section{Properties of categorical models}\label{properties-of-categorical-models}
 
-\subsubsection{The Kleisli category}\label{the-kleisli-category}
+\subsection{The Kleisli category}\label{the-kleisli-category}
 
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:

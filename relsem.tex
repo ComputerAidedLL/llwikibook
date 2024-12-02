@@ -1,13 +1,10 @@
-\section{Relational semantics}\label{relational-semantics}
-
-\subsection{Relational semantics}\label{relational-semantics-1}
+\chapter{Relational semantics}\label{relational-semantics}
 
 This is the simplest denotational semantics of linear logic. It consists
 in interpreting a formula \(A\) as a set \(A^*\) and a proof \(\pi\) of
 \(A\) as a subset \(\pi^*\) of \(A^*\).
 
-\subsubsection{The category of sets and
-relations}\label{the-category-of-sets-and-relations}
+\section{The category of sets and relations}\label{the-category-of-sets-and-relations}
 
 It is the category \(\mathbf{Rel}\) whose objects are sets, and such
 that \(\mathbf{Rel}(X,Y)=\powerset{X\times Y}\). Composition is the
@@ -20,7 +17,7 @@ and the identity morphism is the diagonal relation
 An isomorphism in the category \(\mathbf{Rel}\) is a relation which is a
 bijection, as easily checked.
 
-\paragraph{Monoidal structure}\label{monoidal-structure}
+\subsection{Monoidal structure}\label{monoidal-structure}
 
 The tensor product is the usual cartesian product of sets
 \(X\tens Y=X\times Y\) (which is not a cartesian product in the category
@@ -75,7 +72,7 @@ It is clear that \(\eta=\set{(a,((a,*),*))}{a\in X}\) and hence \(\eta\)
 is a natural isomorphism: one says that the SMCC \(\mathbf{Rel}\) is a
 *-autonomous category, with \(\bot\) as dualizing object.
 
-\paragraph{Additives}\label{additives-2}
+\subsection{Additives}\label{additives-2}
 
 Given a family \((X_i)_{i\in I}\), let
 \(\with_{i\in I}X_i=\cup_{i\in I}\{i\}\times X_i\). Let
@@ -84,7 +81,7 @@ Given a family \((X_i)_{i\in I}\), let
 \((\with_{i\in I}X_i,(\pi_i)_{i\in I})\) is the cartesian product of the
 \(X_i\)s in the category \(\mathbf{Rel}\).
 
-\paragraph{Exponentials}\label{exponentials-4}
+\subsection{Exponentials}\label{exponentials-4}
 
 One defines \(\oc X\) as the set of all finite multisets of elements of
 \(X\). Given \(s\in\mathbf{Rel}(X,Y)\), one defines
@@ -106,9 +103,7 @@ as follows:
   \(\mathsf{digg}_X=\set{(m_1+\cdots+m_n,[m_1,\dots,m_n])}{n\in\mathbb N\ \text{and}\ m_1,\dots,m_n\in\oc X}\)
 \end{itemize}
 
-\subsubsection{\texorpdfstring{Interpretation of propositional linear
-logic
-(\(LL_0\))}{Interpretation of propositional linear logic (LL\_0)}}\label{interpretation-of-propositional-linear-logic-ll_0}
+\section{\texorpdfstring{Interpretation of propositional linear logic (\(LL_0\))}{Interpretation of propositional linear logic (LL\_0)}}\label{interpretation-of-propositional-linear-logic-ll_0}
 
 The structure described above gives rise to the following interpretation
 of formulas and proofs of linear logic.
@@ -282,3 +277,8 @@ A\}
 \left(\sum_{i=1}^k m_1^i,\ldots,\sum_{i=1}^k m_n^i,[b_1,\ldots,b_k]\right)}
 {k \in \mathbb{N} \ \text{and} \ \forall 1 \leq i \leq k,\ (m_1^i,\ldots,m_n^i,b_i)\in\sem\pi}\)
 
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:

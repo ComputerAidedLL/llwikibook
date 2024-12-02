@@ -1,4 +1,4 @@
-\section{Translations of intuitionistic logic}\label{translations-of-intuitionistic-logic}
+\chapter{Translations of intuitionistic logic}\label{translations-of-intuitionistic-logic}
 
 The genesis of linear logic comes with a decomposition of the
 intuitionistic implication. Once linear logic properly defined, it
@@ -12,8 +12,7 @@ These translations can be extended to
 \href{translations_of_classical_logic}{translations of classical logic}
 into linear logic.
 
-\subsection{\texorpdfstring{Call-by-name Girard's translation
-\(A\imp B \mapsto \oc{A}\limp B\)}{Call-by-name Girard's translation A\textbackslash{}imp B \textbackslash{}mapsto \textbackslash{}oc\{A\}\textbackslash{}limp B}}\label{call-by-name-girards-translation-aimp-b-mapsto-ocalimp-b}
+\section{\texorpdfstring{Call-by-name Girard's translation \(A\imp B \mapsto \oc{A}\limp B\)}{Call-by-name Girard's translation A\textbackslash{}imp B \textbackslash{}mapsto \textbackslash{}oc\{A\}\textbackslash{}limp B}}\label{call-by-name-girards-translation-aimp-b-mapsto-ocalimp-b}
 
 Formulas are translated as:
 
@@ -236,8 +235,7 @@ linear logic:
 \UnaRule{\oc{\Gamma^n},\oc{\exists\xi\oc{A^n}}\vdash C^n}
 \DisplayProof\)
 
-\subsection{\texorpdfstring{Call-by-value translation
-\(A\imp B \mapsto \oc{(A\limp B)}\)}{Call-by-value translation A\textbackslash{}imp B \textbackslash{}mapsto \textbackslash{}oc\{(A\textbackslash{}limp B)\}}}\label{call-by-value-translation-aimp-b-mapsto-ocalimp-b}
+\section{\texorpdfstring{Call-by-value translation \(A\imp B \mapsto \oc{(A\limp B)}\)}{Call-by-value translation A\textbackslash{}imp B \textbackslash{}mapsto \textbackslash{}oc\{(A\textbackslash{}limp B)\}}}\label{call-by-value-translation-aimp-b-mapsto-ocalimp-b}
 
 Formulas are translated as:
 
@@ -461,7 +459,7 @@ We use \((A[\tau/\xi])^v=A^v[\tau^{\underline{v}}/\xi]\).
 \UnaRule{\Gamma^v,\oc{\exists\xi A^v}\vdash C^v}
 \DisplayProof\)
 
-\subsubsection{Alternative
+\subsection{Alternative
 presentation}\label{alternative-presentation-2}
 
 It is also possible to define \(A^{\underline{v}}\) as the primitive
@@ -483,8 +481,7 @@ If we define
 we have \((\Gamma\vdash A)^{\underline{v}} = (\Gamma\vdash A)^v\) and
 thus we obtain the same translation of proofs.
 
-\subsection{\texorpdfstring{Call-by-value Girard's translation
-\(A\imp B \mapsto \oc{(A\limp B)}\)}{Call-by-value Girard's translation A\textbackslash{}imp B \textbackslash{}mapsto \textbackslash{}oc\{(A\textbackslash{}limp B)\}}}\label{call-by-value-girards-translation-aimp-b-mapsto-ocalimp-b}
+\section{\texorpdfstring{Call-by-value Girard's translation \(A\imp B \mapsto \oc{(A\limp B)}\)}{Call-by-value Girard's translation A\textbackslash{}imp B \textbackslash{}mapsto \textbackslash{}oc\{(A\textbackslash{}limp B)\}}}\label{call-by-value-girards-translation-aimp-b-mapsto-ocalimp-b}
 
 The original version of the call-by-value translation given by Jean-Yves
 Girard\footnote{}\&nbsp;is an optimisation of the previous one using
@@ -686,3 +683,8 @@ We use \((A[\tau/\xi])^w\linequiv A^w[\tau^w/\xi]\).
 \UnaRule{\Gamma^w,\exists\xi A^w\vdash C^w}
 \DisplayProof\)
 
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:

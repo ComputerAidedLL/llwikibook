@@ -1,4 +1,4 @@
-\section{Polarized linear logic}\label{polarized-linear-logic}
+\chapter{Polarized linear logic}\label{polarized-linear-logic}
 
 \textbf{Polarized linear logic} (LLP) is a logic close to plain linear
 logic in which structural rules, usually restricted to \(\wn\)-formulas,
@@ -6,7 +6,7 @@ have been
 \href{Positive_formula\#Generalized_structural_rules}{extended} to the
 whole class of so called \emph{negative} formulae.
 
-\subsection{Polarization}\label{polarization}
+\section{Polarization}\label{polarization}
 
 LLP relies on the notion of \emph{polarization}, that is, it
 discriminates between two types of formulae, \emph{negative} (noted
@@ -20,10 +20,10 @@ They are mutually defined as follows:
 The dual operation \((-)\orth\) extended to propositions exchanges the
 roles of connectors and reverses the polarity of formulae.
 
-\subsection{Deduction rules}\label{deduction-rules}
+\section{Deduction rules}\label{deduction-rules}
 
 They are several design choices for the structure of sequents. In
-particular, LLP proofs are \emph{focalized}, i.e. they contain at most
+particular, LLP proofs are \emph{focused}, i.e. they contain at most
 one positive formula. We choose to represent this explicitly using
 sequents of the form \(\vdash\Gamma\mid\Delta\), where \(\Gamma\) is a
 multiset of negative formulae, and \(\Delta\) is a \emph{stoup} that
@@ -99,3 +99,8 @@ contains at most one positive formula (though it may be empty).
 \NulRule{\vdash\Gamma,\top\mid \Delta}
 \DisplayProof\)
 
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:

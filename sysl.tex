@@ -1,18 +1,18 @@
-\section{System L}\label{system-l}
+\chapter{System L}\label{system-l}
 
 \textbf{System L} is a family of syntax for a variety of variants of
 linear logic, inspired from classical calculi such as
 \(\bar\lambda\mu\tilde\mu\)-calculus. These, in turn, stem from the
 study of abstract machines for \(\lambda\)-calculus. In this realm,
-\href{Polarized_linear_logic}{polarization} and \url{focalization} are
+\hyperref[polarized-linear-logic]{polarization} and \hyperref[reversibility-and-focusing]{focusing} are
 features that appear naturally. Positives are typically values, and
 negatives pattern-matches. Contraction and weakening are implicit.
 
-We present here a system for explicitely polarized and focalized linear
+We present here a system for explicitely polarized and focused linear
 logic. Polarization classifies terms and types between positive and
-negative; focalization separates values from non-values.
+negative; focusing separates values from non-values.
 
-\subsection{Definitions}\label{definitions}
+\section{Definitions}\label{definitions}
 
 Positive types:
 \(P ::= 1 \mid P_1 \otimes P_2 \mid 0 \mid P_1 \oplus P_2 \mid \shpos N \mid \oc N\)
@@ -30,10 +30,10 @@ Negative terms:
 
 Commands: \(c ::= \langle t^+ \mid t^- \rangle\)
 
-\subsection{Typing}\label{typing}
+\section{Typing}\label{typing}
 
 There are as many typing sequents classes as there are terms classes.
-Typing of positive values corresponds to focalized sequents, and
+Typing of positive values corresponds to focused sequents, and
 commands are cuts.
 
 Positive values: sequents are of the form \(\vdash \Gamma :: v^+ : P\).
@@ -143,7 +143,7 @@ Commands:
 \UnaRule{c[x_1^+ := x^+, x_2^+ := x^+] \vdash\Gamma, x^+: \wn P}
 \DisplayProof\)
 
-\subsection{Reduction rules}\label{reduction-rules}
+\section{Reduction rules}\label{reduction-rules}
 
 \(\langle v^+ \mid \mu x^+.c \rangle \rightarrow c[ x^+ := v^+]\)
 
@@ -161,9 +161,8 @@ Commands:
 
 \(\langle \mu(\wn x^+).c \mid \wn v^+ \rangle \rightarrow c[x^+ := v^+]\)
 
-\subsection{References}\label{references}
 
-\begin{itemize}
-\item
-\end{itemize}
-
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
