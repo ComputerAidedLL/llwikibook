@@ -3,11 +3,11 @@
 This article presents the language and sequent calculus of second-order
 linear logic and the basic properties of this sequent calculus. The core
 of the article uses the two-sided system with negation as a proper
-connective; the \protect\hyperlink{One-sided_sequent_calculus}{one-sided
+connective; the \hyperref[one-sided-sequent-calculus]{one-sided
 system}, often used as the definition of linear logic, is presented at
 the end of the page.
 
-\subsection{Formulas}\label{formulas}
+\section{Formulas}\label{formulas}
 
 Atomic formulas, written \(\alpha,\beta,\gamma\), are predicates of the
 form \(p(t_1,\ldots,t_n)\), where the \(t_i\) are terms from some
@@ -55,7 +55,7 @@ names. If \(A\) is a formula, \(X\) is a second-order variable and
 formula \(A[B/X]\) is \(A\) where every atom \(X(t_1,\ldots,t_n)\) is
 replaced by \(B[t_1,\ldots,t_n]\).
 
-\subsection{Sequents and proofs}\label{sequents-and-proofs}
+\section{Sequents and proofs}\label{sequents-and-proofs}
 
 A sequent is an expression \(\Gamma\vdash\Delta\) where \(\Gamma\) and
 \(\Delta\) are finite multisets of formulas. For a multiset
@@ -67,292 +67,235 @@ sequents, built using the following inference rules:
 \tightlist
 \item
   Identity group: 
-\end{itemize}
-
-\textbackslash{}LabelRule\{\textbackslash{}rulename\{axiom\}\}
-\textbackslash{}NulRule\{ A \textbackslash{}vdash A \}
-\textbackslash{}DisplayProof \&emsp;
-\(\AxRule{ \Gamma \vdash A, \Delta }
-\AxRule{ \Gamma', A \vdash \Delta' }
-\LabelRule{\rulename{cut}}
-\BinRule{ \Gamma, \Gamma' \vdash \Delta, \Delta' }
-\DisplayProof\)
-
-\begin{itemize}
-\tightlist
+  \begin{equation*}
+  \LabelRule{\rulename{axiom}}
+  \NulRule{ A \vdash A }
+  \DisplayProof
+  \qquad\qquad
+  \AxRule{ \Gamma \vdash A, \Delta }
+  \AxRule{ \Gamma', A \vdash \Delta' }
+  \LabelRule{\rulename{cut}}
+  \BinRule{ \Gamma, \Gamma' \vdash \Delta, \Delta' }
+  \DisplayProof  
+  \end{equation*}
 \item
   Negation: 
-\end{itemize}
-
-\textbackslash{}AxRule\{ \textbackslash{}Gamma \textbackslash{}vdash A,
-\textbackslash{}Delta \} \textbackslash{}UnaRule\{
-\textbackslash{}Gamma, A\textbackslash{}orth \textbackslash{}vdash
-\textbackslash{}Delta \} \textbackslash{}LabelRule\{n\_L\}
-\textbackslash{}DisplayProof \&emsp;
-\(\AxRule{ \Gamma, A \vdash \Delta }
-\UnaRule{ \Gamma \vdash A\orth, \Delta }
-\LabelRule{n_R}
-\DisplayProof\)
-
-\begin{itemize}
-\tightlist
+  \begin{equation*}
+    \AxRule{ \Gamma \vdash A,\Delta }
+    \LabelRule{n_L}
+    \UnaRule{\Gamma, A\orth \vdash \Delta }
+    \DisplayProof
+    \qquad\qquad
+    \AxRule{ \Gamma, A \vdash \Delta }
+    \LabelRule{n_R}
+    \UnaRule{ \Gamma \vdash A\orth, \Delta }
+    \DisplayProof
+  \end{equation*}
 \item
   Multiplicative group:
-
   \begin{itemize}
-  \tightlist
   \item
     tensor: 
-  \end{itemize}
-\end{itemize}
-
-\textbackslash{}AxRule\{ \textbackslash{}Gamma, A, B
-\textbackslash{}vdash \textbackslash{}Delta \}
-\textbackslash{}LabelRule\{ \textbackslash{}tens\_L \}
-\textbackslash{}UnaRule\{ \textbackslash{}Gamma, A \textbackslash{}tens
-B \textbackslash{}vdash \textbackslash{}Delta \}
-\textbackslash{}DisplayProof \&emsp;
-\(\AxRule{ \Gamma \vdash A, \Delta }
-\AxRule{ \Gamma' \vdash B, \Delta' }
-\LabelRule{ \tens_R }
-\BinRule{ \Gamma, \Gamma' \vdash A \tens B, \Delta, \Delta' }
-\DisplayProof\)
-
-\begin{itemize}
-\item
-  \begin{itemize}
-  \tightlist
+    \begin{equation*}
+      \AxRule{ \Gamma, A, B \vdash \Delta }
+      \LabelRule{ \tens_L }
+      \UnaRule{ \Gamma, A \tens B \vdash \Delta }
+      \DisplayProof
+      \qquad\qquad
+      \AxRule{ \Gamma \vdash A, \Delta }
+      \AxRule{ \Gamma' \vdash B, \Delta' }
+      \LabelRule{ \tens_R }
+      \BinRule{ \Gamma, \Gamma' \vdash A \tens B, \Delta, \Delta' }
+      \DisplayProof      
+    \end{equation*}
   \item
     par: 
-  \end{itemize}
-\end{itemize}
-
-\textbackslash{}AxRule\{ \textbackslash{}Gamma, A \textbackslash{}vdash
-\textbackslash{}Delta \} \textbackslash{}AxRule\{
-\textbackslash{}Gamma', B \textbackslash{}vdash \textbackslash{}Delta'
-\} \textbackslash{}LabelRule\{ \textbackslash{}parr\_L \}
-\textbackslash{}BinRule\{ \textbackslash{}Gamma, \textbackslash{}Gamma',
-A \textbackslash{}parr B \textbackslash{}vdash \textbackslash{}Delta,
-\textbackslash{}Delta' \} \textbackslash{}DisplayProof \&emsp;
-\(\AxRule{ \Gamma \vdash A, B, \Delta }
-\LabelRule{ \parr_R }
-\UnaRule{ \Gamma \vdash A \parr B, \Delta }
-\DisplayProof\)
-
-\begin{itemize}
-\item
-  \begin{itemize}
-  \tightlist
+    \begin{equation*}
+      \AxRule{ \Gamma, A \vdash \Delta }
+      \AxRule{ \Gamma', B \vdash \Delta' }
+      \LabelRule{ \parr_L }
+      \BinRule{ \Gamma, \Gamma', A \parr B \vdash \Delta, \Delta' }
+      \DisplayProof
+      \qquad\qquad
+      \AxRule{ \Gamma \vdash A, B, \Delta }
+      \LabelRule{ \parr_R }
+      \UnaRule{ \Gamma \vdash A \parr B, \Delta }
+      \DisplayProof    
+    \end{equation*}
   \item
-    one: 
-  \end{itemize}
-\end{itemize}
-
-\textbackslash{}AxRule\{ \textbackslash{}Gamma \textbackslash{}vdash
-\textbackslash{}Delta \} \textbackslash{}LabelRule\{
-\textbackslash{}one\_L \} \textbackslash{}UnaRule\{
-\textbackslash{}Gamma, \textbackslash{}one \textbackslash{}vdash
-\textbackslash{}Delta \} \textbackslash{}DisplayProof \&emsp;
-\(\LabelRule{ \one_R }
-\NulRule{ \vdash \one }
-\DisplayProof\)
-
-\begin{itemize}
-\item
-  \begin{itemize}
-  \tightlist
+    one:
+    \begin{equation*}
+       \AxRule{ \Gamma \vdash \Delta }
+       \LabelRule{\one_L }
+       \UnaRule{ \Gamma, \one \vdash \Delta }
+       \DisplayProof
+       \qquad\qquad
+       \LabelRule{ \one_R }
+       \NulRule{ \vdash \one }
+       \DisplayProof   
+    \end{equation*}
   \item
     bottom: 
+    \begin{equation*}
+       \LabelRule{ \bot_L }
+       \NulRule{ \bot \vdash }
+       \DisplayProof
+       \qquad\qquad
+       \AxRule{ \Gamma \vdash \Delta }
+       \LabelRule{ \bot_R }
+       \UnaRule{ \Gamma \vdash \bot, \Delta }
+       \DisplayProof      
+    \end{equation*}
   \end{itemize}
-\end{itemize}
-
-\textbackslash{}LabelRule\{ \textbackslash{}bot\_L \}
-\textbackslash{}NulRule\{ \textbackslash{}bot \textbackslash{}vdash \}
-\textbackslash{}DisplayProof \&emsp; \(\AxRule{ \Gamma \vdash \Delta }
-\LabelRule{ \bot_R }
-\UnaRule{ \Gamma \vdash \bot, \Delta }
-\DisplayProof\)
-
-\begin{itemize}
-\tightlist
 \item
   Additive group:
-
   \begin{itemize}
-  \tightlist
   \item
     plus: 
-  \end{itemize}
-\end{itemize}
-
-\textbackslash{}AxRule\{ \textbackslash{}Gamma, A \textbackslash{}vdash
-\textbackslash{}Delta \} \textbackslash{}AxRule\{ \textbackslash{}Gamma,
-B \textbackslash{}vdash \textbackslash{}Delta \}
-\textbackslash{}LabelRule\{ \textbackslash{}plus\_L \}
-\textbackslash{}BinRule\{ \textbackslash{}Gamma, A \textbackslash{}plus
-B \textbackslash{}vdash \textbackslash{}Delta \}
-\textbackslash{}DisplayProof \&emsp;
-\(\AxRule{ \Gamma \vdash A, \Delta }
-\LabelRule{ \plus_{R1} }
-\UnaRule{ \Gamma \vdash A \plus B, \Delta }
-\DisplayProof\) \&emsp; \(\AxRule{ \Gamma \vdash B, \Delta }
-\LabelRule{ \plus_{R2} }
-\UnaRule{ \Gamma \vdash A \plus B, \Delta }
-\DisplayProof\)
-
-\begin{itemize}
-\item
-  \begin{itemize}
-  \tightlist
+    \begin{equation*}
+      \AxRule{ \Gamma, A \vdash \Delta }
+      \AxRule{ \Gamma, B \vdash \Delta }
+      \LabelRule{ \plus_L }
+      \BinRule{ \Gamma, A \plus B \vdash \Delta }
+      \DisplayProof
+      \qquad\qquad
+      \AxRule{ \Gamma \vdash A, \Delta }
+      \LabelRule{ \plus_{R1} }
+      \UnaRule{ \Gamma \vdash A \plus B, \Delta }
+      \DisplayProof
+      \qquad\qquad
+      \AxRule{ \Gamma \vdash B, \Delta }
+      \LabelRule{ \plus_{R2} }
+      \UnaRule{ \Gamma \vdash A \plus B, \Delta }
+      \DisplayProof
+    \end{equation*}
   \item
     with: 
-  \end{itemize}
-\end{itemize}
-
-\textbackslash{}AxRule\{ \textbackslash{}Gamma, A \textbackslash{}vdash
-\textbackslash{}Delta \} \textbackslash{}LabelRule\{
-\textbackslash{}with\_\{L1\} \} \textbackslash{}UnaRule\{
-\textbackslash{}Gamma, A \textbackslash{}with B \textbackslash{}vdash
-\textbackslash{}Delta \} \textbackslash{}DisplayProof \&emsp;
-\(\AxRule{ \Gamma, B \vdash \Delta }
-\LabelRule{ \with_{L2} }
-\UnaRule{ \Gamma, A \with B \vdash \Delta }
-\DisplayProof\) \&emsp; \(\AxRule{ \Gamma \vdash A, \Delta }
-\AxRule{ \Gamma \vdash B, \Delta }
-\LabelRule{ \with_R }
-\BinRule{ \Gamma \vdash A \with B, \Delta }
-\DisplayProof\)
-
-\begin{itemize}
-\item
-  \begin{itemize}
-  \tightlist
+    \begin{equation*}
+      \AxRule{ \Gamma, A \vdash \Delta }
+      \LabelRule{ \with_{L1} }
+      \UnaRule{ \Gamma, A \with B \vdash \Delta }
+      \DisplayProof
+      \qquad\qquad
+      \AxRule{ \Gamma, B \vdash \Delta }
+      \LabelRule{ \with_{L2} }
+      \UnaRule{ \Gamma, A \with B \vdash \Delta }
+      \DisplayProof
+      \qquad\qquad
+      \AxRule{ \Gamma \vdash A, \Delta }
+      \AxRule{ \Gamma \vdash B, \Delta }
+      \LabelRule{ \with_R }
+      \BinRule{ \Gamma \vdash A \with B, \Delta }
+      \DisplayProof      
+    \end{equation*}
   \item
     zero: 
-  \end{itemize}
-\end{itemize}
-
-\textbackslash{}LabelRule\{ \textbackslash{}zero\_L \}
-\textbackslash{}NulRule\{ \textbackslash{}Gamma, \textbackslash{}zero
-\textbackslash{}vdash \textbackslash{}Delta \}
-\textbackslash{}DisplayProof
-
-\begin{itemize}
-\item
-  \begin{itemize}
-  \tightlist
+    \begin{equation*}
+       \LabelRule{ \zero_L }
+       \NulRule{ \Gamma, \zero \vdash \Delta }
+       \DisplayProof
+    \end{equation*}
   \item
     top: 
+    \begin{equation*}
+       \LabelRule{ \top_R }
+       \NulRule{ \Gamma \vdash \top, \Delta }
+       \DisplayProof    
+    \end{equation*}
   \end{itemize}
-\end{itemize}
-
-\textbackslash{}LabelRule\{ \textbackslash{}top\_R \}
-\textbackslash{}NulRule\{ \textbackslash{}Gamma \textbackslash{}vdash
-\textbackslash{}top, \textbackslash{}Delta \}
-\textbackslash{}DisplayProof
-
-\begin{itemize}
-\tightlist
 \item
   Exponential group:
-
   \begin{itemize}
-  \tightlist
   \item
     of course: 
-  \end{itemize}
-\end{itemize}
-
-\textbackslash{}AxRule\{ \textbackslash{}Gamma, A \textbackslash{}vdash
-\textbackslash{}Delta \} \textbackslash{}LabelRule\{ d\_L \}
-\textbackslash{}UnaRule\{ \textbackslash{}Gamma, \textbackslash{}oc A
-\textbackslash{}vdash \textbackslash{}Delta \}
-\textbackslash{}DisplayProof \&emsp; \(\AxRule{ \Gamma \vdash \Delta }
-\LabelRule{ w_L }
-\UnaRule{ \Gamma, \oc A \vdash \Delta }
-\DisplayProof\) \&emsp; \(\AxRule{ \Gamma, \oc A, \oc A \vdash \Delta }
-\LabelRule{ c_L }
-\UnaRule{ \Gamma, \oc A \vdash \Delta }
-\DisplayProof\) \&emsp;
-\(\AxRule{ \oc A_1, \ldots, \oc A_n \vdash B ,\wn B_1, \ldots, \wn B_m }
-\LabelRule{ \oc_R }
-\UnaRule{ \oc A_1, \ldots, \oc A_n \vdash \oc B ,\wn B_1, \ldots, \wn B_m }
-\DisplayProof\)
-
-\begin{itemize}
-\item
-  \begin{itemize}
-  \tightlist
+    \begin{equation*}
+       \AxRule{ \Gamma, A \vdash \Delta }
+       \LabelRule{ d_L }
+       \UnaRule{ \Gamma, \oc A \vdash \Delta }
+       \DisplayProof
+       \qquad\qquad
+       \AxRule{ \Gamma \vdash \Delta }
+       \LabelRule{ w_L }
+       \UnaRule{ \Gamma, \oc A \vdash \Delta }
+       \DisplayProof
+       \qquad\qquad
+       \AxRule{ \Gamma, \oc A, \oc A \vdash \Delta }
+       \LabelRule{ c_L }
+       \UnaRule{ \Gamma, \oc A \vdash \Delta }
+       \DisplayProof
+       \qquad\qquad
+       \AxRule{ \oc A_1, \ldots, \oc A_n \vdash B ,\wn B_1, \ldots, \wn B_m }
+       \LabelRule{ \oc_R }
+       \UnaRule{ \oc A_1, \ldots, \oc A_n \vdash \oc B ,\wn B_1, \ldots, \wn B_m }
+       \DisplayProof      
+    \end{equation*}
   \item
-    why not: 
+    why not:
+    \begin{equation*}
+      \AxRule{ \Gamma \vdash A, \Delta }
+      \LabelRule{ d_R }
+      \UnaRule{ \Gamma \vdash \wn A, \Delta }
+      \DisplayProof
+      \qquad\qquad
+      \AxRule{ \Gamma \vdash \Delta }
+      \LabelRule{ w_R }
+      \UnaRule{ \Gamma \vdash \wn A, \Delta }
+      \DisplayProof
+      \qquad\qquad
+      \AxRule{ \Gamma \vdash \wn A, \wn A, \Delta }
+      \LabelRule{ c_R }
+      \UnaRule{ \Gamma \vdash \wn A, \Delta }
+      \DisplayProof
+      \qquad\qquad
+      \AxRule{ \oc A_1, \ldots, \oc A_n, A \vdash \wn B_1, \ldots, \wn B_m }
+      \LabelRule{ \wn_L }
+      \UnaRule{ \oc A_1, \ldots, \oc A_n, \wn A \vdash \wn B_1, \ldots, \wn B_m }
+      \DisplayProof      
+    \end{equation*}
   \end{itemize}
-\end{itemize}
-
-\textbackslash{}AxRule\{ \textbackslash{}Gamma \textbackslash{}vdash A,
-\textbackslash{}Delta \} \textbackslash{}LabelRule\{ d\_R \}
-\textbackslash{}UnaRule\{ \textbackslash{}Gamma \textbackslash{}vdash
-\textbackslash{}wn A, \textbackslash{}Delta \}
-\textbackslash{}DisplayProof \&emsp; \(\AxRule{ \Gamma \vdash \Delta }
-\LabelRule{ w_R }
-\UnaRule{ \Gamma \vdash \wn A, \Delta }
-\DisplayProof\) \&emsp; \(\AxRule{ \Gamma \vdash \wn A, \wn A, \Delta }
-\LabelRule{ c_R }
-\UnaRule{ \Gamma \vdash \wn A, \Delta }
-\DisplayProof\) \&emsp;
-\(\AxRule{ \oc A_1, \ldots, \oc A_n, A \vdash \wn B_1, \ldots, \wn B_m }
-\LabelRule{ \wn_L }
-\UnaRule{ \oc A_1, \ldots, \oc A_n, \wn A \vdash \wn B_1, \ldots, \wn B_m }
-\DisplayProof\)
-
-\begin{itemize}
-\tightlist
 \item
   Quantifier group (in the \(\exists_L\) and \(\forall_R\) rules,
   \(\xi\) must not occur free in \(\Gamma\) or \(\Delta\)):
-
   \begin{itemize}
-  \tightlist
   \item
     there exists: 
-  \end{itemize}
-\end{itemize}
-
-\textbackslash{}AxRule\{ \textbackslash{}Gamma , A \textbackslash{}vdash
-\textbackslash{}Delta \} \textbackslash{}LabelRule\{
-\textbackslash{}exists\_L \} \textbackslash{}UnaRule\{
-\textbackslash{}Gamma, \textbackslash{}exists\textbackslash{}xi.A
-\textbackslash{}vdash \textbackslash{}Delta \}
-\textbackslash{}DisplayProof \&emsp;
-\(\AxRule{ \Gamma \vdash \Delta, A[t/x] }
-\LabelRule{ \exists^1_R }
-\UnaRule{ \Gamma \vdash \Delta, \exists x.A }
-\DisplayProof\) \&emsp; \(\AxRule{ \Gamma \vdash \Delta, A[B/X] }
-\LabelRule{ \exists^2_R }
-\UnaRule{ \Gamma \vdash \Delta, \exists X.A }
-\DisplayProof\)
-
-\begin{itemize}
-\item
-  \begin{itemize}
-  \tightlist
+    \begin{equation*}
+      \AxRule{ \Gamma , A \vdash \Delta }
+      \LabelRule{ \exists_L }
+      \UnaRule{\Gamma, \exists\xi.A \vdash \Delta }
+      \DisplayProof
+      \qquad\qquad
+      \AxRule{ \Gamma \vdash \Delta, A[t/x] }
+      \LabelRule{ \exists^1_R }
+      \UnaRule{ \Gamma \vdash \Delta, \exists x.A }
+      \DisplayProof
+      \qquad\qquad
+      \AxRule{ \Gamma \vdash \Delta, A[B/X] }
+      \LabelRule{ \exists^2_R }
+      \UnaRule{ \Gamma \vdash \Delta, \exists X.A }
+      \DisplayProof
+    \end{equation*}
   \item
     for all: 
+    \begin{equation*}
+      \AxRule{ \Gamma, A[t/x] \vdash \Delta }
+      \LabelRule{ \forall^1_L }
+      \UnaRule{ \Gamma, \forall x.A \vdash \Delta }
+      \DisplayProof
+      \qquad\qquad
+      \AxRule{ \Gamma, A[B/X] \vdash \Delta }
+      \LabelRule{ \forall^2_L }
+      \UnaRule{ \Gamma, \forall X.A \vdash \Delta }
+      \DisplayProof
+      \qquad\qquad
+      \AxRule{ \Gamma \vdash \Delta, A }
+      \LabelRule{ \forall_R }
+      \UnaRule{ \Gamma \vdash \Delta, \forall\xi.A }
+      \DisplayProof
+    \end{equation*}
   \end{itemize}
 \end{itemize}
 
-\textbackslash{}AxRule\{ \textbackslash{}Gamma, A{[}t/x{]}
-\textbackslash{}vdash \textbackslash{}Delta \}
-\textbackslash{}LabelRule\{ \textbackslash{}forall\^{}1\_L \}
-\textbackslash{}UnaRule\{ \textbackslash{}Gamma, \textbackslash{}forall
-x.A \textbackslash{}vdash \textbackslash{}Delta \}
-\textbackslash{}DisplayProof \&emsp;
-\(\AxRule{ \Gamma, A[B/X] \vdash \Delta }
-\LabelRule{ \forall^2_L }
-\UnaRule{ \Gamma, \forall X.A \vdash \Delta }
-\DisplayProof\) \&emsp; \(\AxRule{ \Gamma \vdash \Delta, A }
-\LabelRule{ \forall_R }
-\UnaRule{ \Gamma \vdash \Delta, \forall\xi.A }
-\DisplayProof\)
 
 The left rules for \emph{of course} and right rules for \emph{why not}
 are called \emph{dereliction}, \emph{weakening} and \emph{contraction}
@@ -371,23 +314,20 @@ Sequents are considered as multisets, in other words as sequences up to
 permutation. An alternative presentation would be to define a sequent as
 a finite sequence of formulas and to add the exchange rules:
 
-\begin{description}
-\tightlist
-\item[]
-\end{description}
+\begin{equation*}
+  \AxRule{ \Gamma\_1, A, B, \Gamma\_2 \vdash \Delta }
+  \LabelRule{\rulename{exchange}_L}
+  \UnaRule{ \Gamma\_1, B, A, \Gamma\_2 \vdash \Delta }
+  \DisplayProof
+  \qquad\qquad
+  \AxRule{ \Gamma \vdash \Delta_1, A, B, \Delta_2 }
+  \LabelRule{\rulename{exchange}_R}
+  \UnaRule{ \Gamma \vdash \Delta_1, B, A, \Delta_2 }
+  \DisplayProof
+\end{equation*}
 
-\textbackslash{}AxRule\{ \textbackslash{}Gamma\_1, A, B,
-\textbackslash{}Gamma\_2 \textbackslash{}vdash \textbackslash{}Delta \}
-\textbackslash{}LabelRule\{\textbackslash{}rulename\{exchange\}\_L\}
-\textbackslash{}UnaRule\{ \textbackslash{}Gamma\_1, B, A,
-\textbackslash{}Gamma\_2 \textbackslash{}vdash \textbackslash{}Delta \}
-\textbackslash{}DisplayProof \&emsp;
-\(\AxRule{ \Gamma \vdash \Delta_1, A, B, \Delta_2 }
-\LabelRule{\rulename{exchange}_R}
-\UnaRule{ \Gamma \vdash \Delta_1, B, A, \Delta_2 }
-\DisplayProof\)
 
-\subsection{Equivalences}\label{equivalences}
+\section{Equivalences}\label{equivalences}
 
 Two formulas \(A\) and \(B\) are (linearly) equivalent, written
 \(A\linequiv B\), if both implications \(A\limp B\) and \(B\limp A\) are
@@ -396,10 +336,10 @@ provable. Equivalently, \(A\linequiv B\) if both \(A\vdash B\) and
 that, for all \(\Gamma\) and \(\Delta\), \(\Gamma\vdash\Delta,A\) is
 provable if and only if \(\Gamma\vdash\Delta,B\) is provable.
 
-Two related notions are \url{isomorphism} (stronger than equivalence)
-and \url{equiprovability} (weaker than equivalence).
+Two related notions are \hyperref[isomorphism]{isomorphism} (stronger than equivalence)
+and \hyperref[equiprovability]{equiprovability} (weaker than equivalence).
 
-\subsubsection{De Morgan laws}\label{de-morgan-laws}
+\subsection{De Morgan laws}\label{de-morgan-laws}
 
 Negation is involutive:
 
@@ -431,162 +371,81 @@ Duality between connectives:
 \bottomrule
 \end{longtable}
 
-\subsubsection{Fundamental equivalences}\label{fundamental-equivalences}
+\subsection{Fundamental equivalences}\label{fundamental-equivalences}
 
 \begin{itemize}
 \tightlist
 \item
   Associativity, commutativity, neutrality:
-
-  \begin{description}
-  \tightlist
-  \item[]
-  \end{description}
-\end{itemize}
-
-A \textbackslash{}tens (B \textbackslash{}tens C)
-\textbackslash{}linequiv (A \textbackslash{}tens B) \textbackslash{}tens
-C \&emsp; \(A \tens B \linequiv B \tens A\) \&emsp;
-\(A \tens \one \linequiv A\)
-
-*: \(A \parr (B \parr C) \linequiv (A \parr B) \parr C\) \&emsp;
-\(A \parr B \linequiv B \parr A\) \&emsp; \(A \parr \bot \linequiv A\)
-
-*: \(A \plus (B \plus C) \linequiv (A \plus B) \plus C\) \&emsp;
-\(A \plus B \linequiv B \plus A\) \&emsp; \(A \plus \zero \linequiv A\)
-
-*: \(A \with (B \with C) \linequiv (A \with B) \with C\) \&emsp;
-\(A \with B \linequiv B \with A\) \&emsp; \(A \with \top \linequiv A\)
-
-\begin{itemize}
-\tightlist
+  \begin{equation*}
+    \begin{array}{ccc}
+    A \tens (B \tens C) \linequiv (A \tens B) \tens C & A \tens B \linequiv B \tens A & A \tens \one \linequiv A \\
+    A \parr (B \parr C) \linequiv (A \parr B) \parr C & A \parr B \linequiv B \parr A & A \parr \bot \linequiv A \\
+    A \plus (B \plus C) \linequiv (A \plus B) \plus C & A \plus B \linequiv B \plus A & A \plus \zero \linequiv A \\
+A \with (B \with C) \linequiv (A \with B) \with C & A \with B \linequiv B \with A & A \with \top \linequiv A
+    \end{array}
+  \end{equation*}
 \item
   Idempotence of additives:
-
-  \begin{description}
-  \tightlist
-  \item[]
-  \end{description}
-\end{itemize}
-
-A \textbackslash{}plus A \textbackslash{}linequiv A \&emsp;
-\(A \with A \linequiv A\)
-
-\begin{itemize}
-\tightlist
+  \begin{equation*}
+    \begin{array}{cc}
+      A \plus A \linequiv A & A \with A \linequiv A
+    \end{array}
+  \end{equation*}
 \item
   Distributivity of multiplicatives over additives:
-
-  \begin{description}
-  \tightlist
-  \item[]
-  \end{description}
-\end{itemize}
-
-A \textbackslash{}tens (B \textbackslash{}plus C)
-\textbackslash{}linequiv (A \textbackslash{}tens B) \textbackslash{}plus
-(A \textbackslash{}tens C) \&emsp; \(A \tens \zero \linequiv \zero\)
-
-*: \(A \parr (B \with C) \linequiv (A \parr B) \with (A \parr C)\)
-\&emsp; \(A \parr \top \linequiv \top\)
-
-\begin{itemize}
-\tightlist
+  \begin{equation*}
+    \begin{array}{cc}
+       A \tens (B \plus C) \linequiv (A \tens B) \plus (A \tens C) & A \tens \zero \linequiv \zero \\
+       A \parr (B \with C) \linequiv (A \parr B) \with (A \parr C) & A \parr \top \linequiv \top
+    \end{array}
+  \end{equation*}
 \item
   Defining property of exponentials:
-
-  \begin{description}
-  \tightlist
-  \item[]
-  \end{description}
-\end{itemize}
-
-\textbackslash{}oc(A \textbackslash{}with B) \textbackslash{}linequiv
-\textbackslash{}oc A \textbackslash{}tens \textbackslash{}oc B \&emsp;
-\(\oc\top \linequiv \one\)
-
-*: \(\wn(A \plus B) \linequiv \wn A \parr \wn B\) \&emsp;
-\(\wn\zero \linequiv \bot\)
-
-\begin{itemize}
-\tightlist
+  \begin{equation*}
+    \begin{array}{cc}
+       \oc(A \with B) \linequiv \oc A \tens \oc B & \oc\top \linequiv \one \\
+       \wn(A \plus B) \linequiv \wn A \parr \wn B & \wn\zero \linequiv \bot
+    \end{array}
+  \end{equation*}
 \item
   Monoidal structure of exponentials:
-
-  \begin{description}
-  \tightlist
-  \item[]
-  \end{description}
-\end{itemize}
-
-\textbackslash{}oc A \textbackslash{}tens \textbackslash{}oc A
-\textbackslash{}linequiv \textbackslash{}oc A \&emsp;
-\(\oc \one \linequiv \one\)
-
-*: \(\wn A \parr \wn A \linequiv \wn A\) \&emsp;
-\(\wn \bot \linequiv \bot\)
-
-\begin{itemize}
-\tightlist
+  \begin{equation*}
+    \begin{array}{cc}
+       \oc A \tens \oc A \linequiv \oc A & \oc \one \linequiv \one \\
+       \wn A \parr \wn A \linequiv \wn A & \wn \bot \linequiv \bot
+    \end{array}
+  \end{equation*}
 \item
   Digging:
-
-  \begin{description}
-  \tightlist
-  \item[]
-  \end{description}
-\end{itemize}
-
-\textbackslash{}oc\textbackslash{}oc A \textbackslash{}linequiv
-\textbackslash{}oc A \&emsp; \(\wn\wn A \linequiv \wn A\)
-
-\begin{itemize}
-\tightlist
+  \begin{equation*}
+    \begin{array}{cc}
+       \oc\oc A \linequiv \oc A & \wn\wn A \linequiv \wn A
+    \end{array}
+  \end{equation*}
 \item
   Other properties of exponentials:
-
-  \begin{description}
-  \tightlist
-  \item[]
-  \end{description}
-\end{itemize}
-
-\textbackslash{}oc\textbackslash{}wn\textbackslash{}oc\textbackslash{}wn
-A \textbackslash{}linequiv \textbackslash{}oc\textbackslash{}wn A
-\&emsp; \(\oc\wn \one \linequiv \one\)
-
-*: \(\wn\oc\wn\oc A \linequiv \wn\oc A\) \&emsp;
-\(\wn\oc \bot \linequiv \bot\) These properties of exponentials lead to
+  \begin{equation*}
+    \begin{array}{cc}
+       \oc\wn\oc\wn A \linequiv \oc\wn A & \oc\wn \one \linequiv \one \\
+       \wn\oc\wn\oc A \linequiv \wn\oc A & \wn\oc \bot \linequiv \bot
+    \end{array}
+  \end{equation*}
+These properties of exponentials lead to
 the \href{lattice_of_exponential_modalities}{lattice of exponential
 modalities}.
-
-\begin{itemize}
-\tightlist
 \item
   Commutation of quantifiers (\(\zeta\) does not occur in \(A\)):
-
-  \begin{description}
-  \tightlist
-  \item[]
-  \end{description}
+  \begin{equation*}
+    \begin{array}{cccc}
+       \exists \xi. \exists \psi. A \linequiv \exists \psi. \exists \xi. A & \exists \xi.(A \plus B) \linequiv \exists \xi.A \plus \exists \xi.B & \exists \zeta.(A\tens B) \linequiv A\tens\exists \zeta.B & (\exists \zeta.A \linequiv A \\
+       \forall \xi. \forall \psi. A \linequiv \forall \psi. \forall \xi. A & \forall \xi.(A \with B) \linequiv \forall \xi.A \with \forall \xi.B & \forall \zeta.(A\parr B) \linequiv A\parr\forall \zeta.B & \forall \zeta.A \linequiv A
+    \end{array}
+  \end{equation*}
 \end{itemize}
 
-\textbackslash{}exists \textbackslash{}xi. \textbackslash{}exists
-\textbackslash{}psi. A \textbackslash{}linequiv \textbackslash{}exists
-\textbackslash{}psi. \textbackslash{}exists \textbackslash{}xi. A
-\&emsp;
-\(\exists \xi.(A \plus B) \linequiv \exists \xi.A \plus \exists \xi.B\)
-\&emsp; \(\exists \zeta.(A\tens B) \linequiv A\tens\exists \zeta.B\)
-\&emsp; \(\exists \zeta.A \linequiv A\)
 
-*:
-\(\forall \xi. \forall \psi. A \linequiv \forall \psi. \forall \xi. A\)
-\&emsp;
-\(\forall \xi.(A \with B) \linequiv \forall \xi.A \with \forall \xi.B\)
-\&emsp; \(\forall \zeta.(A\parr B) \linequiv A\parr\forall \zeta.B\)
-\&emsp; \(\forall \zeta.A \linequiv A\)
-
-\subsubsection{Definability}\label{definability}
+\subsection{Definability}\label{definability}
 
 The units and the additive connectives can be defined using second-order
 quantification and exponentials, indeed the following equivalences hold:
@@ -610,9 +469,9 @@ exponentials.
 
 Other \href{List_of_equivalences}{basic equivalences} exist.
 
-\subsection{Properties of proofs}\label{properties-of-proofs}
+\section{Properties of proofs}\label{properties-of-proofs}
 
-\subsubsection{Cut elimination and
+\subsection{Cut elimination and
 consequences}\label{cut-elimination-and-consequences}
 
 This property is proved using a set of rewriting rules on proofs, using
@@ -630,7 +489,7 @@ it puts a strong restriction on the set of potential proofs of a given
 sequent. In particular, it implies that the first-order fragment without
 quantifiers is decidable.
 
-\subsubsection{Expansion of identities}\label{expansion-of-identities}
+\subsection{Expansion of identities}\label{expansion-of-identities}
 
 Let us write \(\pi:\Gamma\vdash\Delta\) to signify that \(\pi\) is a
 proof with conclusion \(\Gamma\vdash\Delta\).
@@ -640,15 +499,14 @@ assume that each connective is explicitly introduced by its associated
 rule (except in the case where there is an occurrence of the \(\top\)
 rule).
 
-\subsubsection{Reversibility}\label{reversibility-1}
+\subsection{Reversibility}\label{reversibility-1}
 
 A corresponding property for positive connectives is
-\href{Reversibility_and_focalization}{focalization}, which states that
+\hyperref[reversibility-and-focusing]{focusing}, which states that
 clusters of positive formulas can be treated in one step, under certain
 circumstances.
 
-\subsection{One-sided sequent
-calculus}\label{one-sided-sequent-calculus}
+\section{One-sided sequent calculus}\label{one-sided-sequent-calculus}
 
 The sequent calculus presented above is very symmetric: for every left
 introduction rule, there is a right introduction rule for the dual
@@ -676,6 +534,17 @@ side of sequents is kept empty:
 \tightlist
 \item
   Identity group:
+\begin{equation*}
+  \LabelRule{\rulename{axiom}}
+  \NulRule{ \vdash A\orth, A}
+  \DisplayProof
+  \qquad\qquad
+  \AxRule{ \vdash \Gamma, A }
+  \AxRule{ \vdash \Delta, A\orth }
+  \LabelRule{\rulename{cut}}
+  \BinRule{ \vdash \Gamma, \Delta }
+  \DisplayProof
+\end{equation*}
 
   \begin{description}
   \tightlist
@@ -683,13 +552,6 @@ side of sequents is kept empty:
   \end{description}
 \end{itemize}
 
-\textbackslash{}LabelRule\{\textbackslash{}rulename\{axiom\}\}
-\textbackslash{}NulRule\{ \textbackslash{}vdash A\textbackslash{}orth, A
-\} \textbackslash{}DisplayProof \&emsp; \(\AxRule{ \vdash \Gamma, A }
-\AxRule{ \vdash \Delta, A\orth }
-\LabelRule{\rulename{cut}}
-\BinRule{ \vdash \Gamma, \Delta }
-\DisplayProof\)
 
 \begin{itemize}
 \tightlist
@@ -702,12 +564,12 @@ side of sequents is kept empty:
   \end{description}
 \end{itemize}
 
-\textbackslash{}AxRule\{ \textbackslash{}vdash \textbackslash{}Gamma, A
-\} \textbackslash{}AxRule\{ \textbackslash{}vdash \textbackslash{}Delta,
-B \} \textbackslash{}LabelRule\{ \textbackslash{}tens \}
-\textbackslash{}BinRule\{ \textbackslash{}vdash \textbackslash{}Gamma,
-\textbackslash{}Delta, A \textbackslash{}tens B \}
-\textbackslash{}DisplayProof \&emsp; \(\AxRule{ \vdash \Gamma, A, B }
+\AxRule{ \vdash \Gamma, A
+} \AxRule{ \vdash \Delta,
+B } \LabelRule{ \tens }
+\BinRule{ \vdash \Gamma,
+\Delta, A \tens B }
+\DisplayProof \&emsp; \(\AxRule{ \vdash \Gamma, A, B }
 \LabelRule{ \parr }
 \UnaRule{ \vdash \Gamma, A \parr B }
 \DisplayProof\) \&emsp; \(\LabelRule{ \one }
@@ -728,10 +590,10 @@ B \} \textbackslash{}LabelRule\{ \textbackslash{}tens \}
   \end{description}
 \end{itemize}
 
-\textbackslash{}AxRule\{ \textbackslash{}vdash \textbackslash{}Gamma, A
-\} \textbackslash{}LabelRule\{ \textbackslash{}plus\_1 \}
-\textbackslash{}UnaRule\{ \textbackslash{}vdash \textbackslash{}Gamma, A
-\textbackslash{}plus B \} \textbackslash{}DisplayProof \&emsp;
+\AxRule{ \vdash \Gamma, A
+} \LabelRule{ \plus\_1 }
+\UnaRule{ \vdash \Gamma, A
+\plus B } \DisplayProof \&emsp;
 \(\AxRule{ \vdash \Gamma, B }
 \LabelRule{ \plus_2 }
 \UnaRule{ \vdash \Gamma, A \plus B }
@@ -754,10 +616,10 @@ B \} \textbackslash{}LabelRule\{ \textbackslash{}tens \}
   \end{description}
 \end{itemize}
 
-\textbackslash{}AxRule\{ \textbackslash{}vdash \textbackslash{}Gamma, A
-\} \textbackslash{}LabelRule\{ d \} \textbackslash{}UnaRule\{
-\textbackslash{}vdash \textbackslash{}Gamma, \textbackslash{}wn A \}
-\textbackslash{}DisplayProof \&emsp; \(\AxRule{ \vdash \Gamma }
+\AxRule{ \vdash \Gamma, A
+} \LabelRule{ d } \UnaRule{
+\vdash \Gamma, \wn A }
+\DisplayProof \&emsp; \(\AxRule{ \vdash \Gamma }
 \LabelRule{ w }
 \UnaRule{ \vdash \Gamma, \wn A }
 \DisplayProof\) \&emsp; \(\AxRule{ \vdash \Gamma, \wn A, \wn A }
@@ -780,10 +642,10 @@ B \} \textbackslash{}LabelRule\{ \textbackslash{}tens \}
   \end{description}
 \end{itemize}
 
-\textbackslash{}AxRule\{ \textbackslash{}vdash \textbackslash{}Gamma,
-A{[}t/x{]} \} \textbackslash{}LabelRule\{ \textbackslash{}exists\^{}1 \}
-\textbackslash{}UnaRule\{ \textbackslash{}vdash \textbackslash{}Gamma,
-\textbackslash{}exists x.A \} \textbackslash{}DisplayProof \&emsp;
+\AxRule{ \vdash \Gamma,
+A[t/x] } \LabelRule{ \exists^1 }
+\UnaRule{ \vdash \Gamma,
+\exists x.A } \DisplayProof \&emsp;
 \(\AxRule{ \vdash \Gamma, A[B/X] }
 \LabelRule{ \exists^2 }
 \UnaRule{ \vdash \Gamma, \exists X.A }
@@ -799,9 +661,9 @@ lighter than the two-sided form while keeping the same expressiveness.
 In particular, \url{proof-nets} can be seen as a quotient of one-sided
 sequent calculus proofs under commutation of rules.
 
-\subsection{Variations}\label{variations}
+\section{Variations}\label{variations}
 
-\subsubsection{Exponential rules}\label{exponential-rules}
+\subsection{Exponential rules}\label{exponential-rules}
 
 \begin{itemize}
 \tightlist
@@ -830,12 +692,12 @@ Note that digging violates the subformula property.
   In presence of the digging rule 
 \end{itemize}
 
-\textbackslash{}AxRule\{ \textbackslash{}Gamma \textbackslash{}vdash
-\textbackslash{}wn\textbackslash{}wn A, \textbackslash{}Delta \}
-\textbackslash{}LabelRule\{ \textbackslash{}wn\textbackslash{}wn\}
-\textbackslash{}UnaRule\{ \textbackslash{}Gamma \textbackslash{}vdash
-\textbackslash{}wn A, \textbackslash{}Delta \}
-\textbackslash{}DisplayProof , the multiplexing rule
+\AxRule{ \Gamma \vdash
+\wn\wn A, \Delta }
+\LabelRule{ \wn\wn}
+\UnaRule{ \Gamma \vdash
+\wn A, \Delta }
+\DisplayProof , the multiplexing rule
 \(\AxRule{\Gamma\vdash A^{(n)},\Delta}
 \LabelRule{\rulename{mplex}}
 \UnaRule{\Gamma\vdash \wn A,\Delta}
@@ -843,7 +705,7 @@ Note that digging violates the subformula property.
 \(A\)) is equivalent (for provability) to the triple of rules:
 contraction, weakening, dereliction.
 
-\subsubsection{Non-symmetric sequents}\label{non-symmetric-sequents}
+\subsection{Non-symmetric sequents}\label{non-symmetric-sequents}
 
 The same remarks that lead to the definition of the one-sided calculus
 can lead the definition of other simplified systems:
@@ -867,7 +729,7 @@ can lead the definition of other simplified systems:
   \href{proof_search}{proof search} formalisms.
 \end{itemize}
 
-\subsubsection{Mix rules}\label{mix-rules}
+\subsection{Mix rules}\label{mix-rules}
 
 It is quite common to consider \href{Mix}{mix rules}:
 \(\LabelRule{\rulename{Mix}_0}
