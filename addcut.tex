@@ -1,0 +1,29 @@
+\section{Additive cut rule}\label{additive-cut-rule}
+
+The additive cut rule is: \(\AxRule{\Gamma\vdash A,\Delta}
+\AxRule{\Gamma,A\vdash\Delta}
+\LabelRule{\rulename{cut\;add}}
+\BinRule{\Gamma\vdash\Delta}
+\DisplayProof\)
+
+In contrary to what happens in classical logic, this rule is
+\textbf{not} admissible in linear logic.
+
+The formula \(\alpha\plus\alpha\orth\) is not provable in linear logic,
+while it is derivable with the additive cut rule:
+
+\(\NulRule{\alpha\vdash\alpha}
+\UnaRule{\vdash\alpha,\alpha\orth}
+\LabelRule{\plus_{R2}}
+\UnaRule{\vdash\alpha,\alpha\plus\alpha\orth}
+\NulRule{\alpha\vdash\alpha}
+\LabelRule{\plus_{R1}}
+\UnaRule{\alpha\vdash\alpha\plus\alpha\orth}
+\LabelRule{\rulename{cut\;add}}
+\BinRule{\vdash\alpha\plus\alpha\orth}
+\DisplayProof\)
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
