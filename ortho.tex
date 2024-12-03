@@ -4,11 +4,29 @@
 logic models, being often used to define somehow the duality operator
 \((-)\orth\).
 
+\begin{definition}[Orthogonality relation]
+Let $A$ and $B$ be two sets. An \textbf{orthogonality relation} on $A$ and $B$ is a binary relation $\mathcal{R}\subseteq A\times B$. We say that $a\in A$ and $b\in B$ are \textbf{orthogonal}, and we note $a\perp b$, whenever $(a, b)\in\mathcal{R}$.
+\end{definition}
+
 Let us now assume an orthogonality relation over \(A\) and \(B\).
+
+\begin{definition}[Orthogonal sets]
+Let $\alpha\subseteq A$. We define its orthogonal set $\alpha\orth$ as $\alpha\orth:=\{b\in B \mid \forall a\in \alpha, a\perp b\}$.
+
+Symmetrically, for any $\beta\subseteq B$, we define $\beta\orth:=\{a\in A \mid \forall b\in \beta, a\perp b\}$.
+\end{definition}
 
 Orthogonal sets define Galois connections and share many common
 properties.
 
+\begin{proposition}
+For any sets $\alpha, \alpha'\subseteq A$:
+\begin{itemize}
+\item $\alpha\subseteq \alpha\biorth$
+\item If $\alpha\subseteq\alpha'$, then ${\alpha'}\orth\subseteq\alpha\orth$
+\item $\alpha\triorth = \alpha\orth$
+\end{itemize}
+\end{proposition}
 
 %%% Local Variables:
 %%% mode: latex
