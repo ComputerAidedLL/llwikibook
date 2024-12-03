@@ -11,8 +11,8 @@ In contrary to what happens in classical logic, this rule is
 
 The formula \(\alpha\plus\alpha\orth\) is not provable in linear logic,
 while it is derivable with the additive cut rule:
-
-\(\NulRule{\alpha\vdash\alpha}
+\begin{prooftree}
+\NulRule{\alpha\vdash\alpha}
 \UnaRule{\vdash\alpha,\alpha\orth}
 \LabelRule{\plus_{R2}}
 \UnaRule{\vdash\alpha,\alpha\plus\alpha\orth}
@@ -21,7 +21,7 @@ while it is derivable with the additive cut rule:
 \UnaRule{\alpha\vdash\alpha\plus\alpha\orth}
 \LabelRule{\rulename{cut\;add}}
 \BinRule{\vdash\alpha\plus\alpha\orth}
-\DisplayProof\)
+\end{prooftree}
 
 %%% Local Variables:
 %%% mode: latex

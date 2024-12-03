@@ -437,7 +437,7 @@ the \hyperref[lattice-of-exponential-modalities]{lattice of exponential modaliti
   Commutation of quantifiers (\(\zeta\) does not occur in \(A\)):
   \begin{equation*}
     \begin{array}{cccc}
-       \exists \xi. \exists \psi. A \linequiv \exists \psi. \exists \xi. A & \exists \xi.(A \plus B) \linequiv \exists \xi.A \plus \exists \xi.B & \exists \zeta.(A\tens B) \linequiv A\tens\exists \zeta.B & (\exists \zeta.A \linequiv A \\
+       \exists \xi. \exists \psi. A \linequiv \exists \psi. \exists \xi. A & \exists \xi.(A \plus B) \linequiv \exists \xi.A \plus \exists \xi.B & \exists \zeta.(A\tens B) \linequiv A\tens\exists \zeta.B & \exists \zeta.A \linequiv A \\
        \forall \xi. \forall \psi. A \linequiv \forall \psi. \forall \xi. A & \forall \xi.(A \with B) \linequiv \forall \xi.A \with \forall \xi.B & \forall \zeta.(A\parr B) \linequiv A\parr\forall \zeta.B & \forall \zeta.A \linequiv A
     \end{array}
   \end{equation*}
@@ -695,7 +695,6 @@ The inference rules are essentially the same except that the left hand
 side of sequents is kept empty:
 
 \begin{itemize}
-\tightlist
 \item
   Identity group:
 \begin{equation*}
@@ -709,114 +708,93 @@ side of sequents is kept empty:
   \BinRule{ \vdash \Gamma, \Delta }
   \DisplayProof
 \end{equation*}
-
-  \begin{description}
-  \tightlist
-  \item[]
-  \end{description}
-\end{itemize}
-
-
-\begin{itemize}
-\tightlist
 \item
   Multiplicative group:
-
-  \begin{description}
-  \tightlist
-  \item[]
-  \end{description}
-\end{itemize}
-
+\begin{equation*}
 \AxRule{ \vdash \Gamma, A
 } \AxRule{ \vdash \Delta,
 B } \LabelRule{ \tens }
 \BinRule{ \vdash \Gamma,
 \Delta, A \tens B }
-\DisplayProof \&emsp; \(\AxRule{ \vdash \Gamma, A, B }
+\DisplayProof
+\qquad\qquad
+\AxRule{ \vdash \Gamma, A, B }
 \LabelRule{ \parr }
 \UnaRule{ \vdash \Gamma, A \parr B }
-\DisplayProof\) \&emsp; \(\LabelRule{ \one }
+\DisplayProof
+\qquad\qquad
+\LabelRule{ \one }
 \NulRule{ \vdash \one }
-\DisplayProof\) \&emsp; \(\AxRule{ \vdash \Gamma }
+\DisplayProof
+\qquad\qquad
+\AxRule{ \vdash \Gamma }
 \LabelRule{ \bot }
 \UnaRule{ \vdash \Gamma, \bot }
-\DisplayProof\)
-
-\begin{itemize}
-\tightlist
+\DisplayProof
+\end{equation*}
 \item
   Additive group:
-
-  \begin{description}
-  \tightlist
-  \item[]
-  \end{description}
-\end{itemize}
-
-\AxRule{ \vdash \Gamma, A
-} \LabelRule{ \plus\_1 }
-\UnaRule{ \vdash \Gamma, A
-\plus B } \DisplayProof \&emsp;
-\(\AxRule{ \vdash \Gamma, B }
+\begin{equation*}
+\AxRule{ \vdash \Gamma, A} \LabelRule{ \plus\_1 }
+\UnaRule{ \vdash \Gamma, A \plus B }
+\DisplayProof
+\qquad\qquad
+\AxRule{ \vdash \Gamma, B }
 \LabelRule{ \plus_2 }
 \UnaRule{ \vdash \Gamma, A \plus B }
-\DisplayProof\) \&emsp; \(\AxRule{ \vdash \Gamma, A }
+\DisplayProof
+\qquad\qquad
+\AxRule{ \vdash \Gamma, A }
 \AxRule{ \vdash \Gamma, B }
 \LabelRule{ \with }
 \BinRule{ \vdash, \Gamma, A \with B }
-\DisplayProof\) \&emsp; \(\LabelRule{ \top }
+\DisplayProof
+\qquad\qquad
+\LabelRule{ \top }
 \NulRule{ \vdash \Gamma, \top }
-\DisplayProof\)
-
-\begin{itemize}
-\tightlist
+\DisplayProof
+\end{equation*}
 \item
   Exponential group:
-
-  \begin{description}
-  \tightlist
-  \item[]
-  \end{description}
-\end{itemize}
-
-\AxRule{ \vdash \Gamma, A
-} \LabelRule{ d } \UnaRule{
-\vdash \Gamma, \wn A }
-\DisplayProof \&emsp; \(\AxRule{ \vdash \Gamma }
+\begin{equation*}
+\AxRule{ \vdash \Gamma, A } \LabelRule{ d }
+\UnaRule{ \vdash \Gamma, \wn A }
+\DisplayProof
+\qquad\qquad
+\AxRule{ \vdash \Gamma }
 \LabelRule{ w }
 \UnaRule{ \vdash \Gamma, \wn A }
-\DisplayProof\) \&emsp; \(\AxRule{ \vdash \Gamma, \wn A, \wn A }
+\DisplayProof
+\qquad\qquad
+\AxRule{ \vdash \Gamma, \wn A, \wn A }
 \LabelRule{ c }
 \UnaRule{ \vdash \Gamma, \wn A }
-\DisplayProof\) \&emsp; \(\AxRule{ \vdash \wn\Gamma, B }
+\DisplayProof
+\qquad\qquad
+\AxRule{ \vdash \wn\Gamma, B }
 \LabelRule{ \oc }
 \UnaRule{ \vdash \wn\Gamma, \oc B }
-\DisplayProof\)
-
-\begin{itemize}
-\tightlist
+\DisplayProof
+\end{equation*}
 \item
-  Quantifier group (in the \(\forall\) rule, \(\xi\) must not occur free
-  in \(\Gamma\)):
-
-  \begin{description}
-  \tightlist
-  \item[]
-  \end{description}
-\end{itemize}
-
+  Quantifier group (in the \(\forall\) rule, \(\xi\) must not occur free in \(\Gamma\)):
+\begin{equation*}
 \AxRule{ \vdash \Gamma,
 A[t/x] } \LabelRule{ \exists^1 }
-\UnaRule{ \vdash \Gamma,
-\exists x.A } \DisplayProof \&emsp;
-\(\AxRule{ \vdash \Gamma, A[B/X] }
+\UnaRule{ \vdash \Gamma, \exists x.A }
+\DisplayProof
+\qquad\qquad
+\AxRule{ \vdash \Gamma, A[B/X] }
 \LabelRule{ \exists^2 }
 \UnaRule{ \vdash \Gamma, \exists X.A }
-\DisplayProof\) \&emsp; \(\AxRule{ \vdash \Gamma, A }
+\DisplayProof
+\qquad\qquad
+\AxRule{ \vdash \Gamma, A }
 \LabelRule{ \forall }
 \UnaRule{ \vdash \Gamma, \forall \xi.A }
-\DisplayProof\)
+\DisplayProof
+\end{equation*}
+\end{itemize}
 
 \begin{theorem}
 A two-sided sequent $\Gamma\vdash\Delta$ is provable if
