@@ -1,106 +1,94 @@
 \section{Provable formulas}\label{provable-formulas}
 
 Important provable formulas are given by
-\href{List_of_isomorphisms}{isomorphisms} and by
-\href{List_of_equivalences}{equivalences}.
+\hyperref[list-of-isomorphisms]{isomorphisms} and by
+\hyperref[list-of-equivalences]{equivalences}.
 
-In many of the cases below the \href{Non_provable_formulas}{converse
-implication does not hold}.
+In many of the cases below the \hyperref[non-provable-formulas]{converse implication does not hold}.
 
 \subsection{Distributivities}\label{distributivities}
 
-\subsubsection{Standard
-distributivities}\label{standard-distributivities}
-
-\(A\plus (B\with C) \limp (A\plus B)\with (A\plus C)\)
-
-\(A\tens (B\with C) \limp (A\tens B)\with (A\tens C)\)
-
-\(\exists \xi . (A \with B) \limp (\exists \xi . A) \with (\exists \xi . B)\)
+\subsubsection{Standard distributivities}\label{standard-distributivities}
+\begin{align*}
+A\plus (B\with C) &\limp (A\plus B)\with (A\plus C) \\
+A\tens (B\with C) &\limp (A\tens B)\with (A\tens C) \\
+\exists \xi . (A \with B) &\limp (\exists \xi . A) \with (\exists \xi . B)
+\end{align*}
 
 \subsubsection{Linear distributivities}\label{linear-distributivities}
-
-\(A\tens (B\parr C) \limp (A\tens B)\parr C\)
-
-\(\exists \xi. (A \parr B) \limp A \parr \exists \xi.B  \quad  (\xi\notin A)\)
-
-\(A \tens \forall \xi.B \limp \forall \xi. (A \tens B) \quad  (\xi\notin A)\)
+\begin{align*}
+A\tens (B\parr C) &\limp (A\tens B)\parr C \\
+\exists \xi. (A \parr B) &\limp A \parr \exists \xi.B  & (\xi\notin A) \\
+A \tens \forall \xi.B &\limp \forall \xi. (A \tens B) &  (\xi\notin A) \\
+\end{align*}
 
 \subsection{Factorizations}\label{factorizations}
-
-\((A\with B)\plus (A\with C) \limp A\with (B\plus C)\)
-
-\((A\parr B)\plus (A\parr C) \limp A\parr (B\plus C)\)
-
-\((\forall \xi . A) \plus (\forall \xi . B) \limp \forall \xi . (A \plus B)\)
+\begin{align*}
+(A\with B)\plus (A\with C) &\limp A\with (B\plus C) \\
+(A\parr B)\plus (A\parr C) &\limp A\parr (B\plus C) \\
+(\forall \xi . A) \plus (\forall \xi . B) &\limp \forall \xi . (A \plus B)
+\end{align*}
 
 \subsection{Identities}\label{identities}
-
-\(\one \limp A\orth\parr A\)
-
-\(A\tens A\orth \limp\bot\)
+\begin{align*}
+\one &\limp A\orth\parr A \\
+A\tens A\orth &\limp\bot
+\end{align*}
 
 \subsection{Additive structure}\label{additive-structure}
 
 \(\begin{array}{rclcrclcrcl}
-  A\with B &amp;\limp&amp; A &amp;\quad&amp; A\with B &amp;\limp&amp; B &amp;\quad&amp; A &amp;\limp&amp; \top\\
-  A &amp;\limp&amp; A\plus B &amp;\quad&amp; B &amp;\limp&amp; A\plus B &amp;\quad&amp; \zero &amp;\limp&amp; A
+  A\with B & \limp&  A & \quad&  A\with B & \limp&  B & \quad&  A & \limp&  \top\\
+  A & \limp&  A\plus B & \quad&  B & \limp&  A\plus B & \quad&  \zero & \limp&  A
 \end{array}\)
 
 \subsection{Quantifiers}\label{quantifiers-2}
 
 \(\begin{array}{rcll}
-  A &amp;\limp&amp; \forall \xi.A  &amp;\quad  (\xi\notin A) \\
-  \exists \xi.A &amp;\limp&amp; A  &amp;\quad  (\xi\notin A)
-\end{array}\)
-
-\(\begin{array}{rcl}
-  \forall \xi_1.\forall \xi_2. A &amp;\limp&amp; \forall \xi. A[^\xi/_{\xi_1},^\xi/_{\xi_2}] \\
-  \exists \xi.A[^\xi/_{\xi_1},^\xi/_{\xi_2}] &amp;\limp&amp; \exists \xi_1. \exists \xi_2.A
+  A & \limp&  \forall \xi.A  & \quad  (\xi\notin A) \\
+  \exists \xi.A & \limp&  A  & \quad  (\xi\notin A) \\[2ex]
+  \forall \xi_1.\forall \xi_2. A & \limp&  \forall \xi. A[^\xi/_{\xi_1},^\xi/_{\xi_2}] \\
+  \exists \xi.A[^\xi/_{\xi_1},^\xi/_{\xi_2}] & \limp&  \exists \xi_1. \exists \xi_2.A
 \end{array}\)
 
 \subsection{Exponential structure}\label{exponential-structure}
 
 Provable formulas involving exponential connectives only provide us with
-the \href{lattice_of_exponential_modalities}{lattice of exponential
-modalities}.
+the \hyperref[lattice-of-exponential-modalities]{lattice of exponential modalities}.
 
 \(\begin{array}{rclcrcl}
-  \oc A &amp;\limp&amp; A &amp;\quad&amp; A&amp;\limp&amp;\wn A\\
-  \oc A &amp;\limp&amp; 1 &amp;\quad&amp; \bot &amp;\limp&amp; \wn A
+  \oc A & \limp&  A & \quad&  A& \limp& \wn A\\
+  \oc A & \limp&  1 & \quad&  \bot & \limp&  \wn A
 \end{array}\)
 
 \subsection{Monoidality of
 exponentials}\label{monoidality-of-exponentials}
 
 \(\begin{array}{rcl}
-  \wn(A\parr B) &amp;\limp&amp; \wn A\parr\wn B \\
-  \oc A\tens\oc B &amp;\limp&amp; \oc(A\tens B) \\
+  \wn(A\parr B) & \limp&  \wn A\parr\wn B \\
+  \oc A\tens\oc B & \limp&  \oc(A\tens B) \\
 \\
- \oc{(A \with B)} &amp;\limp&amp; \oc{A} \with \oc{B} \\
- \wn{A} \plus \wn{B} &amp;\limp&amp; \wn{(A \plus B)} \\
+ \oc{(A \with B)} & \limp&  \oc{A} \with \oc{B} \\
+ \wn{A} \plus \wn{B} & \limp&  \wn{(A \plus B)} \\
 \\
- \wn{(A \with B)} &amp;\limp&amp; \wn{A} \with \wn{B} \\
- \oc{A} \plus \oc{B} &amp;\limp&amp; \oc{(A \plus B)}
+ \wn{(A \with B)} & \limp&  \wn{A} \with \wn{B} \\
+ \oc{A} \plus \oc{B} & \limp&  \oc{(A \plus B)}
 \end{array}\)
 
 \subsection{Promotion principles}\label{promotion-principles}
 
 \(\begin{array}{rcl}
- \oc{A} \tens \wn{B} &amp;\limp&amp; \wn{(A \tens B)} \\
- \oc{(A \parr B)} &amp;\limp&amp; \wn{A} \parr \oc{B}
+ \oc{A} \tens \wn{B} & \limp&  \wn{(A \tens B)} \\
+ \oc{(A \parr B)} & \limp&  \wn{A} \parr \oc{B}
 \end{array}\)
 
 \subsection{Commutations}\label{commutations}
-
-\(\exists \xi . \wn A \limp \wn{\exists \xi . A}\)
-
-\(\oc{\forall \xi . A} \limp \forall \xi . \oc A\)
-
-\(\wn{\forall \xi . A} \limp \forall \xi . \wn A\)
-
-\(\exists \xi . \oc A \limp \oc{\exists \xi . A}\)
-
+\begin{align*}
+\exists \xi . \wn A &\limp \wn{\exists \xi . A} \\
+\oc{\forall \xi . A} &\limp \forall \xi . \oc A \\
+\wn{\forall \xi . A} &\limp \forall \xi . \wn A \\
+\exists \xi . \oc A &\limp \oc{\exists \xi . A}
+\end{align*}
 
 %%% Local Variables:
 %%% mode: latex
