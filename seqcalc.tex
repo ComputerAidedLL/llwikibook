@@ -208,7 +208,7 @@ sequents, built using the following inference rules:
   \begin{itemize}
   \item
     of course: 
-    \begin{equation*}
+    \begin{gather*}
        \AxRule{ \Gamma, A \vdash \Delta }
        \LabelRule{ d_L }
        \UnaRule{ \Gamma, \oc A \vdash \Delta }
@@ -223,15 +223,15 @@ sequents, built using the following inference rules:
        \LabelRule{ c_L }
        \UnaRule{ \Gamma, \oc A \vdash \Delta }
        \DisplayProof
-       \qquad\qquad
+       \\[2ex]
        \AxRule{ \oc A_1, \ldots, \oc A_n \vdash B ,\wn B_1, \ldots, \wn B_m }
        \LabelRule{ \oc_R }
        \UnaRule{ \oc A_1, \ldots, \oc A_n \vdash \oc B ,\wn B_1, \ldots, \wn B_m }
        \DisplayProof      
-    \end{equation*}
+    \end{gather*}
   \item
     why not:
-    \begin{equation*}
+    \begin{gather*}
       \AxRule{ \Gamma \vdash A, \Delta }
       \LabelRule{ d_R }
       \UnaRule{ \Gamma \vdash \wn A, \Delta }
@@ -246,12 +246,12 @@ sequents, built using the following inference rules:
       \LabelRule{ c_R }
       \UnaRule{ \Gamma \vdash \wn A, \Delta }
       \DisplayProof
-      \qquad\qquad
+      \\[2ex]
       \AxRule{ \oc A_1, \ldots, \oc A_n, A \vdash \wn B_1, \ldots, \wn B_m }
       \LabelRule{ \wn_L }
       \UnaRule{ \oc A_1, \ldots, \oc A_n, \wn A \vdash \wn B_1, \ldots, \wn B_m }
       \DisplayProof      
-    \end{equation*}
+    \end{gather*}
   \end{itemize}
 \item
   Quantifier group (in the \(\exists_L\) and \(\forall_R\) rules,
@@ -432,8 +432,7 @@ A \with (B \with C) \linequiv (A \with B) \with C & A \with B \linequiv B \with 
     \end{array}
   \end{equation*}
 These properties of exponentials lead to
-the \href{lattice_of_exponential_modalities}{lattice of exponential
-modalities}.
+the \hyperref[lattice-of-exponential-modalities]{lattice of exponential modalities}.
 \item
   Commutation of quantifiers (\(\zeta\) does not occur in \(A\)):
   \begin{equation*}
@@ -467,19 +466,47 @@ Any pair of connectives that has the same rules as \(\tens/\parr\) is
 equivalent to it, the same holds for additives, but not for
 exponentials.
 
-Other \href{List_of_equivalences}{basic equivalences} exist.
+Other \hyperref[list-of-equivalences]{basic equivalences} exist.
 
 \section{Properties of proofs}\label{properties-of-proofs}
 
-\subsection{Cut elimination and
-consequences}\label{cut-elimination-and-consequences}
+\subsection{Cut elimination and consequences}\label{cut-elimination-and-consequences}
+
+\begin{theorem}[cut elimination]
+For every sequent $\Gamma\vdash\Delta$, there is a proof of
+$\Gamma\vdash\Delta$ if and only if there is a proof of
+$\Gamma\vdash\Delta$ that does not use the cut rule.
+\end{theorem}
 
 This property is proved using a set of rewriting rules on proofs, using
 appropriate termination arguments (see the specific articles on
-\href{cut_elimination}{cut elimination} for detailed proofs), it is the
+\wantedpage{cut elimination} for detailed proofs), it is the
 core of the proof/program correspondence.
 
 It has several important consequences:
+
+\begin{definition}[subformula]
+The subformulas of a formula $A$ are $A$ and, inductively, the subformulas of its immediate subformulas:
+\begin{itemize}
+\item the immediate subformulas of $A\tens B$, $A\parr B$, $A\plus B$, $A\with B$ are $A$ and $B$,
+\item the only immediate subformula of $\oc A$ and $\wn A$ is $A$,
+\item $\one$, $\bot$, $\zero$, $\top$ and atomic formulas have no immediate subformula,
+\item the immediate subformulas of $\exists x.A$ and $\forall x.A$ are all the $A[t/x]$ for all first-order terms $t$,
+\item the immediate subformulas of $\exists X.A$ and $\forall X.A$ are all the $A[B/X]$ for all formulas $B$ (with the appropriate number of parameters).
+\end{itemize}
+\end{definition}
+
+\begin{theorem}[subformula property]
+A sequent $\Gamma\vdash\Delta$ is provable if and only if it is the conclusion of a proof in which each intermediate conclusion is made of subformulas of the
+formulas of $\Gamma$ and $\Delta$.
+\end{theorem}
+
+\begin{proof}
+By the cut elimination theorem, if a sequent is provable, then it is provable by a cut-free proof.
+In each rule except the cut rule, all formulas of the premisses are either
+formulas of the conclusion, or immediate subformulas of it, therefore
+cut-free proofs have the subformula property.
+\end{proof}
 
 The subformula property means essentially nothing in the second-order
 system, since any formula is a subformula of a quantified formula where
@@ -489,10 +516,69 @@ it puts a strong restriction on the set of potential proofs of a given
 sequent. In particular, it implies that the first-order fragment without
 quantifiers is decidable.
 
+\begin{theorem}[consistency]
+The empty sequent $\vdash$ is not provable.
+Subsequently, it is impossible to prove both a formula $A$ and its
+negation $A\orth$; it is impossible to prove $\zero$ or
+$\bot$.
+\end{theorem}
+
+\begin{proof}
+If a sequent is provable, then it is the conclusion of a cut-free proof.
+In each rule except the cut rule, there is at least one formula in conclusion.
+Therefore $\vdash$ cannot be the conclusion of a proof.
+The other properties are immediate consequences: if $\vdash A\orth$
+and $\vdash A$ are provable, then by the left negation rule
+$A\orth\vdash$ is provable, and by the cut rule one gets empty
+conclusion, which is not possible.
+As particular cases, since $\one$ and $\top$ are
+provable, $\bot$ and $\zero$ are not, since they are
+equivalent to $\one\orth$ and $\top\orth$
+respectively.
+\end{proof}
+
 \subsection{Expansion of identities}\label{expansion-of-identities}
 
 Let us write \(\pi:\Gamma\vdash\Delta\) to signify that \(\pi\) is a
 proof with conclusion \(\Gamma\vdash\Delta\).
+
+\begin{proposition}[$\eta$-expansion]
+For every proof $\pi$, there is a proof $\pi'$ with the
+same conclusion as $\pi$ in which the axiom rule is only used with
+atomic formulas.
+If $\pi$ is cut-free, then there is a cut-free $\pi'$.
+\end{proposition}
+
+\begin{proof}
+It suffices to prove that for every formula $A$, the sequent
+$A\vdash A$ has a cut-free proof in which the axiom rule is used
+only for atomic formulas.
+We prove this by induction on $A$.
+\begin{itemize}
+\item If $A$ is atomic, then $A\vdash A$ is an instance of the atomic axiom rule.
+\item If $A=A_1\tens A_2$ then we have:
+\begin{prooftree}
+\AxRule{ \pi_1 : A_1 \vdash A_1 }
+\AxRule{ \pi_2 : A_2 \vdash A_2 }
+\LabelRule{ \tens_R }
+\BinRule{ A_1, A_2 \vdash A_1 \tens A_2 }
+\LabelRule{ \tens_L }
+\UnaRule{ A_1 \tens A_2 \vdash A_1 \tens A_2 }
+\end{prooftree}
+where $\pi_1$ and $\pi_2$ exist by induction hypothesis.
+\item If $A=A_1\parr A_2$ then we have:
+\begin{prooftree}
+\AxRule{ \pi_1 : A_1 \vdash A_1 }
+\AxRule{ \pi_2 : A_2 \vdash A_2 }
+\LabelRule{ \parr_L }
+\BinRule{ A_1 \parr A_2 \vdash A_1, A_2 }
+\LabelRule{ \parr_R }
+\UnaRule{ A_1 \parr A_2 \vdash A_1 \parr A_2 }
+\end{prooftree}
+where $\pi_1$ and $\pi_2$ exist by induction hypothesis.
+\item All other connectives follow the same pattern.
+\end{itemize}
+\end{proof}
 
 The interesting thing with \(\eta\)-expansion is that, we can always
 assume that each connective is explicitly introduced by its associated
@@ -500,6 +586,84 @@ rule (except in the case where there is an occurrence of the \(\top\)
 rule).
 
 \subsection{Reversibility}\label{reversibility-1}
+
+\begin{definition}[reversibility]
+A connective $c$ is called \textit{reversible} if
+\begin{itemize}
+\item for every proof $\pi:\Gamma\vdash\Delta,c(A_1,\ldots,A_n)$, there is a proof $\pi'$ with the same conclusion in which $c(A_1,\ldots,A_n)$ is introduced by the last rule,
+\item if $\pi$ is cut-free then there is a cut-free $\pi'$.
+\end{itemize}
+\end{definition}
+
+\begin{proposition}
+The connectives $\parr$, $\bot$, $\with$, $\top$ and $\forall$ are reversible.
+\end{proposition}
+
+\begin{proof}
+Using the $\eta$-expansion property, we assume that the axiom rule is only applied to atomic formulas.
+Then each top-level connective is introduced either by its associated (left or
+right) rule or in an instance of the $\zero_L$ or
+$\top_R$ rule.
+
+For $\parr$, consider a proof $\pi\Gamma\vdash\Delta,A\parr
+B$.
+If $A\parr B$ is introduced by a $\parr_R$ rule (not
+necessarily the last rule in $\pi$), then if we remove this rule
+we get a proof of $\vdash\Gamma,A,B$ (this can be proved by a
+straightforward induction on $\pi$).
+If it is introduced in the context of a $\zero_L$ or
+$\top_R$ rule, then this rule can be changed so that
+$A\parr B$ is replaced by $A,B$.
+In either case, we can apply a final $\parr$ rule to get the
+expected proof.
+
+For $\bot$, the same technique applies: if it is introduced by a
+$\bot_R$ rule, then remove this rule to get a proof of
+$\vdash\Gamma$, if it is introduced by a $\zero_L$ or
+$\top_R$ rule, remove the $\bot$ from this rule, then
+apply the $\bot$ rule at the end of the new proof.
+
+For $\with$, consider a proof
+$\pi:\Gamma\vdash\Delta,A\with B$.
+If the connective is introduced by a $\with$ rule then this rule is
+applied in a context like
+\begin{prooftree}
+\AxRule{ \pi_1: \Gamma' \vdash \Delta', A }
+\AxRule{ \pi_2: \Gamma' \vdash \Delta', B }
+\LabelRule{ \with }
+\BinRule{ \Gamma' \vdash \Delta', A \with B }
+\end{prooftree}
+
+Since the formula $A\with B$ is not involved in other rules (except
+as context), if we replace this step by $\pi_1$ in $\pi$
+we finally get a proof $\pi'_1:\Gamma\vdash\Delta,A$.
+If we replace this step by $\pi_2$ we get a proof
+$\pi'_2:\Gamma\vdash\Delta,B$.
+Combining $\pi_1$ and $\pi_2$ with a final
+$\with$ rule we finally get the expected proof.
+The case when the $\with$ was introduced in a $\top$
+rule is solved as before.
+
+For $\top$ the result is trivial: just choose $\pi'$ as
+an instance of the $\top$ rule with the appropriate conclusion.
+
+For $\forall$, consider a proof
+$\pi:\Gamma\vdash\Delta,\forall\xi.A$.
+Up to renaming, we can assume that $\xi$ occurs free only above the
+rule that introduces the quantifier.
+If the quantifier is introduced by a $\forall$ rule, then if we
+remove this rule, we can check that we get a proof of
+$\Gamma\vdash\Delta,A$ on which we can finally apply the
+$\forall$ rule.
+The case when the $\forall$ was introduced in a $\top$
+rule is solved as before.
+
+Note that, in each case, if the proof we start from is cut-free, our
+transformations do not introduce a cut rule.
+However, if the original proof has cuts, then the final proof may have more
+cuts, since in the case of $\with$ we duplicated a part of the
+original proof.
+\end{proof}
 
 A corresponding property for positive connectives is
 \hyperref[reversibility-and-focusing]{focusing}, which states that
@@ -654,11 +818,17 @@ A[t/x] } \LabelRule{ \exists^1 }
 \UnaRule{ \vdash \Gamma, \forall \xi.A }
 \DisplayProof\)
 
+\begin{theorem}
+A two-sided sequent $\Gamma\vdash\Delta$ is provable if
+and only if the sequent $\vdash\Gamma\orth,\Delta$ is provable in
+the one-sided system.
+\end{theorem}
+
 The one-sided system enjoys the same properties as the two-sided one,
 including cut elimination, the subformula property, etc. This
 formulation is often used when studying proofs because it is much
 lighter than the two-sided form while keeping the same expressiveness.
-In particular, \url{proof-nets} can be seen as a quotient of one-sided
+In particular, \hyperref[proof-nets]{proof-nets} can be seen as a quotient of one-sided
 sequent calculus proofs under commutation of rules.
 
 \section{Variations}\label{variations}
@@ -721,17 +891,17 @@ can lead the definition of other simplified systems:
   positive connectives (or the ones for negative connectives only,
   obviously).
 \item
-  \href{Intuitionistic_linear_logic}{Intuitionistic linear logic} is the
+  \hyperref[intuitionistic-linear-logic]{Intuitionistic linear logic} is the
   two-sided system where the right-hand side is constrained to always
   contain exactly one formula (with a few associated restrictions).
 \item
-  Similar restrictions are used in various \url{semantics} and
-  \href{proof_search}{proof search} formalisms.
+  Similar restrictions are used in various \hyperref[semantics]{semantics} and
+  \wantedpage{proof search} formalisms.
 \end{itemize}
 
 \subsection{Mix rules}\label{mix-rules}
 
-It is quite common to consider \href{Mix}{mix rules}:
+It is quite common to consider \hyperref[mix]{mix rules}:
 \(\LabelRule{\rulename{Mix}_0}
 \NulRule{\vdash}
 \DisplayProof
