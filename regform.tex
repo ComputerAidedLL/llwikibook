@@ -6,18 +6,33 @@ A \emph{regular formula} is a formula \(R\) such that
 A formula \(L\) is \emph{co-regular} if its dual \(L\orth\) is regular,
 that is if \(L\linequiv\oc\wn L\).
 
-\subsection{Alternative
-characterization}\label{alternative-characterization}
+\subsection{Alternative characterization}\label{alternative-characterization}
 
 \(R\) is regular if and only if it is
-\href{Sequent_calculus\#Equivalences}{equivalent} to a formula of the
-shape \(\wn P\) for some \href{positive_formula}{positive formula}
+\hyperref[equivalences]{equivalent} to a formula of the
+shape \(\wn P\) for some \hyperref[positive-formula]{positive formula}
 \(P\).
+
+\begin{proof}
+If $R$ is regular then $R\linequiv\wn\oc R$ with $\oc R$ positive. If $R\linequiv\wn P$ with $P$ positive then $R$ is regular since $P\linequiv\oc P$.
+\end{proof}
 
 \subsection{Regular connectives}\label{regular-connectives}
 
 A connective \(c\) of arity \(n\) is \emph{regular} if for any regular
 formulas \(R_1\),...,\(R_n\), \(c(R_1,\dots,R_n)\) is regular.
+
+\begin{proposition}[Regular connectives]
+$\parr$, $\bot$ and $\wn\oc$ define regular connectives.
+\end{proposition}
+
+\begin{proof}
+If $R$ and $S$ are regular, $R\parr S \linequiv \wn\oc R \parr \wn\oc S \linequiv \wn{(\oc R\plus\oc S)}$ thus it is regular since $\oc R\plus\oc S$ is positive.
+
+$\bot\linequiv\wn\zero$ thus it is regular since $\zero$ is positive.
+
+If $R$ is regular then $\wn\oc R$ is regular, since $\wn\oc\wn\oc R\linequiv \wn\oc R$.
+\end{proof}
 
 More generally, \(\wn\oc A\) is regular for any formula \(A\).
 

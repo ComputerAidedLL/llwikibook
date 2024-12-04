@@ -1,50 +1,63 @@
 \section{Negative formula}\label{negative-formula}
 
 A \emph{negative formula} is a formula \(N\) such that \(\wn N\limp N\)
-(thus a \href{Wikipedia:F-algebra}{algebra} for the
-\href{Wikipedia:Monad_(category_theory)}{monad} \(\wn\)). As a
-consequence \(N\) and \(\wn N\) are
-\href{Sequent_calculus\#Equivalences}{equivalent}.
+(thus a \href{https://en.wikipedia.org/wiki/F-algebra}{algebra} for the
+\href{https://en.wikipedia.org/wiki/Monad_(category_theory)}{monad} \(\wn\)). As a consequence \(N\) and \(\wn N\) are \hyperref[equivalences]{equivalent}.
 
-A formula \(N\) is negative if and only if \(N\orth\) is
-\href{Positive_formula}{positive}.
+A formula \(N\) is negative if and only if \(N\orth\) is \hyperref[positive-formula]{positive}.
 
 \subsection{Negative connectives}\label{negative-connectives}
 
 A connective \(c\) of arity \(n\) is \emph{negative} if for any negative
 formulas \(N_1\),...,\(N_n\), \(c(N_1,\dots,N_n)\) is negative.
 
+\begin{proposition}[Negative connectives]
+$\parr$, $\bot$, $\with$, $\top$, $\wn$ and $\forall$ are negative connectives.
+\end{proposition}
+
+\begin{proof}
+This is equivalent to the fact that $\tens$, $\one$, $\plus$, $\zero$, $\oc$ and $\exists$ are \hyperref[positive-formula]{positive connectives}.
+\end{proof}
+
 More generally, \(\wn A\) is negative for any formula \(A\).
 
 The notion of negative connective is related with but different from the
-notion of \href{synchronous_connective}{synchronous connective}.
+notion of \wantedpage{asynchronous connective}.
 
-\subsection{Generalized structural
-rules}\label{generalized-structural-rules}
+\subsection{Generalized structural rules}\label{generalized-structural-rules}
 
 Negative formulas admit generalized right structural rules corresponding
 to a structure of
-\href{Wikipedia:Monoid_(category_theory)}{\(\parr\)-monoid}:
-\(N\parr N\limp N\) and \(\bot\limp N\). The following rule is
-derivable:
-
-\(\AxRule{\Gamma\vdash N,N,\Delta}
+\href{https://en.wikipedia.org/wiki/Monoid_(category_theory)}{\(\parr\)-monoid}:
+\(N\parr N\limp N\) and \(\bot\limp N\).
+The following rules are derivable:
+\begin{equation*}
+\AxRule{\Gamma\vdash N,N,\Delta}
 \LabelRule{- c R}
 \UnaRule{\Gamma\vdash N,\Delta}
 \DisplayProof
-\qquad
+\qquad\qquad
 \AxRule{\Gamma\vdash\Delta}
 \LabelRule{- w R}
 \UnaRule{\Gamma\vdash N,\Delta}
-\DisplayProof\)
+\DisplayProof
+\end{equation*}
+
+\begin{proof}
+This is equivalent to the \hyperref[generalized-structural-rules-pos]{generalized left structural rules} for positive formulas.
+\end{proof}
 
 Negative formulas are also acceptable in the context of the promotion
 rule. The following rule is derivable:
-
-\(\AxRule{\vdash A,N_1,\dots,N_n}
+\begin{prooftree}
+\AxRule{\vdash A,N_1,\dots,N_n}
 \LabelRule{- \oc R}
 \UnaRule{\vdash \oc{A},N_1,\dots,N_n}
-\DisplayProof\)
+\end{prooftree}
+
+\begin{proof}
+This is equivalent to the possibility of having positive formulas in the \hyperref[generalized-structural-rules-pos]{left-hand side context of the promotion rule}.
+\end{proof}
 
 
 %%% Local Variables:

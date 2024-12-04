@@ -1,52 +1,57 @@
 \section{Positive formula}\label{positive-formula}
 
 A \emph{positive formula} is a formula \(P\) such that \(P\limp\oc P\)
-(thus a \href{Wikipedia:F-coalgebra}{coalgebra} for the
-\href{Wikipedia:Comonad}{comonad} \(\oc\)). As a consequence \(P\) and
-\(\oc P\) are \href{Sequent_calculus\#Equivalences}{equivalent}.
+(thus a \href{https://en.wikipedia.org/wiki/F-coalgebra}{coalgebra} for the
+\href{https://en.wikipedia.org/wiki/Comonad}{comonad} \(\oc\)). As a consequence \(P\) and
+\(\oc P\) are \hyperref[equivalences]{equivalent}.
 
 A formula \(P\) is positive if and only if \(P\orth\) is
-\href{Negative_formula}{negative}.
+\hyperref[negative-formula]{negative}.
 
 \subsection{Positive connectives}\label{positive-connectives}
 
 A connective \(c\) of arity \(n\) is \emph{positive} if for any positive
 formulas \(P_1\),...,\(P_n\), \(c(P_1,\dots,P_n)\) is positive.
 
-\textbackslash{}AxRule\{P\_1\textbackslash{}vdash\textbackslash{}oc\{P\_1\}\}
-\textbackslash{}LabelRule\{\textbackslash{}rulename\{ax\}\}
-\textbackslash{}NulRule\{P\_1\textbackslash{}vdash P\_1\}
-\textbackslash{}LabelRule\{\textbackslash{}rulename\{ax\}\}
-\textbackslash{}NulRule\{P\_2\textbackslash{}vdash P\_2\}
-\textbackslash{}LabelRule\{\textbackslash{}tens R\}
-\textbackslash{}BinRule\{P\_1,P\_2\textbackslash{}vdash
-P\_1\textbackslash{}tens P\_2\}
-\textbackslash{}LabelRule\{\textbackslash{}oc d L\}
-\textbackslash{}UnaRule\{\textbackslash{}oc\{P\_1\},P\_2\textbackslash{}vdash
-P\_1\textbackslash{}tens P\_2\}
-\textbackslash{}LabelRule\{\textbackslash{}oc d L\}
-\textbackslash{}UnaRule\{\textbackslash{}oc\{P\_1\},\textbackslash{}oc\{P\_2\}\textbackslash{}vdash
-P\_1\textbackslash{}tens P\_2\}
-\textbackslash{}LabelRule\{\textbackslash{}oc R\}
-\textbackslash{}UnaRule\{\textbackslash{}oc\{P\_1\},\textbackslash{}oc\{P\_2\}\textbackslash{}vdash\textbackslash{}oc\{(P\_1\textbackslash{}tens
-P\_2)\}\} \textbackslash{}LabelRule\{\textbackslash{}rulename\{cut\}\}
-\textbackslash{}BinRule\{P\_1,\textbackslash{}oc\{P\_2\}\textbackslash{}vdash\textbackslash{}oc\{(P\_1\textbackslash{}tens
-P\_2)\}\} \textbackslash{}LabelRule\{\textbackslash{}rulename\{cut\}\}
-\textbackslash{}BinRule\{P\_1,P\_2\textbackslash{}vdash\textbackslash{}oc\{(P\_1\textbackslash{}tens
-P\_2)\}\} \textbackslash{}LabelRule\{\textbackslash{}tens L\}
-\textbackslash{}UnaRule\{P\_1\textbackslash{}tens
-P\_2\textbackslash{}vdash\textbackslash{}oc\{(P\_1\textbackslash{}tens
-P\_2)\}\} \textbackslash{}DisplayProof
+\begin{proposition}[Positive connectives]
+$\tens$, $\one$, $\plus$, $\zero$, $\oc$ and $\exists$ are positive connectives.
+\end{proposition}
 
-\(\LabelRule{\one R}
+\begin{proof}\
+\begin{prooftree}
+\AxRule{P_2\vdash\oc{P_2}}
+\AxRule{P_1\vdash\oc{P_1}}
+\LabelRule{\rulename{ax}}
+\NulRule{P_1\vdash P_1}
+\LabelRule{\rulename{ax}}
+\NulRule{P_2\vdash P_2}
+\LabelRule{\tens R}
+\BinRule{P_1,P_2\vdash P_1\tens P_2}
+\LabelRule{\oc d L}
+\UnaRule{\oc{P_1},P_2\vdash P_1\tens P_2}
+\LabelRule{\oc d L}
+\UnaRule{\oc{P_1},\oc{P_2}\vdash P_1\tens P_2}
+\LabelRule{\oc R}
+\UnaRule{\oc{P_1},\oc{P_2}\vdash\oc{(P_1\tens P_2)}}
+\LabelRule{\rulename{cut}}
+\BinRule{P_1,\oc{P_2}\vdash\oc{(P_1\tens P_2)}}
+\LabelRule{\rulename{cut}}
+\BinRule{P_1,P_2\vdash\oc{(P_1\tens P_2)}}
+\LabelRule{\tens L}
+\UnaRule{P_1\tens P_2\vdash\oc{(P_1\tens P_2)}}
+\end{prooftree}
+
+\begin{prooftree}
+\LabelRule{\one R}
 \NulRule{\vdash\one}
 \LabelRule{\oc R}
 \UnaRule{\vdash\oc{\one}}
 \LabelRule{\one L}
 \UnaRule{\one\vdash\oc{\one}}
-\DisplayProof\)
+\end{prooftree}
 
-\(\AxRule{P_1\vdash\oc{P_1}}
+\begin{prooftree}
+\AxRule{P_1\vdash\oc{P_1}}
 \LabelRule{\rulename{ax}}
 \NulRule{P_1\vdash P_1}
 \LabelRule{\plus_1 R}
@@ -70,19 +75,22 @@ P\_2)\}\} \textbackslash{}DisplayProof
 \BinRule{P_2\vdash\oc{(P_1\plus P_2)}}
 \LabelRule{\plus L}
 \BinRule{P_1\plus P_2\vdash\oc{(P_1\plus P_2)}}
-\DisplayProof\)
+\end{prooftree}
 
-\(\LabelRule{\zero L}
+\begin{prooftree}
+\LabelRule{\zero L}
 \NulRule{\zero\vdash\oc{\zero}}
-\DisplayProof\)
+\end{prooftree}
 
-\(\LabelRule{\rulename{ax}}
+\begin{prooftree}
+\LabelRule{\rulename{ax}}
 \NulRule{\oc{P}\vdash\oc{P}}
 \LabelRule{\oc R}
 \UnaRule{\oc{P}\vdash\oc{\oc{P}}}
-\DisplayProof\)
+\end{prooftree}
 
-\(\AxRule{P\vdash\oc{P}}
+\begin{prooftree}
+\AxRule{P\vdash\oc{P}}
 \LabelRule{\rulename{ax}}
 \NulRule{P\vdash P}
 \LabelRule{\exists R}
@@ -95,83 +103,82 @@ P\_2)\}\} \textbackslash{}DisplayProof
 \BinRule{P\vdash\oc{\exists\xi P}}
 \LabelRule{\exists L}
 \UnaRule{\exists\xi P\vdash\oc{\exists\xi P}}
-\DisplayProof\) \}\}
+\end{prooftree}
+\end{proof}
 
 More generally, \(\oc A\) is positive for any formula \(A\).
 
 The notion of positive connective is related with but different from the
-notion of \href{asynchronous_connective}{asynchronous connective}.
+notion of \wantedpage{synchronous connective}.
 
-\subsection{Generalized structural
-rules}\label{generalized-structural-rules-1}
+\subsection{Generalized structural rules}\label{generalized-structural-rules-pos}
 
 Positive formulas admit generalized left structural rules corresponding
-to a structure of \href{Wikipedia:Comonoid}{\(\tens\)-comonoid}:
-\(P\limp P\tens P\) and \(P\limp\one\). The following rule is derivable:
-
-\(\AxRule{\Gamma,P,P\vdash\Delta}
+to a structure of \href{https://en.wikipedia.org/wiki/Comonoid}{\(\tens\)-comonoid}:
+\(P\limp P\tens P\) and \(P\limp\one\). The following rules are derivable:
+\begin{equation*}
+\AxRule{\Gamma,P,P\vdash\Delta}
 \LabelRule{+ c L}
 \UnaRule{\Gamma,P\vdash\Delta}
 \DisplayProof
-\qquad
+\qquad\qquad
 \AxRule{\Gamma\vdash\Delta}
 \LabelRule{+ w L}
 \UnaRule{\Gamma,P\vdash\Delta}
-\DisplayProof\)
+\DisplayProof
+\end{equation*}
 
-\textbackslash{}AxRule\{\textbackslash{}Gamma,P,P\textbackslash{}vdash\textbackslash{}Delta\}
-\textbackslash{}LabelRule\{\textbackslash{}oc L\}
-\textbackslash{}UnaRule\{\textbackslash{}Gamma,P,\textbackslash{}oc
-P\textbackslash{}vdash\textbackslash{}Delta\}
-\textbackslash{}LabelRule\{\textbackslash{}oc L\}
-\textbackslash{}UnaRule\{\textbackslash{}Gamma,\textbackslash{}oc
-P,\textbackslash{}oc P\textbackslash{}vdash\textbackslash{}Delta\}
-\textbackslash{}LabelRule\{\textbackslash{}oc c L\}
-\textbackslash{}UnaRule\{\textbackslash{}Gamma,\textbackslash{}oc
-P\textbackslash{}vdash\textbackslash{}Delta\}
-\textbackslash{}LabelRule\{\textbackslash{}rulename\{cut\}\}
-\textbackslash{}BinRule\{\textbackslash{}Gamma,P\textbackslash{}vdash\textbackslash{}Delta\}
-\textbackslash{}DisplayProof
-
-\(\AxRule{P\vdash\oc{P}}
+\begin{proof}
+\begin{equation*}
+\AxRule{P\vdash\oc{P}}
+\AxRule{\Gamma,P,P\vdash\Delta}
+\LabelRule{\oc L}
+\UnaRule{\Gamma,P,\oc P\vdash\Delta}
+\LabelRule{\oc L}
+\UnaRule{\Gamma,\oc P,\oc P\vdash\Delta}
+\LabelRule{\oc c L}
+\UnaRule{\Gamma,\oc P\vdash\Delta}
+\LabelRule{\rulename{cut}}
+\BinRule{\Gamma,P\vdash\Delta}
+\DisplayProof
+\qquad\qquad
+\AxRule{P\vdash\oc{P}}
 \AxRule{\Gamma\vdash\Delta}
 \LabelRule{\oc w L}
 \UnaRule{\Gamma,\oc P\vdash\Delta}
 \LabelRule{\rulename{cut}}
 \BinRule{\Gamma,P\vdash\Delta}
-\DisplayProof\) \}\}
+\DisplayProof
+\end{equation*}
+\end{proof}
 
 Positive formulas are also acceptable in the left-hand side context of
 the promotion rule. The following rule is derivable:
-
-\(\AxRule{\oc\Gamma,P_1,\dots,P_n\vdash A,\wn\Delta}
+\begin{prooftree}
+\AxRule{\oc\Gamma,P_1,\dots,P_n\vdash A,\wn\Delta}
 \LabelRule{+ \oc R}
 \UnaRule{\oc\Gamma,P_1,\dots,P_n\vdash \oc{A},\wn\Delta}
-\DisplayProof\)
+\end{prooftree}
 
-\textbackslash{}AxRule\{P\_n\textbackslash{}vdash\textbackslash{}oc\{P\_n\}\}
-\textbackslash{}AxRule\{\textbackslash{}oc\textbackslash{}Gamma,P\_1,\textbackslash{}dots,P\_n\textbackslash{}vdash
-A,\textbackslash{}wn\textbackslash{}Delta\}
-\textbackslash{}LabelRule\{\textbackslash{}oc L\}
-\textbackslash{}UnaRule\{\textbackslash{}oc\textbackslash{}Gamma,P\_1,\textbackslash{}dots,P\_\{n-1\},\textbackslash{}oc\{P\_n\}\textbackslash{}vdash
-A,\textbackslash{}wn\textbackslash{}Delta\}
-\textbackslash{}VdotsRule\{\}\{\textbackslash{}oc\textbackslash{}Gamma,P\_1,\textbackslash{}oc\{P\_2\},\textbackslash{}dots,\textbackslash{}oc\{P\_n\}\textbackslash{}vdash
-A,\textbackslash{}wn\textbackslash{}Delta\}
-\textbackslash{}LabelRule\{\textbackslash{}oc L\}
-\textbackslash{}UnaRule\{\textbackslash{}oc\textbackslash{}Gamma,\textbackslash{}oc\{P\_1\},\textbackslash{}dots,\textbackslash{}oc\{P\_n\}\textbackslash{}vdash
-A,\textbackslash{}wn\textbackslash{}Delta\}
-\textbackslash{}LabelRule\{\textbackslash{}oc R\}
-\textbackslash{}UnaRule\{\textbackslash{}oc\textbackslash{}Gamma,\textbackslash{}oc\{P\_1\},\textbackslash{}dots,\textbackslash{}oc\{P\_n\}\textbackslash{}vdash
-\textbackslash{}oc\{A\},\textbackslash{}wn\textbackslash{}Delta\}
-\textbackslash{}LabelRule\{\textbackslash{}rulename\{cut\}\}
-\textbackslash{}BinRule\{\textbackslash{}oc\textbackslash{}Gamma,\textbackslash{}oc\{P\_1\},\textbackslash{}dots,\textbackslash{}oc\{P\_\{n-1\}\},P\_n\textbackslash{}vdash
-\textbackslash{}oc\{A\},\textbackslash{}wn\textbackslash{}Delta\}
-\textbackslash{}VdotsRule\{\}\{\textbackslash{}oc\textbackslash{}Gamma,\textbackslash{}oc\{P\_1\},P\_2,\textbackslash{}dots,P\_n\textbackslash{}vdash
-\textbackslash{}oc\{A\},\textbackslash{}wn\textbackslash{}Delta\}
-\textbackslash{}LabelRule\{\textbackslash{}rulename\{cut\}\}
-\textbackslash{}BinRule\{\textbackslash{}oc\textbackslash{}Gamma,P\_1,\textbackslash{}dots,P\_n\textbackslash{}vdash
-\textbackslash{}oc\{A\},\textbackslash{}wn\textbackslash{}Delta\}
-\textbackslash{}DisplayProof \}\}
+\begin{proof}\
+\begin{prooftree}
+\AxRule{P_1\vdash\oc{P_1}}
+\AxRule{P_n\vdash\oc{P_n}}
+\AxRule{\oc\Gamma,P_1,\dots,P_n\vdash A,\wn\Delta}
+\LabelRule{\oc L}
+\UnaRule{\oc\Gamma,P_1,\dots,P_{n-1},\oc{P_n}\vdash A,\wn\Delta}
+\VdotsRule{}{\oc\Gamma,P_1,\oc{P_2},\dots,\oc{P_n}\vdash A,\wn\Delta}
+\LabelRule{\oc L}
+\UnaRule{\oc\Gamma,\oc{P_1},\dots,\oc{P_n}\vdash A,\wn\Delta}
+\LabelRule{\oc R}
+\UnaRule{\oc\Gamma,\oc{P_1},\dots,\oc{P_n}\vdash \oc{A},\wn\Delta}
+\LabelRule{\rulename{cut}}
+\BinRule{\oc\Gamma,\oc{P_1},\dots,\oc{P_{n-1}},P_n\vdash \oc{A},\wn\Delta}
+\VdotsRule{}{\oc\Gamma,\oc{P_1},P_2,\dots,P_n\vdash \oc{A},\wn\Delta}
+\LabelRule{\rulename{cut}}
+\BinRule{\oc\Gamma,P_1,\dots,P_n\vdash \oc{A},\wn\Delta}
+\end{prooftree}
+\end{proof}
 
 
 %%% Local Variables:
