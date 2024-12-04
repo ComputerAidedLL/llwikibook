@@ -1,9 +1,9 @@
 \chapter{Intuitionistic linear logic}\label{intuitionistic-linear-logic}
 
 Intuitionistic Linear Logic (\(ILL\)) is the
-\href{intuitionnistic_restriction}{intuitionnistic restriction} of
+\wantedpage{intuitionnistic restriction} of
 linear logic: the sequent calculus of \(ILL\) is obtained from the
-\href{Sequent_calculus\#Sequents_and_proofs}{two-sided sequent calculus
+\hyperref[sequents-and-proofs]{two-sided sequent calculus
 of linear logic} by constraining sequents to have exactly one formula on
 the right-hand side: \(\Gamma\vdash A\).
 
@@ -143,15 +143,37 @@ logic, we define the intuitionistic restriction of linear formulas:
 
 \(J ::= X \mid J\tens J \mid \one \mid J\limp J \mid J\with J \mid \top \mid J\plus J \mid \zero \mid \oc{J} \mid \forall\xi J \mid \exists\xi J\)
 
-\(JLL\) is the \url{fragment} of linear logic obtained by restriction to
+\(JLL\) is the \hyperref[fragment]{fragment} of linear logic obtained by restriction to
 intuitionistic formulas.
+
+\begin{proposition}[From $ILL$ to $JLL$]
+If $\Gamma\vdash A$ is provable in $ILL_{012}$, it is provable in $JLL_{012}$.
+\end{proposition}
+
+\begin{proof}
+$ILL_{012}$ is included in $JLL_{012}$.
+\end{proof}
+
+\begin{theorem}[From $JLL$ to $ILL$]
+If $\Gamma\vdash\Delta$ is provable in $JLL_{12}$, it is provable in $ILL_{12}$.
+\end{theorem}
+
+\begin{proof}
+We only prove the first order case, a proof of the full result is given in the PhD thesis of Harold Schellinx~\cite{phdschellinx}.
+
+Consider a cut-free proof of $\Gamma\vdash\Delta$ in $JLL_{12}$, we can prove by induction on the length of such a proof that it belongs to $ILL_{12}$.
+\end{proof}
+
+\begin{corollary}[Unique conclusion in $JLL$]
+If $\Gamma\vdash\Delta$ is provable in $JLL_{12}$ then $\Delta$ is a singleton.
+\end{corollary}
 
 The theorem is also valid for formulas containing \(\one\) or \(\top\)
 but not anymore with \(\zero\).
 \({}\vdash((X\limp Y)\limp\zero)\limp(X\tens(\zero\limp Z))\) is
 provable in \(JLL_0\):
-
-\(\LabelRule{\rulename{ax}}
+\begin{prooftree}
+\LabelRule{\rulename{ax}}
 \NulRule{X\vdash X}
 \LabelRule{\zero L}
 \NulRule{\zero\vdash Y,Z}
@@ -167,8 +189,7 @@ provable in \(JLL_0\):
 \BinRule{(X\limp Y)\limp\zero\vdash X\tens(\zero\limp Z)}
 \LabelRule{\limp R}
 \UnaRule{{}\vdash((X\limp Y)\limp\zero)\limp(X\tens(\zero\limp Z))}
-\DisplayProof\)
-
+\end{prooftree}
 but not in \(ILL_0\).
 
 \section{Input / output polarities}\label{input-output-polarities}
@@ -186,7 +207,7 @@ output formula (and the dual of a \(JLL\) formula to an input formula).
 Conversely, any output formula is coming from a \(JLL\) formula in this
 way (up to commutativity of \(\parr\): \(O\parr I = I\parr O\)).
 
-The \url{fragment} of linear logic obtained by restriction to
+The \hyperref[fragment]{fragment} of linear logic obtained by restriction to
 input/output formulas is thus equivalent to \(JLL\), but the closure of
 the set of input/output formulas under orthogonal allows for a one-sided
 presentation.
@@ -275,6 +296,14 @@ with \(A\) and \(B\) arbitrary input or output formulas (under the
 condition that the composite formulas containing them are input or
 output formulas) and \(\xi\) not free in \(\Gamma\) in the rule
 \(\forall\).
+
+\begin{lemma}[Output formula]
+If ${}\vdash\Gamma$ is provable in $LL_{12}$ and contains only input and output formulas, then $\Gamma$ contains exactly one output formula.
+\end{lemma}
+
+\begin{proof}
+Assume $\Gamma_O$ is obtained by turning the output formulas of $\Gamma$ into $JLL$ formulas and $\Gamma_I$ is obtained by turning the dual of the input formulas of $\Gamma$ into $JLL$ formulas, $\Gamma_I\vdash\Gamma_O$ is provable in $LL_{12}$ thus in $JLL_{12}$. By corollary (Unique conclusion in $JLL$), $\Gamma_O$ is a singleton, thus $\Gamma$ contains exactly one output formula.
+\end{proof}
 
 
 %%% Local Variables:
