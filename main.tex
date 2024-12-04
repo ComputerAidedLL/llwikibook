@@ -50,6 +50,7 @@
 \def\fps@figure{htbp}
 \makeatother
 
+\usepackage{cleveref}
 
 
 \newcommand*{\wantedpage}[1]{\textcolor{red}{#1}}
@@ -134,6 +135,11 @@ This explains while the structure of the document may look strange at various po
 \input{goiexp}
 
 \input{gamesem}
+
+\appendix
+%\part{Appendices}
+
+\input{notations}
 
 \bibliographystyle{alpha}
 \bibliography{ll}
