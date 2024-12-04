@@ -5,10 +5,8 @@ logical system obtained by restricting the language of \emph{S}, and by
 restricting the rules of \emph{S} accordingly. In linear logic, the most
 well known fragments are obtained by combining/removing in different
 ways the classes of connectives present in the
-\href{Sequent_calculus}{language of linear logic} itself:
-
+\hyperref[sequent-calculus]{language of linear logic} itself:
 \begin{itemize}
-\tightlist
 \item
   \textbf{Multiplicative connectives:} the conjunction \(\tens\)
   (\emph{tensor}) and the disjunction \(\parr\) (\emph{par}), with their
@@ -38,13 +36,12 @@ The additive and exponential connectives, if taken alone, yield
 fragments of limited interest, so one usually considers only fragments
 containing at least the multiplicative connectives (perhaps without
 units). It is important to observe that the
-\href{Sequent_calculus\#Cut_elimination_and_consequences}{cut
-elimination rules} of linear logic do not introduce connectives
+\hyperref[cut-elimination-and-consequences]{cut elimination rules} of linear logic do not introduce connectives
 belonging to a different class than that of the pair of dual formulas
 whose cut is being reduced. Hence, any fragment defined by combining the
 above classes will enjoy cut elimination. Since cut elimination implies
 the subformula property, all of the
-\href{Sequent_calculus\#Equivalences}{fundamental equivalences} provable
+\hyperref[equivalences]{fundamental equivalences} provable
 in full linear logic remain valid within such fragments, as soon as the
 formulas concerned belong to the fragment itself.
 
@@ -53,8 +50,7 @@ denoted by prefixing \(LL\) with letters corresponding to the classes of
 connectives being considered: \(M\) for multiplicative connectives,
 \(A\) for additive connectives, and \(E\) for exponential connectives.
 Additional subscripts may specify whether units and/or quantifiers are
-present or not, and, for quantifiers, of what order (see the article on
-\url{notations}).
+present or not, and, for quantifiers, of what order (see~\cref{notations}).
 
 \section{Motivations}\label{motivations}
 
@@ -65,14 +61,12 @@ increasingly larger fragments. It may also be interesting to see, given
 a property that does not hold for full linear logic, whether it holds
 for a fragment, and where the "breaking point" is situated. Examples of
 such questions include:
-
 \begin{itemize}
-\tightlist
 \item
   \textbf{logical complexity:} proving cut elimination for full linear
   logic with second order quantification is equivalent to proving the
   consistency of second order Peano arithmetic (Girard, via
-  \href{Translations_of_intuitionistic_logic}{translations of System F}
+  \hyperref[translations-of-intuitionistic-logic]{translations of System F}
   in linear logic). One may expect that smaller fragments have lower
   logical complexity.
 \item
@@ -80,7 +74,7 @@ such questions include:
   system \emph{S} is defined as follows: given a formula \(A\) in the
   language of \emph{S}, is \(A\) provable in \emph{S}? This problem is
   undecidable in full linear logic with quantifiers, of whatever order
-  (again, because \href{Translations_of_classical_logic}{classical logic
+  (again, because \hyperref[translations-of-classical-logic]{classical logic
   can be translated} in linear logic). On what fragments does it become
   decidable? And if it does, what is its computational complexity?
 \item
@@ -101,7 +95,7 @@ such questions include:
 \item
   \textbf{denotational semantics:} several problems related to
   denotational semantics (formulation of
-  \href{Categorical_semantics}{categorical models}, full abstraction,
+  \hyperref[categorical-semantics]{categorical models}, full abstraction,
   full completeness, injectivity, etc.) may be first attacked in the
   simpler case of fragments, and then extended to wider subsystems.
 \end{itemize}
@@ -112,7 +106,7 @@ Multiplicative linear logic (\(MLL\)) is the simplest of the well known
 fragments of linear logic. Its formulas are obtained by combining
 propositional atoms with the connectives \emph{tensor} and \emph{par}
 only. As a consequence, the
-\href{Sequent_calculus\#Sequents_and_proofs}{sequent calculus} of
+\hyperref[sequents-and-proofs]{sequent calculus} of
 \(MLL\) is limited to the rules \(\rulename{axiom}\),
 \(\rulename{cut}\), \(\tens\), and \(\parr\). These rules actually
 determine the multiplicative connectives: if a dual pair of connectives
@@ -124,7 +118,7 @@ be provably equivalent to \(A\parr B\)).
 The cut elimination problem for \(MLL\) is \(\mathbf P\)-complete
 (Mairson-Terui), even though there exists a deterministic algorithm
 solving the problem in logarithmic space if one considers only
-\href{Sequent_calculus\#Expansion_of_identities}{eta-expanded} proofs
+\hyperref[expansion-of-identities]{eta-expanded} proofs
 (Mairson-Terui). On the other hand, provability for \(MLL\) is
 \(\mathbf{NP}\)-complete, and it remains so even in presence of first
 order quantifiers.
@@ -160,9 +154,7 @@ The most studied additive fragments of linear logic are defined by
 taking \(MLL\) or \(MLL_0\) and by enriching their language with the
 additive connectives, with or without units. The same can be done in
 presence of quantifiers. We thus obtain:
-
 \begin{itemize}
-\tightlist
 \item
   \(MALL\): formulas built from propositional atoms using
   \(\tens,\parr,\with,\plus\);
@@ -175,11 +167,9 @@ presence of quantifiers. We thus obtain:
   \(MALL_{0n}\): \(MALL_0\) with quantifiers of order \(n\).
 \end{itemize}
 
-The \href{Additive_linear_logic}{purely additive framents} are less
+The \wantedpage{purely additive framents} are less
 common:
-
 \begin{itemize}
-\tightlist
 \item
   \(ALL\): formulas built from propositional atoms using
   \(\with,\plus\);
@@ -222,9 +212,7 @@ The most common proper fragments of linear logic containing the
 exponential connectives are defined as in the case of the additive
 fragments, \emph{i.e.}, by adding the modalities on top of \(MLL\) and
 its variants:
-
 \begin{itemize}
-\tightlist
 \item
   \(MELL\): formulas built from propositional atoms using
   \(\tens,\parr,\oc,\wn\);
@@ -239,9 +227,7 @@ its variants:
 
 If, instead of taking \(MLL\), we add the modalities to \(MALL\), we
 obtain of course various versions of full linear logic:
-
 \begin{itemize}
-\tightlist
 \item
   \(LL\): full linear logic, without units;
 \item
@@ -270,7 +256,7 @@ contraction-free subsystem: in fact, still by Girard's results, we know
 that cut elimination in \(MELL_2\) is equivalent to the consistency of
 second order Peano arithmetic, for which no ordinal analysis is known.
 There are nevertheless subsystems of \(MELL_2\), the so-called
-\href{Light_linear_logics}{light subsystems} of linear logic, in which
+\hyperref[light-linear-logics]{light subsystems} of linear logic, in which
 the exponential connectives are weakened, whose cut elimination can be
 proved in seconder order Peano arithmetic even in presence of
 contraction.
@@ -279,7 +265,7 @@ The cut elimination problem is never elementary recursive in presence of
 exponential connectives: the simply typed \(\lambda\)-calculus with
 arrow types only can be encoded in \(MELL\), and this is enough for
 Statman's lower bound to apply. However, it becomes elementary recursive
-in the above mentioned \href{Light_linear_logics}{light logics}.
+in the above mentioned \hyperref[light-linear-logics]{light logics}.
 
 Albeit perhaps surprisingly, provability in \(LL\) is already
 undecidable. This result, obtained by coding Minsky machines with linear
@@ -302,11 +288,11 @@ of dual modalities \(\oc',\wn'\), each with the same rules as
 \(\oc,\wn\), without \(\oc'A\) (resp. \(\wn'A\)) being in general
 provably equivalent to \(\oc A\) (resp. \(\wn A\)).
 
-The \href{Sequent_calculus\#Sequents_and_proofs}{promotion rule} is
+The \hyperref[sequents-and-proofs]{promotion rule} is
 derivable from the following two rules, called \emph{functorial
 promotion} and \emph{digging}, respectively:
-
-\(\AxRule{\vdash\Gamma,A}
+\begin{equation*}
+\AxRule{\vdash\Gamma,A}
 \LabelRule{f\oc}
 \UnaRule{\vdash\wn\Gamma,\oc A}
 \DisplayProof
@@ -314,42 +300,39 @@ promotion} and \emph{digging}, respectively:
 \AxRule{\vdash\Gamma,\wn{\wn A}}
 \LabelRule{dig}
 \UnaRule{\vdash\Gamma,\wn A}
-\DisplayProof\)
+\DisplayProof
+\end{equation*}
 
 Functorial promotion is itself derivable from dereliction and promotion;
 the digging rule is also derivable, but only using the
 \(\rulename{cut}\) rule (in fact, digging does not enjoy the subformula
 property). It may be convenient to consider this pair of rules instead
 of the standard promotion rule in the context of
-\href{categorical_semantics}{categorical semantics} of linear logic.
+\hyperref[categorical-semantics]{categorical semantics} of linear logic.
 
 In presence of the digging rule, dereliction, weakening, and contraction
 can be derived from the following rule, called \emph{multiplexing}, in
 which \(A^{(n)}\) stands for the sequence \(A,\ldots,A\) containing
 \(n\) occurrences of \(A\):
-
-\(\AxRule{\vdash\Gamma,A^{(n)}}
+\begin{prooftree}
+\AxRule{\vdash\Gamma,A^{(n)}}
 \LabelRule{mux}
 \UnaRule{\vdash\Gamma,\wn A}
-\DisplayProof\)
+\end{prooftree}
 
 Of course, multiplexing is itself derivable from dereliction, weakening,
 and contraction. Hence, there are several alternative but equivalent
 presentations of the exponential fragment of linear logic, such as
-
 \begin{enumerate}
-\tightlist
-\item
-  remove promotion, and replace it with functorial promotion and
+\item remove promotion, and replace it with functorial promotion and
   digging;
-\item
-  remove promotion, dereliction, weakening, and contraction, and replace
+\item remove promotion, dereliction, weakening, and contraction, and replace
   them with functorial promotion, digging, and multiplexing.
 \end{enumerate}
 
-Apart from their usefulness in \href{categorical_semantics}{categorical
+Apart from their usefulness in \hyperref[categorical-semantics]{categorical
 semantics}, these alternative formulations are of interest in the
-context of the so-called \href{light_linear_logics}{light linear logics}
+context of the so-called \hyperref[light-linear-logics]{light linear logics}
 mentioned above. For example, \emph{elementary linear logic} is obtained
 by removing dereliction and digging from formulation 1, and \emph{soft
 linear logic} is obtained by removing digging from formulation 2.
@@ -372,6 +355,10 @@ The latter result can be generalized as follows. If \(A\) is a formula,
 \(\wn_nA\) for the formula \((A\plus\bot)\parr\cdots\parr(A\plus\bot)\)
 (\(n\) times). Then, we have
 
+\begin{theorem}[Approximation Theorem]
+Let $\vdash\Gamma$ be a provable sequent containing $p$ occurrences of $\oc$, $q$ occurrences of $\wn$, and no occurrence of second order $\exists$. Then, for all $m_1,\dotsc,m_p\in\mathbb N$, there are $n_1,\dotsc,n_q\in\mathbb N$ such that the sequent obtained from $\vdash\Gamma$ by replacing the $p$ occurrences of $\oc$ with $\oc_{m_1},\dotsc,\oc_{m_p}$ and the $q$ occurrences of $\wn$ with $\wn_{n_1},\dotsc,\wn_{n_q}$ is provable.
+\end{theorem}
+
 A \emph{structural formula} is a formula \(C\) such that
 \(C\limp C\tens C\) and \(C\limp\one\) are provable. Obviously, any
 formula of the form \(\wn B\) is structural. However, the promotion rule
@@ -390,10 +377,10 @@ the three premises are provable but not the conclusion.
 
 The following rule, called \emph{absorption}, is derivable in the
 standard sequent calculus:
-
-\(\AxRule{\vdash\Gamma,\wn A,A}
+\begin{prooftree}
+\AxRule{\vdash\Gamma,\wn A,A}
 \UnaRule{\vdash\Gamma,\wn A}
-\DisplayProof\)
+\end{prooftree}
 
 The absorption rule is useful in the context of proof search in linear
 logic.
@@ -401,7 +388,7 @@ logic.
 \section{The provability problem}\label{the-provability-problem}
 
 It is well known that the decidability of the provability problem is
-connected to the \href{Phase_semantics}{finite model property}: if a
+connected to the \hyperref[phase-semantics]{finite model property}: if a
 fragment of a logic with a truth semantics enjoys the finite model
 property, then the provability in that fragment is decidable. Note of
 course that the converse may fail.
@@ -413,8 +400,7 @@ Question marks in the tables below denote open problems. For brevity,
 all fragments are assumed to have units and propositional atoms,
 \emph{e.g.}, \(MLL\) actually denotes what we called \(MLL_0\) above.
 
-\subsection{The finite model
-property}\label{the-finite-model-property}
+\subsection{The finite model property}\label{the-finite-model-property}
 
 \begin{longtable}[]{@{}llll@{}}
 \toprule
@@ -437,12 +423,11 @@ undecidable\tabularnewline
 \bottomrule
 \end{longtable}
 
-\section{The cut elimination
-problem}\label{the-cut-elimination-problem}
+\section{The cut elimination problem}\label{the-cut-elimination-problem}
 
 In this section, we summarize the known results about the complexity of
 the cut elimination problem for the various fragments of linear logic
-introduced above, plus some \href{light_linear_logics}{light linear
+introduced above, plus some \hyperref[light-linear-logics]{light linear
 logics}. All fragments are assumed to be propositional; the results do
 not change in presence of quantification of any order.
 
@@ -457,13 +442,9 @@ recursive\tabularnewline
 \end{longtable}
 
 Notations used in the above table:
-
 \begin{itemize}
-\tightlist
-\item
-  \(MSLL\): multiplicative soft linear logic;
-\item
-  \(MLLL\): multiplicative light linear logic.
+\item \(MSLL\): multiplicative soft linear logic;
+\item \(MLLL\): multiplicative light linear logic.
 \end{itemize}
 
 
