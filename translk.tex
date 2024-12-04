@@ -5,15 +5,15 @@
 Formulas are translated as:
 
 \(\begin{array}{rcl}
-X^T &amp; = &amp; X \\
-(A\imp B)^T &amp; = &amp; \oc{\wn{A^T}}\limp\wn{B^T} \\
-(A\wedge B)^T &amp; = &amp; \wn{A^T} \with \wn{B^T} \\
-T^T &amp; = &amp; \top \\
-(A\vee B)^T &amp; = &amp; \wn{A^T}\parr\wn{B^T} \\
-F^T &amp; = &amp; \bot \\
-(\neg A)^T &amp; = &amp; \wn{\oc{(A^T)\orth}} \\
-(\forall\xi A)^T &amp; = &amp; \forall\xi \wn{A^T} \\
-(\exists\xi A)^T &amp; = &amp; \exists\xi \oc{\wn{A^T}}
+X^T &  = &  X \\
+(A\imp B)^T &  = &  \oc{\wn{A^T}}\limp\wn{B^T} \\
+(A\wedge B)^T &  = &  \wn{A^T} \with \wn{B^T} \\
+T^T &  = &  \top \\
+(A\vee B)^T &  = &  \wn{A^T}\parr\wn{B^T} \\
+F^T &  = &  \bot \\
+(\neg A)^T &  = &  \wn{\oc{(A^T)\orth}} \\
+(\forall\xi A)^T &  = &  \forall\xi \wn{A^T} \\
+(\exists\xi A)^T &  = &  \exists\xi \oc{\wn{A^T}}
 \end{array}\)
 
 This is extended to sequents by
@@ -323,15 +323,15 @@ logic:
 It is also possible to define \(A^{\overline{T}}\) by:
 
 \(\begin{array}{rcl}
-X^{\overline{T}} &amp; = &amp; \wn{X} \\
-(A\imp B)^{\overline{T}} &amp; = &amp; \wn{(\oc{A^{\overline{T}}}\limp B^{\overline{T}})} \\
-(A\wedge B)^{\overline{T}} &amp; = &amp; \wn{(A^{\overline{T}} \with B^{\overline{T}})} \\
-T^{\overline{T}} &amp; = &amp; \wn{\top} \\
-(A\vee B)^{\overline{T}} &amp; = &amp; \wn{(A^{\overline{T}}\parr B^{\overline{T}})} \\
-F^{\overline{T}} &amp; = &amp; \wn{\bot} \\
-(\neg A)^{\overline{T}} &amp; = &amp; \wn{\wn{(A^{\overline{T}})\orth}} \\
-(\forall\xi A)^{\overline{T}} &amp; = &amp; \wn{\forall\xi A^{\overline{T}}} \\
-(\exists\xi A)^{\overline{T}} &amp; = &amp; \wn{\exists\xi \oc{A^{\overline{T}}}}
+X^{\overline{T}} &  = &  \wn{X} \\
+(A\imp B)^{\overline{T}} &  = &  \wn{(\oc{A^{\overline{T}}}\limp B^{\overline{T}})} \\
+(A\wedge B)^{\overline{T}} &  = &  \wn{(A^{\overline{T}} \with B^{\overline{T}})} \\
+T^{\overline{T}} &  = &  \wn{\top} \\
+(A\vee B)^{\overline{T}} &  = &  \wn{(A^{\overline{T}}\parr B^{\overline{T}})} \\
+F^{\overline{T}} &  = &  \wn{\bot} \\
+(\neg A)^{\overline{T}} &  = &  \wn{\wn{(A^{\overline{T}})\orth}} \\
+(\forall\xi A)^{\overline{T}} &  = &  \wn{\forall\xi A^{\overline{T}}} \\
+(\exists\xi A)^{\overline{T}} &  = &  \wn{\exists\xi \oc{A^{\overline{T}}}}
 \end{array}\)
 
 If we define
@@ -344,15 +344,15 @@ and thus we obtain the same translation of proofs.
 Formulas are translated as:
 
 \(\begin{array}{rcl}
-X^Q &amp; = &amp; \oc{X} \\
-(A\imp B)^Q &amp; = &amp; \oc{(A^Q\limp\wn{B^Q})} \\
-(A\wedge B)^Q &amp; = &amp; \oc{(A^Q \tens B^Q)} \\
-T^Q &amp; = &amp; \oc{\one} \\
-(A\vee B)^Q &amp; = &amp; \oc{(A^Q\plus B^Q)} \\
-F^Q &amp; = &amp; \oc{\zero} \\
-(\neg A)^Q &amp; = &amp; \oc{(A^Q)\orth} \\
-(\forall\xi A)^Q &amp; = &amp; \oc{\forall\xi \wn{A^Q}} \\
-(\exists\xi A)^Q &amp; = &amp; \oc{\exists\xi A^Q}
+X^Q &  = &  \oc{X} \\
+(A\imp B)^Q &  = &  \oc{(A^Q\limp\wn{B^Q})} \\
+(A\wedge B)^Q &  = &  \oc{(A^Q \tens B^Q)} \\
+T^Q &  = &  \oc{\one} \\
+(A\vee B)^Q &  = &  \oc{(A^Q\plus B^Q)} \\
+F^Q &  = &  \oc{\zero} \\
+(\neg A)^Q &  = &  \oc{(A^Q)\orth} \\
+(\forall\xi A)^Q &  = &  \oc{\forall\xi \wn{A^Q}} \\
+(\exists\xi A)^Q &  = &  \oc{\exists\xi A^Q}
 \end{array}\)
 
 The translation of any formula starts with \(\oc\), we define
@@ -662,15 +662,15 @@ It is also possible to define \(A^{\underline{Q}}\) as the primitive
 construction.
 
 \(\begin{array}{rcl}
-X^{\underline{Q}} &amp; = &amp; X \\
-(A\imp B)^{\underline{Q}} &amp; = &amp; \oc{A^{\underline{Q}}}\limp\wn{\oc{B^{\underline{Q}}}} \\
-(A\wedge B)^{\underline{Q}} &amp; = &amp; \oc{A^{\underline{Q}}}\tens\oc{B^{\underline{Q}}} \\
-T^{\underline{Q}} &amp; = &amp; \one \\
-(A\vee B)^{\underline{Q}} &amp; = &amp; \oc{A^{\underline{Q}}}\plus\oc{B^{\underline{Q}}} \\
-F^{\underline{Q}} &amp; = &amp; \zero \\
-(\neg A)^{\underline{Q}} &amp; = &amp; \wn{(A^{\underline{Q}})\orth} \\
-(\forall\xi A)^{\underline{Q}} &amp; = &amp; \forall\xi \wn{\oc{A^{\underline{Q}}}} \\
-(\exists\xi A)^{\underline{Q}} &amp; = &amp; \exists\xi \oc{A^{\underline{Q}}}
+X^{\underline{Q}} &  = &  X \\
+(A\imp B)^{\underline{Q}} &  = &  \oc{A^{\underline{Q}}}\limp\wn{\oc{B^{\underline{Q}}}} \\
+(A\wedge B)^{\underline{Q}} &  = &  \oc{A^{\underline{Q}}}\tens\oc{B^{\underline{Q}}} \\
+T^{\underline{Q}} &  = &  \one \\
+(A\vee B)^{\underline{Q}} &  = &  \oc{A^{\underline{Q}}}\plus\oc{B^{\underline{Q}}} \\
+F^{\underline{Q}} &  = &  \zero \\
+(\neg A)^{\underline{Q}} &  = &  \wn{(A^{\underline{Q}})\orth} \\
+(\forall\xi A)^{\underline{Q}} &  = &  \forall\xi \wn{\oc{A^{\underline{Q}}}} \\
+(\exists\xi A)^{\underline{Q}} &  = &  \exists\xi \oc{A^{\underline{Q}}}
 \end{array}\)
 
 If we define

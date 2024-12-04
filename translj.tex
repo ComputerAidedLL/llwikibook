@@ -4,27 +4,23 @@ The genesis of linear logic comes with a decomposition of the
 intuitionistic implication. Once linear logic properly defined, it
 corresponds to a translation of intuitionistic logic into linear logic,
 often called \emph{Girard's translation}. In fact Jean-Yves Girard has
-defined two translations in his linear logic paper\footnote{}. We call
-them the \url{call-by-name} translation and the \url{call-by-value}
-translation.
+defined two translations in his linear logic paper~\cite{linearlogic}. We call them the \wantedpage{call-by-name} translation and the \wantedpage{call-by-value} translation.
 
-These translations can be extended to
-\href{translations_of_classical_logic}{translations of classical logic}
-into linear logic.
+These translations can be extended to \hyperref[translations-of-classical-logic]{translations of classical logic} into linear logic.
 
 \section{\texorpdfstring{Call-by-name Girard's translation \(A\imp B \mapsto \oc{A}\limp B\)}{Call-by-name Girard's translation A\textbackslash{}imp B \textbackslash{}mapsto \textbackslash{}oc\{A\}\textbackslash{}limp B}}\label{call-by-name-girards-translation-aimp-b-mapsto-ocalimp-b}
 
 Formulas are translated as:
 
 \(\begin{array}{rcl}
-X^n &amp; = &amp; X \\
-(A\imp B)^n &amp; = &amp; \oc{A^n}\limp B^n \\
-(A\wedge B)^n &amp; = &amp; A^n \with B^n \\
-T^n &amp; = &amp; \top \\
-(A\vee B)^n &amp; = &amp; \oc{A^n}\plus\oc{B^n} \\
-F^n &amp; = &amp; \zero \\
-(\forall\xi A)^n &amp; = &amp; \forall\xi A^n \\
-(\exists\xi A)^n &amp; = &amp; \exists\xi \oc{A^n}
+X^n &  = &  X \\
+(A\imp B)^n &  = &  \oc{A^n}\limp B^n \\
+(A\wedge B)^n &  = &  A^n \with B^n \\
+T^n &  = &  \top \\
+(A\vee B)^n &  = &  \oc{A^n}\plus\oc{B^n} \\
+F^n &  = &  \zero \\
+(\forall\xi A)^n &  = &  \forall\xi A^n \\
+(\exists\xi A)^n &  = &  \exists\xi \oc{A^n}
 \end{array}\)
 
 This is extended to sequents by
@@ -240,14 +236,14 @@ linear logic:
 Formulas are translated as:
 
 \(\begin{array}{rcl}
-X^v &amp; = &amp; \oc{X} \\
-(A\imp B)^v &amp; = &amp; \oc{(A^v\limp B^v)} \\
-(A\wedge B)^v &amp; = &amp; \oc{(A^v \tens B^v)} \\
-T^v &amp; = &amp; \oc{\one} \\
-(A\vee B)^v &amp; = &amp; \oc{(A^v\plus B^v)} \\
-F^v &amp; = &amp; \oc{\zero} \\
-(\forall\xi A)^v &amp; = &amp; \oc{\forall\xi A^v} \\
-(\exists\xi A)^v &amp; = &amp; \oc{\exists\xi A^v}
+X^v &  = &  \oc{X} \\
+(A\imp B)^v &  = &  \oc{(A^v\limp B^v)} \\
+(A\wedge B)^v &  = &  \oc{(A^v \tens B^v)} \\
+T^v &  = &  \oc{\one} \\
+(A\vee B)^v &  = &  \oc{(A^v\plus B^v)} \\
+F^v &  = &  \oc{\zero} \\
+(\forall\xi A)^v &  = &  \oc{\forall\xi A^v} \\
+(\exists\xi A)^v &  = &  \oc{\exists\xi A^v}
 \end{array}\)
 
 The translation of any formula starts with \(\oc\), we define
@@ -466,14 +462,14 @@ It is also possible to define \(A^{\underline{v}}\) as the primitive
 construction.
 
 \(\begin{array}{rcl}
-X^{\underline{v}} &amp; = &amp; X \\
-(A\imp B)^{\underline{v}} &amp; = &amp; \oc{A^{\underline{v}}}\limp\oc{B^{\underline{v}}} \\
-(A\wedge B)^{\underline{v}} &amp; = &amp; \oc{A^{\underline{v}}}\tens\oc{B^{\underline{v}}} \\
-T^{\underline{v}} &amp; = &amp; \one \\
-(A\vee B)^{\underline{v}} &amp; = &amp; \oc{A^{\underline{v}}}\plus\oc{B^{\underline{v}}} \\
-F^{\underline{v}} &amp; = &amp; \zero \\
-(\forall\xi A)^{\underline{v}} &amp; = &amp; \forall\xi \oc{A^{\underline{v}}} \\
-(\exists\xi A)^{\underline{v}} &amp; = &amp; \exists\xi \oc{A^{\underline{v}}}
+X^{\underline{v}} &  = &  X \\
+(A\imp B)^{\underline{v}} &  = &  \oc{A^{\underline{v}}}\limp\oc{B^{\underline{v}}} \\
+(A\wedge B)^{\underline{v}} &  = &  \oc{A^{\underline{v}}}\tens\oc{B^{\underline{v}}} \\
+T^{\underline{v}} &  = &  \one \\
+(A\vee B)^{\underline{v}} &  = &  \oc{A^{\underline{v}}}\plus\oc{B^{\underline{v}}} \\
+F^{\underline{v}} &  = &  \zero \\
+(\forall\xi A)^{\underline{v}} &  = &  \forall\xi \oc{A^{\underline{v}}} \\
+(\exists\xi A)^{\underline{v}} &  = &  \exists\xi \oc{A^{\underline{v}}}
 \end{array}\)
 
 If we define
@@ -484,24 +480,23 @@ thus we obtain the same translation of proofs.
 \section{\texorpdfstring{Call-by-value Girard's translation \(A\imp B \mapsto \oc{(A\limp B)}\)}{Call-by-value Girard's translation A\textbackslash{}imp B \textbackslash{}mapsto \textbackslash{}oc\{(A\textbackslash{}limp B)\}}}\label{call-by-value-girards-translation-aimp-b-mapsto-ocalimp-b}
 
 The original version of the call-by-value translation given by Jean-Yves
-Girard\footnote{}\&nbsp;is an optimisation of the previous one using
-properties of \href{positive_formula}{positive formulas}.
+Girard~\cite{linearlogic} is an optimisation of the previous one using
+properties of \hyperref[positive-formula]{positive formulas}.
 
 Formulas are translated as:
 
 \(\begin{array}{rcl}
-X^w &amp; = &amp; \oc{X} \\
-(A\imp B)^w &amp; = &amp; \oc{(A^w\limp B^w)} \\
-(A\wedge B)^w &amp; = &amp; A^w \tens B^w \\
-T^w &amp; = &amp; \one \\
-(A\vee B)^w &amp; = &amp; A^w\plus B^w \\
-F^w &amp; = &amp; \zero \\
-(\forall\xi A)^w &amp; = &amp; \oc{\forall\xi A^w} \\
-(\exists\xi A)^w &amp; = &amp; \exists\xi A^w
+X^w &  = &  \oc{X} \\
+(A\imp B)^w &  = &  \oc{(A^w\limp B^w)} \\
+(A\wedge B)^w &  = &  A^w \tens B^w \\
+T^w &  = &  \one \\
+(A\vee B)^w &  = &  A^w\plus B^w \\
+F^w &  = &  \zero \\
+(\forall\xi A)^w &  = &  \oc{\forall\xi A^w} \\
+(\exists\xi A)^w &  = &  \exists\xi A^w
 \end{array}\)
 
-The translation of any formula is a \href{positive_formula}{positive
-formula}.
+The translation of any formula is a \hyperref[positive-formula]{positive formula}.
 
 The translation of sequents is
 \((\Gamma\vdash A)^w = \Gamma^w\vdash A^w\).
