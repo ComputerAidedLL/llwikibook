@@ -10,7 +10,6 @@ details (clearly not the fanciest page of LLWiki).
 \subsection{The short story}\label{the-short-story}
 
 \begin{itemize}
-\tightlist
 \item
   the general flavor is that of multiport interaction nets;
 \item
@@ -49,7 +48,7 @@ We say two wirings are disjoint when their sets of ports are. A
 partial injection \((I,I',f):P\pinj P'\): \(I\subseteq P\),
 \(I'\subseteq P'\) and \(f\) is a bijection \(I\cong I'\). We then write
 \(W\bowtie_f{{W}'}\) for the wiring obtained by identifying the ports
-pairwise mapped by \(f\), and then ``straightening`` the paths thus
+pairwise mapped by \(f\), and then ``straightening'' the paths thus
 obtained to recover wires: notice this might also introduce loops and we
 write \(\Inner{W}{W'}_f\) for the number of loops thus appeared.
 
@@ -61,167 +60,191 @@ there is an edge between \(p\) and \(q\) iff \(q={W}(p)\) or
 \(W\dblcolon_f{{W}'}=W\cup W'\cup f\cup f^{-1}\). Vertices in
 \(P_0\cup P'_0\) are of degree 1, and the others are of degree 2. Hence
 maximal paths in \(W\dblcolon_f{{W}'}\) are of two kinds:
-
 \begin{itemize}
-\tightlist
-\item
-  straight paths, with both ends in \(P_0\cup P_0'\);
-\item
-  cycles, with vertices all in \(I\cup I'\).
+\item straight paths, with both ends in \(P_0\cup P_0'\);
+\item cycles, with vertices all in \(I\cup I'\).
 \end{itemize}
-
 Then the wires in \(W\bowtie_f{{W}'}\) are the pairs \(\{p,p'\}\) such
 that \(p\) and \(p'\) are the ends of a path in \(W\dblcolon_f{{W}'}\).
 And \(\Inner{W}{W'}_{f}\) is the number of cycles in
 \(W\dblcolon_f{{W}'}\), or more precisely the number of support sets of
 cycles (i.e. we forget about the starting vertice of cycles).
 
-\&\&\textbackslash{}ar{[}dl{]}\^{}\{A\textbackslash{}otimes\textbackslash{}lambda\_B\}A\textbackslash{}otimes(I\textbackslash{}otimes
-B)\textbackslash{}\textbackslash{}
+\begin{lemma}
+Consider three wirings \((P,W)\), \((P',W')\) and
+\((P'',W'')\), and two connections \((I,I',f):P\pinj P'\) and
+\((J',J'',g):P'\pinj P''\) such that \(I'\cap J'=\emptyset\). Then
 
-\texttt{~~~\&A\textbackslash{}otimes~B\&}
+\((W\bowtie_f W')\bowtie_g W''=
+  W\bowtie_f(W'\bowtie_g W'')\)
 
-\} commutes. \}\}
+and
 
-\&(B\textbackslash{}otimes C)\textbackslash{}otimes
-A\textbackslash{}ar{[}dr{]}\^{}\{\textbackslash{}alpha\_\{B,C,A\}\}\textbackslash{}\textbackslash{}
-(A\textbackslash{}otimes B)\textbackslash{}otimes
-C\textbackslash{}ar{[}ur{]}\^{}\{\textbackslash{}alpha\_\{A,B,C\}\}\textbackslash{}ar{[}dr{]}\_\{\textbackslash{}gamma\_\{A,B\}\textbackslash{}otimes
-C\}\&\&\&B\textbackslash{}otimes (C\textbackslash{}otimes
-A)\textbackslash{}\textbackslash{} \&(B\textbackslash{}otimes
-A)\textbackslash{}otimes
-C\textbackslash{}ar{[}r{]}\_\{\textbackslash{}alpha\_\{B,A,C\}\}\&B\textbackslash{}otimes(A\textbackslash{}otimes
-C)\textbackslash{}ar{[}ur{]}\_\{B\textbackslash{}otimes\textbackslash{}gamma\_\{A,C\}\}\textbackslash{}\textbackslash{}
-\} and
+\(\Inner{W}{W'}_{f}+\Inner{(W\bowtie_f{{W}'})}{{W}''}_g=
+    \Inner{W}{(W'\bowtie_g W'')}_f+\Inner{{W}'}{{W}''}_g.\)
+\end{lemma}
+  
+\begin{proof}
+The first equation holds because open maximal paths
+in \(W\dblcolon_f{W'\bowtie_g}{{W}''}\) correspond with those in
+\(W\dblcolon_f{(W'\dblcolon_g{{W}''})}\), hence in
+\((W\dblcolon_f W')\dblcolon_g W''\), hence in
+\({W\bowtie_f{{W}'}}\dblcolon_g{{W}''}\). The second equation holds
+because both sides are two possible writings for the number of loops in
+\({(W\dblcolon_f{{W}'})}\dblcolon_g{{W}''}\).
+\end{proof}
 
-\[\xymatrix{
-&amp;(A\otimes B)\otimes C\ar[r]^{\gamma_{A\otimes B,C}}&amp;C\otimes (A\otimes B)\ar[dr]^{\alpha^{-1}_{C,A,B}}&amp;\\
-A\otimes (B\otimes C)\ar[ur]^{\alpha^{-1}_{A,B,C}}\ar[dr]_{A\otimes\gamma_{B,C}}&amp;&amp;&amp;(C\otimes A)\otimes B\\
-&amp;A\otimes(C\otimes B)\ar[r]_{\alpha^{-1}_{A,C,B}}&amp;(A\otimes C)\otimes B\ar[ur]_{\gamma_{A,C}\otimes B}&amp;\\
-}\] commute for every objects \(A\), \(B\) and \(C\).
+\subsection{Nets}\label{nets}
 
-A \emph{symmetric} monoidal category is a braided monoidal category in
-which the braiding satisfies
+A \emph{signature} is the data of a set \(\Sigma\) of symbols, together
+with arity functions \(\alpha:\Sigma\to\mathbf{N}\setminus\{0\}\)
+(number of \emph{active} ports, or conclusions) and
+\(\pi:\Sigma\to\mathbf N\) (number of \emph{passive} ports, or
+hypotheses). In the remaining, we assume such a signature is given.
 
-\[\gamma_{B,A}\circ\gamma_{A,B}=A\otimes B\] for every objects \(A\) and
-\(B\). \}\}
+A \emph{cell} \(c\) with ports in \(P\) is the data of a symbol
+\(\sigma\in\Sigma\) and of two disjoint lists of pairwise distinct
+ports: \(\alpha(c)\in P^{\alpha(\sigma)}\) is the list of \emph{active}
+ports and \(\pi(c)\in P^{\pi(\sigma)}\) is the list of \emph{passive}
+ports.
 
-\&B \} commute.
+A \emph{net} is the data of a wiring \((P,W)\), of a set \(C\) of
+disjoint cells on \(P\), and of a number \(L\in\mathbf N\) (the number
+of \emph{loops}). It follows from the definitions that each port
+\(p\in P\) appears in exactly one wire and in at most one cell: we say
+\(p\) is \emph{free} if it is not part of a cell, and \(p\) is
+\emph{internal} otherwise. Moreover, we say \(p\) is \emph{dangling} if
+\(p\) is free and \(W(p)\) is internal. We write \(\textrm{fp}(R)\) for
+the set of free ports of a net \(R\).
 
-Dually, the monoidal category \(\mathcal{C}\) is \emph{right closed}
-when the functor \(B\mapsto B\otimes A\) admits a right adjoint. The
-notion of \emph{right closed structure} can be defined similarly. \}\}
+Generally, the ``names'' of internal ports of a net are not relevant,
+but free ports matter most often: internal ports are the analogue of
+bound variables in \(\lambda\)-terms. More formally, an
+\emph{isomorphism} from net \(R\) to net \(R'\) is the data of a
+bijection of ports \(\phi:P\cong P'\) and a bijection of cells
+\(\psi:C\cong C'\) such that:
 
-In a symmetric monoidal category, a left closed structure induces a
-right closed structure and conversely, allowing us to simply speak of a
-\emph{closed symmetric monoidal category}.
+\begin{itemize}
+\tightlist
+\item
+  for all \(p\in P\), \(W'(\phi(p))=\phi(W(p))\);
+\item
+  for all \(c\in C\):
 
-\section{Modeling the additives}\label{modeling-the-additives}
+  \begin{itemize}
+  \tightlist
+  \item
+    \(\sigma_{\psi(c)}=\sigma_c\),
+  \item
+    for all \(i\in\{0,\dotsc,\alpha(\sigma_c)-1\}\),
+    \(\alpha(\psi(c))_i=\phi(\alpha(c)_i)\),
+  \item
+    for all \(j\in\{0,\dotsc,\pi(\sigma_c)-1\}\),
+    \(\pi(\psi(c))_j=\phi(\pi(c)_j)\);
+  \end{itemize}
+\item
+  \(L=L'\).
+\end{itemize}
 
-A category has \emph{finite products} when it has products and a
-terminal object.
+Observe that under these conditions \(\psi\) is uniquely induced by
+\(\phi\). We say that the isomorphism \(\phi\) is \emph{nominal} if
+moreover \(p\in\textrm{fp}(R)\) implies \(p=\phi(p)\).
 
-\textbackslash{}ar{[}r{]}\^{}-\{\textbackslash{}mu\textbackslash{}tens
-M\}\&M\textbackslash{}tens
-M\textbackslash{}ar{[}dd{]}\^{}\{\textbackslash{}mu\}\textbackslash{}\textbackslash{}
-M\textbackslash{}tens(M\textbackslash{}tens
-M)\textbackslash{}ar{[}d{]}\_\{M\textbackslash{}tens\textbackslash{}mu\}\&\&\textbackslash{}\textbackslash{}
-M\textbackslash{}tens
-M\textbackslash{}ar{[}rr{]}\_\{\textbackslash{}mu\}\&\&M\textbackslash{}\textbackslash{}
-\} and
+\subsection{Subnets}\label{subnets}
 
-\[\xymatrix{
-I\tens M\ar[r]^{\eta\tens M}\ar[dr]_{\lambda_M}&amp;M\tens M\ar[d]_\mu&amp;\ar[l]_{M\tens\eta}\ar[dl]^{\rho_M}M\tens I\\
-&amp;M&amp;
-}\] commute. \}\}
+We say two nets are disjoint when their sets of ports are. Let \(R\) and
+\(R'\) be disjoint nets, and \((I,I',f)\) be a connection between \(W\)
+and \(W'\), such that \(I\subseteq \textrm{fp}(R)\) and
+\(I'\subseteq \textrm{fp}(R')\). We then write \(R\bowtie_f{R'}\) for
+the net with wiring \(W\bowtie_f{W'}\), cells \(C\cup C'\) and loops
+\(\Inner{R}{R'}_f=L+L'+\Inner{W}{W'}_f\). We say this connection is
+\emph{orthogonal} if \(\Inner{W}{W'}_f=0\), and it is \emph{modular} if
+the ports in \(I\cup I'\) are all dangling: a modular connection is
+always orthogonal.
 
-\section{\texorpdfstring{Modeling \hyperref[intuitionistic-linear-logic]{ILL}}{Modeling ILL}}\label{modeling-ill}
+We say \(R_0\) is a \emph{subnet} of \(R\), if there exists a net \(R'\)
+and a connection \((I,I',f)\) between \(R_0\) and \(R'\) such that
+\(R=R_0\bowtie_f{R'}\).
 
-Introduced in\footnote{}.
+\{R'\}. \}\}
 
-\[\oc=L\circ M\]
+\subsection{Rewriting}\label{rewriting}
 
-This section is devoted to defining the concepts necessary to define
-these adjunctions.
+A \emph{net rewriting rule} is a pair \((r_0,r_1)\) of nets such that
+\(\textrm{fp}(r_0)=\textrm{fp}(r_1)\). Then an instance of this rule is
+a pair \((R_0,R_1)\) such that there exist:
 
-\&FA\textbackslash{}bullet(FB\textbackslash{}bullet
-FC)\textbackslash{}ar{[}dr{]}\^{}\{FA\textbackslash{}bullet\textbackslash{}phi\_\{B,C\}\}\textbackslash{}\textbackslash{}
+\begin{itemize}
+\tightlist
+\item
+  nets \(R'_0\) and \(R'_1\) isomorphic to \(r_0\) and \(r_1\)
+  respectively, namely \(R'_i=\phi_i(r_i)\), so that moreover
+  \(\phi_0(p)=\phi_1(p)\) for all \(p\in\textrm{fp}(r_0)\) (in
+  particular, \(\textrm{fp}(R'_0)=\textrm{fp}(R'_1)\));
+\item
+  a net \(R''\), disjoint from \(R'_0\) and \(R'_1\);
+\item
+  a connection
+  \((\textrm{fp}(R'_0),J,f):\textrm{fp}(R'_0)\pinj \textrm{fp}(R'')\);
+\end{itemize}
 
-\texttt{~~~F(A\textbackslash{}otimes~B)\textbackslash{}bullet~FC\textbackslash{}ar{[}dr{]}\_\{\textbackslash{}phi\_\{A\textbackslash{}otimes~B,C\}\}\&\&FA\textbackslash{}bullet~F(B\textbackslash{}otimes~C)\textbackslash{}ar{[}d{]}\^{}\{\textbackslash{}phi\_\{A,B\textbackslash{}otimes~C\}\}\textbackslash{}\textbackslash{}}\\
-\texttt{~~~\&F((A\textbackslash{}otimes~B)\textbackslash{}otimes~C)\textbackslash{}ar{[}r{]}\_\{F\textbackslash{}alpha\_\{A,B,C\}\}\&F(A\textbackslash{}otimes(B\textbackslash{}otimes~C))}
+such that each \(R_i\) is nominally isomorphic to
+\(R'_i\bowtie_f{R''}\).
 
-\} and
+\subsection{Typing}\label{typing}
 
-\[\xymatrix{
-    FA\bullet J\ar[d]_{\rho_{FA}}\ar[r]^{FA\bullet\phi}&amp;FA\bullet FI\ar[d]^{\phi_{A,I}}\\
-    FA&amp;\ar[l]^{F\rho_A}F(A\otimes I)
-}\] and \(\xymatrix{
-    J\bullet FB\ar[d]_{\lambda_{FB}}\ar[r]^{\phi\bullet FB}&amp;FI\bullet FB\ar[d]^{\phi_{I,B}}\\
-    FB&amp;\ar[l]^{F\lambda_B}F(I\otimes B)
-}\) commute for every objects \(A\), \(B\) and \(C\) of \(\mathcal{C}\).
-The morphisms \(f_{A,B}\) and \(f\) are called \emph{coherence maps}.
+A typing system on signature \(\Sigma\) is the data of a set \(\Theta\)
+of types, an involutive negation \(\cdot\orth:\Theta\to\Theta\),
+together with a typing discipline for each symbol, \emph{i.e.} a
+relation
+\(\Theta(\sigma)\subseteq\Theta^{\alpha(\sigma)}\times\Theta^{\pi(\sigma)}\).
+We then write \(A_1,\cdots,A_{\pi(\sigma)}\vdash_\sigma
+B_1,\cdots,B_{\alpha(\sigma)}\) for
+\((\vec A,\vec B)\in\Theta(\sigma)\).
 
-A lax monoidal functor is \emph{strong} when the coherence maps are
-invertible and \emph{strict} when they are identities. \}\}
+Then a \emph{typing} for net \(R=(P,W,C)\) is a function
+\(\tau:P\to \Theta\) such that:
 
-\textbackslash{}ar{[}r{]}\^{}\{\textbackslash{}theta\_A\textbackslash{}bullet\textbackslash{}theta\_B\}\&\textbackslash{}ar{[}d{]}\^{}\{g\_\{A,B\}\}GA\textbackslash{}bullet
-GB\textbackslash{}\textbackslash{}
+\begin{itemize}
+\tightlist
+\item
+  for all \(p\in P\), \(\tau(W(p))=\tau(p)\orth\);
+\item
+  for all \(c\in C\) of symbol \(\sigma\),
+  \(\tau(\pi(c))\vdash\tau(\alpha(c))\orth\);
+\end{itemize}
 
-\texttt{~~~F(A\textbackslash{}tens~B)\textbackslash{}ar{[}r{]}\_\{\textbackslash{}theta\_\{A\textbackslash{}tens~B\}\}\&G(A\textbackslash{}tens~B)}
+where, in the last formula, we implicitly generalized \(\tau\) to lists
+of ports and \(\cdot\orth\) to lists of formulas, in the obvious,
+componentwise fashion. The \emph{interface} of the typed net
+\((R,\tau)\) is then the restriction of \(\tau\) to \(\textrm{fp}(R)\).
 
-\} and \(\xymatrix{
-  &amp;\ar[dl]_{f}J\ar[dr]^{g}&amp;\\
-  FI\ar[rr]_{\theta_I}&amp;&amp;GI
-}\) commute for every objects \(A\) and \(B\) of \(\mathcal{D}\). \}\}
+The idea, is that a wire \(\{p,q\}\) bears the type \(\tau(q)\) (resp.
+\(\tau(p)\)) in the direction \((p,q)\) (resp. \((q,p)\)), so that a
+rule \(\vec A\vdash_\sigma \vec B\) reads as an inference from passive
+inputs (hypotheses) to active outputs (conclusions).
 
-\section{Modeling negation}\label{modeling-negation}
+Observe that if \((R,\tau)\) is a typed net, and \(\phi:R\cong R'\) is
+an isomorphism, then \(R'\) is typed and its interface is
+\(\tau\circ\phi^{-1}\): in particular, if \(\phi\) is nominal, \(R'\)
+and \(R\) have the same interface.
 
-\subsection{*-autonomous categories}\label{autonomous-categories}
+Now let \((R,\tau)\) and \((R',\tau')\) be typed nets and \((I,I',f)\) a
+connection so that \(\tau'\circ f\) and
+\(\tau\orth=\cdot\orth\circ\tau\) coincide on \(I\). Then this induces a
+typing of \(R\bowtie_f{R'}\) preserving the interface on the remaining
+free ports.
 
-\subsection{Compact closed categories}\label{compact-closed-categories}
+\subsection{Boxes}\label{boxes}
 
-\&(A\textbackslash{}tens B)\textbackslash{}tens
-A\textbackslash{}ar{[}dr{]}\^{}\{\textbackslash{}varepsilon\textbackslash{}tens
-A\}\textbackslash{}\textbackslash{} A\textbackslash{}tens
-I\textbackslash{}ar{[}ur{]}\^{}\{A\textbackslash{}tens\textbackslash{}eta\}\&\&\&I\textbackslash{}tens
-A\textbackslash{}ar{[}d{]}\^{}\{\textbackslash{}lambda\_A\}\textbackslash{}\textbackslash{}
-A\textbackslash{}ar{[}u{]}\^{}\{\textbackslash{}rho\_A\^{}\{-1\}\}\textbackslash{}ar@\{=\}{[}rrr{]}\&\&\&A\textbackslash{}\textbackslash{}
-\} and
+A signature with boxes is the data of a signature \(\Sigma\), together
+with a \emph{box arity} \(\beta(\sigma)\) for all symbol
+\(\sigma\in\Sigma\).
 
-\[\xymatrix{
-&amp;(B\tens A)\tens B\ar[r]^{\alpha_{B,A,B}}&amp;B\tens(A\tens B)\ar[dr]^{B\tens\varepsilon}\\
-I\tens B\ar[ur]^{\eta\tens B}&amp;&amp;&amp;B\tens I\ar[d]^{\rho_B}\\
-B\ar[u]^{\lambda_B^{-1}}\ar@{=}[rrr]&amp;&amp;&amp;B\\
-}\] commute. The object \(A\) is called a left dual of \(B\) (and
-conversely \(B\) is a right dual of \(A\)). \}\}
-
-\&I\textbackslash{}tens
-B\textbackslash{}ar{[}r{]}\^{}-\{\textbackslash{}eta\_A\textbackslash{}tens
-B\}\&(A\^{}*\textbackslash{}tens A)\textbackslash{}tens
-B\textbackslash{}ar{[}r{]}\^{}-\{\textbackslash{}alpha\_\{A\^{}*,A,B\}\}\&A\^{}*\textbackslash{}tens(A\textbackslash{}tens
-B)\textbackslash{}ar{[}r{]}\^{}-\{A\^{}*\textbackslash{}tens
-f\}\&A\textbackslash{}tens C\textbackslash{}\textbackslash{} \} and to
-every morphism \(g:B\to A^*\tens C\), we associate a morphism
-\(\llcorner g\lrcorner:A\tens B\to C\) defined as
-
-\[\xymatrix{
-A\tens B\ar[r]^-{A\tens g}&amp;A\tens(A^*\tens C)\ar[r]^-{\alpha_{A,A^*,C}^{-1}}&amp;(A\tens A^*)\tens C\ar[r]^-{\varepsilon_A\tens C}&amp;I\tens C\ar[r]^-{\lambda_C}&amp;C
-}\] It is easy to show that
-\(\llcorner \ulcorner f\urcorner\lrcorner=f\) and
-\(\ulcorner\llcorner g\lrcorner\urcorner=g\) from which we deduce the
-required bijection. \}\}
-
-\section{Other categorical models}\label{other-categorical-models}
-
-\subsection{Lafont categories}\label{lafont-categories}
-
-\subsection{Seely categories}\label{seely-categories}
-
-\subsection{Linear categories}\label{linear-categories}
-
-\section{Properties of categorical models}\label{properties-of-categorical-models}
-
-\subsection{The Kleisli category}\label{the-kleisli-category}
+Then a net on signature with boxes \((\Sigma,\beta)\) is the same as a
+net \(R\) on \(\Sigma\) plus, for each cell \(c\) of \(R\), the data
+\(\beta(c)\) of a \(\beta(\sigma_c)\)-tuple of nets (with boxes) with
+free ports the internal ports of \(c\).
 
 
 %%% Local Variables:
