@@ -18,16 +18,19 @@ If $\vdash\Gamma,A,B$ is provable, then by the introduction rule for $\parr$
 we know that $\vdash\Gamma,A\parr B$ is provable.
 For the reverse implication we proceed by induction on a proof $\pi$ of
 $\vdash\Gamma,A\parr B$.
-
-* If the last rule of $\pi$ is the introduction of the $\parr$ in $A\parr B$, then the premiss is exacty $\vdash\Gamma,A,B$ so we can conclude.
-* The other case where the last rule introduces $A\parr B$ is when $\pi$ is an axiom rule, hence $\Gamma=A\orth\tens B\orth$. Then we can conclude with the proof
-* Otherwise $A\parr B$ is in the context of the last rule. If the last rule is a tensor, then $\pi$ has the shape
-* or the same with $A\parr B$ in the conclusion of $\pi_2$ instead. By induction hypothesis on $\pi_1$ we get a proof $\pi'_1$ of $\vdash\Gamma_1,A,B,C$, then we can conclude with the proof
-* The case of the cut rule has the same structure as the tensor rule.
-* In the case of the $\with$ rule, we have $A\with B$ in both premisses and we conclude similarly, using the induction hypothesis on both $\pi_1$ and $\pi_2$.
-* If $A\parr B$ is in the context of a rules for $\parr$, $\plus$, $\bot$ or quantifiers, or in the context of a dereliction, weakening or contraction, the situation is similar as for $\tens$ except that we have only one premiss.
-* If $A\parr B$ is in the context of $\top$ rules, we can freely change the context of the rule to get the expected one.
-* The two remaining cases are if the last rule is the rule for $1$ or a promotion. By the constraints these rules impose on the contexts, these cases cannot happen.
+\begin{itemize}
+\item If the last rule of $\pi$ is the introduction of the $\parr$ in $A\parr B$, then the premiss is exacty $\vdash\Gamma,A,B$ so we can conclude.
+\item The other case where the last rule introduces $A\parr B$ is when $\pi$ is an axiom rule, hence $\Gamma=A\orth\tens B\orth$. Then we can conclude with the proof
+\item Otherwise $A\parr B$ is in the context of the last rule. If the last rule is a tensor, then $\pi$ has the shape
+\todo[missing in LLWiki]
+\item or the same with $A\parr B$ in the conclusion of $\pi_2$ instead. By induction hypothesis on $\pi_1$ we get a proof $\pi'_1$ of $\vdash\Gamma_1,A,B,C$, then we can conclude with the proof
+\todo[missing in LLWiki]
+\item The case of the cut rule has the same structure as the tensor rule.
+\item In the case of the $\with$ rule, we have $A\with B$ in both premisses and we conclude similarly, using the induction hypothesis on both $\pi_1$ and $\pi_2$.
+\item If $A\parr B$ is in the context of a rules for $\parr$, $\plus$, $\bot$ or quantifiers, or in the context of a dereliction, weakening or contraction, the situation is similar as for $\tens$ except that we have only one premiss.
+\item If $A\parr B$ is in the context of $\top$ rules, we can freely change the context of the rule to get the expected one.
+\item The two remaining cases are if the last rule is the rule for $1$ or a promotion. By the constraints these rules impose on the contexts, these cases cannot happen.
+\end{itemize}
 The $\with$ connective is treated in the same way.
 In this cases where $A\with B$ is in the context of a rule with two
 premisses, the premiss where this formula is not present will be duplicated,
@@ -52,9 +55,7 @@ sequent \(\vdash\Gamma\), one can always start by decomposing negative
 connectives in \(\Gamma\) without losing provability. Applying this
 result to successive connectives, we can get generalized formulations
 for more complex formulas. For instance:
-
 \begin{itemize}
-\tightlist
 \item
   \(\vdash\Gamma,(A\parr B)\parr(B\with C)\) is provable
 \item
@@ -68,14 +69,14 @@ for more complex formulas. For instance:
 
 So without loss of generality, we can assume that any proof of
 \(\vdash\Gamma,(A\parr B)\parr(B\with C)\) ends like
-
-\(\AxRule{ \vdash \Gamma, A, B, B }
+\begin{prooftree}
+  \AxRule{ \vdash \Gamma, A, B, B }
   \UnaRule{ \vdash \Gamma, A\parr B, B }
   \AxRule{ \vdash \Gamma, A, B, C }
   \UnaRule{ \vdash \Gamma, A\parr B, C }
   \BinRule{ \vdash \Gamma, A\parr B, B\with C }
   \UnaRule{ \vdash \Gamma, (A\parr B)\parr(B\with C) }
-  \DisplayProof\)
+\end{prooftree}
 
 In order to define a general statement for compound formulas, as well as
 an analogous result for positive connectives, we need to give a proper
