@@ -8,34 +8,24 @@ proofs are interpreted by strategies for Player.
 
 \subsection{Sequences, Polarities}\label{sequences-polarities}
 
-We introduce some convenient notations on sequences.
+\begin{definition}[Sequences]
+If $M$ is a set of \emph{moves}, a \emph{sequence} or a \emph{play} on $M$ is a finite sequence of elements of $M$. The set of sequences of $M$ is denoted by $M^*$.
+\end{definition}
 
+We introduce some convenient notations on sequences.
 \begin{itemize}
-\tightlist
-\item
-  If \(s\in M^*\), \(|s|\) will denote the \emph{length} of \(s\);
-\item
-  If \(1\leq i\leq |s|\), \(s_i\) will denote the i-th move of \(s\);
-\item
-  We denote by \(\sqsubseteq\) the prefix partial order on \(M^*\);
-\item
-  If \(s_1\) is an even-length prefix of \(s_2\), we denote it by
-  \(s_1\sqsubseteq^P s_2\);
-\item
-  The empty sequence will be denoted by \(\epsilon\).
+\item If \(s\in M^*\), \(|s|\) will denote the \emph{length} of \(s\);
+\item If \(1\leq i\leq |s|\), \(s_i\) will denote the i-th move of \(s\);
+\item We denote by \(\sqsubseteq\) the prefix partial order on \(M^*\);
+\item If \(s_1\) is an even-length prefix of \(s_2\), we denote it by \(s_1\sqsubseteq^P s_2\);
+\item The empty sequence will be denoted by \(\epsilon\).
 \end{itemize}
 
-All moves will be equipped with a \textbf{polarity}, which will be
-either Player (\(P\)) or Opponent (\(O\)).
+All moves will be equipped with a \textbf{polarity}, which will be either Player (\(P\)) or Opponent (\(O\)).
 
 \begin{itemize}
-\tightlist
-\item
-  We define \(\overline{(\_)}:\{O,P\}\to \{O,P\}\) with
-  \(\overline{O} = P\) and \(\overline{P} = O\).
-\item
-  This operation extends in a pointwise way to functions onto
-  \(\{O,P\}\).
+\item We define \(\overline{(\_)}:\{O,P\}\to \{O,P\}\) with \(\overline{O} = P\) and \(\overline{P} = O\).
+\item This operation extends in a pointwise way to functions onto \(\{O,P\}\).
 \end{itemize}
 
 \subsection{Sequences on Components}\label{sequences-on-components}
@@ -44,17 +34,13 @@ We will often need to speak of sequences over (the disjoint sum of)
 multiple sets of moves, along with a restriction operation.
 
 \begin{itemize}
-\tightlist
-\item
-  If \(M_1\) and \(M_2\) are two sets, \(M_1 + M_2\) will denote their
+\item If \(M_1\) and \(M_2\) are two sets, \(M_1 + M_2\) will denote their
   disjoint sum, implemented as
   \(M_1 + M_2 = \{1\}\times M_1 \cup \{2\}\times M_2\);
-\item
-  In this case, if we have two functions \(\lambda_1:M_1 \to R\) and
+\item In this case, if we have two functions \(\lambda_1:M_1 \to R\) and
   \(\lambda_2:M_2\to R\), we denote by
   \([\lambda_1,\lambda_2]:M_1 + M_2 \to R\) their \emph{co-pairing};
-\item
-  If \(s\in (M_A + M_B)^*\), the \textbf{restriction} of \(s\) to
+\item If \(s\in (M_A + M_B)^*\), the \textbf{restriction} of \(s\) to
   \(M_A\) (resp. \(M_B\)) is denoted by \(s\upharpoonright M_A\)
   (resp.\(s \upharpoonright M_B\)). Later, if \(A\) and \(B\) are games,
   this will be abbreviated \(s\upharpoonright A\) and
@@ -68,19 +54,76 @@ multiple sets of moves, along with a restriction operation.
 We first give the definition for a game, then all the constructions used
 to interpret the connectives and operations of \(MLL\)
 
+\begin{definition}[Games]
+A \emph{game} $ A$ is a triple $(M_A,\lambda_A,P_A)$ where:
+\begin{itemize}
+\item $M_A$ is a finite set of \emph{moves};
+\item $\lambda_A: M_A \to \{O,P\}$ is a \emph{polarity function};
+\item $P_A$ is a subset of $M_A^*$ such that
+  \begin{itemize}
+  \item Each $s\in P_A$ is \emph{alternating}, \ie\ if $\lambda_A (s_i) = Q$ then, if defined, $\lambda_A(s_{i+1}) = \overline{Q}$;
+  \item $A$ is \emph{finite}: there is no infinite strictly increasing sequence $s_1 \sqsubset s_2 \sqsubset \dots $ in $P_A$.
+  \end{itemize}
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Linear Negation]
+If $A$ is a game, the game $A^\bot$ is $A$ where Player and Opponent are interchanged. Formally:
+\begin{itemize}
+\item $M_{A^\bot} = M_A$
+\item $\lambda_{A^\bot} = \overline{\lambda_A}$
+\item $P_{A^\bot} = P_A$
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Tensor]
+If $A$ and $B$ are games, we define $A \tens B$ as:
+\begin{itemize}
+\item $M_{A\tens B} = M_A + M_B$;
+\item $\lambda_{A\tens B} = [\lambda_A,\lambda_B]$
+\item $P_{A\tens B}$ is the set of all finite, alternating sequences in $M_{A\tens B}^*$ such that $s\in P_{A\tens B}$ if and only if:
+  \begin{enumerate}
+  \item $s\upharpoonright A\in P_A$ and $s \upharpoonright B \in P_B$;
+  \item If we have $i\le |s|$ such that $ s_i$ and $s_{i+1}$ are in different components, then $\lambda_{A\tens B}(s_{i+1}) = O$. We will refer to this condition as the \emph{switching convention for tensor game}.
+  \end{enumerate}
+\end{itemize}
+\end{definition}
+
 The \emph{par} connective can be defined either as
 \(A\parr B = (A^\bot \tens B^\bot)^\bot\), or similarly to the
 \emph{tensor} except that the switching convention is in favor of
 Player. We will refer to this as the \emph{switching convention for par
-game}. Likewise, we define \(A\limp B = A
-^\bot\parr B\).
+game}. Likewise, we define \(A\limp B = A^\bot\parr B\).
 
 \subsection{Strategies}\label{strategies}
+
+\begin{definition}[Strategies]
+A \emph{strategy} for Player in a game $A$ is defined as a subset $\sigma\subseteq P_A$ satisfying the following conditions:
+\begin{itemize}
+\item $\sigma$ is non-empty: $\epsilon\in \sigma$
+\item Opponent starts: If $s\in \sigma$, $\lambda_A(s_1)=O$;
+\item $\sigma$ is closed by \emph{even prefix}, \ie\ if $s\in \sigma$ and $s'\sqsubseteq^P s$, then $s'\in \sigma$;
+\item Determinacy: If we have $soa\in \sigma$ and $sob\in \sigma$, then $a=b$.
+\end{itemize}
+We write $\sigma:A$.
+\end{definition}
 
 Composition is defined by parallel interaction plus hiding. We take all
 valid sequences on \(A, B\) and \(C\) which behave accordingly to
 \(\sigma\) (resp. \(\tau\)) on \(A, B\) (resp. \(B,C\)). Then, we hide
 all the communication in \(B\).
+
+\begin{definition}[Parallel Interaction]
+If $A, B$ and $C$ are games, we define the set of \emph{interactions} $I(A,B,C)$ as the set of sequences $s$ over $A, B$ and $C$ such that their respective restrictions on
+$A\limp B$ and $B\limp C$ are in $P_{A\limp B}$ and $P_{B\limp C}$, and such that no successive
+moves of $s$ are respectively in $A$ and $C$, or $C$ and $A$.
+If $\sigma:A\limp B$ and $\tau:B\limp C$, we define the set of \emph{parallel interactions} of
+$\sigma$ and $\tau$, denoted by $\sigma||\tau$, as $\{s\in I(A,B,C)~|~s\upharpoonright A,B\in \sigma \wedge s\upharpoonright B,C \in \tau\}$.
+\end{definition}
+
+\begin{definition}[Composition]
+If $\sigma:A\limp B$ and $\tau:B\limp C$, we define $\sigma;\tau = \{s\upharpoonright A,C~|~s\in \sigma||\tau\}$.
+\end{definition}
 
 We also define the identities, which are simple copycat strategies :
 they immediately copy on the left (resp. right) component the last
@@ -89,6 +132,10 @@ definition, let \(L\) (resp. \(R\)) denote the left (resp. right)
 occurrence of \(A\) in \(A\limp A\).
 
 With these definitions, we get the following theorem:
+
+\begin{theorem}[Category of Games and Strategies]
+Composition of strategies is associative and identities are neutral for it. More precisely, there is a \hyperref[autonomous-categories]{*-autonomous category} with games as objects and strategies on $A\limp B$ as morphisms from $A$ to $B$.
+\end{theorem}
 
 
 %%% Local Variables:
