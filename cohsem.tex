@@ -20,8 +20,7 @@ functions. However the most interesting point was the discovery of a
 special class of stable functions, \emph{linear functions}, which was
 the first step leading to Linear Logic.
 
-\subsection{The cartesian closed structure of coherent
-semantics}\label{the-cartesian-closed-structure-of-coherent-semantics}
+\section{The cartesian closed structure of coherent semantics}\label{the-cartesian-closed-structure-of-coherent-semantics}
 
 There are three equivalent definitions of coherent spaces: the first
 one, \emph{coherent spaces as domains}, is interesting from a historical
@@ -34,7 +33,7 @@ particular example of a more general scheme that one could call
 constructions in linear logic such as \href{phase_semantics}{phase
 semantics} or the proof of strong normalisation for proof-nets.
 
-\subsubsection{Coherent spaces}\label{coherent-spaces}
+\subsection{Coherent spaces}\label{coherent-spaces}
 
 A coherent space \(X\) is a collection of subsets of a set \(\web X\)
 satisfying some conditions that will be detailed shortly. The elements
@@ -48,7 +47,7 @@ bit ambiguous as the points of \(X\) are the elements of the web of
 The definitions below give three equivalent conditions that have to be
 satisfied by the cliques of a coherent space.
 
-\paragraph{As domains}\label{as-domains}
+\subsubsection{As domains}\label{as-domains}
 
 The cliques of \(X\) have to satisfy:
 
@@ -68,7 +67,7 @@ A coherent space is thus ordered by inclusion; one easily checks that it
 is a domain. In particular finite cliques of \(X\) correspond to compact
 elements.
 
-\paragraph{As graphs}\label{as-graphs}
+\subsubsection{As graphs}\label{as-graphs}
 
 There is a reflexive and symetric relation \(\coh_X\) on \(\web X\) (the
 \emph{coherence relation}) such that any subset \(x\) of \(\web X\) is a
@@ -88,14 +87,14 @@ closed and satisfy the binary compatibility condition.
 A coherent space is completely determined by its web and its coherence
 relation, or equivalently by its web and its strict coherence.
 
-\paragraph{As cliqued spaces}\label{as-cliqued-spaces}
+\subsubsection{As cliqued spaces}\label{as-cliqued-spaces}
 
 .\}\}
 
 The last way to express the conditions on the cliques of a coherent
 space \(X\) is simply to say that we must have \(X\biorth = X\).
 
-\paragraph{Equivalence of definitions}\label{equivalence-of-definitions}
+\subsubsection{Equivalence of definitions}\label{equivalence-of-definitions}
 
 Let \(X\) be a cliqued space and define a relation on \(\web X\) by
 setting \(a\coh_X b\) iff there is \(x\in X\) such that \(a, b\in x\).
@@ -143,7 +142,7 @@ relation. It is not difficult to see that this in-incoherence relation
 is just the coherence relation we started with; we thus obtain that
 \(X\biorth = X\), so that \(X\) is a cliqued space.
 
-\subsubsection{Stable functions}\label{stable-functions}
+\subsection{Stable functions}\label{stable-functions}
 
 This definition is admitedly not very tractable. An equivalent and most
 useful caracterisation of stable functions is given by the following
@@ -181,7 +180,7 @@ One could equivalently define the strict coherence relation on
 In particular the continuity of \(F\) entails that if \(x_0\) is minimal
 such that \(b\in F(x_0)\), then \(x_0\) is finite.
 
-\subsubsection{Cartesian product}\label{cartesian-product}
+\subsection{Cartesian product}\label{cartesian-product}
 
 This definition is just the way to put a coherent space structure on the
 cartesian product. Indeed one easily shows the
@@ -194,10 +193,9 @@ In particular this means that if we define
 \(\mathrm{Eval}(\langle f, x\rangle) = \mathrm{Fun}\,f(x)\) then
 \(\mathrm{Eval}\) is stable.
 
-\subsection{The monoidal structure of coherent
-semantics}\label{the-monoidal-structure-of-coherent-semantics}
+\section{The monoidal structure of coherent semantics}\label{the-monoidal-structure-of-coherent-semantics}
 
-\subsubsection{Linear functions}\label{linear-functions}
+\subsection{Linear functions}\label{linear-functions}
 
 In particular if we take \(A\) to be the empty family, then we have
 \(F(\emptyset) = \emptyset\).
@@ -227,7 +225,7 @@ It remains to define a tensor product and we will get that the category
 of coherent spaces with linear functions is monoidal symetric (it is
 actually *-autonomous).
 
-\subsubsection{Tensor product}\label{tensor-product}
+\subsection{Tensor product}\label{tensor-product}
 
 The closedness is a consequence of the existence of the linear
 isomorphism:
@@ -237,7 +235,7 @@ isomorphism:
 that is defined by its linear trace:
 \(\mathrm{LinTr}(\varphi) = \{(((a, b), c), (a, (b, c))),\, a\in\web X,\, b\in \web Y,\, c\in\web Z\}\).
 
-\subsubsection{Linear negation}\label{linear-negation}
+\subsection{Linear negation}\label{linear-negation}
 
 The cliques of \(X\orth\) are called the \emph{anticliques} of \(X\). As
 seen in the section on cliqued spaces we have \(X\biorth=X\).
@@ -249,7 +247,7 @@ This is in particular consequence of the existence of the isomorphism:
 defined by its linear trace:
 \(\mathrm{LinTr}(\varphi) = \{((a, b), (b, a)),\, a\in\web X,\, b\in\web Y\}\).
 
-\subsection{Exponentials}\label{exponentials}
+\section{Exponentials}\label{exponentials}
 
 In linear algebra, bilinear maps may be factorized through the tensor
 product. Similarly there is a coherent space \(\oc X\) that allows to
@@ -278,13 +276,12 @@ obtained by disjoint union) onto a multiplicative one (the web of a
 tensor is obtained by cartesian product) is the reason why the of course
 is called an \emph{exponential}.
 
-\subsection{Dual connectives and
-neutrals}\label{dual-connectives-and-neutrals}
+\section{Dual connectives and neutrals}\label{dual-connectives-and-neutrals}
 
 By linear negation all the constructions defined so far
 (\(\with, \tens, \oc\)) have a dual.
 
-\subsubsection{The direct sum}\label{the-direct-sum}
+\subsection{The direct sum}\label{the-direct-sum}
 
 The dual of \(\with\) is \(\plus\) defined by:
 \(X\plus Y = (X\orth\with Y\orth)\orth\). An equivalent definition is
@@ -299,7 +296,7 @@ so smoothly for stable functions. Historically it was after noting this
 defect of coherent semantics w.r.t. the intuitionnistic implication that
 Girard was leaded to discover linear functions.
 
-\subsubsection{The par and the why not}\label{the-par-and-the-why-not}
+\subsection{The par and the why not}\label{the-par-and-the-why-not}
 
 We now come to the most mysterious constructions of coherent semantics:
 the duals of the tensor and the of course.
@@ -332,18 +329,18 @@ written:
 
 \texttt{~}\(X\imp Y = \wn X\orth\parr Y\)\texttt{.}
 
-\subsubsection{One and bottom}\label{one-and-bottom}
+\subsection{One and bottom}\label{one-and-bottom}
 
 Depending on the context we denote by \(\one\) or \(\bot\) the coherent
 space whose web is a singleton and whose coherence relation is the
 trivial reflexive relation.
 
-\subsubsection{Zero and top}\label{zero-and-top}
+\subsection{Zero and top}\label{zero-and-top}
 
 Depending on the context we denote by \(\zero\) or \(\top\) the coherent
 space with empty web.
 
-\subsection{After coherent semantics}\label{after-coherent-semantics}
+\section{After coherent semantics}\label{after-coherent-semantics}
 
 Coherent semantics was an important milestone in the modern theory of
 logic of programs, in particular because it leaded to the invention of
@@ -364,7 +361,7 @@ firts come back on the origin of the central concept of \emph{stability}
 which as pointed above originated in the study of the sequentiality in
 programs.
 
-\subsubsection{Sequentiality}\label{sequentiality}
+\subsection{Sequentiality}\label{sequentiality}
 
 Sequentiality is a property that we will not define here (it would
 diserve its own article). We rely on the intuition that a function of
@@ -392,8 +389,7 @@ coherent semantics is built was enough to capture the notion of
 that the \emph{parallel or} is not stable. This diserves a bit of
 explanation.
 
-\paragraph{The parallel or is not
-stable}\label{the-parallel-or-is-not-stable}
+\subsubsection{The parallel or is not stable}\label{the-parallel-or-is-not-stable}
 
 Let \(B\) be the coherent space of booleans, also know as the flat
 domain of booleans: \(\web B = \{tt, ff\}\) where \(tt\) and \(ff\) are
@@ -418,10 +414,10 @@ that are ordered by the product order:
 With these notations in mind one may define the parallel or by:
 
 \(\begin{array}{rcl}
-\mathrm{Por} : B\with B &amp;\longrightarrow&amp; B\\
-  \langle T,\bot\rangle &amp;\longrightarrow&amp; T\\
-  \langle \bot,T\rangle &amp;\longrightarrow&amp; T\\
-    \langle F, F\rangle &amp;\longrightarrow&amp; F
+\mathrm{Por} : B\with B & \longrightarrow&  B\\
+  \langle T,\bot\rangle & \longrightarrow&  T\\
+  \langle \bot,T\rangle & \longrightarrow&  T\\
+    \langle F, F\rangle & \longrightarrow&  F
 \end{array}\)
 
 The function is completely determined if we add the assumption that it
@@ -457,19 +453,18 @@ programming languages such as (typed) lambda-calculus.
 So the first genuine idea would be that stability caracterises
 sequentiality; but...
 
-\paragraph{The Gustave function is
-stable}\label{the-gustave-function-is-stable}
+\subsubsection{The Gustave function is stable}\label{the-gustave-function-is-stable}
 
 The Gustave function, so-called after an old joke, was found by Gérard
 Berry as an example of a function that is stable but non sequential. It
 is defined by:
 
 \(\begin{array}{rcl}
-  B\with B\with B           &amp;\longrightarrow&amp; B\\
-  \langle T, F, \bot\rangle &amp;\longrightarrow&amp; T\\
-  \langle \bot, T, F\rangle &amp;\longrightarrow&amp; T\\
-  \langle F, \bot, T\rangle &amp;\longrightarrow&amp; T\\
-  \langle x, y, z\rangle    &amp;\longrightarrow&amp; F
+  B\with B\with B           & \longrightarrow&  B\\
+  \langle T, F, \bot\rangle & \longrightarrow&  T\\
+  \langle \bot, T, F\rangle & \longrightarrow&  T\\
+  \langle F, \bot, T\rangle & \longrightarrow&  T\\
+  \langle x, y, z\rangle    & \longrightarrow&  F
 \end{array}\)
 
 The last clause is for all cliques \(x\), \(y\) and \(z\) such that
@@ -503,8 +498,7 @@ reformulated as a kind of \href{Game_semantics}{game model}, and the
 theory of \emph{hypercoherent spaces} by Antonio Bucciarelli and Thomas
 Ehrhard.
 
-\subsubsection{Multiplicative neutrals and the mix
-rule}\label{multiplicative-neutrals-and-the-mix-rule}
+\subsection{Multiplicative neutrals and the mix rule}\label{multiplicative-neutrals-and-the-mix-rule}
 
 Coherent semantics is slightly degenerated w.r.t. linear logic because
 it identifies multiplicative neutrals (it also identifies additive

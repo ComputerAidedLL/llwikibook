@@ -1,6 +1,6 @@
 \chapter{Phase semantics}\label{phase-semantics}
 
-\subsection{Introduction}\label{introduction}
+\section{Introduction}\label{introduction}
 
 The semantics given by phase spaces is a kind of "formula and
 provability semantics", and is thus quite different in spirit from the
@@ -9,14 +9,14 @@ some "formulas and \emph{proofs} semantics".)
 
 \texttt{~-\/-\/-~probably~a~whole~lot~more~of~blabla~to~put~here...~-\/-\/-}
 
-\subsection{Preliminaries: relation and closure
+\section{Preliminaries: relation and closure
 operators}\label{preliminaries-relation-and-closure-operators}
 
 Part of the structure obtained from phase semantics works in a very
 general framework and relies solely on the notion of relation between
 two sets.
 
-\subsubsection{Relations and operators on
+\subsection{Relations and operators on
 subsets}\label{relations-and-operators-on-subsets}
 
 The starting point of phase semantics is the notion of \emph{duality}.
@@ -44,7 +44,7 @@ the form \(\langle R\rangle\) (resp. \([R]\)).
 
 \textbackslash{}to \textbackslash{}mathcal\{P\}(X)...\}\}
 
-\subsubsection{Closure operators}\label{closure-operators}
+\subsection{Closure operators}\label{closure-operators}
 
 Closure operators are quite common in mathematics and computer science.
 They correspond exactly to the notion of \emph{monad} on a preorder...
@@ -63,19 +63,19 @@ section is:
 
 A last trivial lemma:
 
-\subsection{Phase Semantics}\label{phase-semantics-1}
+\section{Phase Semantics}\label{phase-semantics-1}
 
-\subsubsection{Phase spaces}\label{phase-spaces}
+\subsection{Phase spaces}\label{phase-spaces}
 
 Thanks to the preliminary work, we have:
 
-\subsubsection{Additive connectives}\label{additive-connectives}
+\subsection{Additive connectives}\label{additive-connectives}
 
 The previous corollary makes the following definition correct:
 
 Once again, the next lemma follows from previous observations:
 
-\subsubsection{Multiplicative
+\subsection{Multiplicative
 connectives}\label{multiplicative-connectives}
 
 In order to define the multiplicative connectives, we actually need to
@@ -99,30 +99,23 @@ following, "intuitive" definition of \(x\limp y\):
 
 Readers familiar with realisability will appreciate...
 
-\subsubsection{Properties}\label{properties}
+\subsection{Properties}\label{properties}
 
 All the expected properties hold:
 
-\subsubsection{Exponentials}\label{exponentials-3}
+\subsection{Exponentials}\label{exponentials-3}
 
-This definition captures precisely the intuition behind the
-exponentials:
-
+This definition captures precisely the intuition behind the exponentials:
 \begin{itemize}
-\tightlist
-\item
-  we need to have contraction, hence we restrict to indempotents in
-  \(x\),
-\item
-  and weakening, hence we restrict to \(\one\).
+\item we need to have contraction, hence we restrict to indempotents in \(x\),
+\item and weakening, hence we restrict to \(\one\).
 \end{itemize}
 
-Since \(I\) isn't necessarily a fact, we then take the biorthogonal to
-get a fact...
+Since \(I\) isn't necessarily a fact, we then take the biorthogonal to get a fact...
 
-\subsection{Soundness}\label{soundness}
+\section{Soundness}\label{soundness}
 
-\subsection{Completeness}\label{completeness}
+\section{Completeness}\label{completeness}
 
 Phase semantics is complete w.r.t. linear logic. In order to prove this,
 we need to build a particular commutative monoid.
@@ -132,7 +125,7 @@ multiplicity of \(\wn\)-formulae.
 
 We instantiate the pole as \(\Bot := \{\Gamma \mid \vdash\Gamma\}\).
 
-\subsection{Cut elimination}\label{cut-elimination}
+\section{Cut elimination}\label{cut-elimination}
 
 Actually, the completeness result is stronger, as the proof does not use
 the cut-rule in the reconstruction of \(\vdash\Gamma\). By refining the
@@ -140,7 +133,7 @@ pole as the set of \emph{cut-free} provable formulae, we get:
 
 From soundness, one can retrieve the cut-elimination theorem.
 
-\subsection{The Rest}\label{the-rest}
+\section{The Rest}\label{the-rest}
 
 
 %%% Local Variables:

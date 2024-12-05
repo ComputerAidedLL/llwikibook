@@ -63,9 +63,8 @@ finiteness structure on \(\web {\mathcal A}\). We then write
 The elements of \(\mathfrak F\left(\mathcal A\right)\) are called the
 finitary subsets of \({\mathcal A}\).
 
-\subparagraph{Example.}\label{example.}
-
-\texttt{~~~For~all~set~}\(A\)\texttt{,~}\((A,\finpowerset A)\)\texttt{~is~a~finiteness~space~and~}\((A,\finpowerset A)\orth = (A,\powerset A)\)\texttt{.~~In~particular,~each~finite~set~}\(A\)\texttt{~is~the~web~of~exactly~one~finiteness~space:~}\((A,\finpowerset A)=(A,\powerset A)\)\texttt{.~We~introduce~the~following~two:~}\(\zero = \zero\orth = \left(\emptyset, \{\emptyset\}\right)\)\texttt{~and~}\(\one = \one\orth = \left(\{\emptyset\}, \{\emptyset, \{\emptyset\}\}\right)\)\texttt{.~~We~also~introduce~the~finiteness~space~of~natural~numbers~}\({\mathcal N}\)\texttt{~by:~~~~}\(|{\mathcal N}|={\mathbf N}\)\texttt{~and~}\(a\in\mathfrak F\left(\mathcal N\right)\)\texttt{~iff~}\(a\)\texttt{~is~finite.~~We~write~}\(\mathcal O=\{0\}\in\mathfrak F\left({\mathcal N}\right)\)\texttt{.}
+\begin{example}\label{example.}
+For all set \(A\), \((A,\finpowerset A)\) is a finiteness space and \((A,\finpowerset A)\orth = (A,\powerset A)\). In particular, each finite set \(A\) is the web of exactly one finiteness space: \((A,\finpowerset A)=(A,\powerset A)\). We introduce the following two: \(\zero = \zero\orth = \left(\emptyset, \{\emptyset\}\right)\) and \(\one = \one\orth = \left(\{\emptyset\}, \{\emptyset, \{\emptyset\}\}\right)\). We also introduce the finiteness space of natural numbers \({\mathcal N}\) by: \(|{\mathcal N}|={\mathbf N}\) and \(a\in\mathfrak F\left(\mathcal N\right)\) iff \(a\) is finite. We write \(\mathcal O=\{0\}\in\mathfrak F\left({\mathcal N}\right)\).
 
 Notice that \({\mathfrak F}\) is a finiteness structure iff it is of the
 form \({\mathfrak G}\orth\). It follows that any finiteness structure
@@ -77,8 +76,9 @@ all \(k\in{\mathbf N}\), write
 then \(k{\downarrow}\subseteq k'{\downarrow}\) as soon as \(k\le k'\),
 but
 \(\bigcup_{k\ge0} k{\downarrow}={\mathbf N}\not\in\mathfrak F\left({\mathcal N}\right)\).
+\end{example}
 
-\subsubsection{Multiplicatives}\label{multiplicatives}
+\subsection{Multiplicatives}\label{multiplicatives}
 
 For all finiteness spaces \({\mathcal A}\) and \({\mathcal B}\), we
 define \({\mathcal A} \tens {\mathcal B}\) by
@@ -124,11 +124,11 @@ symmetric monoidal, with unit \(\one\); it is monoidal closed by the
 definition of \(\limp\); it is \(*\)-autonomous by the obvious
 isomorphism between \({\mathcal A}\orth\) and \({\mathcal A}\limp\one\).
 
-\subparagraph{Example.}\label{example.-1}
+\begin{example}\label{example.-1}
+Setting \(\mathcal{S}=\left\{(k,k+1);\  k\in{\mathbf N}\right\}\) and \(\mathcal{P}=\left\{(k+1,k);\  k\in{\mathbf N}\right\}\), we have \(\mathcal{S},\mathcal{P}\in\mathbf{Fin}({\mathcal N},{\mathcal N})\) and \(\mathcal{P}\bullet\mathcal{S}=\mathsf{id}_{{\mathcal N}}\).
+\end{example}
 
-\texttt{~~~Setting~}\(\mathcal{S}=\left\{(k,k+1);\  k\in{\mathbf N}\right\}\)\texttt{~and~}\(\mathcal{P}=\left\{(k+1,k);\  k\in{\mathbf N}\right\}\)\texttt{,~we~have~}\(\mathcal{S},\mathcal{P}\in\mathbf{Fin}({\mathcal N},{\mathcal N})\)\texttt{~and~}\(\mathcal{P}\bullet\mathcal{S}=\mathsf{id}_{{\mathcal N}}\)\texttt{.}
-
-\subsubsection{Additives}\label{additives}
+\subsection{Additives}\label{additives}
 
 We now introduce the cartesian structure of \(\mathbf{Fin}\). We define
 \({\mathcal A} \oplus {\mathcal B}\) by
@@ -161,14 +161,11 @@ and if \(f\in\mathbf{Fin}({\mathcal C},{\mathcal A})\) and
 The unique morphism from \({\mathcal A}\) to \(\zero\) is the empty
 relation. The co-cartesian structure is obtained symmetrically.
 
-\subparagraph{Example.}\label{example.-2}
+\begin{example}\label{example.-2}
+Write \({\mathcal O}\orth=\left\{(0,\emptyset)\right\}\in\mathbf{Fin}({\mathcal N},\one)\). Then \(\left\langle{{\mathcal O}\orth},{\mathcal{P}}\right\rangle =\{ (0,(1,\emptyset)) \}\cup \{ (k+1,(2,k)) ;\  k\in{\mathbf N} \} \in\mathbf{Fin}\left({\mathcal N},\one\oplus{\mathcal N}\right)\) is an isomorphism.
+\end{example}
 
-\texttt{~~~Write~}\({\mathcal O}\orth=\left\{(0,\emptyset)\right\}\in\mathbf{Fin}({\mathcal N},\one)\)\texttt{.~~Then~}\(\left\langle{{\mathcal O}\orth},{\mathcal{P}}\right\rangle =\{ (0,(1,\emptyset)) \}\cup \{ (k+1,(2,k)) ;\  k\in{\mathbf N} \} \in\mathbf{Fin}\left({\mathcal N},\one\oplus{\mathcal N}\right)\)\\
-\texttt{~~~is~an~isomorphism.}\\
-\texttt{~~~}\\
-\texttt{~~~\ }
-
-\subsubsection{Exponentials}\label{exponentials-1}
+\subsection{Exponentials}\label{exponentials-1}
 
 If \(A\) is a set, we denote by \(\finmulset A\) the set of all finite
 multisets of elements of \(A\), and if \(a\subseteq A\), we write
@@ -190,8 +187,7 @@ and
 \(\mathsf{digg}_{{\mathcal A}}=\left\{\left(\sum_{i=1}^n\overline\alpha_i,\left[\overline\alpha_1,\ldots,\overline\alpha_n\right]\right);\ \forall i,\ \overline\alpha_i\in\web{\oc {\mathcal A}}\right\}\)
 make this functor a comonad.
 
-\subparagraph{Example.}\label{example.-3}
-
+\begin{example}\label{example.-3}
 We have isomorphisms
 \(\left\{([],\emptyset)\right\}\in\mathbf{Fin}(\oc\zero,\one)\) and
 
@@ -199,6 +195,7 @@ We have isomorphisms
 
 More generally, we have
 \(\oc\left({\mathcal A}_1\oplus\cdots\oplus{\mathcal A}_n\right)\cong\oc{\mathcal A}_1\tens\cdots\tens\oc{\mathcal A}_n\).
+\end{example}
 
 
 %%% Local Variables:

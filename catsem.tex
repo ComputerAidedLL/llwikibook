@@ -11,9 +11,9 @@ See \footnote{}for a more detailed introduction to category theory. See
 \footnote{}for a detailed treatment of categorical semantics of linear
 logic.
 
-\subsection{Basic category theory recalled}\label{basic-category-theory-recalled}
+\section{Basic category theory recalled}\label{basic-category-theory-recalled}
 
-\subsection{Overview}\label{overview}
+\section{Overview}\label{overview}
 
 In order to interpret the various \href{fragment}{fragments} of linear
 logic, we define incrementally what structure we need in a categorical
@@ -44,7 +44,7 @@ setting.
   be a \textbf{*-autonomous category} for that purpose.
 \end{itemize}
 
-\subsection{\texorpdfstring{Modeling \url{IMLL}}{Modeling IMLL}}\label{modeling-imll}
+\section{\texorpdfstring{Modeling \wantedpage{IMLL}}{Modeling IMLL}}\label{modeling-imll}
 
 A model of \url{IMLL} is a \emph{closed symmetric monoidal category}. We
 recall the definition of these categories below.
@@ -68,8 +68,8 @@ D)\textbackslash{}ar{[}d{]}\^{}\{A\textbackslash{}otimes\textbackslash{}alpha\_\
 \end{itemize}
 
 \[\xymatrix{
-    (A\otimes I)\otimes B\ar[dr]_{\rho_A\otimes B}\ar[rr]^{\alpha_{A,I,B}}&amp;&amp;\ar[dl]^{A\otimes\lambda_B}A\otimes(I\otimes B)\\
-    &amp;A\otimes B&amp;
+    (A\otimes I)\otimes B\ar[dr]_{\rho_A\otimes B}\ar[rr]^{\alpha_{A,I,B}}& & \ar[dl]^{A\otimes\lambda_B}A\otimes(I\otimes B)\\
+    & A\otimes B& 
 }\] commutes. \}\}
 
 \&(B\textbackslash{}otimes C)\textbackslash{}otimes
@@ -84,9 +84,9 @@ C)\textbackslash{}ar{[}ur{]}\_\{B\textbackslash{}otimes\textbackslash{}gamma\_\{
 \} and
 
 \[\xymatrix{
-&amp;(A\otimes B)\otimes C\ar[r]^{\gamma_{A\otimes B,C}}&amp;C\otimes (A\otimes B)\ar[dr]^{\alpha^{-1}_{C,A,B}}&amp;\\
-A\otimes (B\otimes C)\ar[ur]^{\alpha^{-1}_{A,B,C}}\ar[dr]_{A\otimes\gamma_{B,C}}&amp;&amp;&amp;(C\otimes A)\otimes B\\
-&amp;A\otimes(C\otimes B)\ar[r]_{\alpha^{-1}_{A,C,B}}&amp;(A\otimes C)\otimes B\ar[ur]_{\gamma_{A,C}\otimes B}&amp;\\
+& (A\otimes B)\otimes C\ar[r]^{\gamma_{A\otimes B,C}}& C\otimes (A\otimes B)\ar[dr]^{\alpha^{-1}_{C,A,B}}& \\
+A\otimes (B\otimes C)\ar[ur]^{\alpha^{-1}_{A,B,C}}\ar[dr]_{A\otimes\gamma_{B,C}}& & & (C\otimes A)\otimes B\\
+& A\otimes(C\otimes B)\ar[r]_{\alpha^{-1}_{A,C,B}}& (A\otimes C)\otimes B\ar[ur]_{\gamma_{A,C}\otimes B}& \\
 }\] commute for every objects \(A\), \(B\) and \(C\).
 
 A \emph{symmetric} monoidal category is a braided monoidal category in
@@ -105,7 +105,7 @@ In a symmetric monoidal category, a left closed structure induces a
 right closed structure and conversely, allowing us to simply speak of a
 \emph{closed symmetric monoidal category}.
 
-\subsection{Modeling the additives}\label{modeling-the-additives}
+\section{Modeling the additives}\label{modeling-the-additives}
 
 A category has \emph{finite products} when it has products and a
 terminal object.
@@ -120,11 +120,11 @@ M\textbackslash{}ar{[}rr{]}\_\{\textbackslash{}mu\}\&\&M\textbackslash{}\textbac
 \} and
 
 \[\xymatrix{
-I\tens M\ar[r]^{\eta\tens M}\ar[dr]_{\lambda_M}&amp;M\tens M\ar[d]_\mu&amp;\ar[l]_{M\tens\eta}\ar[dl]^{\rho_M}M\tens I\\
-&amp;M&amp;
+I\tens M\ar[r]^{\eta\tens M}\ar[dr]_{\lambda_M}& M\tens M\ar[d]_\mu& \ar[l]_{M\tens\eta}\ar[dl]^{\rho_M}M\tens I\\
+& M& 
 }\] commute. \}\}
 
-\subsection{\texorpdfstring{Modeling \url{ILL}}{Modeling ILL}}\label{modeling-ill}
+\section{\texorpdfstring{Modeling \hyperref[intuitionistic-linear-logic]{ILL}}{Modeling ILL}}\label{modeling-ill}
 
 Introduced in\footnote{}.
 
@@ -144,11 +144,11 @@ FC)\textbackslash{}ar{[}dr{]}\^{}\{FA\textbackslash{}bullet\textbackslash{}phi\_
 \} and
 
 \[\xymatrix{
-    FA\bullet J\ar[d]_{\rho_{FA}}\ar[r]^{FA\bullet\phi}&amp;FA\bullet FI\ar[d]^{\phi_{A,I}}\\
-    FA&amp;\ar[l]^{F\rho_A}F(A\otimes I)
+    FA\bullet J\ar[d]_{\rho_{FA}}\ar[r]^{FA\bullet\phi}& FA\bullet FI\ar[d]^{\phi_{A,I}}\\
+    FA& \ar[l]^{F\rho_A}F(A\otimes I)
 }\] and \(\xymatrix{
-    J\bullet FB\ar[d]_{\lambda_{FB}}\ar[r]^{\phi\bullet FB}&amp;FI\bullet FB\ar[d]^{\phi_{I,B}}\\
-    FB&amp;\ar[l]^{F\lambda_B}F(I\otimes B)
+    J\bullet FB\ar[d]_{\lambda_{FB}}\ar[r]^{\phi\bullet FB}& FI\bullet FB\ar[d]^{\phi_{I,B}}\\
+    FB& \ar[l]^{F\lambda_B}F(I\otimes B)
 }\) commute for every objects \(A\), \(B\) and \(C\) of \(\mathcal{C}\).
 The morphisms \(f_{A,B}\) and \(f\) are called \emph{coherence maps}.
 
@@ -161,15 +161,15 @@ GB\textbackslash{}\textbackslash{}
 \texttt{~~~F(A\textbackslash{}tens~B)\textbackslash{}ar{[}r{]}\_\{\textbackslash{}theta\_\{A\textbackslash{}tens~B\}\}\&G(A\textbackslash{}tens~B)}
 
 \} and \(\xymatrix{
-  &amp;\ar[dl]_{f}J\ar[dr]^{g}&amp;\\
-  FI\ar[rr]_{\theta_I}&amp;&amp;GI
+  & \ar[dl]_{f}J\ar[dr]^{g}& \\
+  FI\ar[rr]_{\theta_I}& & GI
 }\) commute for every objects \(A\) and \(B\) of \(\mathcal{D}\). \}\}
 
-\subsection{Modeling negation}\label{modeling-negation}
+\section{Modeling negation}\label{modeling-negation}
 
-\subsubsection{*-autonomous categories}\label{autonomous-categories}
+\subsection{*-autonomous categories}\label{autonomous-categories}
 
-\subsubsection{Compact closed categories}\label{compact-closed-categories}
+\subsection{Compact closed categories}\label{compact-closed-categories}
 
 \&(A\textbackslash{}tens B)\textbackslash{}tens
 A\textbackslash{}ar{[}dr{]}\^{}\{\textbackslash{}varepsilon\textbackslash{}tens
@@ -180,9 +180,9 @@ A\textbackslash{}ar{[}u{]}\^{}\{\textbackslash{}rho\_A\^{}\{-1\}\}\textbackslash
 \} and
 
 \[\xymatrix{
-&amp;(B\tens A)\tens B\ar[r]^{\alpha_{B,A,B}}&amp;B\tens(A\tens B)\ar[dr]^{B\tens\varepsilon}\\
-I\tens B\ar[ur]^{\eta\tens B}&amp;&amp;&amp;B\tens I\ar[d]^{\rho_B}\\
-B\ar[u]^{\lambda_B^{-1}}\ar@{=}[rrr]&amp;&amp;&amp;B\\
+& (B\tens A)\tens B\ar[r]^{\alpha_{B,A,B}}& B\tens(A\tens B)\ar[dr]^{B\tens\varepsilon}\\
+I\tens B\ar[ur]^{\eta\tens B}& & & B\tens I\ar[d]^{\rho_B}\\
+B\ar[u]^{\lambda_B^{-1}}\ar@{=}[rrr]& & & B\\
 }\] commute. The object \(A\) is called a left dual of \(B\) (and
 conversely \(B\) is a right dual of \(A\)). \}\}
 
@@ -196,23 +196,23 @@ every morphism \(g:B\to A^*\tens C\), we associate a morphism
 \(\llcorner g\lrcorner:A\tens B\to C\) defined as
 
 \[\xymatrix{
-A\tens B\ar[r]^-{A\tens g}&amp;A\tens(A^*\tens C)\ar[r]^-{\alpha_{A,A^*,C}^{-1}}&amp;(A\tens A^*)\tens C\ar[r]^-{\varepsilon_A\tens C}&amp;I\tens C\ar[r]^-{\lambda_C}&amp;C
+A\tens B\ar[r]^-{A\tens g}& A\tens(A^*\tens C)\ar[r]^-{\alpha_{A,A^*,C}^{-1}}& (A\tens A^*)\tens C\ar[r]^-{\varepsilon_A\tens C}& I\tens C\ar[r]^-{\lambda_C}& C
 }\] It is easy to show that
 \(\llcorner \ulcorner f\urcorner\lrcorner=f\) and
 \(\ulcorner\llcorner g\lrcorner\urcorner=g\) from which we deduce the
 required bijection. \}\}
 
-\subsection{Other categorical models}\label{other-categorical-models}
+\section{Other categorical models}\label{other-categorical-models}
 
-\subsubsection{Lafont categories}\label{lafont-categories}
+\subsection{Lafont categories}\label{lafont-categories}
 
-\subsubsection{Seely categories}\label{seely-categories}
+\subsection{Seely categories}\label{seely-categories}
 
-\subsubsection{Linear categories}\label{linear-categories}
+\subsection{Linear categories}\label{linear-categories}
 
-\subsection{Properties of categorical models}\label{properties-of-categorical-models}
+\section{Properties of categorical models}\label{properties-of-categorical-models}
 
-\subsubsection{The Kleisli category}\label{the-kleisli-category}
+\subsection{The Kleisli category}\label{the-kleisli-category}
 
 %%% Local Variables:
 %%% mode: latex
