@@ -1,6 +1,6 @@
 \chapter{System L}\label{system-l}
 
-\textbf{System L} is a family of syntax for a variety of variants of
+\textbf{System L}~\cite{dualitycomputationfocus} is a family of syntax for a variety of variants of
 linear logic, inspired from classical calculi such as
 \(\bar\lambda\mu\tilde\mu\)-calculus. These, in turn, stem from the
 study of abstract machines for \(\lambda\)-calculus. In this realm,
@@ -37,129 +37,128 @@ Typing of positive values corresponds to focused sequents, and
 commands are cuts.
 
 Positive values: sequents are of the form \(\vdash \Gamma :: v^+ : P\).
-
-\(\LabelRule{\rulename{ax}^+}
+\begin{gather*}
+\LabelRule{\rulename{ax}^+}
 \NulRule{\vdash x^+:P\orth :: x^+: P}
-\DisplayProof\)
-
-\(\LabelRule{1}
+\DisplayProof
+\\[2ex]
+\LabelRule{1}
 \NulRule{\vdash \ :: () : 1}
-\DisplayProof\)
-
-\(\AxRule{\vdash \Gamma_1 :: v_1^+ : P_1}
+\DisplayProof
+\qquad\qquad
+\AxRule{\vdash \Gamma_1 :: v_1^+ : P_1}
 \AxRule{\vdash \Gamma_2 :: v_2^+ : P_2}
 \LabelRule{\rulename{\otimes}}
 \BinRule{\vdash\Gamma_1, \Gamma_2 :: (v_1^+, v_2^+) : P_1\otimes P_2}
-\DisplayProof\)
-
-\(\AxRule{\vdash \Gamma :: v^+ : P_1}
+\DisplayProof
+\\[2ex]
+\AxRule{\vdash \Gamma :: v^+ : P_1}
 \LabelRule{\rulename{\oplus_1}}
 \UnaRule{\vdash\Gamma :: inl(v^+) : P_1\oplus P_2}
 \DisplayProof
-\qquad
+\qquad\qquad
 \AxRule{\vdash \Gamma :: v^+ : P_2}
 \LabelRule{\rulename{\oplus_2}}
 \UnaRule{\vdash\Gamma :: inr(v^+) : P_1\oplus P_2}
-\DisplayProof\)
-
-\(\AxRule{\vdash \Gamma \mid t^- : N}
+\DisplayProof
+\\[2ex]
+\AxRule{\vdash \Gamma \mid t^- : N}
 \LabelRule{\shpos}
 \UnaRule{\vdash\Gamma :: \shpos t^- : \shpos N}
-\DisplayProof\)
-
-\(\AxRule{c \vdash \wn\Gamma, x^+ : N}
+\DisplayProof
+\qquad\qquad
+\AxRule{c \vdash \wn\Gamma, x^+ : N}
 \LabelRule{\oc}
 \UnaRule{\vdash\wn\Gamma :: \mu(\wn x^+).c : \oc N}
-\DisplayProof\)
+\DisplayProof
+\end{gather*}
 
 Positive terms: sequents are of the form \(\vdash\Gamma\mid t^+:P\).
-
-\(\AxRule{\vdash \Gamma :: v^+ : P}
+\begin{equation*}
+\AxRule{\vdash \Gamma :: v^+ : P}
 \LabelRule{\rulename{foc}}
 \UnaRule{\vdash\Gamma \mid v^+ : P}
-\DisplayProof\)
-
-\(\AxRule{c \vdash \Gamma, x^- : P}
+\DisplayProof
+\qquad\qquad
+\AxRule{c \vdash \Gamma, x^- : P}
 \LabelRule{\rulename{\mu^-}}
 \UnaRule{\vdash\Gamma \mid\mu x^-.c : P}
-\DisplayProof\)
+\DisplayProof
+\end{equation*}
 
 Negative terms: sequents are of the form \(\vdash\Gamma\mid t^-:N\).
-
-\(\LabelRule{\rulename{ax}^-}
+\begin{gather*}
+\LabelRule{\rulename{ax}^-}
 \NulRule{\vdash x^-:N\orth \mid x^-: N}
-\DisplayProof\)
-
-\(\AxRule{c\vdash \Gamma, x^+: N}
+\DisplayProof
+\qquad\qquad
+\AxRule{c\vdash \Gamma, x^+: N}
 \LabelRule{\mu^+}
 \UnaRule{\vdash\Gamma \mid \mu x^+.c : N}
-\DisplayProof\)
-
-\(\AxRule{c \vdash \Gamma}
+\DisplayProof
+\\[2ex]
+\AxRule{c \vdash \Gamma}
 \LabelRule{\bot}
 \UnaRule{\vdash \Gamma \mid \mu().c : \bot}
-\DisplayProof\)
-
-\(\AxRule{c\vdash \Gamma, x^+: N_1, y^+: N_2}
+\DisplayProof
+\qquad\qquad
+\AxRule{c\vdash \Gamma, x^+: N_1, y^+: N_2}
 \LabelRule{\rulename{\parr}}
 \UnaRule{\vdash\Gamma \mid \mu(x^+, y^+).c : N_1 \parr N_2}
-\DisplayProof\)
-
-\(\LabelRule{\rulename{\top}}
+\DisplayProof
+\\[2ex]
+\LabelRule{\rulename{\top}}
 \NulRule{\vdash \Gamma \mid \mu[\cdot] : \top}
-\DisplayProof\)
-
-\(\AxRule{c_1\vdash \Gamma, x^+:N_1}
+\DisplayProof
+\qquad\qquad
+\AxRule{c_1\vdash \Gamma, x^+:N_1}
 \AxRule{c_2\vdash \Gamma, y^+:N_2}
 \LabelRule{\rulename{\with}}
 \BinRule{\vdash\Gamma \mid \mu[inl(x^+).c_1 \mid inr(y^+).c_2] : N_1 \with N_2}
-\DisplayProof\)
-
-\(\AxRule{c\vdash \Gamma, x^-: P}
+\DisplayProof
+\\[2ex]
+\AxRule{c\vdash \Gamma, x^-: P}
 \LabelRule{\shneg}
 \UnaRule{\vdash\Gamma \mid \mu(\shpos x^-).c : \shneg P}
-\DisplayProof\)
-
-\(\AxRule{\vdash \Gamma :: v^+ : P}
+\DisplayProof
+\qquad\qquad
+\AxRule{\vdash \Gamma :: v^+ : P}
 \LabelRule{\wn}
 \UnaRule{\vdash\Gamma \mid \wn v^+ : \wn P}
-\DisplayProof\)
+\DisplayProof
+\end{gather*}
 
 Commands:
-
-\(\AxRule{\vdash \Gamma \mid t^+ : P}
+\begin{gather*}
+\AxRule{\vdash \Gamma \mid t^+ : P}
 \AxRule{\vdash \Delta \mid t^- : P\orth}
 \LabelRule{\rulename{cut}}
 \BinRule{\langle t^+ \mid t^-\rangle\vdash\Gamma, \Delta}
-\DisplayProof\)
-
-\(\AxRule{c \vdash \Gamma}
+\DisplayProof
+\\[2ex]
+\AxRule{c \vdash \Gamma}
 \LabelRule{\rulename{wkn}}
 \UnaRule{c \vdash\Gamma, x^+: \wn P}
-\DisplayProof\)
-
-\(\AxRule{c \vdash \Gamma, x_1^+:\wn P, x_2^+:\wn P}
+\DisplayProof
+\qquad\qquad
+\AxRule{c \vdash \Gamma, x_1^+:\wn P, x_2^+:\wn P}
 \LabelRule{\rulename{ctr}}
 \UnaRule{c[x_1^+ := x^+, x_2^+ := x^+] \vdash\Gamma, x^+: \wn P}
-\DisplayProof\)
+\DisplayProof
+\end{gather*}
 
 \section{Reduction rules}\label{reduction-rules}
 
-\(\langle v^+ \mid \mu x^+.c \rangle \rightarrow c[ x^+ := v^+]\)
-
-\(\langle \mu x^-.c \mid t^- \rangle \rightarrow c[x^- := t^-]\)
-
-\(\langle () \mid \mu().c \rangle \rightarrow c\)
-
-\(\langle (v_1^+, v_2^+) \mid \mu(x^+, y^+).c \rangle \rightarrow c[x^+ := v_1^+, y^+ := v_2^+]\)
-
-\(\langle inl(v^+) \mid \mu[inl(x^+).c_1 \mid inr(y^+).c_2] \rangle \rightarrow c_1[x^+ := v^+]\)
-
-\(\langle inr(v^+) \mid \mu[inl(x^+).c_1 \mid inr(y^+).c_2] \rangle \rightarrow c_2[y^+ := v^+]\)
-
-\(\langle \shpos t^- \mid \mu(\shpos x^-).c \rangle \rightarrow c[x^- := t^-]\)
-
-\(\langle \mu(\wn x^+).c \mid \wn v^+ \rangle \rightarrow c[x^+ := v^+]\)
+\begin{align*}
+\langle v^+ \mid \mu x^+.c \rangle &\rightarrow c[ x^+ := v^+] \\
+\langle \mu x^-.c \mid t^- \rangle &\rightarrow c[x^- := t^-] \\
+\langle () \mid \mu().c \rangle &\rightarrow c \\
+\langle (v_1^+, v_2^+) \mid \mu(x^+, y^+).c \rangle &\rightarrow c[x^+ := v_1^+, y^+ := v_2^+] \\
+\langle inl(v^+) \mid \mu[inl(x^+).c_1 \mid inr(y^+).c_2] \rangle &\rightarrow c_1[x^+ := v^+] \\
+\langle inr(v^+) \mid \mu[inl(x^+).c_1 \mid inr(y^+).c_2] \rangle &\rightarrow c_2[y^+ := v^+] \\
+\langle \shpos t^- \mid \mu(\shpos x^-).c \rangle &\rightarrow c[x^- := t^-] \\
+\langle \mu(\wn x^+).c \mid \wn v^+ \rangle &\rightarrow c[x^+ := v^+]
+\end{align*}
 
 
 %%% Local Variables:
