@@ -63,7 +63,6 @@ multiset \(\wn A_1,\ldots,\wn A_n\). Proofs are labelled trees of
 sequents, built using the following inference rules:
 
 \begin{itemize}
-\tightlist
 \item
   Identity group: 
   \begin{equation*}
@@ -341,15 +340,10 @@ and \hyperref[equiprovability]{equiprovability} (weaker than equivalence).
 \subsection{De Morgan laws}\label{de-morgan-laws}
 
 Negation is involutive:
-
-\begin{description}
-\tightlist
-\item[]
+\qquad
 \(A\linequiv A\biorth\)
-\end{description}
 
 Duality between connectives:
-
 \begin{longtable}[]{@{}lllll@{}}
 \toprule
 \(( A \tens B )\orth\) & \(\linequiv A\orth \parr B\orth\) & &
@@ -373,7 +367,6 @@ Duality between connectives:
 \subsection{Fundamental equivalences}\label{fundamental-equivalences}
 
 \begin{itemize}
-\tightlist
 \item
   Associativity, commutativity, neutrality:
   \begin{equation*}
@@ -449,13 +442,9 @@ The units and the additive connectives can be defined using second-order
 quantification and exponentials, indeed the following equivalences hold:
 
 \begin{itemize}
-\tightlist
-\item
-  \(\zero \linequiv \forall X.X\)
-\item
-  \(\one \linequiv \forall X.(X \limp X)\)
-\item
-  \(A \plus B \linequiv \forall X.(\oc(A \limp X) \limp \oc(B \limp X) \limp X)\)
+\item \(\zero \linequiv \forall X.X\)
+\item \(\one \linequiv \forall X.(X \limp X)\)
+\item \(A \plus B \linequiv \forall X.(\oc(A \limp X) \limp \oc(B \limp X) \limp X)\)
 \end{itemize}
 
 The constants \(\top\) and \(\bot\) and the connective \(\with\) can be
@@ -680,14 +669,11 @@ From these remarks, we can define an equivalent one-sided sequent
 calculus:
 
 \begin{itemize}
-\tightlist
-\item
-  Formulas are considered up to De Morgan duality. Equivalently, one can
+\item Formulas are considered up to De Morgan duality. Equivalently, one can
   consider that negation is not a connective but a syntactically defined
   operation on formulas. In this case, negated atoms \(\alpha\orth\)
   must be considered as another kind of atomic formulas.
-\item
-  Sequents have the form \(\vdash\Gamma\).
+\item Sequents have the form \(\vdash\Gamma\).
 \end{itemize}
 
 The inference rules are essentially the same except that the left hand
@@ -813,11 +799,8 @@ sequent calculus proofs under commutation of rules.
 \subsection{Exponential rules}\label{exponential-rules}
 
 \begin{itemize}
-\tightlist
 \item
   The promotion rule, on the right-hand side for example,
-\end{itemize}
-
 \(\AxRule{ \oc A_1, \ldots, \oc A_n \vdash B, \wn B_1, \ldots, \wn B_m }
 \LabelRule{ \oc_R }
 \UnaRule{ \oc A_1, \ldots, \oc A_n \vdash \oc B, \wn B_1, \ldots, \wn B_m }
@@ -832,13 +815,7 @@ rule \(\AxRule{ A_1, \ldots, A_n \vdash B, B_1, \ldots, B_m }
 \DisplayProof\), without modifying the provability.
 
 Note that digging violates the subformula property.
-
-\begin{itemize}
-\tightlist
-\item
-  In presence of the digging rule 
-\end{itemize}
-
+\item In presence of the digging rule 
 \AxRule{ \Gamma \vdash
 \wn\wn A, \Delta }
 \LabelRule{ \wn\wn}
@@ -851,6 +828,7 @@ Note that digging violates the subformula property.
 \DisplayProof\) (where \(A^{(n)}\) stands for n occurrences of formula
 \(A\)) is equivalent (for provability) to the triple of rules:
 contraction, weakening, dereliction.
+\end{itemize}
 
 \subsection{Non-symmetric sequents}\label{non-symmetric-sequents}
 
@@ -858,22 +836,16 @@ The same remarks that lead to the definition of the one-sided calculus
 can lead the definition of other simplified systems:
 
 \begin{itemize}
-\tightlist
-\item
-  A one-sided variant with sequents of the form \(\Gamma\vdash\) could
+\item A one-sided variant with sequents of the form \(\Gamma\vdash\) could
   be defined.
-\item
-  When considering formulas up to De Morgan duality, an equivalent
+\item When considering formulas up to De Morgan duality, an equivalent
   system is obtained by considering only the left and right rules for
   positive connectives (or the ones for negative connectives only,
   obviously).
-\item
-  \hyperref[intuitionistic-linear-logic]{Intuitionistic linear logic} is the
+\item \hyperref[intuitionistic-linear-logic]{Intuitionistic linear logic} is the
   two-sided system where the right-hand side is constrained to always
   contain exactly one formula (with a few associated restrictions).
-\item
-  Similar restrictions are used in various \hyperref[semantics]{semantics} and
-  \wantedpage{proof search} formalisms.
+\item Similar restrictions are used in various \hyperref[semantics]{semantics} and \wantedpage{proof search} formalisms.
 \end{itemize}
 
 \subsection{Mix rules}\label{mix-rules}
