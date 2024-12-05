@@ -92,13 +92,10 @@ taking multiplicities into account. This defines a functor
 as follows:
 
 \begin{itemize}
-\tightlist
-\item
-  the counit, called dereliction, is the natural transformation
+\item the counit, called dereliction, is the natural transformation
   \(\mathsf{der}_X\in\mathbf{Rel}(\oc X,X)\), given by
   \(\mathsf{der}_X=\set{([a],a)}{a\in X}\)
-\item
-  the comultiplication, called digging, is the natural transformation
+\item the comultiplication, called digging, is the natural transformation
   \(\mathsf{digg}_X\in\mathbf{Rel}(\oc X,\oc\oc X)\), given by
   \(\mathsf{digg}_X=\set{(m_1+\cdots+m_n,[m_1,\dots,m_n])}{n\in\mathbb N\ \text{and}\ m_1,\dots,m_n\in\oc X}\)
 \end{itemize}
@@ -110,17 +107,11 @@ of formulas and proofs of linear logic.
 
 For all propositional variable \(X\), fix a set \(\web X\). Then with
 each formula \(A\), we associate a set \(\web A\) as follows:
-
 \begin{itemize}
-\tightlist
-\item
-  \(\web{A\orth}=\web A\);
-\item
-  \(\web{A\tens B}=\web{A\parr B}=\web A\times\web B\);
-\item
-  \(\web{A\with B}=\web{A\plus B}=(\{1\}\times\web A)\cup(\{2\}\times\web B)\);
-\item
-  \(\web{\oc A}=\web{\wn A}=\finmulset{\web A}\).
+\item \(\web{A\orth}=\web A\);
+\item \(\web{A\tens B}=\web{A\parr B}=\web A\times\web B\);
+\item \(\web{A\with B}=\web{A\plus B}=(\{1\}\times\web A)\cup(\{2\}\times\web B)\);
+\item \(\web{\oc A}=\web{\wn A}=\finmulset{\web A}\).
 \end{itemize}
 
 We then interpret the proofs of \(LL_0\) as follows: with each proof
@@ -128,24 +119,15 @@ We then interpret the proofs of \(LL_0\) as follows: with each proof
 \(\sem\pi\subseteq\web{A_1}\times\cdots\times\web{A_n}\).
 
 \begin{itemize}
-\tightlist
 \item
   Identity group:
 
-  \begin{description}
-  \tightlist
-  \item[]
-  \textbackslash{}sem\{
-  \end{description}
-\end{itemize}
+\(\sem{
+\LabelRule{\rulename{axiom}}
+\NulRule{ \vdash A\orth, A }
+\DisplayProof}=\set{(a,a)}{a\in\web A}\)
 
-\textbackslash{}LabelRule\{ \textbackslash{}rulename\{axiom\} \}
-\textbackslash{}NulRule\{ \textbackslash{}vdash A\textbackslash{}orth, A
-\}
-\textbackslash{}DisplayProof\}=\textbackslash{}set\{(a,a)\}\{a\textbackslash{}in\textbackslash{}web
-A\}
-
-*: \(\sem{
+\(\sem{
 \AxRule{}
 \VdotsRule{ \pi }{ \vdash \Gamma, A }
 \AxRule{}
@@ -154,74 +136,56 @@ A\}
 \BinRule{ \vdash \Gamma, \Delta }
 \DisplayProof} = \set{(\gamma,\delta)}{\exists a\in\web A,\ (\gamma,a)\in\sem\pi\land(\delta,a)\in\sem\rho}\)
 
-\begin{itemize}
-\tightlist
-\item
-  Multiplicative group:
+\item Multiplicative group:
 
-  \begin{description}
-  \tightlist
-  \item[]
-  \end{description}
-\end{itemize}
+\(\sem{
+\AxRule{}
+\VdotsRule{ \pi }{ \vdash \Gamma, A }
+\AxRule{}
+\VdotsRule{ \rho }{ \vdash \Delta, B }
+\LabelRule{ \tens }
+\BinRule{ \vdash \Gamma, \Delta, A \tens B }
+\DisplayProof} =
+\set{(\gamma,\delta,a,b)}{(\gamma,a)\in\sem\pi\land(\delta,b)\in\sem\rho}
+\)
 
-\textbackslash{}sem\{ \textbackslash{}AxRule\{\}
-\textbackslash{}VdotsRule\{ \textbackslash{}pi \}\{
-\textbackslash{}vdash \textbackslash{}Gamma, A \}
-\textbackslash{}AxRule\{\} \textbackslash{}VdotsRule\{
-\textbackslash{}rho \}\{ \textbackslash{}vdash \textbackslash{}Delta, B
-\} \textbackslash{}LabelRule\{ \textbackslash{}tens \}
-\textbackslash{}BinRule\{ \textbackslash{}vdash \textbackslash{}Gamma,
-\textbackslash{}Delta, A \textbackslash{}tens B \}
-\textbackslash{}DisplayProof\} =
-\textbackslash{}set\{(\textbackslash{}gamma,\textbackslash{}delta,a,b)\}\{(\textbackslash{}gamma,a)\textbackslash{}in\textbackslash{}sem\textbackslash{}pi\textbackslash{}land(\textbackslash{}delta,b)\textbackslash{}in\textbackslash{}sem\textbackslash{}rho\}
-
-*: \(\sem{
+\(\sem{
 \AxRule{ }
 \VdotsRule{ \pi }{ \vdash \Gamma, A, B }
 \LabelRule{ \parr }
 \UnaRule{ \vdash \Gamma, A \parr B }
 \DisplayProof} =  \set{(\gamma,(a,b))}{(\gamma,a,b)\in\sem\pi}\)
 
-*: \(\sem{
+\(\sem{
 \LabelRule{ \one }
 \NulRule{ \vdash \one }
 \DisplayProof} = \{ * \}\)
 
-*: \(\sem{
+\(\sem{
 \AxRule{}
 \VdotsRule{ \pi }{ \vdash \Gamma }
 \LabelRule{ \bot }
 \UnaRule{ \vdash \Gamma, \bot }
 \DisplayProof} = \set{(\gamma,*)}{\gamma\in\sem\pi}\)
 
-\begin{itemize}
-\tightlist
-\item
-  Additive group:
+\item Additive group:
 
-  \begin{description}
-  \tightlist
-  \item[]
-  \end{description}
-\end{itemize}
+\(\sem{ \AxRule{}
+\VdotsRule{ \pi }{ \vdash \Gamma, A }
+\LabelRule{ \plus\_1 }
+\UnaRule{ \vdash \Gamma, A \plus B }
+\DisplayProof} =
+\set{(\gamma,(1,a))}{(\gamma,a)\in\sem\pi}
+\)
 
-\textbackslash{}sem\{ \textbackslash{}AxRule\{\}
-\textbackslash{}VdotsRule\{ \textbackslash{}pi \}\{
-\textbackslash{}vdash \textbackslash{}Gamma, A \}
-\textbackslash{}LabelRule\{ \textbackslash{}plus\_1 \}
-\textbackslash{}UnaRule\{ \textbackslash{}vdash \textbackslash{}Gamma, A
-\textbackslash{}plus B \} \textbackslash{}DisplayProof\} =
-\textbackslash{}set\{(\textbackslash{}gamma,(1,a))\}\{(\textbackslash{}gamma,a)\textbackslash{}in\textbackslash{}sem\textbackslash{}pi\}
-
-*: \(\sem{
+\(\sem{
 \AxRule{}
 \VdotsRule{ \pi }{ \vdash \Gamma, B }
 \LabelRule{ \plus_2 }
 \UnaRule{ \vdash \Gamma, A \plus B }
 \DisplayProof} = \set{(\gamma,(2,b))}{(\gamma,b)\in\sem\pi}\)
 
-*: \(\sem{
+\(\sem{
 \AxRule{}
 \VdotsRule{ \pi }{ \vdash \Gamma, A }
 \AxRule{}
@@ -230,53 +194,51 @@ A\}
 \BinRule{ \vdash \Gamma, A \with B }
 \DisplayProof} = \set{(\gamma,(1,a))}{(\gamma,a)\in\sem\pi} \cup \set{(\gamma,(2,b))}{(\gamma,b)\in\sem\rho}\)
 
-*: \(\sem{
+\(\sem{
 \LabelRule{ \top }
 \NulRule{ \vdash \Gamma, \top }
 \DisplayProof} = \emptyset\)
 
-\begin{itemize}
-\tightlist
-\item
-  Exponential group:
+\item Exponential group:
 
-  \begin{description}
-  \tightlist
-  \item[]
-  \end{description}
-\end{itemize}
+\(\sem{ \AxRule{}
+\VdotsRule{ \pi }{ \vdash \Gamma, A }
+\LabelRule{ d }
+\UnaRule{ \vdash \Gamma, \wn A }
+\DisplayProof} =
+\set{(\gamma,[a])}{(\gamma,a)\in\sem\pi}
+\)
 
-\textbackslash{}sem\{ \textbackslash{}AxRule\{\}
-\textbackslash{}VdotsRule\{ \textbackslash{}pi \}\{
-\textbackslash{}vdash \textbackslash{}Gamma, A \}
-\textbackslash{}LabelRule\{ d \} \textbackslash{}UnaRule\{
-\textbackslash{}vdash \textbackslash{}Gamma, \textbackslash{}wn A \}
-\textbackslash{}DisplayProof\} =
-\textbackslash{}set\{(\textbackslash{}gamma,{[}a{]})\}\{(\textbackslash{}gamma,a)\textbackslash{}in\textbackslash{}sem\textbackslash{}pi\}
-
-*: \(\sem{
+\(\sem{
 \AxRule{}
 \VdotsRule{ \pi }{ \vdash \Gamma }
 \LabelRule{ w }
 \UnaRule{ \vdash \Gamma, \wn A }
 \DisplayProof} =  \set{(\gamma,[])}{\gamma\in\sem\pi}\)
 
-*: \(\sem{
+\(\sem{
 \AxRule{}
 \VdotsRule{ \pi }{ \vdash \Gamma, \wn A, \wn A }
 \LabelRule{ c }
 \UnaRule{ \vdash \Gamma, \wn A }
 \DisplayProof} =  \set{(\gamma,m+n)}{(\gamma,m,n)\in\sem\pi}\)
 
-*: \(\sem{
+\(\sem{
 \AxRule{}
 \VdotsRule{ \pi }{ \vdash \wn A_1,\ldots,\wn A_n,B }
 \LabelRule{ \oc }
 \UnaRule{ \vdash \wn A_1,\ldots,\wn A_n,\oc B }
-\DisplayProof} = \set{
-\left(\sum_{i=1}^k m_1^i,\ldots,\sum_{i=1}^k m_n^i,[b_1,\ldots,b_k]\right)}
-{k \in \mathbb{N} \ \text{and} \ \forall 1 \leq i \leq k,\ (m_1^i,\ldots,m_n^i,b_i)\in\sem\pi}\)
+\DisplayProof} =\)
 
+\qquad\(
+ \set{
+\left(\sum_{i=1}^k m_1^i,\ldots,\sum_{i=1}^k m_n^i,[b_1,\ldots,b_k]\right)}
+{k \in \mathbb{N}\text{ and }\forall 1 \leq i \leq k,\ (m_1^i,\ldots,m_n^i,b_i)\in\sem\pi}\)
+\end{itemize}
+
+\begin{theorem}
+If proof $\pi'$ is obtained from $\pi$ by eliminating a cut,  then $\sem\pi=\sem{\pi'}$.
+\end{theorem}
 
 %%% Local Variables:
 %%% mode: latex
