@@ -18,7 +18,7 @@ problem was then, given an operator on \(A\limp B\) and another one on
 was solved by the \emph{execution formula} that bares some formal
 analogies with Kleene's formula for recursive functions. For this reason
 GoI was claimed to be an \emph{operational semantics}, as opposed to
-traditionnal \href{Semantics}{denotational semantics}.
+traditionnal \hyperref[semantics]{denotational semantics}.
 
 The first instance of the GoI was restricted to the \(MELL\) fragment of
 linear logic (Multiplicative and Exponential fragment) which is enough
@@ -26,7 +26,7 @@ to encode lambda-calculus. Since then Girard proposed several
 improvements: firstly the extension to the additive connectives known as
 \emph{Geometry of Interaction 3} and more recently a complete
 reformulation using Von Neumann algebras that allows to deal with some
-aspects of \href{Light_linear_logics}{implicit complexity}
+aspects of \hyperref[light-linear-logics]{implicit complexity}
 
 The GoI has been a source of inspiration for various authors. Danos and
 Regnier have reformulated the original model exhibiting its
@@ -45,9 +45,9 @@ categories following an idea originally proposed by Joyal.
 \subsection{The Geometry of Interaction as operators}\label{the-geometry-of-interaction-as-operators}
 
 The original construction of GoI by Girard follows a general pattern
-already mentionned in the section on \href{coherent_semantics}{coherent
+already mentionned in the section on \hyperref[coherent-semantics]{coherent
 semantics} under the name \emph{symmetric reducibility} and that was
-first put to use in \href{phase_semantics}{phase semantics}. First set a
+first put to use in \hyperref[phase-semantics]{phase semantics}. First set a
 general space \(P\) called the \emph{proof space} because this is where
 the interpretations of proofs will live. Make sure that \(P\) is a (not
 necessarily commutative) monoid. In the case of GoI, the proof space is
@@ -56,10 +56,9 @@ a subset of the space of bounded operators on \(\ell^2\).
 Second define a particular subset of \(P\) that will be denoted by
 \(\bot\); then derive a duality on \(P\): for \(u,v\in P\), \(u\) and
 \(v\) are dual\footnote{In modern terms one says that \(u\) and \(v\)
-  are \emph{polar}.}iff \(uv\in\bot\).
+  are \emph{polar}.} iff \(uv\in\bot\).
 
-Such a duality defines an \href{orthogonality_relation}{orthogonality
-relation}, with the usual derived definitions and properties.
+Such a duality defines an \hyperref[orthogonality-relation]{orthogonality relation}, with the usual derived definitions and properties.
 
 For the GoI, two dualities have proved to work; we will consider the
 first one: nilpotency, \emph{ie}, \(\bot\) is the set of nilpotent
@@ -75,9 +74,9 @@ all \(u'\in T\), we have \(uv\in\bot\).
 
 The real work\footnote{The difficulty is to find the right duality that
   will make logical operations interpretable. General conditions that
-  allows to achieve this have been formulated by Hyland and Schalk
-  thanks to their theory of \emph{\href{double_glueing}{double
-  glueing}}.}is now to interpret logical operations, that is to
+  allow to achieve this have been formulated by Hyland and Schalk
+  thanks to their theory of \emph{\wantedpage{double glueing}}.}
+is now to interpret logical operations, that is to
 associate a type to each formula, an object to each proof and show the
 \emph{adequacy lemma}: if \(u\) is the interpretation of a proof of the
 formula \(A\) then \(u\) belongs to the type associated to \(A\).
@@ -135,6 +134,7 @@ correction theorem for the interpretation.
 
 \subsection{The Geometry of Interaction as an abstract machine}\label{the-geometry-of-interaction-as-an-abstract-machine}
 
+\todo[missing in LLWiki]
 
 %%% Local Variables:
 %%% mode: latex
