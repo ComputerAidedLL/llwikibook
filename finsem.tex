@@ -2,7 +2,7 @@
 
 The category \(\mathbf{Fin}\) of finiteness spaces and finitary
 relations was introduced by Ehrhard, refining the
-\href{relational_semantics}{purely relational model of linear logic}. A
+\hyperref[relational-semantics]{purely relational model of linear logic}. A
 finiteness space is a set equipped with a finiteness structure, i.e. a
 particular set of subsets which are said to be finitary; and the model
 is such that the usual relational denotation of a proof in linear logic
@@ -31,10 +31,8 @@ finitary semantics is intrinsically typed.
 \section{Finiteness spaces}\label{finiteness-spaces}
 
 The construction of finiteness spaces follows a well known pattern. It
-is given by the following notion of \hyperref[orthogonality-relation]{orthogonality}: \(a\mathrel \bot a'\)
-iff \(a\cap a'\) is finite. Then one unrolls
-\href{Orthogonality_relation}{familiar definitions}, as we do in the
-following paragraphs.
+is given by the following notion of orthogonality: \(a\mathrel \bot a'\)
+iff \(a\cap a'\) is finite. Then one unrolls \hyperref[orthogonality-relation]{familiar definitions}, as we do in the following paragraphs.
 
 Let \(A\) be a set. Denote by \(\powerset A\) the powerset of \(A\) and
 by \(\finpowerset A\) the set of all finite subsets of \(A\). Let
@@ -101,13 +99,13 @@ Then, setting
 \(\mathfrak F\left({\mathcal A}\limp{\mathcal B}\right)\subseteq {\web{\mathcal A}\times\web{\mathcal B}}\)
 is characterized as follows:
 
-\begin{align}
-        f\in \mathfrak F\left({\mathcal A}\limp{\mathcal B}\right) &amp;\iff \forall a\in \mathfrak F\left({\mathcal A}\right), f\cdot a \in\mathfrak F\left({\mathcal B}\right) \text{ and } \forall b\in \mathfrak F\left({\mathcal B}\orth\right), f\orth\cdot b \in\mathfrak F\left({\mathcal A}\orth\right)
+\begin{align*}
+        f\in \mathfrak F\left({\mathcal A}\limp{\mathcal B}\right) &\iff \forall a\in \mathfrak F\left({\mathcal A}\right), f\cdot a \in\mathfrak F\left({\mathcal B}\right) \text{ and } \forall b\in \mathfrak F\left({\mathcal B}\orth\right), f\orth\cdot b \in\mathfrak F\left({\mathcal A}\orth\right)
         \\
-        &amp;\iff \forall a\in \mathfrak F\left({\mathcal A}\right), f\cdot a \in\mathfrak F\left({\mathcal B}\right) \text{ and } \forall \beta\in \web{{\mathcal B}}, f\orth\cdot \left\{\beta\right\} \in\mathfrak F\left({\mathcal A}\orth\right)
+        &\iff \forall a\in \mathfrak F\left({\mathcal A}\right), f\cdot a \in\mathfrak F\left({\mathcal B}\right) \text{ and } \forall \beta\in \web{{\mathcal B}}, f\orth\cdot \left\{\beta\right\} \in\mathfrak F\left({\mathcal A}\orth\right)
         \\
-        &amp;\iff \forall \alpha\in \web{{\mathcal A}}, f\cdot \left\{\alpha\right\} \in\mathfrak F\left({\mathcal B}\right) \text{ and } \forall b\in \mathfrak F\left({\mathcal B}\orth\right), f\orth\cdot b \in\mathfrak F\left({\mathcal A}\orth\right)
-\end{align}
+        &\iff \forall \alpha\in \web{{\mathcal A}}, f\cdot \left\{\alpha\right\} \in\mathfrak F\left({\mathcal B}\right) \text{ and } \forall b\in \mathfrak F\left({\mathcal B}\orth\right), f\orth\cdot b \in\mathfrak F\left({\mathcal A}\orth\right)
+\end{align*}
 
 The elements of
 \(\mathfrak F\left({\mathcal A}\limp{\mathcal B}\right)\) are called
@@ -138,25 +136,24 @@ and
 where \(\uplus\) denotes the disjoint union of sets:
 \(x\uplus y=(\{1\}\times x)\cup(\{2\}\times y)\). We have
 \(\left({\mathcal A}\oplus {\mathcal B}\right)\orth = {\mathcal A}\orth\oplus{\mathcal B}\orth\).\footnote{The
-  fact that the additive connectors are identified, i.e. that we obtain
+  fact that the additive connectors are identified, \ie\ that we obtain
   a biproduct, is to be related with the enrichment of \(\mathbf{Fin}\)
-  over the monoid structure of set union: see This identification can
-  also be shown to be a \url{isomorphism} of LL with sums of proofs.}
+  over the monoid structure of set union: see~\cite{differentialstructurebiadditive}. This identification can
+  also be shown to be a \hyperref[isomorphism]{isomorphism} of LL with sums of proofs.}
 The category \(\mathbf{Fin}\) is both cartesian and co-cartesian, with
 \(\oplus\) being the product and co-product, and \(\zero\) the initial
 and terminal object. Projections are given by:
-
-\begin{align}
-\lambda_{{\mathcal A},{\mathcal B}}&amp;=\left\{\left((1,\alpha),\alpha\right);\ \alpha\in\web{\mathcal A}\right\}
+\begin{align*}
+\lambda_{{\mathcal A},{\mathcal B}}&=\left\{\left((1,\alpha),\alpha\right);\ \alpha\in\web{\mathcal A}\right\}
 \in\mathbf{Fin}({\mathcal A}\oplus{\mathcal B},{\mathcal A}) \\
-\rho_{{\mathcal A},{\mathcal B}}&amp;=\left\{\left((2,\beta),\beta\right);\ \beta\in\web{\mathcal B}\right\}
+\rho_{{\mathcal A},{\mathcal B}}&=\left\{\left((2,\beta),\beta\right);\ \beta\in\web{\mathcal B}\right\}
 \in\mathbf{Fin}({\mathcal A}\oplus{\mathcal B},{\mathcal B}) 
-\end{align}
-
+\end{align*}
 and if \(f\in\mathbf{Fin}({\mathcal C},{\mathcal A})\) and
 \(g\in\mathbf{Fin}({\mathcal C},{\mathcal B})\), pairing is given by:
-
-\(\left\langle f,g\right\rangle = \left\{\left(\gamma,(1,\alpha)\right);\ (\gamma,\alpha)\in f\right\} \cup \left\{\left(\gamma,(2,\beta)\right);\ (\gamma,\beta)\in g\right\} \in\mathbf{Fin}({\mathcal C},{\mathcal A}\oplus{\mathcal B}).\)
+\begin{equation*}
+\left\langle f,g\right\rangle = \left\{\left(\gamma,(1,\alpha)\right);\ (\gamma,\alpha)\in f\right\} \cup \left\{\left(\gamma,(2,\beta)\right);\ (\gamma,\beta)\in g\right\} \in\mathbf{Fin}({\mathcal C},{\mathcal A}\oplus{\mathcal B}).
+\end{equation*}
 
 The unique morphism from \({\mathcal A}\) to \(\zero\) is the empty
 relation. The co-cartesian structure is obtained symmetrically.
@@ -178,9 +175,9 @@ by: \(\web{\oc {\mathcal A}}= \finmulset{\web{{\mathcal A}}}\) and
 It can be shown that
 \(\mathfrak F\left(\oc{\mathcal A}\right) = \left\{\overline a\subseteq\finmulset{\web{{\mathcal A}}};\ \bigcup_{\overline\alpha\in \overline a}\mathrm{Support}\left(\overline \alpha\right)\in\mathfrak F\left(\mathcal A\right)\right\}\).
 Then, for all \(f\in\mathbf{Fin}({\mathcal A},{\mathcal B})\), we set
-
-\(\oc f =\left\{\left(\left[\alpha_1,\ldots,\alpha_n\right],\left[\beta_1,\ldots,\beta_n\right]\right);\  \forall i,\ (\alpha_i,\beta_i)\in f\right\} \in \mathbf{Fin}(\oc {\mathcal A}, \oc {\mathcal B}),\)
-
+\begin{equation*}
+\oc f =\left\{\left(\left[\alpha_1,\ldots,\alpha_n\right],\left[\beta_1,\ldots,\beta_n\right]\right);\  \forall i,\ (\alpha_i,\beta_i)\in f\right\} \in \mathbf{Fin}(\oc {\mathcal A}, \oc {\mathcal B}),
+\end{equation*}
 which defines a functor. Natural transformations
 \(\mathsf{der}_{{\mathcal A}}=\left\{([\alpha],\alpha);\  \alpha\in \web{{\mathcal A}}\right\}\in\mathbf{Fin}(\oc{\mathcal A},{\mathcal A})\)
 and
