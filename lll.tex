@@ -3,7 +3,8 @@
 Light linear logics are variants of linear logic characterizing
 complexity classes. They are designed by defining alternative
 exponential connectives, which induce a complexity bound on the
-cut-elimination procedure.\\
+cut-elimination procedure.
+
 Light linear logics are one of the approaches used in \emph{implicit
 computational complexity}, the area studying the computational
 complexity of programs without referring to external measuring
@@ -13,13 +14,15 @@ conditions or particular machine models.
 
 We present here the intuitionistic version of \emph{elementary linear
 logic}, ELL. Moreover we restrict to the fragment without additive
-connectives.\\
-The language of formulas is the same one as that of (multiplicative)
-\href{Intuitionistic_linear_logic}{ILL}:
+connectives.
 
-\(A ::= X \mid A\tens A \mid A\limp A  \mid \oc{A} \mid \forall X A\)\\
+The language of formulas is the same one as that of (multiplicative)
+\hyperref[intuitionistic-linear-logic]{ILL}:
+\begin{equation*}
+A ::= X \mid A\tens A \mid A\limp A  \mid \oc{A} \mid \forall X A
+\end{equation*}
 The sequent calculus rules are the same ones as for
-\href{Intuitionistic_linear_logic}{ILL}, except for the rules dealing
+\hyperref[intuitionistic-linear-logic]{ILL}, except for the rules dealing
 with the exponential connectives:
 
 \(\AxRule{\Gamma\vdash A}
@@ -43,9 +46,17 @@ The \emph{depth} of a derivation \(\pi\) is the maximum number of
 We consider the function \(K(.,.)\) defined by:\\
 \(K(0,n)=n, \quad K(k+1,n)=2^{K(k,n)}\).
 
-A function f on integers is \emph{elementary recursive} if there exists
-an integer h and a Turing machine which computes f in time bounded by
-\(K(h,n)\), where n is the size of the input.
+\begin{theorem}
+If $\pi$ is an ELL proof of depth d, and R is the corresponding ELL proof-net, then R can be reduced to its normal form by cut elimination in at most $ K(d+1,|\pi|)$ steps, where $|\pi|$is the size of $\pi$.
+\end{theorem}
+
+A function $f$ on integers is \emph{elementary recursive} if there exists
+an integer $h$ and a Turing machine which computes $f$ in time bounded by
+\(K(h,n)\), where $n$ is the size of the input.
+
+\begin{theorem}
+The functions representable in  ELL are exactly the elementary recursive functions.
+\end{theorem}
 
 One also often considers the \emph{affine} variant of ELL, called
 \emph{elementary affine logic} EAL, which is defined by adding
@@ -58,17 +69,15 @@ unrestricted weakening:
 
 It enjoys the same properties as ELL.
 
-Elementary linear logic was introduced together with light linear logic
-\footnote{}.
-
-\todo[content footnote: external reference]
+Elementary linear logic was introduced together with light linear logic~\cite{lightlinearlogic}.
 
 \section{Light linear logic}\label{light-linear-logic}
 
 We present the intuitionistic version of \emph{light linear logic} LLL,
 without additive connectives. The language of formulas is:
-
-\(A ::= X \mid A\tens A \mid A\limp A  \mid \oc{A} \mid \pg{A} \mid \forall X A\)\\
+\begin{equation*}
+A ::= X \mid A\tens A \mid A\limp A  \mid \oc{A} \mid \pg{A} \mid \forall X A
+\end{equation*}
 The sequent calculus rules are the same ones as for ILL, except for the
 rules dealing with the exponential connectives:
 
@@ -98,10 +107,16 @@ one} formula.
 The \emph{depth} of a derivation \(\pi\) is the maximum number of
 \((\oc\rulename{f})\) and \((\pg)\) rules in a branch of \(\pi\).
 
-) steps, where \(|\pi|\)is the size of \(\pi\).\}\}
+\begin{theorem}
+If $\pi$ is an LLL proof of depth d, and R is the corresponding LLL proof-net, then R can be reduced to its normal form by cut elimination in  $ O((d+1)|\pi|^{2^{d+1}})$ steps, where $|\pi|$is the size of $\pi$.
+\end{theorem}
 
 The class FP is the class of functions on binary lists which are
 computable in polynomial time on a Turing machine.
+
+\begin{theorem}
+The class of functions on binary lists representable in LLL is exactly FP.
+\end{theorem}
 
 In the literature one also often considers the \emph{affine} variant of
 LLL, called \emph{light affine logic}, LAL.
@@ -111,7 +126,9 @@ LLL, called \emph{light affine logic}, LAL.
 We consider the intuitionistic version of \emph{soft linear logic}, SLL.
 
 The language of formulas is the same one as that of ILL:
-\(A ::= X \mid A\tens A \mid A\limp A \mid A\with A \mid  A\plus A   \mid \oc{A} \mid \forall X A\)\\
+\begin{equation*}
+A ::= X \mid A\tens A \mid A\limp A \mid A\with A \mid  A\plus A   \mid \oc{A} \mid \forall X A
+\end{equation*}
 The sequent calculus rules are the same ones as for ILL, except for the
 rules dealing with the exponential connectives:
 
@@ -141,9 +158,15 @@ dereliction:
 The \emph{depth} of a derivation \(\pi\) is the maximum number of
 \((\oc\rulename{mf})\) rules in a branch of \(\pi\).
 
-Soft linear logic was introduced in \footnote{}.
+\begin{theorem}
+If $\pi$ is an SLL proof of depth d, and R is the corresponding SLL proof-net, then R can be reduced to its normal form by cut elimination in   $ O(|\pi|^d)$ steps, where $|\pi|$is the size of $\pi$.
+\end{theorem}
 
-\todo[content footnote: external reference]
+\begin{theorem}
+The class of functions on binary lists representable in SLL is exactly FP.
+\end{theorem}
+
+Soft linear logic was introduced in~\cite{softlinearlogic}.
 
 
 %%% Local Variables:
