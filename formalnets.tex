@@ -125,25 +125,14 @@ bijection of ports \(\phi:P\cong P'\) and a bijection of cells
 \(\psi:C\cong C'\) such that:
 
 \begin{itemize}
-\tightlist
-\item
-  for all \(p\in P\), \(W'(\phi(p))=\phi(W(p))\);
-\item
-  for all \(c\in C\):
-
+\item for all \(p\in P\), \(W'(\phi(p))=\phi(W(p))\);
+\item for all \(c\in C\):
   \begin{itemize}
-  \tightlist
-  \item
-    \(\sigma_{\psi(c)}=\sigma_c\),
-  \item
-    for all \(i\in\{0,\dotsc,\alpha(\sigma_c)-1\}\),
-    \(\alpha(\psi(c))_i=\phi(\alpha(c)_i)\),
-  \item
-    for all \(j\in\{0,\dotsc,\pi(\sigma_c)-1\}\),
-    \(\pi(\psi(c))_j=\phi(\pi(c)_j)\);
+  \item \(\sigma_{\psi(c)}=\sigma_c\),
+  \item for all \(i\in\{0,\dotsc,\alpha(\sigma_c)-1\}\), \(\alpha(\psi(c))_i=\phi(\alpha(c)_i)\),
+  \item for all \(j\in\{0,\dotsc,\pi(\sigma_c)-1\}\), \(\pi(\psi(c))_j=\phi(\pi(c)_j)\);
   \end{itemize}
-\item
-  \(L=L'\).
+\item \(L=L'\).
 \end{itemize}
 
 Observe that under these conditions \(\psi\) is uniquely induced by
@@ -166,30 +155,30 @@ We say \(R_0\) is a \emph{subnet} of \(R\), if there exists a net \(R'\)
 and a connection \((I,I',f)\) between \(R_0\) and \(R'\) such that
 \(R=R_0\bowtie_f{R'}\).
 
-\{R'\}. \}\}
+\begin{lemma}
+Let $R_0$, $R_1$ and $R'$ be nets such that $R_0$ and $R_1$
+are disjoint from $R$,
+$(I,I',f)$ be a connection $\textrm{fp}(R_0)\pinj \textrm{fp}(R')$
+and $\phi$ an isomorphism $R_0\cong R_1$ such that
+$\phi(p)=\phi(p')$ for all $p\in\textrm{fp}(R_0)\setminus I$.
+Then $R_0\bowtie_f{R'}$ is nominally isomorphic to
+$R_1\bowtie_{f\circ\phi^{-1}}{R'}$.
+\end{lemma}
 
 \subsection{Rewriting}\label{rewriting}
 
 A \emph{net rewriting rule} is a pair \((r_0,r_1)\) of nets such that
 \(\textrm{fp}(r_0)=\textrm{fp}(r_1)\). Then an instance of this rule is
 a pair \((R_0,R_1)\) such that there exist:
-
 \begin{itemize}
-\tightlist
-\item
-  nets \(R'_0\) and \(R'_1\) isomorphic to \(r_0\) and \(r_1\)
+\item nets \(R'_0\) and \(R'_1\) isomorphic to \(r_0\) and \(r_1\)
   respectively, namely \(R'_i=\phi_i(r_i)\), so that moreover
   \(\phi_0(p)=\phi_1(p)\) for all \(p\in\textrm{fp}(r_0)\) (in
   particular, \(\textrm{fp}(R'_0)=\textrm{fp}(R'_1)\));
-\item
-  a net \(R''\), disjoint from \(R'_0\) and \(R'_1\);
-\item
-  a connection
-  \((\textrm{fp}(R'_0),J,f):\textrm{fp}(R'_0)\pinj \textrm{fp}(R'')\);
+\item a net \(R''\), disjoint from \(R'_0\) and \(R'_1\);
+\item a connection \((\textrm{fp}(R'_0),J,f):\textrm{fp}(R'_0)\pinj \textrm{fp}(R'')\);
 \end{itemize}
-
-such that each \(R_i\) is nominally isomorphic to
-\(R'_i\bowtie_f{R''}\).
+such that each \(R_i\) is nominally isomorphic to \(R'_i\bowtie_f{R''}\).
 
 \subsection{Typing}\label{typing}
 
@@ -206,12 +195,8 @@ Then a \emph{typing} for net \(R=(P,W,C)\) is a function
 \(\tau:P\to \Theta\) such that:
 
 \begin{itemize}
-\tightlist
-\item
-  for all \(p\in P\), \(\tau(W(p))=\tau(p)\orth\);
-\item
-  for all \(c\in C\) of symbol \(\sigma\),
-  \(\tau(\pi(c))\vdash\tau(\alpha(c))\orth\);
+\item for all \(p\in P\), \(\tau(W(p))=\tau(p)\orth\);
+\item for all \(c\in C\) of symbol \(\sigma\), \(\tau(\pi(c))\vdash\tau(\alpha(c))\orth\);
 \end{itemize}
 
 where, in the last formula, we implicitly generalized \(\tau\) to lists
