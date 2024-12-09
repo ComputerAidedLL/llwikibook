@@ -7,17 +7,17 @@ provability semantics", and is thus quite different in spirit from the
 more usual denotational semantics of linear logic. (Those are rather
 some "formulas and \emph{proofs} semantics".)
 
-\texttt{~-\/-\/-~probably~a~whole~lot~more~of~blabla~to~put~here...~-\/-\/-}
+\begin{quotation}
+\texttt{- - - probably a whole lot more of blabla to put here... - - -}
+\end{quotation}
 
-\section{Preliminaries: relation and closure
-operators}\label{preliminaries-relation-and-closure-operators}
+\section{Preliminaries: relation and closure operators}\label{preliminaries-relation-and-closure-operators}
 
 Part of the structure obtained from phase semantics works in a very
 general framework and relies solely on the notion of relation between
 two sets.
 
-\subsection{Relations and operators on
-subsets}\label{relations-and-operators-on-subsets}
+\subsection{Relations and operators on subsets}\label{relations-and-operators-on-subsets}
 
 The starting point of phase semantics is the notion of \emph{duality}.
 The structure needed to talk about duality is very simple: one just
@@ -25,8 +25,21 @@ needs a relation \(R\) between two sets \(X\) and \(Y\). Using standard
 mathematical practice, we can write either \((a,b) \in R\) or
 \(a\mathrel{R} b\) to say that \(a\in X\) and \(b\in Y\) are related.
 
+\begin{definition}
+If $R\subseteq X\times Y$ is a relation, we write $R^\sim\subseteq Y\times X$ for the converse relation: $(b,a)\in R^\sim$ iff $(a,b)\in R$.
+\end{definition}
+
 Such a relation yields three interesting operators sending subsets of
 \(X\) to subsets of \(Y\):
+
+\begin{definition}
+Let $R\subseteq X\times Y$ be a relation, define the operators $\langle R\rangle$, $[R]$ and $\_^R$ taking subsets of $X$ to subsets of $Y$ as follows:
+\begin{enumerate}
+\item $b\in\langle R\rangle(x)$ iff $\exists a\in x,\ (a,b)\in R$
+\item $b\in[R](x)$ iff $\forall a\in X,\ (a,b)\in R \implies a\in x$
+\item $b\in x^R$ iff $\forall a\in x, (a,b)\in R$
+\end{enumerate}
+\end{definition}
 
 The operator \(\langle R\rangle\) is usually called the \emph{direct
 image} of the relation, \([R]\) is sometimes called the \emph{universal
@@ -37,14 +50,32 @@ covariant (increasing for the \(\subseteq\) relation) while \(\_^R\) is
 contravariant (decreasing for the \(\subseteq\) relation). More
 interesting:
 
+\begin{lemma}[Galois Connections]\
+\begin{enumerate}
+\item $\langle R\rangle$ is right-adjoint to $[R^\sim]$: for any $x\subseteq X$ and $y\subseteq Y$, we have $[R^\sim]y \subseteq x$ iff $y\subseteq \langle R\rangle(x)$
+\item we have $y\subseteq x^R$ iff $x\subseteq y^{R^\sim}$
+\end{enumerate}
+\end{lemma}
+
 This implies directly that \(\langle R\rangle\) commutes with arbitrary
 unions and \([R]\) commutes with arbitrary intersections. (And in fact,
 any operator commuting with arbitrary unions (resp. intersections) is of
 the form \(\langle R\rangle\) (resp. \([R]\)).
 
-\textbackslash{}to \textbackslash{}mathcal\{P\}(X)...\}\}
+\begin{remark}
+The operator $\_^R$ sends unions to intersections because $\_^R : \mathcal{P}(X) \to \mathcal{P}(Y)^\mathrm{op}$ is right adjoint to $\_^{R^\sim} : \mathcal{P}(Y)^{\mathrm{op}} \to \mathcal{P}(X)$...
+\end{remark}
+
 
 \subsection{Closure operators}\label{closure-operators}
+
+\begin{definition}
+A closure operator on $\mathcal{P}(X)$ is a monotonic operator $P$ on the subsets of $X$ which satisfies:
+\begin{enumerate}
+\item for all $x\subseteq X$, we have $x\subseteq P(x)$
+\item for all $x\subseteq X$, we have $P(P(x))\subseteq P(x)$
+\end{enumerate}
+\end{definition}
 
 Closure operators are quite common in mathematics and computer science.
 They correspond exactly to the notion of \emph{monad} on a preorder...
@@ -52,31 +83,116 @@ They correspond exactly to the notion of \emph{monad} on a preorder...
 It follows directly from the definition that for any closure operator
 \(P\), the image \(P(x)\) is a fixed point of \(P\). Moreover:
 
+\begin{lemma}
+$P(x)$ is the smallest fixed point of $P$ containing $x$.
+\end{lemma}
+
 One other important property is the following:
+
+\begin{lemma}
+Write $\mathcal{F}(P) = \{x\ |\ P(x)\subseteq x\}$ for the collection of fixed points of a closure operator $P$. We have that $\left(\mathcal{F}(P),\bigcap\right)$ is a complete inf-lattice.
+\end{lemma}
+
+\begin{remark}
+A closure operator is in fact determined by its set of fixed points: we have $P(x) = \bigcup \{ y\ |\ y\in\mathcal{F}(P),\,y\subseteq x\}$
+\end{remark}
 
 Since any complete inf-lattice is automatically a complete sup-lattice,
 \(\mathcal{F}(P)\) is also a complete sup-lattice. However, the sup
 operation isn't given by plain union:
 
+\begin{lemma}
+If $P$ is a closure operator on $\mathcal{P}(X)$, and if $(x_i)_{i\in I}$ is a (possibly infinite) family of subsets of $X$, we write $\bigvee_{i\in I} x_i = P\left(\bigcup_{i\in I} x_i\right)$.
+
+We have $\left(\mathcal{F}(P),\bigcap,\bigvee\right)$ is a complete lattice.
+\end{lemma}
+
+\begin{proof}
+easy.
+\end{proof}
+
 A rather direct consequence of the Galois connections of the previous
 section is:
 
+\begin{lemma}
+The operator and $\langle R\rangle \circ [R^\sim]$ and the operator $x\mapsto {x^R}^{R^\sim}$ are closures.
+\end{lemma}
+
 A last trivial lemma:
+
+\begin{lemma}
+We have $x^R = {{x^R}^{R^\sim}}^{R}$.
+
+As a consequence, a subset $x\subseteq X$ is in $\mathcal{F}({\_^R}^{R^\sim})$ iff it is of the form $y^{R^\sim}$.
+\end{lemma}
+
+\begin{remark}
+Everything gets a little simpler when $R$ is a symmetric relation on $X$.
+\end{remark}
 
 \section{Phase Semantics}\label{phase-semantics-1}
 
 \subsection{Phase spaces}\label{phase-spaces}
 
+\begin{definition}[monoid]
+A \emph{monoid} is simply a set $X$ equipped with a binary operation $\_\cdot\_$ s.t.:
+\begin{enumerate}
+\item the operation is associative
+\item there is a neutral element $1\in X$
+\end{enumerate}
+The monoid is \emph{commutative} when the binary operation is commutative.
+\end{definition}
+
+\begin{definition}[Phase space]
+A phase space is given by:
+\begin{enumerate}
+\item a commutative monoid $(X,1,\cdot)$,
+\item together with a subset $\Bot\subseteq X$.
+\end{enumerate}
+The elements of $X$ are called \emph{phases}.
+
+We write $\bot$ for the relation $\{(a,b)\ |\ a\cdot b \in \Bot\}$. This relation is symmetric.
+
+A \emph{fact} in a phase space is simply a fixed point for the closure operator $x\mapsto x\biorth$.
+\end{definition}
+
 Thanks to the preliminary work, we have:
+
+\begin{corollary}
+The set of facts of a phase space is a complete lattice where:
+\begin{enumerate}
+\item $\bigwedge_{i\in I} x_i$ is simply $\bigcap_{i\in I} x_i$,
+\item $\bigvee_{i\in I} x_i$ is $\left(\bigcup_{i\in I} x_i\right)\biorth$.
+\end{enumerate}
+\end{corollary}
 
 \subsection{Additive connectives}\label{additive-connectives}
 
 The previous corollary makes the following definition correct:
 
+\begin{definition}[additive connectives]
+If $(X,1,\cdot,\Bot)$ is a phase space, we define the following facts and operations on facts:
+\begin{enumerate}
+\item $\top = X = \emptyset\orth$
+\item $\zero = \emptyset\biorth = X\orth$
+\item $x\with y = x\cap y$
+\item $x\plus y = (x\cup y)\biorth$
+\end{enumerate}
+\end{definition}
+
 Once again, the next lemma follows from previous observations:
 
-\subsection{Multiplicative
-connectives}\label{multiplicative-connectives}
+\begin{lemma}[additive de Morgan laws]
+We have
+\begin{enumerate}
+\item $\zero\orth = \top$
+\item $\top\orth = \zero$
+\item $(x\with y)\orth = x\orth \plus y\orth$
+\item $(x\plus y)\orth = x\orth \with y\orth$
+\end{enumerate}
+\end{lemma}
+
+\subsection{Multiplicative connectives}\label{multiplicative-connectives}
 
 In order to define the multiplicative connectives, we actually need to
 use the monoid structure of our phase space. One interpretation that is
@@ -89,41 +205,129 @@ The set \(\Bot\) can be thought of as the set of "good" things, and we
 thus have \(a\in x\orth\) iff "\(a\) interacts correctly with all the
 elements of \(x\)".
 
+\begin{definition}
+If $x$ and $y$ are two subsets of a phase space, we write $x\cdot y$ for the set $\{a\cdot b\ |\ a\in x, b\in y\}$.
+\end{definition}
+
 Thus \(x\cdot y\) contains all the possible interactions between one
 element of \(x\) and one element of \(y\).
 
 The tensor connective of linear logic is now defined as:
 
+\begin{definition}[multiplicative connectives]
+If $x$ and $y$ are facts in a phase space, we define
+\begin{itemize}
+  \item $\one = \{1\}\biorth$;
+  \item $\bot = \one\orth$;
+  \item the tensor $x\tens y$ to be the fact $(x\cdot y)\biorth$;
+  \item the par connective is the de Morgan dual of the tensor: $x\parr y = (x\orth \tens y\orth)\orth$;
+  \item the linear arrow is just $x\limp y = x\orth\parr y = (x\tens y\orth)\orth$.
+  \end{itemize}
+\end{definition}
+
 Note that by unfolding the definition of \(\limp\), we have the
 following, "intuitive" definition of \(x\limp y\):
 
+\begin{lemma}
+If $x$ and $y$ are facts, we have $a\in x\limp y$ iff $\forall b\in x,\,a\cdot b\in y$.
+\end{lemma}
+
+\begin{proof}
+easy exercise.
+\end{proof}
+
 Readers familiar with realisability will appreciate...
+
+\begin{remark}
+Some people say that this idea of orthogonality was implicitly present in Tait's proof of strong normalisation. More recently, Jean-Louis Krivine and Alexandre Miquel have used the idea explicitly to do realisability...
+\end{remark}
 
 \subsection{Properties}\label{properties}
 
 All the expected properties hold:
 
+\begin{lemma}\
+\begin{itemize}
+\item The operations $\tens$, $\parr$, $\plus$ and $\with$ are commutative and associative,
+\item They have respectively $\one$, $\bot$, $\zero$ and $\top$ as neutral element,
+\item $\zero$ is absorbing for $\tens$,
+\item $\top$ is absorbing for $\parr$,
+\item $\tens$ distributes over $\plus$,
+\item $\parr$ distributes over $\with$.
+\end{itemize}
+\end{lemma}
+
 \subsection{Exponentials}\label{exponentials-3}
+
+\begin{definition}[Exponentials]
+Write $I$ for the set of idempotents of a phase space: $I=\{a\ |\ a\cdot a=a\}$. We put:
+\begin{enumerate}
+\item $\oc x = (x\cap I\cap \one)\biorth$,
+\item $\wn x = (x\orth\cap I\cap\one)\orth$.
+\end{enumerate}
+\end{definition}
 
 This definition captures precisely the intuition behind the exponentials:
 \begin{itemize}
 \item we need to have contraction, hence we restrict to indempotents in \(x\),
 \item and weakening, hence we restrict to \(\one\).
 \end{itemize}
-
 Since \(I\) isn't necessarily a fact, we then take the biorthogonal to get a fact...
 
 \section{Soundness}\label{soundness}
+
+\begin{definition}
+Let $(X, 1, \cdot)$ be a commutative monoid.
+
+Given a formula $A$ of linear logic and an assignation $\rho$ that associate a fact to any variable, we can inductively define the interpretation $\sem{A}_\rho$ of $A$ in $X$ as one would expect. Interpretation is lifted to sequents as $\sem{A_1, \dots, A_n}_\rho = \sem{A_1}_\rho \parr \cdots \parr \sem{A_n}_\rho$.
+\end{definition}
+
+\begin{theorem}
+Let $\Gamma$ be a provable sequent in linear logic. Then $1_X \in \sem{\Gamma}$.
+\end{theorem}
+
+\begin{proof}
+By induction on $\vdash\Gamma$.
+\end{proof}
 
 \section{Completeness}\label{completeness}
 
 Phase semantics is complete w.r.t. linear logic. In order to prove this,
 we need to build a particular commutative monoid.
 
+\begin{definition}
+We define the \emph{syntactic monoid} as follows:
+\begin{itemize}
+\item Its elements are sequents $\Gamma$ quotiented by the equivalence relation $\cong$ generated by the rules:
+\begin{enumerate}
+\item $\Gamma \cong \Delta$ if $\Gamma$ is a permutation of $\Delta$
+\item $\wn{A}, \wn{A}, \Gamma \cong \wn{A}, \Gamma$
+\end{enumerate}
+\item Product is concatenation: $\Gamma \cdot \Delta := \Gamma, \Delta$
+\item Neutral element is the empty sequent: $1 := \emptyset$.
+\end{itemize}
+\end{definition}
+
 The equivalence relation intuitively means that we do not care about the
 multiplicity of \(\wn\)-formulae.
 
+\begin{lemma}
+The syntactic monoid is indeed a commutative monoid.
+\end{lemma}
+
+\begin{definition}
+The \emph{syntactic assignation} is the assignation that sends any variable $\alpha$ to the fact $\{\alpha\}\orth$.
+\end{definition}
+
 We instantiate the pole as \(\Bot := \{\Gamma \mid \vdash\Gamma\}\).
+
+\begin{theorem}
+If $\Gamma\in\sem{\Gamma}\orth$, then $\vdash\Gamma$.
+\end{theorem}
+
+\begin{proof}
+By induction on $\Gamma$.
+\end{proof}
 
 \section{Cut elimination}\label{cut-elimination}
 
@@ -131,9 +335,19 @@ Actually, the completeness result is stronger, as the proof does not use
 the cut-rule in the reconstruction of \(\vdash\Gamma\). By refining the
 pole as the set of \emph{cut-free} provable formulae, we get:
 
+\begin{theorem}
+If $\Gamma\in\sem{\Gamma}\orth$, then $\Gamma$ is cut-free provable.
+\end{theorem}
+
 From soundness, one can retrieve the cut-elimination theorem.
 
+\begin{corollary}
+Linear logic enjoys the cut-elimination property.
+\end{corollary}
+
 \section{The Rest}\label{the-rest}
+
+\todo[missing in LLWiki]
 
 
 %%% Local Variables:
