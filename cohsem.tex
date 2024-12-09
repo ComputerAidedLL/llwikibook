@@ -1,7 +1,7 @@
 \chapter{Coherent semantics}\label{coherent-semantics}
 
 \emph{Coherent semantics} was invented by Girard in the paper \emph{The
-system F, 15 years later}\footnote{}with the objective of building a
+system F, 15 years later}~\cite{systemF15} with the objective of building a
 denotationnal interpretation of second order intuitionnistic logic (aka
 polymorphic lambda-calculus).
 
@@ -26,11 +26,11 @@ There are three equivalent definitions of coherent spaces: the first
 one, \emph{coherent spaces as domains}, is interesting from a historical
 point of view as it emphazises the fact that coherent spaces are
 particular cases of Scott domains. The second one, \emph{coherent spaces
-as graphs}, is the most commonly used and will be our "official"
+as graphs}, is the most commonly used and will be our ``official''
 definition in the sequel. The last one, \emph{cliqued spaces} is a
 particular example of a more general scheme that one could call
-"symmetric reducibility"; this scheme is underlying lots of
-constructions in linear logic such as \href{phase_semantics}{phase
+``symmetric reducibility''; this scheme is underlying lots of
+constructions in linear logic such as \hyperref[phase-semantics]{phase
 semantics} or the proof of strong normalisation for proof-nets.
 
 \subsection{Coherent spaces}\label{coherent-spaces}
@@ -85,7 +85,9 @@ relation, or equivalently by its web and its strict coherence.
 
 \subsubsection{As cliqued spaces}\label{as-cliqued-spaces}
 
-.\}\}
+\begin{definition}[Duality]
+Let $x, y\subseteq \web{X}$ be two sets. We will say that they are dual, written $x\perp y$ if their intersection contains at most one element: $\mathrm{Card}(x\cap y)\leq 1$. As usual, it defines an \hyperref[orthogonality-relation]{orthogonality relation} over $\powerset{\web{X}}$.
+\end{definition}
 
 The last way to express the conditions on the cliques of a coherent
 space \(X\) is simply to say that we must have \(X\biorth = X\).
@@ -140,9 +142,26 @@ is just the coherence relation we started with; we thus obtain that
 
 \subsection{Stable functions}\label{stable-functions}
 
+\begin{definition}[Stable function]
+Let $X$ and $Y$ be two coherent spaces. A function $F:X\longrightarrow Y$ is \emph{stable} if it satisfies:
+\begin{itemize}
+\item it is non decreasing: for any $x,y\in X$ if $x\subset y$ then $F(x)\subset F(y)$;
+\item it is continuous (in the Scott sense): if $A$ is a directed family of cliques of $X$, that is if for any $x,y\in A$ there is a $z\in A$ such that $x\cup y\subset z$, then $\bigcup_{x\in A}F(x) = F(\bigcup A)$;
+\item it satisfies the stability condition: if $x,y\in X$ are compatible, that is if $x\cup y\in X$, then $F(x\cap y) = F(x)\cap F(y)$.
+\end{itemize}
+\end{definition}
+
 This definition is admitedly not very tractable. An equivalent and most
 useful caracterisation of stable functions is given by the following
 theorem.
+
+\begin{theorem}
+Let $F:X\longrightarrow Y$ be a non-decreasing function from the coherent space $X$ to the coherent space $Y$. The function $F$ is stable iff it satisfies: for any $x\in X$, $b\in\web Y$, if $b\in F(x)$ then there is a finite clique $x_0\subset x$ such that:
+\begin{itemize}
+\item $b\in F(x_0)$,
+\item for any $y\subset x$ if $b\in F(y)$ then $x_0\subset y$ ($x_0$ is ``the'' minimum sub-clique of $x$ such that $b\in F(x_0)$). 
+\end{itemize}
+\end{theorem}
 
 Note that the stability condition doesn't depend on the coherent space
 structure and can be expressed more generally for continuous functions
@@ -150,36 +169,69 @@ on domains. However, as mentionned in the introduction, the restriction
 to coherent spaces allows to endow the set of stable functions from
 \(X\) to \(Y\) with a structure of coherent space.
 
- the set of \emph{finite} cliques of \(X\). The function space
-\(X\imp Y\) is defined by:
-
+\begin{definition}[The space of stable functions]
+Let $X$ and $Y$ be coherent spaces. We denote by $X_{\mathrm{fin}}$ the set of \emph{finite} cliques of $X$. The function space $X\imp Y$ is defined by:
 \begin{itemize}
-\item \(\web{X\imp Y} = X_{\mathrm{fin}}\times \web Y\),
-\item \((x_0, a)\coh_{X\imp Y}(y_0, b)\) iff
-  \textbackslash{}begin\{cases\}\textbackslash{}text\{if \}
-  x\_0\textbackslash{}cup y\_0\textbackslash{}in X\textbackslash{}text\{
-  then \} a\textbackslash{}coh\_Y b,\textbackslash{}\textbackslash{}
+\item $\web{X\imp Y} = X_{\mathrm{fin}}\times \web Y$,
+\item $(x_0, a)\coh_{X\imp Y}(y_0, b)$ iff $\begin{cases}\text{if } x_0\cup y_0\in X\text{ then } a\coh_Y b,\\
+\text{if } x_0\cup y_0\in X\text{ and } a = b\text{ then } x_0 = y_0\end{cases}$.
 \end{itemize}
-
-\texttt{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\textbackslash{}text\{if~\}~x\_0\textbackslash{}cup~y\_0\textbackslash{}in~X\textbackslash{}text\{~and~\}~a~=~b\textbackslash{}text\{~then~\}~x\_0~=~y\_0\textbackslash{}end\{cases\}}\texttt{.}
-
-\}\}
+\end{definition}
 
 One could equivalently define the strict coherence relation on
 \(X\imp Y\) by: \((x_0,a)\scoh_{X\imp Y}(y_0, b)\) iff when
 \(x_0\cup y_0\in X\) then \(a\scoh_Y b\) (equivalently
 \(x_0\cup y_0\not\in X\) or \(a\scoh_Y b\)).
 
+\begin{definition}[Trace of a stable function]
+Let $F:X\longrightarrow Y$ be a function. The \emph{trace} of $F$ is the set:
+\begin{equation*}
+\mathrm{Tr}(F) = \{(x_0, b), x_0\text{ minimal such that } b\in F(x_0)\}.
+\end{equation*}
+\end{definition}
+
+\begin{theorem}
+$F$ is stable iff $\mathrm{Tr}(F)$ is a clique of the function space $X\imp Y$.
+\end{theorem}
+
 In particular the continuity of \(F\) entails that if \(x_0\) is minimal
 such that \(b\in F(x_0)\), then \(x_0\) is finite.
 
+\begin{definition}[The evaluation function]
+Let $f$ be a clique in $X\imp Y$. We define a function $\mathrm{Fun}\,f:X\longrightarrow Y$ by: $\mathrm{Fun}\,f(x) = \{b\in Y,\text{ there is }x_0\subset x\text{ such that }(x_0, b)\in f\}$.
+\end{definition}
+
+\begin{theorem}[Closure]
+If $f$ is a clique of the function space $X\imp Y$ then we have $\mathrm{Tr}(\mathrm{Fun}\,f) = f$. Conversely if $F:X\longrightarrow Y$ is a stable function then we have $F = \mathrm{Fun}\,\mathrm{Tr}(F)$.
+\end{theorem}
+
 \subsection{Cartesian product}\label{cartesian-product}
+
+\begin{definition}[Cartesian product]
+Let $X_1$ and $X_2$ be two coherent spaces. We define the coherent space $X_1\with X_2$ (read $X_1$ ``with'' $X_2$):
+\begin{itemize}
+\item the web is the disjoint union of the webs: $\web{X_1\with X_2} = \{1\}\times\web{X_1}\cup \{2\}\times\web{X_2}$;
+\item the coherence relation is the serie composition of the relations on $X_1$ and $X_2$: $(i, a)\coh_{X_1\with X_2}(j, b)$ iff either $i\neq j$ or $i=j$ and $a\coh_{X_i} b$.
+\end{itemize}
+\end{definition}
 
 This definition is just the way to put a coherent space structure on the
 cartesian product. Indeed one easily shows the
 
+\begin{theorem}
+Given cliques $x_1$ and $x_2$ in $X_1$ and $X_2$, we define the subset $\langle x_1, x_2\rangle$ of $\web{X_1\with X_2}$ by: $\langle x_1, x_2\rangle = \{1\}\times x_1\cup \{2\}\times x_2$. Then $\langle x_1, x_2\rangle$ is a clique in $X_1\with X_2$.
+
+Conversely, given a clique $x\in X_1\with X_2$, for $i=1,2$ we define $\pi_i(x) = \{a\in X_i, (i, a)\in x\}$. Then $\pi_i(x)$ is a clique in $X_i$ and the function $\pi_i:X_1\with X_2\longrightarrow X_i$ is stable.
+
+Furthemore these two operations are inverse of each other: $\pi_i(\langle x_1, x_2\rangle) = x_i$ and $\langle\pi_1(x), \pi_2(x)\rangle = x$. In particular any clique in $X_1\with X_2$ is of the form $\langle x_1, x_2\rangle$.
+\end{theorem}
+
 Altogether the results above (and a few other more that we shall leave
 to the reader) allow to get:
+
+\begin{theorem}
+The category of coherent spaces and stable functions is cartesian closed.
+\end{theorem}
 
 In particular this means that if we define
 \(\mathrm{Eval}:(X\imp Y)\with X\longrightarrow Y\) by:
@@ -189,6 +241,10 @@ In particular this means that if we define
 \section{The monoidal structure of coherent semantics}\label{the-monoidal-structure-of-coherent-semantics}
 
 \subsection{Linear functions}\label{linear-functions}
+
+\begin{definition}[Linear function]
+A function $F:X\longrightarrow Y$ is \emph{linear} if it is stable and furthemore satisfies: for any family $A$ of pairwise compatible cliques of $X$, that is such that for any $x, y\in A$, $x\cup y\in X$, we have $\bigcup_{x\in A}F(x) = F(\bigcup A)$.
+\end{definition}
 
 In particular if we take \(A\) to be the empty family, then we have
 \(F(\emptyset) = \emptyset\).
@@ -206,13 +262,42 @@ product in the category of coherent spaces and linear functions.
 As with stable function we have an equivalent and much more tractable
 caracterisation of linear function:
 
+\begin{theorem}
+Let $F:X\longrightarrow Y$ be a continuous function. Then $F$ is linear iff it satisfies: for any clique $x\in X$ and any $b\in F(x)$ there is a unique $a\in x$ such that $b\in F(\{a\})$.
+\end{theorem}
+
 Just as the caracterisation theorem for stable functions allowed us to
 build the coherent space of stable functions, this theorem will help us
 to endow the set of linear maps with a structure of coherent space.
 
+\begin{definition}[The linear functions space]
+Let $X$ and $Y$ be coherent spaces. The \emph{linear function space} $X\limp Y$ is defined by:
+\begin{itemize}
+\item $\web{X\limp Y} = \web X\times \web Y$,
+\item $(a,b)\coh_{X\limp Y}(a', b')$ iff $\begin{cases}\text{if }a\coh_X a'\text{ then } b\coh_Y b'\\
+ \text{if }a\coh_X a' \text{ and }b=b'\text{ then }a=a'\end{cases}$
+\end{itemize}
+\end{definition}
+
 Equivalently one could define the strict coherence to be:
-\((a,b)\scoh_{X\limp Y}(a',b')\) iff \(a\scoh_X a'\) entails
-\(b\scoh_Y b'\).
+\((a,b)\scoh_{X\limp Y}(a',b')\) iff \(a\scoh_X a'\) entails \(b\scoh_Y b'\).
+
+\begin{definition}[Linear trace]
+Let $F:X\longrightarrow Y$ be a function. The \emph{linear trace} of $F$ denoted as $\mathrm{LinTr}(F)$ is the set:
+  $\mathrm{LinTr}(F) = \{(a, b)\in\web X\times\web Y$ such that $b\in F(\{a\})\}$.
+\end{definition}
+
+\begin{theorem}
+If $F$ is linear then $\mathrm{LinTr}(F)$ is a clique of $X\limp Y$.
+\end{theorem}
+
+\begin{definition}[Evaluation of linear function]
+Let $f$ be a clique of $X\limp Y$. We define the function $\mathrm{LinFun}\,f:X\longrightarrow Y$ by: $\mathrm{LinFun}\,f(x) = \{b\in\web Y$ such that there is an $a\in x$ satisfying $(a,b)\in f\}$.
+\end{definition}
+
+\begin{theorem}[Linear closure]
+Let $f$ be a clique in $X\limp Y$. Then we have $\mathrm{LinTr}(\mathrm{LinFun}\, f) = f$. Conversely if $F:X\longrightarrow Y$ is linear then we have $F = \mathrm{LinFun}\,\mathrm{LinTr}(F)$.
+\end{theorem}
 
 It remains to define a tensor product and we will get that the category
 of coherent spaces with linear functions is monoidal symetric (it is
@@ -220,23 +305,39 @@ actually *-autonomous).
 
 \subsection{Tensor product}\label{tensor-product}
 
+\begin{definition}[Tensor product]
+Let $X$ and $Y$ be coherent spaces. Their tensor product $X\tens Y$ is defined by: $\web{X\tens Y} = \web X\times\web Y$ and $(a,b)\coh_{X\tens Y}(a',b')$ iff $a\coh_X a'$ and $b\coh_Y b'$.
+\end{definition}
+
+\begin{theorem}
+The category of coherent spaces with linear maps and tensor product is \hyperref[modeling-imll]{monoidal symetric closed}.
+\end{theorem}
+
 The closedness is a consequence of the existence of the linear
 isomorphism:
-
-\texttt{~}\(\varphi:X\tens Y\limp Z\ \stackrel{\sim}{\longrightarrow}\ X\limp(Y\limp Z)\)
-
+\begin{equation*}
+\varphi:X\tens Y\limp Z\ \stackrel{\sim}{\longrightarrow}\ X\limp(Y\limp Z)
+\end{equation*}
 that is defined by its linear trace:
 \(\mathrm{LinTr}(\varphi) = \{(((a, b), c), (a, (b, c))),\, a\in\web X,\, b\in \web Y,\, c\in\web Z\}\).
 
 \subsection{Linear negation}\label{linear-negation}
 
+\begin{definition}[Linear negation]
+Let $X$ be a coherent space. We define the \emph{incoherence relation} on $\web X$ by: $a\incoh_X b$ iff $a\coh_X b$ entails $a=b$. The incoherence relation is reflexive and symetric; we call \emph{dual} or \emph{linear negation} of $X$ the associated coherent space denoted $X\orth$, thus defined by: $\web{X\orth} = \web X$ and $a\coh_{X\orth} b$ iff $a\incoh_X b$.
+\end{definition}
+
 The cliques of \(X\orth\) are called the \emph{anticliques} of \(X\). As
 seen in the section on cliqued spaces we have \(X\biorth=X\).
 
+\begin{theorem}
+The category of coherent spaces with linear maps, tensor product and linear negation is *-autonomous.
+\end{theorem}
+
 This is in particular consequence of the existence of the isomorphism:
-
-\texttt{~}\(\varphi:X\limp Y\ \stackrel{\sim}{\longrightarrow}\ Y\orth\limp X\orth\)
-
+\begin{equation*}
+\varphi:X\limp Y\ \stackrel{\sim}{\longrightarrow}\ Y\orth\limp X\orth
+\end{equation*}
 defined by its linear trace:
 \(\mathrm{LinTr}(\varphi) = \{((a, b), (b, a)),\, a\in\web X,\, b\in\web Y\}\).
 
@@ -246,24 +347,30 @@ In linear algebra, bilinear maps may be factorized through the tensor
 product. Similarly there is a coherent space \(\oc X\) that allows to
 factorize stable functions through linear functions.
 
- denotes the set of finite cliques of \(X\). We define the space
-\(\oc X\) (read \emph{of course \(X\)}) by:
-\(\web{\oc X} = X_{\mathrm{fin}}\) and \(x_0\coh_{\oc X}y_0\) iff
-\(x_0\cup y_0\) is a clique of \(X\). \}\}
+\begin{definition}[Of course]
+Let $X$ be a coherent space; recall that $X_{\mathrm{fin}}$ denotes the set of finite cliques of $X$. We define the space $\oc X$ (read ``of course $X$'') by: $\web{\oc X} = X_{\mathrm{fin}}$ and $x_0\coh_{\oc X}y_0$ iff $x_0\cup y_0$ is a clique of $X$.
+\end{definition}
 
 Thus a clique of \(\oc X\) is a set of finite cliques of \(X\) the union
 of wich is a clique of \(X\).
 
-\textbackslash{}\}. Then for any coherent space \(Y\) and any stable
-function \(F: X\longrightarrow Y\) there is a unique \emph{linear}
-function \(\bar F:\oc X\longrightarrow Y\) such that
-\(F = \bar F\circ \beta\).
+\begin{theorem}
+Let $X$ be a coherent space. Denote by $\beta:X\longrightarrow \oc X$ the stable function whose trace is: $\mathrm{Tr}(\beta) = \{(x_0, x_0),\, x_0\in X_{\mathrm{fin}}\}$. Then for any coherent space $Y$ and any stable function $F: X\longrightarrow Y$ there is a unique \emph{linear} function $\bar F:\oc X\longrightarrow Y$ such that $F = \bar F\circ \beta$.
 
-Furthermore we have \(X\imp Y = \oc X\limp Y\). \}\}
+Furthermore we have $X\imp Y = \oc X\limp Y$.
+\end{theorem}
+
+\begin{theorem}[The exponential isomorphism]
+Let $X$ and $Y$ be two coherent spaces. Then there is a linear isomorphism:
+\begin{equation*}
+\varphi:\oc(X\with Y)\quad\stackrel{\sim}{\longrightarrow}\quad \oc X\tens\oc Y.
+\end{equation*}
+\end{theorem}
 
 The iso \(\varphi\) is defined by its trace:
-\(\mathrm{Tr}(\varphi) = \{(x_0, (\pi_1(x_0), \pi_2(x_0)), x_0\text{ finite clique of } X\with Y\}\).
-
+\begin{equation*}
+\mathrm{Tr}(\varphi) = \{(x_0, (\pi_1(x_0), \pi_2(x_0)), x_0\text{ finite clique of } X\with Y\}.
+\end{equation*}
 This isomorphism, that sends an additive structure (the web of a with is
 obtained by disjoint union) onto a multiplicative one (the web of a
 tensor is obtained by cartesian product) is the reason why the of course
@@ -283,6 +390,14 @@ given by:
 and
 \((i, a)\coh_{X\plus Y} (j, b)\text{ iff } i = j = 1 \text{ and } a\coh_X b,\text{ or }i = j = 2\text{ and } a\coh_Y b\).
 
+\begin{theorem}
+Let $x'$ be a clique of $X\plus Y$; then $x'$ is of the form $\{i\}\times x$ where $i = 1\text{ and }x\in X$, or $i = 2\text{ and }x\in Y$.
+
+Denote $\mathrm{inl}:X\longrightarrow X\plus Y$ the function defined by $\mathrm{inl}(x) = \{1\}\times x$ and by $\mathrm{inr}:Y\longrightarrow X\plus Y$ the function defined by $\mathrm{inr}(x) = \{2\}\times x$. Then $\mathrm{inl}$ and $\mathrm{inr}$ are linear.
+
+If $F:X\longrightarrow Z$ and $G:Y\longrightarrow Z$ are ''linear'' functions then the function $H:X\plus Y \longrightarrow Z$ defined by $H(\mathrm{inl}(x)) = F(x)$ and $H(\mathrm{inr}(y)) = G(y)$ is linear.
+\end{theorem}
+
 In other terms \(X\plus Y\) is the direct sum of \(X\) and \(Y\). Note
 that in the theorem all functions are \emph{linear}. Things doesn't work
 so smoothly for stable functions. Historically it was after noting this
@@ -300,9 +415,9 @@ definition in graph terms:
 \(\web{X\parr Y} = \web{X\tens Y} = \web X\times \web Y\) and
 \((a,b)\scoh_{X\parr Y} (a',b')\) iff \(a\scoh_X a'\) or
 \(b\scoh_Y b'\). With this definition one sees that we have:
-
-\texttt{~}\(X\limp Y = X\orth\parr Y\)
-
+\begin{equation*}
+X\limp Y = X\orth\parr Y
+\end{equation*}
 for any coherent spaces \(X\) and \(Y\). This equation can be seen as an
 alternative definition of the par: \(X\parr Y = X\orth\limp Y\).
 
@@ -319,8 +434,9 @@ define the strict coherence than the coherence.
 With these two last constructions, the equation between the stable
 function space, the of course and the linear function space may be
 written:
-
-\texttt{~}\(X\imp Y = \wn X\orth\parr Y\)\texttt{.}
+\begin{equation*}
+X\imp Y = \wn X\orth\parr Y.
+\end{equation*}
 
 \subsection{One and bottom}\label{one-and-bottom}
 
@@ -328,10 +444,24 @@ Depending on the context we denote by \(\one\) or \(\bot\) the coherent
 space whose web is a singleton and whose coherence relation is the
 trivial reflexive relation.
 
+\begin{theorem}
+$\one$ is neutral for tensor, that is, there is a linear isomorphism $\varphi:X\tens\one\ \stackrel{\sim}{\longrightarrow}\ X$.
+
+Similarly $\bot$ is neutral for par.
+\end{theorem}
+
 \subsection{Zero and top}\label{zero-and-top}
 
 Depending on the context we denote by \(\zero\) or \(\top\) the coherent
 space with empty web.
+
+\begin{theorem}
+$\zero$ is neutral for the direct sum $\plus$, $\top$ is neutral for the cartesian product $\with$.
+\end{theorem}
+
+\begin{remark}
+It is one of the main defect of coherent semantics w.r.t. linear logic that it identifies the neutrals: in coherent semantics $\zero = \top$ and $\one = \bot$. However there is no known semantics of LL that solves this problem in a satisfactory way.
+\end{remark}
 
 \section{After coherent semantics}\label{after-coherent-semantics}
 
@@ -339,13 +469,13 @@ Coherent semantics was an important milestone in the modern theory of
 logic of programs, in particular because it leaded to the invention of
 Linear Logic, and more generally because it establishes a strong link
 between logic and linear algebra; this link is nowadays aknowledged by
-the customary use of \href{Categorical_semantics}{monoidal categories}
+the customary use of \hyperref[categorical-semantics]{monoidal categories}
 in logic. In some sense coherent semantics is a precursor of many
 forthcoming works that explore the linear nature of logic as for example
-\href{geometry_of_interaction}{geometry of interaction} which interprets
-proofs by operators or \href{finiteness_semantics}{finiteness semantics}
+\hyperref[geometry-of-interaction]{geometry of interaction} which interprets
+proofs by operators or \hyperref[finiteness-semantics]{finiteness semantics}
 which interprets formulas as vector spaces and resulted in
-\href{differential_linear_logic}{differential linear logic}...
+\wantedpage{differential linear logic}...
 
 Lots of this work have been motivated by the fact that coherent
 semantics is not complete as a semantics of programs (technically one
@@ -362,9 +492,9 @@ diserve its own article). We rely on the intuition that a function of
 argument is examined first during the computation. Obviously any
 function implemented in a functionnal language is sequential; for
 example the function \emph{or} defined à la CAML by:
-
-\texttt{~or\ =\ fun\ (x,\ y)\ -\textgreater{}\ if\ x\ then\ true\ else\ y}
-
+\begin{quotation}
+\texttt{or\ =\ fun\ (x,\ y)\ -\textgreater{}\ if\ x\ then\ true\ else\ y}
+\end{quotation}
 examines its argument x first. Note that this may be expressed more
 abstractly by the property: \(\mathrm{or}(\bot, x) = \bot\) for any
 boolean \(x\): the function \emph{or} needs its first argument in order
@@ -395,7 +525,7 @@ shall denote \(T\) and the singleton \(\{ff\}\) that we shall denote
 (we use \(\leq\) for \(\subset\) to enforce the idea that coherent
 spaces are domains).
 
-Recall the \protect\hyperlink{Cartesian_product}{definition of the
+Recall the \hyperref[cartesian-product]{definition of the
 with}, and in particular that any clique of \(B\with B\) has the form
 \(\langle x, y\rangle\) where \(x\) and \(y\) are cliques of \(B\). Thus
 \(B\with B\) has 9 cliques:
@@ -405,7 +535,6 @@ that are ordered by the product order:
 \(y\leq y'\).
 
 With these notations in mind one may define the parallel or by:
-
 \(\begin{array}{rcl}
 \mathrm{Por} : B\with B & \longrightarrow&  B\\
   \langle T,\bot\rangle & \longrightarrow&  T\\
@@ -430,7 +559,7 @@ whereas
 Another way to see this is: suppose \(x\) and \(y\) are two cliques of
 \(B\) such that \(tt\in \mathrm{Por}\langle x, y\rangle\), which means
 that \(\mathrm{Por}\langle x, y\rangle = T\); according to the
-\protect\hyperlink{Stable_functions}{caracterisation theorem of stable
+\hyperref[stable-functions]{caracterisation theorem of stable
 functions}, if \(\mathrm{Por}\) were stable then there would be a unique
 minimum \(x_0\) included in \(x\), and a unique minimum \(y_0\) included
 in \(y\) such that \(\mathrm{Por}\langle x_0, y_0\rangle = T\). This is
@@ -487,7 +616,7 @@ semantics is not complete w.r.t. lambda-calculus.
 The research for a right model for sequentiality was the motivation for
 lot of work, \emph{e.g.}, \emph{sequential algorithms} by Gérard Bérry
 and Pierre-Louis Currien in the early eighties, that were more recently
-reformulated as a kind of \href{Game_semantics}{game model}, and the
+reformulated as a kind of \hyperref[game-semantics]{game model}, and the
 theory of \emph{hypercoherent spaces} by Antonio Bucciarelli and Thomas
 Ehrhard.
 
@@ -506,17 +635,16 @@ principle \(\bot\limp A\) for any formula \(A\) is still not provable.
 
 The equality \(\one = \bot\) has also as consequence the fact that
 \(\bot\limp\one\) (or equivalently the formula \(\one\parr\one\)) is
-provable. This principle is also known as the \href{Mix}{mix rule}
-
-\(\AxRule{\vdash \Gamma}
+provable. This principle is also known as the \hyperref[mix]{mix rule}
+\begin{prooftree}
+\AxRule{\vdash \Gamma}
 \AxRule{\vdash \Delta}
 \LabelRule{\rulename{mix}}
 \BinRule{\vdash \Gamma,\Delta}
-\DisplayProof\)
-
+\end{prooftree}
 as it can be used to show that this rule is admissible:
-
-\(\AxRule{\vdash\Gamma}
+\begin{prooftree}
+\AxRule{\vdash\Gamma}
 \LabelRule{\bot_R}
 \UnaRule{\vdash\Gamma, \bot}
 \AxRule{\vdash\Delta}
@@ -526,13 +654,13 @@ as it can be used to show that this rule is admissible:
 \NulRule{\vdash \one\parr\one}
 \LabelRule{\rulename{cut}}
 \BinRule{\vdash\Gamma,\Delta}
-\DisplayProof\)
+\end{prooftree}
 
 None of the two principles \(1\limp\bot\) and \(\bot\limp\one\) are
 valid in linear logic. To correct this one could extend the syntax of
 linear logic by adding the mix-rule. This is not very satisfactory as
 the mix rule violates some principles of
-\href{Polarized_linear_logic}{Polarized linear logic}, typically the
+\hyperref[polarized-linear-logic]{Polarized linear logic}, typically the
 fact that as sequent of the form \(\vdash P_1, P_2\) where \(P_1\) and
 \(P_2\) are positive, is never provable.
 
