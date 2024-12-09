@@ -10,7 +10,6 @@ series \(\sum_{n\in\mathbb{N}}|x_n|^2\) converges. If
 two vectors of \(H\) their \emph{scalar product} is:
 
 \begin{description}
-\tightlist
 \item[]
 \(\langle x, y\rangle = \sum_{n\in\mathbb{N}} x_n\bar y_n\).
 \end{description}
@@ -25,7 +24,6 @@ The \emph{norm} of a vector is the square root of the scalar product
 with itself:
 
 \begin{description}
-\tightlist
 \item[]
 \(\|x\| = \sqrt{\langle x, x\rangle}\).
 \end{description}
@@ -37,7 +35,6 @@ Kroenecker symbol: \(\delta_{kn}=1\) if \(k=n\), \(0\) otherwise. Thus
 if \(x=(x_n)_{n\in\mathbb{N}}\) is a sequence in \(H\) we have:
 
 \begin{description}
-\tightlist
 \item[]
 \(x = \sum_{n\in\mathbb{N}} x_ne_n\).
 \end{description}
@@ -48,7 +45,6 @@ to \(H\).Continuity is equivalent to the fact that operators are
 operator \(u\) as the sup on the unit ball of the norms of its values:
 
 \begin{description}
-\tightlist
 \item[]
 \(\|u\| = \sup_{\{x\in H,\, \|x\| = 1\}}\|u(x)\|\).The set of (bounded)
 operators is denoted by \(\mathcal{B}(H)\).
@@ -59,15 +55,10 @@ images of vectors; the \emph{kernel} of \(u\) is the set of vectors that
 are anihilated by \(u\); the \emph{domain} of \(u\) is the set of
 vectors orthogonal to the kernel, \emph{ie}, the maximal subspace
 disjoint with the kernel:
-
 \begin{itemize}
-\tightlist
-\item
-  \(\mathrm{Codom}(u) = \{u(x),\, x\in H\}\);
-\item
-  \(\mathrm{Ker}(u) = \{x\in H,\, u(x) = 0\}\);
-\item
-  \(\mathrm{Dom}(u) = \{x\in H,\, \forall y\in\mathrm{Ker}(u), \langle x, y\rangle = 0\}\).
+\item \(\mathrm{Codom}(u) = \{u(x),\, x\in H\}\);
+\item \(\mathrm{Ker}(u) = \{x\in H,\, u(x) = 0\}\);
+\item \(\mathrm{Dom}(u) = \{x\in H,\, \forall y\in\mathrm{Ker}(u), \langle x, y\rangle = 0\}\).
 \end{itemize}
 
 These three sets are closed subspaces of \(H\).
@@ -78,7 +69,6 @@ by \(\langle u(x), y\rangle = \langle x, u^*(y)\rangle\) for any
 operators:
 
 \begin{description}
-\tightlist
 \item[]
 \((uv)^* = v^*u^*\).
 \end{description}
@@ -94,13 +84,9 @@ u^*\). As a consequence \(uu^*\) and \(uu^*\) are both projectors,
 called respectively the \emph{initial} and the \emph{final} projector of
 \(u\) because their (co)domains are respectively the domain and the
 codomain of \(u\):
-
 \begin{itemize}
-\tightlist
-\item
-  \(\mathrm{Dom}(u^*u) = \mathrm{Codom}(u^*u) = \mathrm{Dom}(u)\);
-\item
-  \(\mathrm{Dom}(uu^*) = \mathrm{Codom}(uu^*) = \mathrm{Codom}(u)\).
+\item \(\mathrm{Dom}(u^*u) = \mathrm{Codom}(u^*u) = \mathrm{Dom}(u)\);
+\item \(\mathrm{Dom}(uu^*) = \mathrm{Codom}(uu^*) = \mathrm{Codom}(u)\).
 \end{itemize}
 
 The restriction of \(u\) to its domain is an isometry. Projectors are
@@ -113,17 +99,12 @@ is the domain of \(u\).
 If the domain of \(u\) is \(H\) that is if \(u^* u = 1\) we say that
 \(u\) has \emph{full domain}, and similarly for codomain. If \(u\) and
 \(v\) are two partial isometries then we have:
-
 \begin{itemize}
-\tightlist
-\item
-  \(uv^* = 0\) iff \(u^*uv^*v = 0\) iff the domains of \(u\) and \(v\)
+\item \(uv^* = 0\) iff \(u^*uv^*v = 0\) iff the domains of \(u\) and \(v\)
   are disjoint;
-\item
-  \(u^*v = 0\) iff \(uu^*vv^* = 0\) iff the codomains of \(u\) and \(v\)
+\item \(u^*v = 0\) iff \(uu^*vv^* = 0\) iff the codomains of \(u\) and \(v\)
   are disjoint;
-\item
-  \(uu^* + vv^* = 1\) iff the codomains of \(u\) and \(v\) are disjoint
+\item \(uu^* + vv^* = 1\) iff the codomains of \(u\) and \(v\) are disjoint
   and their their direct sum is \(H\).
 \end{itemize}
 
@@ -141,17 +122,12 @@ More precisely a \emph{partial permutation} \(\varphi\) on
 \(C_\varphi\) its \emph{codomain}. Partial permutations may be composed:
 if \(\psi\) is another partial permutation on \(\mathbb{N}\) then
 \(\varphi\circ\psi\) is defined by:
-
 \begin{itemize}
-\tightlist
-\item
-  \(n\in D_{\varphi\circ\psi}\) iff \(n\in D_\psi\) and
+\item \(n\in D_{\varphi\circ\psi}\) iff \(n\in D_\psi\) and
   \(\psi(n)\in D_\varphi\);
-\item
-  if \(n\in D_{\varphi\circ\psi}\) then
+\item if \(n\in D_{\varphi\circ\psi}\) then
   \(\varphi\circ\psi(n) = \varphi(\psi(n))\);
-\item
-  the codomain of \(\varphi\circ\psi\) is the image of the domain:
+\item the codomain of \(\varphi\circ\psi\) is the image of the domain:
   \(C_{\varphi\circ\psi} = \{\varphi(\psi(n)), n\in D_{\varphi\circ\psi}\}\).
 \end{itemize}
 
@@ -160,13 +136,9 @@ monoid} that we detail now.
 
 Given a a subset \(D\) of \(\mathbb{N}\), the \emph{partial identity} on
 \(D\) is the partial permutation \(\varphi\) defined by:
-
 \begin{itemize}
-\tightlist
-\item
-  \(D_\varphi = D\);
-\item
-  \(\varphi(n) = n\) for any \(n\in D_\varphi\).
+\item \(D_\varphi = D\);
+\item \(\varphi(n) = n\) for any \(n\in D_\varphi\).
 \end{itemize}
 
 Thus the codomain of \(\varphi\) is \(D\).
@@ -184,7 +156,6 @@ permutation \(\varphi^{-1}\) whose domain is
 \(D_{\varphi^{-1}} = C_{\varphi}\) and who satisfies:
 
 \begin{description}
-\tightlist
 \item[]
 \(\varphi^{-1}\circ\varphi = 1_{D_\varphi}\)
 
@@ -196,35 +167,26 @@ permutation \(\varphi^{-1}\) whose domain is
 
 Given a partial permutation \(\varphi\) one defines a partial isometry
 \(u_\varphi\) by:
-
-\begin{description}
-\tightlist
-\item[]
-u\_\textbackslash{}varphi(e\_n) =
-\end{description}
-
-\texttt{~~\textbackslash{}begin\{cases\}}\\
-\texttt{~~~~e\_\{\textbackslash{}varphi(n)\}~\&~\textbackslash{}text\{~if~\}n\textbackslash{}in~D\_\textbackslash{}varphi,\textbackslash{}\textbackslash{}}\\
-\texttt{~~~~0~~~~~~~~~~~~~~\&~\textbackslash{}text\{~otherwise.\}}\\
-\texttt{~~\textbackslash{}end\{cases\}}\\
-\texttt{~}
+\begin{equation*}
+u_\varphi(e_n) =
+\begin{cases}
+e_{\varphi(n)} & \text{if $n\in D_\varphi$} \\
+0 & \text{otherwise}
+\end{cases}
+\end{equation*}
 
 In other terms if \(x=(x_n)_{n\in\mathbb{N}}\) is a sequence in
 \(\ell^2\) then \(u_\varphi(x)\) is the sequence
 \((y_n)_{n\in\mathbb{N}}\) defined by:
-
-\begin{description}
-\tightlist
-\item[]
-\(y_n = x_{\varphi^{-1}(n)}\) if \(n\in C_\varphi\), \(0\) otherwise.
-\end{description}
+\begin{equation*}
+y_n = x_{\varphi^{-1}(n)} \text{ if $n\in C_\varphi$, $0$ otherwise.}
+\end{equation*}
 
 We will (not so abusively) write \(e_{\varphi(n)} = 0\) when
 \(\varphi(n)\) is undefined so that the definition of \(u_\varphi\)
 reads:
 
 \begin{description}
-\tightlist
 \item[]
 \(u_\varphi(e_n) = e_{\varphi(n)}\).
 \end{description}
@@ -240,7 +202,6 @@ subspace spanned by \((e_n)_{n\in D}\).
 In particular the initial projector of \(u_{\varphi}\) is given by:
 
 \begin{description}
-\tightlist
 \item[]
 \(u_\varphi u^*_\varphi = u_{1_{D_\varphi}}\).
 \end{description}
@@ -248,7 +209,6 @@ In particular the initial projector of \(u_{\varphi}\) is given by:
 and the final projector of \(u_\varphi\) is:
 
 \begin{description}
-\tightlist
 \item[]
 \(u^*_\varphi u_\varphi = u_{1_{C_\varphi}}\).
 \end{description}
@@ -259,7 +219,6 @@ identity \(1_D\) such that \(p= u_{1_D}\).
 Projectors commute, in particular we have:
 
 \begin{description}
-\tightlist
 \item[]
 \(u_\varphi u_\varphi^*u_\psi u_\psi^* = u_\psi u_\psi^*u_\varphi u_\varphi^*\).
 \end{description}
@@ -275,8 +234,8 @@ In particular note that \(0\) is a \(p\)-isometry. The set
 \(\mathcal{P}\) is a submonoid of \(\mathcal{B}(H)\) but it is not a
 subalgebra.\footnote{\(\mathcal{P}\) is the normalizing groupoid of the
   maximal commutative subalgebra of \(\mathcal{B}(H)\) consisiting of
-  all operators \emph{diagonalizable} in the canonical basis.}In general
-given \(u,v\in\mathcal{P}\) we don't necessarily have
+  all operators \emph{diagonalizable} in the canonical basis.}
+In general given \(u,v\in\mathcal{P}\) we don't necessarily have
 \(u+v\in\mathcal{P}\). However we have:
 
 As a corollary note that if \(u+v=0\) then \(u=v=0\).
@@ -290,7 +249,6 @@ It will be convenient to view operators on \(H\) as acting on
 \(p:H\mapsto H\) and \(q:H\mapsto H\) are partial isometries given by:
 
 \begin{description}
-\tightlist
 \item[]
 \(p(e_n) = e_{2n}\),
 
@@ -310,7 +268,6 @@ Given an operator \(u\) on \(H\) we may \emph{externalize} it obtaining
 an operator \(U\) on \(H\oplus H\) defined by the matrix:
 
 \begin{description}
-\tightlist
 \item[]
 U = \textbackslash{}begin\{pmatrix\}
 \end{description}
@@ -322,7 +279,6 @@ U = \textbackslash{}begin\{pmatrix\}
 where the \(u_{ij}\)'s are given by:
 
 \begin{description}
-\tightlist
 \item[]
 \(u_{11} = p^*up\);
 
@@ -338,7 +294,6 @@ externalization is functorial in the sense that if \(v\) is another
 operator externalized as:
 
 \begin{description}
-\tightlist
 \item[]
 V = \textbackslash{}begin\{pmatrix\}
 \end{description}
@@ -358,7 +313,6 @@ V = \textbackslash{}begin\{pmatrix\}
 As \(pp^* + qq^* = 1\) we have:
 
 \begin{description}
-\tightlist
 \item[]
 \(u = (pp^*+qq^*)u(pp^*+qq^*) = pu_{11}p^* + pu_{12}q^* + qu_{21}p^* + qu_{22}q^*\)
 \end{description}
@@ -376,7 +330,6 @@ product of the final projectors of \(pu_{11}p^*\) and \(pu_{12}q^*\) is
 null:
 
 \begin{description}
-\tightlist
 \item[]
 \textbackslash{}begin\{align\}
 \end{description}
