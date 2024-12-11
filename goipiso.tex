@@ -8,11 +8,9 @@ sequences \((x_n)_{n\in\mathbb{N}}\) of complex numbers such that the
 series \(\sum_{n\in\mathbb{N}}|x_n|^2\) converges. If
 \(x = (x_n)_{n\in\mathbb{N}}\) and \(y = (y_n)_{n\in\mathbb{N}}\) are
 two vectors of \(H\) their \emph{scalar product} is:
-
-\begin{description}
-\item[]
-\(\langle x, y\rangle = \sum_{n\in\mathbb{N}} x_n\bar y_n\).
-\end{description}
+\begin{equation*}
+\langle x, y\rangle = \sum_{n\in\mathbb{N}} x_n\bar y_n.
+\end{equation*}
 
 Two vectors of \(H\) are \emph{othogonal} if their scalar product is
 nul. We will say that two subspaces are \emph{disjoint} when any two
@@ -22,33 +20,27 @@ subspaces always have exactly one vector in common: \(0\).
 
 The \emph{norm} of a vector is the square root of the scalar product
 with itself:
-
-\begin{description}
-\item[]
-\(\|x\| = \sqrt{\langle x, x\rangle}\).
-\end{description}
+\begin{equation*}
+\|x\| = \sqrt{\langle x, x\rangle}.
+\end{equation*}
 
 Let us denote by \((e_k)_{k\in\mathbb{N}}\) the canonical
 \emph{hilbertian basis} of \(H\):
 \(e_k = (\delta_{kn})_{n\in\mathbb{N}}\) where \(\delta_{kn}\) is the
 Kroenecker symbol: \(\delta_{kn}=1\) if \(k=n\), \(0\) otherwise. Thus
 if \(x=(x_n)_{n\in\mathbb{N}}\) is a sequence in \(H\) we have:
-
-\begin{description}
-\item[]
-\(x = \sum_{n\in\mathbb{N}} x_ne_n\).
-\end{description}
+\begin{equation*}
+x = \sum_{n\in\mathbb{N}} x_ne_n.
+\end{equation*}
 
 An \emph{operator} on \(H\) is a \emph{continuous} linear map from \(H\)
-to \(H\).Continuity is equivalent to the fact that operators are
+to \(H\).\footnote{Continuity is equivalent to the fact that operators are
 \emph{bounded}, which means that one may define the \emph{norm} of an
 operator \(u\) as the sup on the unit ball of the norms of its values:
-
-\begin{description}
-\item[]
-\(\|u\| = \sup_{\{x\in H,\, \|x\| = 1\}}\|u(x)\|\).The set of (bounded)
-operators is denoted by \(\mathcal{B}(H)\).
-\end{description}
+\begin{equation*}
+\|u\| = \sup_{\{x\in H,\, \|x\| = 1\}}\|u(x)\|.
+\end{equation*}}
+The set of (bounded) operators is denoted by \(\mathcal{B}(H)\).
 
 The \emph{range} or \emph{codomain} of the operator \(u\) is the set of
 images of vectors; the \emph{kernel} of \(u\) is the set of vectors that
@@ -67,11 +59,9 @@ The \emph{adjoint} of an operator \(u\) is the operator \(u^*\) defined
 by \(\langle u(x), y\rangle = \langle x, u^*(y)\rangle\) for any
 \(x,y\in H\). Adjointness is well behaved w.r.t. composition of
 operators:
-
-\begin{description}
-\item[]
-\((uv)^* = v^*u^*\).
-\end{description}
+\begin{equation*}
+(uv)^* = v^*u^*.
+\end{equation*}
 
 A \emph{projector} is an idempotent operator of norm \(0\) (the
 projector on the null subspace) or \(1\), that is an operator \(p\) such
@@ -154,13 +144,10 @@ the neutral for composition.
 If \(\varphi\) is a partial permutation there is an inverse partial
 permutation \(\varphi^{-1}\) whose domain is
 \(D_{\varphi^{-1}} = C_{\varphi}\) and who satisfies:
-
-\begin{description}
-\item[]
-\(\varphi^{-1}\circ\varphi = 1_{D_\varphi}\)
-
-\(\varphi\circ\varphi^{-1} = 1_{C_\varphi}\)
-\end{description}
+\begin{align*}
+\varphi^{-1}\circ\varphi &= 1_{D_\varphi} \\
+\varphi\circ\varphi^{-1} &= 1_{C_\varphi}
+\end{align*}
 
 
 \subsection{The proof space}\label{the-proof-space}
@@ -185,11 +172,9 @@ y_n = x_{\varphi^{-1}(n)} \text{ if $n\in C_\varphi$, $0$ otherwise.}
 We will (not so abusively) write \(e_{\varphi(n)} = 0\) when
 \(\varphi(n)\) is undefined so that the definition of \(u_\varphi\)
 reads:
-
-\begin{description}
-\item[]
-\(u_\varphi(e_n) = e_{\varphi(n)}\).
-\end{description}
+\begin{equation*}
+u_\varphi(e_n) = e_{\varphi(n)}.
+\end{equation*}
 
 The domain of \(u_\varphi\) is the subspace spanned by the family
 \((e_n)_{n\in D_\varphi}\) and the codomain of \(u_\varphi\) is the
@@ -197,33 +182,37 @@ subspace spanned by \((e_n)_{n\in C_\varphi}\). In particular if
 \(\varphi\) is \(1_D\) then \(u_\varphi\) is the projector on the
 subspace spanned by \((e_n)_{n\in D}\).
 
-.
+\begin{definition}
+We call \emph{$p$-isometry} a partial isometry of the form $u_\varphi$ where $\varphi$ is a partial permutation on $\mathbb{N}$. The \emph{proof space} $\mathcal{P}$ is the set of all $p$-isometries.
+\end{definition}
 
-In particular the initial projector of \(u_{\varphi}\) is given by:
+\begin{proposition}
+Let $\varphi$ and $\psi$ be two partial permutations. We have:
+\begin{equation*}
+u_\varphi u_\psi = u_{\varphi\circ\psi}.
+\end{equation*}
 
-\begin{description}
-\item[]
-\(u_\varphi u^*_\varphi = u_{1_{D_\varphi}}\).
-\end{description}
+The adjoint of $u_\varphi$ is:
+\begin{equation*}
+u_\varphi^* = u_{\varphi^{-1}}.
+\end{equation*}
 
-and the final projector of \(u_\varphi\) is:
+In particular the initial projector of $u_{\varphi}$ is given by:
+\begin{equation*}
+u_\varphi u^*_\varphi = u_{1_{D_\varphi}}.
+\end{equation*}
+and the final projector of $u_\varphi$ is:
+\begin{equation*}
+u^*_\varphi u_\varphi = u_{1_{C_\varphi}}.
+\end{equation*}
 
-\begin{description}
-\item[]
-\(u^*_\varphi u_\varphi = u_{1_{C_\varphi}}\).
-\end{description}
-
-If \(p\) is a projector in \(\mathcal{P}\) then there is a partial
-identity \(1_D\) such that \(p= u_{1_D}\).
+If $p$ is a projector in $\mathcal{P}$ then there is a partial identity $1_D$ such that $p= u_{1_D}$.
 
 Projectors commute, in particular we have:
-
-\begin{description}
-\item[]
-\(u_\varphi u_\varphi^*u_\psi u_\psi^* = u_\psi u_\psi^*u_\varphi u_\varphi^*\).
-\end{description}
-
-\}\}
+\begin{equation*}
+u_\varphi u_\varphi^*u_\psi u_\psi^* = u_\psi u_\psi^*u_\varphi u_\varphi^*.
+\end{equation*}
+\end{proposition}
 
 Note that this entails all the other commutations of projectors:
 \(u^*_\varphi u_\varphi u_\psi u^*_\psi = u_\psi u^*_\psi u^*_\varphi u_\varphi\)
@@ -238,6 +227,17 @@ subalgebra.\footnote{\(\mathcal{P}\) is the normalizing groupoid of the
 In general given \(u,v\in\mathcal{P}\) we don't necessarily have
 \(u+v\in\mathcal{P}\). However we have:
 
+\begin{proposition}
+Let $u, v\in\mathcal{P}$. Then $u+v\in\mathcal{P}$ iff $u$ and $v$ have disjoint domains and disjoint codomains, that is:
+\begin{equation*}
+u+v\in\mathcal{P}\text{ iff }uu^*vv^* = u^*uv^*v = 0.
+\end{equation*}
+\end{proposition}
+
+\begin{proof}
+Suppose for contradiction that $e_n$ is in the domains of $u$ and $v$. There are integers $p$ and $q$ such that $u(e_n) = e_p$ and $v(e_n) = e_q$ thus $(u+v)(e_n) = e_p + e_q$ which is not a basis vector; therefore $u+v$ is not a $p$-permutation.
+\end{proof}
+
 As a corollary note that if \(u+v=0\) then \(u=v=0\).
 
 
@@ -247,13 +247,10 @@ It will be convenient to view operators on \(H\) as acting on
 \(H\oplus H\), and conversely. For this purpose we define an isomorphism
 \(H\oplus H \cong H\) by \(x\oplus y\rightsquigarrow p(x)+q(y)\) where
 \(p:H\mapsto H\) and \(q:H\mapsto H\) are partial isometries given by:
-
-\begin{description}
-\item[]
-\(p(e_n) = e_{2n}\),
-
-\(q(e_n) = e_{2n+1}\).
-\end{description}
+\begin{align*}
+p(e_n) &= e_{2n} \\
+q(e_n) &= e_{2n+1}.
+\end{align*}
 
 From the definition \(p\) and \(q\) have full domain, that is satisfy
 \(p^* p = q^* q = 1\). On the other hand their codomains are disjoint,
@@ -266,57 +263,39 @@ disjoint codomains would do the job.
 
 Given an operator \(u\) on \(H\) we may \emph{externalize} it obtaining
 an operator \(U\) on \(H\oplus H\) defined by the matrix:
-
-\begin{description}
-\item[]
-U = \textbackslash{}begin\{pmatrix\}
-\end{description}
-
-\texttt{~u\_\{11\}~\&~u\_\{12\}\textbackslash{}\textbackslash{}}\\
-\texttt{~u\_\{21\}~\&~u\_\{22\}}\\
-\texttt{~\textbackslash{}end\{pmatrix\}}
-
+\begin{equation*}
+U = \begin{pmatrix}
+  u_{11} & u_{12}\\
+  u_{21} & u_{22}
+  \end{pmatrix}
+\end{equation*}
 where the \(u_{ij}\)'s are given by:
-
-\begin{description}
-\item[]
-\(u_{11} = p^*up\);
-
-\(u_{12} = p^*uq\);
-
-\(u_{21} = q^*up\);
-
-\(u_{22} = q^*uq\).
-\end{description}
+\begin{align*}
+u_{11} &= p^*up \\
+u_{12} &= p^*uq \\
+u_{21} &= q^*up \\
+u_{22} &= q^*uq.
+\end{align*}
 
 The \(u_{ij}\)'s are called the \emph{external components} of \(u\). The
 externalization is functorial in the sense that if \(v\) is another
 operator externalized as:
-
-\begin{description}
-\item[]
-V = \textbackslash{}begin\{pmatrix\}
-\end{description}
-
-\texttt{~v\_\{11\}~\&~v\_\{12\}\textbackslash{}\textbackslash{}}\\
-\texttt{~v\_\{21\}~\&~v\_\{22\}}\\
-\texttt{~\textbackslash{}end\{pmatrix\}~}
-
-= \textbackslash{}begin\{pmatrix\}
-
-\texttt{~p\^{}*vp~\&~p\^{}*vq\textbackslash{}\textbackslash{}}\\
-\texttt{~q\^{}*vp~\&~q\^{}*vq}\\
-\texttt{~\textbackslash{}end\{pmatrix\}}
-
- then the externalization of \(uv\) is the matrix product \(UV\).
+\begin{equation*}
+V = \begin{pmatrix}
+  v_{11} & v_{12}\\
+  v_{21} & v_{22}
+  \end{pmatrix} 
+= \begin{pmatrix}
+  p^*vp & p^*vq\\
+  q^*vp & q^*vq
+  \end{pmatrix}
+\end{equation*}
+then the externalization of \(uv\) is the matrix product \(UV\).
 
 As \(pp^* + qq^* = 1\) we have:
-
-\begin{description}
-\item[]
-\(u = (pp^*+qq^*)u(pp^*+qq^*) = pu_{11}p^* + pu_{12}q^* + qu_{21}p^* + qu_{22}q^*\)
-\end{description}
-
+\begin{equation*}
+u = (pp^*+qq^*)u(pp^*+qq^*) = pu_{11}p^* + pu_{12}q^* + qu_{21}p^* + qu_{22}q^*
+\end{equation*}
 which entails that externalization is reversible, its converse being
 called \emph{internalization}.
 
@@ -325,24 +304,26 @@ If we suppose that \(u\) is a \(p\)-isometry then so are the components
 sum have pairwise disjoint domains and pairwise disjoint codomains from
 which we deduce:
 
+\begin{proposition}
+If $u$ is a $p$-isometry and $u_{ij}$ are its external components then:
+\begin{itemize}
+\item $u_{1j}$ and $u_{2j}$ have disjoint domains, that is $u_{1j}^*u_{1j}u_{2j}^*u_{2j} = 0$ for $j=1,2$;
+\item $u_{i1}$ and $u_{i2}$ have disjoint codomains, that is $u_{i1}u_{i1}^*u_{i2}u_{i2}^* = 0$ for $i=1,2$.
+\end{itemize}
+\end{proposition}
+
 As an example of computation in \(\mathcal{P}\) let us check that the
 product of the final projectors of \(pu_{11}p^*\) and \(pu_{12}q^*\) is
 null:
-
-\begin{description}
-\item[]
-\textbackslash{}begin\{align\}
-\end{description}
-
-\texttt{~~~(pu\_\{11\}p\^{}*)(pu\^{}*\_\{11\}p\^{}*)(pu\_\{12\}q\^{}*)(qu\_\{12\}\^{}*p\^{}*)}\\
-\texttt{~~~\&=~pu\_\{11\}u\_\{11\}\^{}*u\_\{12\}u\_\{12\}\^{}*p\^{}*\textbackslash{}\textbackslash{}}\\
-\texttt{~~~\&=~pp\^{}*upp\^{}*u\^{}*pp\^{}*uqq\^{}*u\^{}*pp\^{}*\textbackslash{}\textbackslash{}}\\
-\texttt{~~~\&=~pp\^{}*u(pp\^{}*)(u\^{}*pp\^{}*u)qq\^{}*u\^{}*pp\^{}*\textbackslash{}\textbackslash{}}\\
-\texttt{~~~\&=~pp\^{}*u(u\^{}*pp\^{}*u)(pp\^{}*)qq\^{}*u\^{}*pp\^{}*\textbackslash{}\textbackslash{}}\\
-\texttt{~~~\&=~pp\^{}*uu\^{}*pp\^{}*u(pp\^{}*)(qq\^{}*)u\^{}*pp\^{}*\textbackslash{}\textbackslash{}}\\
-\texttt{~~~\&=~0}\\
-\texttt{~\textbackslash{}end\{align\}}
-
+\begin{align*}
+    (pu_{11}p^*)(pu^*_{11}p^*)(pu_{12}q^*)(qu_{12}^*p^*)
+    &= pu_{11}u_{11}^*u_{12}u_{12}^*p^*\\
+    &= pp^*upp^*u^*pp^*uqq^*u^*pp^*\\
+    &= pp^*u(pp^*)(u^*pp^*u)qq^*u^*pp^*\\
+    &= pp^*u(u^*pp^*u)(pp^*)qq^*u^*pp^*\\
+    &= pp^*uu^*pp^*u(pp^*)(qq^*)u^*pp^*\\
+    &= 0
+\end{align*}
 where we used the fact that all projectors in \(\mathcal{P}\) commute,
 which is in particular the case of \(pp^*\) and \(u^*pp^*u\).
 
