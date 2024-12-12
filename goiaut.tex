@@ -29,6 +29,10 @@ internalizations of operators on \(H\oplus H\) of the form:
 \end{pmatrix}
 \end{equation*}
 
+\begin{remark}
+This so-called tensor resembles a sum rather than a product. We will stick to this terminology though because it defines the interpretation of the tensor connective of linear logic.
+\end{remark}
+
 The linear implication is derived from the tensor by duality: given two
 types \(A\) and \(B\) the type \(A\limp B\) is defined by:
 \begin{equation*}
@@ -66,63 +70,137 @@ is the interpretation of the identity proof, as expected.
 
 \subsection{The execution formula, version 1: application}\label{the-execution-formula-version-1-application}
 
+\begin{definition}
+Let $u$ and $v$ be two operators; as above denote by $u_{ij}$ the external components of $u$. If $u_{11}v$ is nilpotent we define the \emph{application of $u$ to $v$} by:
+\begin{equation*}
+\mathrm{App}(u,v) = u_{22} + u_{21}v\sum_k(u_{11}v)^ku_{12}.
+\end{equation*}
+\end{definition}
+
 Note that the hypothesis that \(u_{11}v\) is nilpotent entails that the
 sum \(\sum_k(u_{11}v)^k\) is actually finite. It would be enough to
 assume that this sum converges. For simplicity we stick to the
 nilpotency condition, but we should mention that weak nilpotency would
 do as well.
 
-=0 thus our monomial is null. Otherwise if \(i_{2k}<P\) for all \(k\) we
-have:
+\begin{theorem}
+If $u$ and $v$ are $p$-isometries such that $u_{11}v$ is nilpotent, then $\mathrm{App}(u,v)$ is also a $p$-isometry.
+\end{theorem}
 
-\begin{description}
-\item[]
-\(i_1+i_3+\cdots +i_{m-1} + m/2 = n - m/2 - (i_0+i_2+\cdots +i_m)\)
-\end{description}
+\begin{proof}
+Let us note $E_k = u_{21}v(u_{11}v)^ku_{12}$. Recall that $u_{22}$ and $u_{12}$ being external components of the $p$-isometry $u$, they have disjoint domains. Thus it is also the case of $u_{22}$ and $E_k$. Similarly $u_{22}$ and $E_k$ have disjoint codomains because $u_{22}$ and $u_{21}$ have disjoint codomains.
 
+Let now $k$ and $l$ be two integers such that $k>l$ and let us compute for example the intersection of the codomains of $E_k$ and $E_l$:
+\begin{equation*}
+    E_kE^*_kE_lE^*_l = (u_{21}v(u_{11}v)^ku_{12})(u^*_{12}(v^*u^*_{11})^kv^*u^*_{21})(u_{21}v(u_{11}v)^lu_{12})(u^*_{12}(v^*u^*_{11})^lv^*u_{21}^*)
+\end{equation*}
+  As $k>l$ we may write $(v^*u_{11}^*)^l = (v^*u^*_{11})^{k-l-1}v^*u^*_{11}(v^*u^*_{11})^l$. Let us note $E = u^*_{11}(v^*u^*_{11})^lv^*u_{21}^*u_{21}v(u_{11}v)^lu_{12}$ so that $E_kE^*_kE_lE^*_l = u_{21}v(u_{11}v)^ku_{12}u^*_{12}(v^*u^*_{11})^{k-l-1}v^*Eu^*_{12}(v^*u^*_{11})^lv^*u_{21}^*$. We have:
+\begin{align*}
+     E & = u^*_{11}(v^*u^*_{11})^lv^*u_{21}^*u_{21}v(u_{11}v)^lu_{12}\\
+       & = (u^*_{11}u_{11}u^*_{11})(v^*u^*_{11})^lv^*u_{21}^*u_{21}v(u_{11}v)^lu_{12}\\
+       & = u^*_{11}(u_{11}u^*_{11})\bigl((v^*u^*_{11})^lv^*u_{21}^*u_{21}v(u_{11}v)^l\bigr)u_{12}\\
+       & = u^*_{11}\bigl((v^*u^*_{11})^lv^*u_{21}^*u_{21}v(u_{11}v)^l\bigr)(u_{11}u^*_{11})u_{12}\\
+       & = u^*_{11}(v^*u^*_{11})^lv^*u_{21}^*u_{21}v(u_{11}v)^lu_{11}u^*_{11}u_{12}\\
+       & = 0
+\end{align*}
+because $u_{11}$ and $u_{12}$ have disjoint codomains, thus $u^*_{11}u_{12} = 0$. 
+
+Similarly we can show that $E_k$ and $E_l$ have disjoint domains. Therefore we have proved that all terms of the sum $\mathrm{App}(u,v)$ have disjoint domains and disjoint codomains. Consequently $\mathrm{App}(u,v)$ is a $p$-isometry.
+\end{proof}
+
+\begin{theorem}
+Let $A$ and $B$ be two types and $u$ a $p$-isometry. Then the two following conditions are equivalent:
+\begin{enumerate}
+\item $u\in A\limp B$;
+\item for any $v\in A$ we have:
+  \begin{itemize}
+  \item $u_{11}v$ is nilpotent and
+  \item $\mathrm{App}(u, v)\in B$.
+  \end{itemize}
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Let $v$ and $w$ be two $p$-isometries. If we compute
+\begin{equation*}
+(u.(pvp^* + qwq^*))^n = \bigl((pu_{11}p^* + pu_{12}q^* + qu_{21}p^* + qu_{22}q^*)(pvp^* + qwq^*)\bigr)^n
+\end{equation*}
+we get a finite sum of monomial operators of the form:
+\begin{enumerate}
+\item $p(u_{11}v)^{i_0}u_{12}w(u_{22}w)^{i_1}\dots u_{21}v(u_{11}v)^{i_m}p^*$
+\item $p(u_{11}v)^{i_0}u_{12}w(u_{22}w)^{i_1}\dots u_{12}w(u_{22}w)^{i_m}q^*$,
+\item $q(u_{22}w)^{i_0}u_{21}v(u_{11}v)^{i_1}\dots u_{21}v(u_{11}v)^{i_m}p^*$ or
+\item $q(u_{22}w)^{i_0}u_{21}v(u_{11}v)^{i_1}\dots u_{12}w(u_{22}w)^{i_m}q^*$,
+\end{enumerate}
+for all tuples of (nonnegative) integers $(i_1,\dots, i_m)$ such that $i_0+\cdots+i_m+m = n$.
+
+Each of these monomial is a $p$-isometry. Furthermore they have disjoint domains and disjoint codomains because their sum is the $p$-isometry $(u.(pvp^* + qwq^*))^n$. This entails that $(u.(pvp^* + qwq^*))^n = 0$ iff all these monomials are null.
+
+Suppose $u_{11}v$ is nilpotent and consider:
+\begin{equation*}
+\bigl(\mathrm{App}(u,v)w\bigr)^n = \biggl(\bigl(u_{22} + u_{21}v\sum_k(u_{11}v)^k u_{12}\bigr)w\biggr)^n.
+\end{equation*}
+Developping we get a finite sum of monomials of the form:
+\begin{enumerate}\setcounter{enumi}{4}
+\item $(u_{22}w)^{l_0}u_{21}v(u_{11}v)^{k_1}u_{12}w(u_{22}w)^{l_1}\dots u_{21}v(u_{11}v)^{k_m}u_{12}w(u_{22}w)^{l_m}$
+\end{enumerate}
+for all tuples $(l_0, k_1, l_1,\dots, k_m, l_m)$ such that $l_0\cdots l_m + m = n$ and $k_i$ is less than the degree of nilpotency of $u_{11}v$ for all $i$.
+
+Again as these monomials are $p$-isometries and their sum is the $p$-isometry $(\mathrm{App}(u,v)w)^n$, they have pairwise disjoint domains and pairwise disjoint codomains. Note that each of these monomial is equal to $q^*Mq$ where $M$ is a monomial of type 4 above.
+
+As before we thus have that $\bigl(\mathrm{App}(u,v)w\bigr)^n = 0$ iff all monomials of type 5 are null.
+
+Suppose now that $u\in A\limp B$ and $v\in A$. Then, since $0\in B\orth$ ($0$ belongs to any type) $u.(pvp^*) = pu_{11}vp^*$ is nilpotent, thus $u_{11}v$ is nilpotent.
+
+Suppose further that $w\in B\orth$. Then $u.(pvp^*+qwq^*)$ is nilpotent, thus there is a $N$ such that $(u.(pvp^* + qwq^*))^n=0$ for any $n\geq N$. This entails that all monomials of type 1 to 4 are null. Therefore all monomials appearing in the developpment of $(\mathrm{App}(u,v)w)^N$ are null which proves that $\mathrm{App}(u,v)w$ is nilpotent. Thus $\mathrm{App}(u,v)\in B$.
+
+Conversely suppose for any $v\in A$ and $w\in B\orth$, $u_{11}v$ and $\mathrm{App}(u,v)w$ are nilpotent. Let $P$ and $N$ be their respective degrees of nilpotency and put $n=N(P+1)+N$. Then we claim that all monomials of type 1 to 4 appearing in the development of $(u.(pvp^*+qwq^*))^n$ are null.
+
+Consider for example a monomial of type 1:
+\begin{equation*}
+p(u_{11}v)^{i_0}u_{12}w(u_{22}w)^{i_1}\dots u_{21}v(u_{11}v)^{i_m}p^*
+\end{equation*}
+with $i_0+\cdots+i_m + m = n$. Note that $m$ must be even.
+
+If $i_{2k}\geq P$ for some $0\leq k\leq m/2$ then $(u_{11}v)^{i_{2k}}=0$ thus our monomial is null. Otherwise if $i_{2k}<P$ for all $k$ we have:
+\begin{equation*}
+i_1+i_3+\cdots +i_{m-1} + m/2 = n - m/2 - (i_0+i_2+\cdots +i_m)
+\end{equation*}
 thus:
+\begin{equation*}
+i_1+i_3+\cdots +i_{m-1} + m/2\geq n - m/2 - (1+m/2)P.
+\end{equation*}
+Now if $m/2\geq N$ then $i_1+\cdots+i_{m-1}+m/2 \geq N$. Otherwise $1+m/2\leq N$ thus
+\begin{equation*}
+i_1+i_3+\cdots +i_{m-1} + m/2\geq n - N - NP = N.
+\end{equation*}
+Since $N$ is the degree of nilpotency of $\mathrm{App}(u,v)w$ we have that the monomial:
+\begin{equation*}
+(u_{22}w)^{i_1}u_{21}v(u_{11}v)^{i_2}u_{12}w\dots(u_{11}v)^{i_{m-2}}u_{12}w(u_{22}w)^{i_{m-1}}
+\end{equation*}
+is null, thus also the monomial of type 1 we started with.
+\end{proof}
 
-\begin{description}
-\item[]
-\(i_1+i_3+\cdots +i_{m-1} + m/2\geq n - m/2 - (1+m/2)P\).
-\end{description}
-
-Now if \(m/2\geq N\) then \(i_1+\cdots+i_{m-1}+m/2 \geq N\). Otherwise
-\(1+m/2\leq N\) thus
-
-\begin{description}
-\item[]
-\(i_1+i_3+\cdots +i_{m-1} + m/2\geq n - N - NP = N\).
-\end{description}
-
-Since \(N\) is the degree of nilpotency of \(\mathrm{App}(u,v)w\) we
-have that the monomial:
-
-\begin{description}
-\item[]
-\((u_{22}w)^{i_1}u_{21}v(u_{11}v)^{i_2}u_{12}w\dots(u_{11}v)^{i_{m-2}}u_{12}w(u_{22}w)^{i_{m-1}}\)
-\end{description}
-
-is null, thus also the monomial of type 1 we started with. \}\}
+\begin{corollary}
+If $A$ and $B$ are types then we have:
+\begin{equation*}
+A\limp B = \{u\in\mathcal{P} \text{ such that }\forall v\in A: u_{11}v\in\bot\text{ and } \mathrm{App}(u, v)\in B\}.
+\end{equation*}
+\end{corollary}
 
 As an example if we compute the application of the interpretation of the
 identity \(\iota\) in type \(A\limp A\) to the operator \(v\in A\) then
 we have:
-
-\begin{description}
-\item[]
-\(\mathrm{App}(\iota, v) = \iota_{22} + \iota_{21}v\sum(\iota_{11}v)^k\iota_{12}\).
-\end{description}
+\begin{equation*}
+\mathrm{App}(\iota, v) = \iota_{22} + \iota_{21}v\sum(\iota_{11}v)^k\iota_{12}.
+\end{equation*}
 
 Now recall that \(\iota = pq^* + qp^*\) so that
 \(\iota_{11} = \iota_{22} = 0\) and \(\iota_{12} = \iota_{21} = 1\) and
 we thus get:
-
-\begin{description}
-\item[]
-\(\mathrm{App}(\iota, v) = v\)
-\end{description}
-
+\begin{equation*}
+\mathrm{App}(\iota, v) = v
+\end{equation*}
 as expected.
 
 \subsection{The tensor rule}\label{the-tensor-rule}
@@ -130,15 +208,10 @@ as expected.
 Let now \(A, A', B\) and \(B'\) be types and consider two operators
 \(u\) and \(u'\) respectively in \(A\limp B\) and \(A\limp B'\). We
 define an operator \(u\tens u'\) by:
-
-\begin{description}
-\item[]
-\textbackslash{}begin\{align\}
-\end{description}
-
-\texttt{~~~u\textbackslash{}tens~u\textquotesingle{}~\&=~ppp\^{}*upp\^{}*p\^{}*~+~qpq\^{}*upp\^{}*p\^{}*~+~ppp\^{}*uqp\^{}*q\^{}*~+~qpq\^{}*uqp\^{}*q\^{}*\textbackslash{}\textbackslash{}}\\
-\texttt{~~~~~~~~~~~~~\&+~pqp\^{}*u\textquotesingle{}pq\^{}*p\^{}*~+~qqq\^{}*u\textquotesingle{}pq\^{}*p\^{}*~+~pqp\^{}*u\textquotesingle{}qq\^{}*q\^{}*~+~qqq\^{}*u\textquotesingle{}qq\^{}*q\^{}*}\\
-\texttt{~\textbackslash{}end\{align\}}
+\begin{align*}
+    u\tens u' &= ppp^*upp^*p^* + qpq^*upp^*p^* + ppp^*uqp^*q^* + qpq^*uqp^*q^*\\
+              &+ pqp^*u'pq^*p^* + qqq^*u'pq^*p^* + pqp^*u'qq^*q^* + qqq^*u'qq^*q^*
+  \end{align*}
 
 Once again the notation is motivated by linear logic syntax and is
 contradictory with linear algebra practice since what we denote by
@@ -147,50 +220,34 @@ contradictory with linear algebra practice since what we denote by
 
 Indeed if we think of \(u\) and \(u'\) as the internalizations of the
 matrices:
-
-\begin{description}
-\item[]
-\end{description}
-
-\texttt{~~~\textbackslash{}begin\{pmatrix\}u\_\{11\}~~~\&~u\_\{12\}\textbackslash{}\textbackslash{}}\\
-\texttt{~~~~~~~~~~~~~~~~~~u\_\{21\}~~~\&~u\_\{22\}}\\
-\texttt{~~~\textbackslash{}end\{pmatrix\}}\\
-\texttt{~}\texttt{~and~}\(\begin{pmatrix}u'_{11} & u'_{12}\\
-                   u'_{21} & u'_{22}
-    \end{pmatrix}\)
-
+\begin{equation*}
+  \begin{pmatrix}u_{11}   &  u_{12}\\
+                   u_{21}   &  u_{22}
+    \end{pmatrix}
+  \qquad\text{and}\qquad
+    \begin{pmatrix}u'_{11} &  u'_{12}\\
+                   u'_{21} &  u'_{22}
+    \end{pmatrix}
+\end{equation*}
 then we may write:
-
-\begin{description}
-\item[]
-\textbackslash{}begin\{align\}
-\end{description}
-
-\texttt{~~~u\textbackslash{}tens~u\textquotesingle{}~\&=~ppu\_\{11\}p\^{}*p\^{}*~+~qpu\_\{21\}p\^{}*p\^{}*~+~ppu\_\{12\}p\^{}*q\^{}*~+~qpu\_\{22\}p\^{}*q\^{}*\textbackslash{}\textbackslash{}}\\
-\texttt{~~~~~~~~~~~~~\&+~pqu\textquotesingle{}\_\{11\}q\^{}*p\^{}*~+~qqu\textquotesingle{}\_\{21\}q\^{}*p\^{}*~+~pqu\textquotesingle{}\_\{12\}q\^{}*q\^{}*~+~qqu\textquotesingle{}\_\{22\}q\^{}*q\^{}*}\\
-\texttt{~\textbackslash{}end\{align\}}
-
+\begin{align*}
+    u\tens u' & = ppu_{11}p^*p^* + qpu_{21}p^*p^* + ppu_{12}p^*q^* + qpu_{22}p^*q^*\\
+              & + pqu'_{11}q^*p^* + qqu'_{21}q^*p^* + pqu'_{12}q^*q^* + qqu'_{22}q^*q^*
+  \end{align*}
 Thus the components of \(u\tens u'\) are given by:
-
-\begin{description}
-\item[]
-\((u\tens u')_{ij} = pu_{ij}p^* + qu'_{ij}q^*\).
-\end{description}
-
+\begin{equation*}
+(u\tens u')_{ij} = pu_{ij}p^* + qu'_{ij}q^*.
+\end{equation*}
 and we see that \(u\tens u'\) is actually the internalization of the
 matrix:
-
-\begin{description}
-\item[]
-\end{description}
-
-\texttt{~~~\textbackslash{}begin\{pmatrix\}}\\
-\texttt{~~~~~u\_\{11\}~\&~0~~~~~~~\&~u\_\{12\}~~\&~0~~~~~~~\textbackslash{}\textbackslash{}}\\
-\texttt{~~~~~0~~~~~~\&~u\textquotesingle{}\_\{11\}~\&~0~~~~~~~\&~u\textquotesingle{}\_\{12\}~\textbackslash{}\textbackslash{}}\\
-\texttt{~~~~~u\_\{21\}~\&~0~~~~~~~\&~u\_\{22\}~~\&~0~~~~~~~\textbackslash{}\textbackslash{}}\\
-\texttt{~~~~~0~~~~~~\&~u\textquotesingle{}\_\{21\}~\&~0~~~~~~~\&~u\textquotesingle{}\_\{22\}~\textbackslash{}\textbackslash{}}\\
-\texttt{~~~\textbackslash{}end\{pmatrix\}}\\
-\texttt{~}
+\begin{equation*}
+    \begin{pmatrix}
+      u_{11} &  0       &  u_{12}  &  0       \\
+      0      &  u'_{11} &  0       &  u'_{12} \\
+      u_{21} &  0       &  u_{22}  &  0       \\
+      0      &  u'_{21} &  0       &  u'_{22} \\
+    \end{pmatrix}
+\end{equation*}
 
 We are now to show that if we suppose \(u\)and \(u'\) are in types
 \(A\limp B\) and \(A'\limp B'\), then \(u\tens u'\) is in
@@ -203,40 +260,25 @@ Since \(u\) and \(u'\) are in \(A\limp B\) and \(A'\limp B'\) we have
 that \(u_{11}v\) and \(u'_{11}v'\) are nilpotent and that
 \(\mathrm{App}(u, v)\) and \(\mathrm{App}(u', v')\) are respectively in
 \(B\) and \(B'\), thus:
-
-\begin{description}
-\item[]
-\(p\mathrm{App}(u, v)p^* + q\mathrm{App}(u', v')q^* \in B\tens B'\).
-\end{description}
-
+\begin{equation*}
+p\mathrm{App}(u, v)p^* + q\mathrm{App}(u', v')q^* \in B\tens B'.
+\end{equation*}
 But we have:
-
-\begin{description}
-\item[]
-\textbackslash{}begin\{align\}
-\end{description}
-
-\texttt{~~~\textbackslash{}bigl((u\textbackslash{}tens~u\textquotesingle{})\_\{11\}(pvp\^{}*~+~qv\textquotesingle{}q\^{}*)\textbackslash{}bigr)\^{}n}\\
-\texttt{~~~~~\&=~\textbackslash{}bigl((pu\_\{11\}p\^{}*~+~qu\textquotesingle{}\_\{11\}q\^{}*)(pvp\^{}*~+~qv\textquotesingle{}q\^{}*)\textbackslash{}bigr)\^{}n\textbackslash{}\textbackslash{}}\\
-\texttt{~~~~~\&=~(pu\_\{11\}vp\^{}*~+~qu\textquotesingle{}\_\{11\}v\textquotesingle{}q\^{}*)\^{}n\textbackslash{}\textbackslash{}}\\
-\texttt{~~~~~\&=~p(u\_\{11\}v)\^{}np\^{}*~+~q(u\textquotesingle{}\_\{11\}v\textquotesingle{})\^{}nq\^{}*}\\
-\texttt{~\textbackslash{}end\{align\}}
-
+\begin{align*}
+    \bigl((u\tens u')_{11}(pvp^* + qv'q^*)\bigr)^n
+      & = \bigl((pu_{11}p^* + qu'_{11}q^*)(pvp^* + qv'q^*)\bigr)^n\\
+      & = (pu_{11}vp^* + qu'_{11}v'q^*)^n\\
+      & = p(u_{11}v)^np^* + q(u'_{11}v')^nq^*
+\end{align*}
 Therefore \((u\tens u')_{11}(pvp^* + qv'q^*)\) is nilpotent. So we can
 compute \(\mathrm{App}(u\tens u', pvp^* + qv'q^*)\):
-
-\begin{description}
-\item[]
-\textbackslash{}begin\{align\}
-\end{description}
-
-\texttt{~~~\&\textbackslash{}mathrm\{App\}(u\textbackslash{}tens~u\textquotesingle{},~pvp\^{}*~+~qv\textquotesingle{}q\^{}*)\textbackslash{}\textbackslash{}}\\
-\texttt{~~~~~\&=~(u\textbackslash{}tens~u\textquotesingle{})\_\{22\}~+~(u\textbackslash{}tens~u\textquotesingle{})\_\{21\}(pvp\^{}*~+~qv\textquotesingle{}q\^{}*)\textbackslash{}sum\textbackslash{}bigl((u\textbackslash{}tens~u\textquotesingle{})\_\{11\}(pvp\^{}*~+~qv\textquotesingle{}q\^{}*)\textbackslash{}bigr)\^{}k(u\textbackslash{}tens~u\textquotesingle{})\_\{12\}\textbackslash{}\textbackslash{}}\\
-\texttt{~~~~~\&=~pu\_\{22\}p\^{}*~+~qu\textquotesingle{}\_\{22\}q\^{}*~+~(pu\_\{21\}p\^{}*~+~qu\textquotesingle{}\_\{21\}q\^{}*)(pvp\^{}*~+~qv\textquotesingle{}q\^{}*)\textbackslash{}sum\textbackslash{}bigl((pu\_\{11\}p\^{}*~+~qu\textquotesingle{}\_\{11\}q\^{}*)(pvp\^{}*~+~qv\textquotesingle{}q\^{}*)\textbackslash{}bigr)\^{}k(pu\_\{12\}p\^{}*~+~qu\textquotesingle{}\_\{12\}q\^{}*)\textbackslash{}\textbackslash{}}\\
-\texttt{~~~~~\&=~p\textbackslash{}bigl(u\_\{22\}~+~u\_\{21\}v\textbackslash{}sum(u\_\{11\}v)\^{}ku\_\{12\}\textbackslash{}bigr)p\^{}*~+~q\textbackslash{}bigl(u\textquotesingle{}\_\{22\}~+~u\textquotesingle{}\_\{21\}v\textquotesingle{}\textbackslash{}sum(u\textquotesingle{}\_\{11\}v\textquotesingle{})\^{}ku\textquotesingle{}\_\{12\}\textbackslash{}bigr)q\^{}*\textbackslash{}\textbackslash{}}\\
-\texttt{~~~~~\&=~p\textbackslash{}mathrm\{App\}(u,~v)p\^{}*~+~q\textbackslash{}mathrm\{App\}(u\textquotesingle{},~v\textquotesingle{})q\^{}*}\\
-\texttt{~\textbackslash{}end\{align\}}
-
+\begin{align*}
+    & \mathrm{App}(u\tens u', pvp^* + qv'q^*)\\
+      & = (u\tens u')_{22} + (u\tens u')_{21}(pvp^* + qv'q^*)\sum\bigl((u\tens u')_{11}(pvp^* + qv'q^*)\bigr)^k(u\tens u')_{12}\\
+      & = pu_{22}p^* + qu'_{22}q^* + (pu_{21}p^* + qu'_{21}q^*)(pvp^* + qv'q^*)\sum\bigl((pu_{11}p^* + qu'_{11}q^*)(pvp^* + qv'q^*)\bigr)^k(pu_{12}p^* + qu'_{12}q^*)\\
+      & = p\bigl(u_{22} + u_{21}v\sum(u_{11}v)^ku_{12}\bigr)p^* + q\bigl(u'_{22} + u'_{21}v'\sum(u'_{11}v')^ku'_{12}\bigr)q^*\\
+      & = p\mathrm{App}(u, v)p^* + q\mathrm{App}(u', v')q^*
+\end{align*}
 thus lives in \(B\tens B'\).
 
 \subsection{Other monoidal constructions}\label{other-monoidal-constructions}
@@ -244,87 +286,61 @@ thus lives in \(B\tens B'\).
 \subsubsection{Contraposition}\label{contraposition}
 
 Let \(A\) and \(B\) be some types; we have:
-
-\begin{description}
-\item[]
-\(A\limp B = A\orth\limpinv B\orth\)
-\end{description}
-
+\begin{equation*}
+A\limp B = A\orth\limpinv B\orth
+\end{equation*}
 Indeed, \(u\in A\limp B\) means that for any \(v\) and \(w\) in
 respectively \(A\) and \(B\orth\) we have \(u.(pvp^* + qwq^*)\in\bot\)
 which is exactly the definition of \(A\orth\limpinv B\orth\).
 
 We will denote \(u\orth\) the operator:
-
-\begin{description}
-\item[]
-\(u\orth = pu_{22}p^* + pu_{12}q^* + qu_{12}p^* + qu_{11}q^*\)
-\end{description}
-
+\begin{equation*}
+u\orth = pu_{22}p^* + pu_{12}q^* + qu_{12}p^* + qu_{11}q^*
+\end{equation*}
 where \(u_{ij}\) is given by externalization. Therefore the
 externalization of \(u\orth\) is:
-
-\begin{description}
-\item[]
-\((u\orth)_{ij} = u_{\bar i\,\bar j}\) where \(\bar .\) is defined by
-\(\bar1 = 2, \bar2 = 1\).
-\end{description}
-
+\begin{equation*}
+(u\orth)_{ij} = u_{\bar i\,\bar j}\text{ where $\bar .$ is defined by $\bar1 = 2, \bar2 = 1$}.
+\end{equation*}
 From this we deduce that \(u\orth\in B\orth\limp A\orth\) and that
 \((u\orth)\orth = u\).
 
 \subsubsection{Commutativity}\label{commutativity}
 
 Let \(\sigma\) be the operator:
-
-\begin{description}
-\item[]
-\(\sigma = ppq^*q^* +pqp^*q^* + qpq^*p^* + qqp^*p^*\).
-\end{description}
+\begin{equation*}
+\sigma = ppq^*q^* +pqp^*q^* + qpq^*p^* + qqp^*p^*.
+\end{equation*}
 
 One can check that \(\sigma\) is the internalization of the operator
 \(S\) on \(H\oplus H\oplus H\oplus H\) defined by:
 \(S(x_1\oplus x_2\oplus x_3\oplus x_4) = x_4\oplus x_3\oplus x_2\oplus x_1\).
 In particular the components of \(\sigma\) are:
-
-\begin{description}
-\item[]
-\(\sigma_{11} = \sigma_{22} = 0\);
-
-\(\sigma_{12} = \sigma_{21} = pq^* + qp^*\).
-\end{description}
+\begin{align*}
+\sigma_{11} &= \sigma_{22} = 0 \\
+\sigma_{12} &= \sigma_{21} = pq^* + qp^*.
+\end{align*}
 
 Let \(A\) and \(B\) be types and \(u\) and \(v\) be operators in \(A\)
 and \(B\). Then \(pup^* + qvq^*\) is in \(A\tens B\) and as
 \(\sigma_{11}.(pup^* + qvq^*) = 0\) we may compute:
-
-\begin{description}
-\item[]
-\textbackslash{}begin\{align\}
-\end{description}
-
-\texttt{~~~\textbackslash{}mathrm\{App\}(\textbackslash{}sigma,~pup\^{}*~+~qvq\^{}*)~}\\
-\texttt{~~~~~\&=~\textbackslash{}sigma\_\{22\}~+~\textbackslash{}sigma\_\{21\}(pup\^{}*~+~qvq\^{}*)\textbackslash{}sum(\textbackslash{}sigma\_\{11\}(pup\^{}*~+~qvq\^{}*))\^{}k\textbackslash{}sigma\_\{12\}\textbackslash{}\textbackslash{}}\\
-\texttt{~~~~~\&=~(pq\^{}*~+~qp\^{}*)(pup\^{}*~+~qvq\^{}*)(pq\^{}*~+~qp\^{}*)\textbackslash{}\textbackslash{}}\\
-\texttt{~~~~~\&=~pvp\^{}*~+~quq\^{}*}\\
-\texttt{~~\textbackslash{}end\{align\}}
-
+\begin{align*}
+    \mathrm{App}(\sigma, pup^* + qvq^*) 
+      & = \sigma_{22} + \sigma_{21}(pup^* + qvq^*)\sum(\sigma_{11}(pup^* + qvq^*))^k\sigma_{12}\\
+      & = (pq^* + qp^*)(pup^* + qvq^*)(pq^* + qp^*)\\
+      & = pvp^* + quq^*
+\end{align*}
 But \(pvp^* + quq^*\in B\tens A\), thus we have shown that:
-
-\begin{description}
-\item[]
-\(\sigma\in (A\tens B) \limp (B\tens A)\).
-\end{description}
+\begin{equation*}
+\sigma\in (A\tens B) \limp (B\tens A).
+\end{equation*}
 
 \subsubsection{Distributivity}\label{distributivity}
 
 We get distributivity by considering the operator:
-
-\begin{description}
-\item[]
-\(\delta = ppp^*p^*q^* + pqpq^*p^*q^* + pqqq^*q^* + qppp^*p^* + qpqp^*q^*p^* + qqq^*q^*p^*\)
-\end{description}
-
+\begin{equation*}
+\delta = ppp^*p^*q^* + pqpq^*p^*q^* + pqqq^*q^* + qppp^*p^* + qpqp^*q^*p^* + qqq^*q^*p^*
+\end{equation*}
 that is similarly shown to be in type
 \(A\tens(B\tens C)\limp(A\tens B)\tens C\) for any types \(A\), \(B\)
 and \(C\).
@@ -332,23 +348,15 @@ and \(C\).
 \subsubsection{Weak distributivity}\label{weak-distributivity}
 
 Similarly we get weak distributivity thanks to the operators:
-
-\begin{description}
-\item[]
-\(\delta_1 = pppp^*q^* + ppqp^*q^*q^* + pqq^*q^*q^* + qpp^*p^*p^* + qqp q^*p^*p^* + qqq q^*p^*\)
-and
-
-\(\delta_2 = ppp^*p^*q^* + pqpq^*p^*q^* + pqqq^*q^* + qppp^*p^* + qpqp^*q^*p^* + qqq^*q^*p^*\).
-\end{description}
-
+\begin{align*}
+\delta_1 & = pppp^*q^* + ppqp^*q^*q^* + pqq^*q^*q^* + qpp^*p^*p^* + qqp q^*p^*p^* + qqq q^*p^* \\
+\delta_2 &= ppp^*p^*q^* + pqpq^*p^*q^* + pqqq^*q^* + qppp^*p^* + qpqp^*q^*p^* + qqq^*q^*p^*.
+\end{align*}
 Given three types \(A\), \(B\) and \(C\) then one can show that:
-
-\begin{description}
-\item[]
-\(\delta_1\) has type \(((A\limp B)\tens C)\limp A\limp (B\tens C)\) and
-
-\(\delta_2\) has type \((A\tens(B\limp C))\limp (A\limp B)\limp C\).
-\end{description}
+\begin{itemize}
+\item \(\delta_1\) has type \(((A\limp B)\tens C)\limp A\limp (B\tens C)\) and
+\item \(\delta_2\) has type \((A\tens(B\limp C))\limp (A\limp B)\limp C\).
+\end{itemize}
 
 \subsection{Execution formula, version 2: composition}\label{execution-formula-version-2-composition}
 
@@ -365,39 +373,27 @@ As \(u\) is in \(A\limp B\) we have that
 nilpotent.
 
 We define the operator \(\mathrm{Comp}(u, v)\) by:
-
-\begin{description}
-\item[]
-\textbackslash{}begin\{align\}
-\end{description}
-
-\texttt{~~~\textbackslash{}mathrm\{Comp\}(u,~v)~\&=~p(u\_\{11\}~+~u\_\{12\}\textbackslash{}sum(v\_\{11\}u\_\{22\})\^{}k\textbackslash{},v\_\{11\}u\_\{21\})p\^{}*\textbackslash{}\textbackslash{}}\\
-\texttt{~~~~~~~~~~~~~~~~~~~~~~~\&+~p(u\_\{12\}\textbackslash{}sum(v\_\{11\}u\_\{22\})\^{}k\textbackslash{},v\_\{12\})q\^{}*\textbackslash{}\textbackslash{}}\\
-\texttt{~~~~~~~~~~~~~~~~~~~~~~~\&+~q(v\_\{21\}\textbackslash{}sum(u\_\{22\}v\_\{11\})\^{}k\textbackslash{},u\_\{21\})p\^{}*\textbackslash{}\textbackslash{}}\\
-\texttt{~~~~~~~~~~~\&+~q(v\_\{22\}~+~v\_\{21\}\textbackslash{}sum(u\_\{22\}v\_\{11\})\^{}k\textbackslash{},u\_\{22\}v\_\{12\})q\^{}*}\\
-\texttt{~\textbackslash{}end\{align\}}
-
+\begin{align*}
+    \mathrm{Comp}(u, v) & = p(u_{11} + u_{12}\sum(v_{11}u_{22})^k\,v_{11}u_{21})p^*\\
+                        & + p(u_{12}\sum(v_{11}u_{22})^k\,v_{12})q^*\\
+                        & + q(v_{21}\sum(u_{22}v_{11})^k\,u_{21})p^*\\
+			& + q(v_{22} + v_{21}\sum(u_{22}v_{11})^k\,u_{22}v_{12})q^*
+\end{align*}
 This is well defined since \(u_{11}v_{22}\) is nilpotent. As an example
 let us compute the composition of \(u\) and \(\iota\) in type
 \(B\limp B\); recall that \(\iota_{ij} = \delta_{ij}\), so we get:
-
-\begin{description}
-\item[]
-\end{description}
-
-\texttt{~~~\textbackslash{}mathrm\{Comp\}(u,~\textbackslash{}iota)~=~pu\_\{11\}p\^{}*~+~pu\_\{12\}q\^{}*~+~qu\_\{21\}p\^{}*~+~qu\_\{22\}q\^{}*~~=~u}\\
-
+\begin{equation*}
+\mathrm{Comp}(u, \iota) = pu_{11}p^* + pu_{12}q^* + qu_{21}p^* + qu_{22}q^*  = u
+\end{equation*}
 Similar computation would show that \(\mathrm{Comp}(\iota, v) = v\) (we
 use \(pp^* + qq^* = 1\) here).
 
 Coming back to the general case we claim that \(\mathrm{Comp}(u, v)\) is
 in \(A\limp C\): let \(a\) be an operator in \(A\). By computation we
 can check that:
-
-\begin{description}
-\item[]
-\(\mathrm{App}(\mathrm{Comp}(u, v), a) = \mathrm{App}(v, \mathrm{App}(u, a))\).
-\end{description}
+\begin{equation*}
+\mathrm{App}(\mathrm{Comp}(u, v), a) = \mathrm{App}(v, \mathrm{App}(u, a)).
+\end{equation*}
 
 Now since \(u\) is in \(A\limp B\), \(\mathrm{App}(u, a)\) is in \(B\)
 and since \(v\) is in \(B\limp C\),
@@ -405,16 +401,21 @@ and since \(v\) is in \(B\limp C\),
 
 If we now consider a type \(D\) and an operator \(w\) in \(C\limp D\)
 then we have:
-
-\begin{description}
-\item[]
-\textbackslash{}mathrm\{Comp\}(\textbackslash{}mathrm\{Comp\}(u, v), w)
-= \textbackslash{}mathrm\{Comp\}(u,
-\end{description}
-
-\textbackslash{}mathrm\{Comp\}(v, w)).
+\begin{equation*}
+\mathrm{Comp}(\mathrm{Comp}(u, v), w) = \mathrm{Comp}(u, \mathrm{Comp}(v, w))
+\end{equation*}
 
 Putting together the results of this section we finally have:
+
+\begin{theorem}
+Let GoI(H) be defined by:
+\begin{itemize}
+\item objects are types, \ie\ sets $A$ of $p$-isometries satisfying: $A\biorth = A$;
+\item morphisms from $A$ to $B$ are $p$-isometries in type $A\limp B$;
+\item composition is given by the formula above.
+\end{itemize}
+Then GoI(H) is a star-autonomous category.
+\end{theorem}
 
 
 %%% Local Variables:
