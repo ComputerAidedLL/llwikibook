@@ -5,17 +5,35 @@ Categorical semantics are useful to identify the fundamental structure
 of these models, and thus simplify and make more abstract the
 elaboration of those models.
 
-\texttt{TODO:~why~categories?~how~to~extract~categorical~models?~etc.}
+\begin{quotation}
+\texttt{TODO: why categories? how to extract categorical models? etc.}
+\end{quotation}
 
-See \footnote{}for a more detailed introduction to category theory. See
-\footnote{}for a detailed treatment of categorical semantics of linear
-logic.
+See~\cite{categoriesworkmath} for a more detailed introduction to category theory. See~\cite{catsemll} for a detailed treatment of categorical semantics of linear logic.
 
 \section{Basic category theory recalled}\label{basic-category-theory-recalled}
 
+\begin{definition}[Category]
+\end{definition}
+
+\begin{definition}[Functor]
+\end{definition}
+
+\begin{definition}[Natural transformation]
+\end{definition}
+
+\begin{definition}[Adjunction]
+\end{definition}
+
+
+\begin{definition}[Monad]
+\end{definition}
+
+
+
 \section{Overview}\label{overview}
 
-In order to interpret the various \href{fragment}{fragments} of linear
+In order to interpret the various \hyperref[fragment]{fragments} of linear
 logic, we define incrementally what structure we need in a categorical
 setting.
 
@@ -23,7 +41,7 @@ setting.
 \item The most basic underlying structure are \textbf{symmetric monoidal
   categories} which model the symmetric tensor \(\otimes\) and its unit
   \(1\).
-\item The \(\otimes, \multimap\) fragment (\url{IMLL}) is captured by
+\item The \(\otimes, \multimap\) fragment (\wantedpage{IMLL}) is captured by
   so-called \textbf{symmetric monoidal closed categories}.
 \item Upgrading to \hyperref[intuitionistic-linear-logic]{ILL}, that is, adding the exponential \(\oc\)
   modality to IMLL requires modelling it categorically. There are
@@ -40,58 +58,97 @@ setting.
 
 \section{\texorpdfstring{Modeling \wantedpage{IMLL}}{Modeling IMLL}}\label{modeling-imll}
 
-A model of \url{IMLL} is a \emph{closed symmetric monoidal category}. We
+A model of \wantedpage{IMLL} is a \emph{closed symmetric monoidal category}. We
 recall the definition of these categories below.
 
-\textbackslash{}ar{[}r{]}\^{}\{\textbackslash{}alpha\_\{A,B,C\}\textbackslash{}otimes
-D\}\&(A\textbackslash{}otimes(B\textbackslash{}otimes
-C))\textbackslash{}otimes
-D\textbackslash{}ar{[}r{]}\^{}\{\textbackslash{}alpha\_\{A,B\textbackslash{}otimes
-C,D\}\}\&A\textbackslash{}otimes((B\textbackslash{}otimes
-C)\textbackslash{}otimes
-D)\textbackslash{}ar{[}d{]}\^{}\{A\textbackslash{}otimes\textbackslash{}alpha\_\{B,C,D\}\}\textbackslash{}\textbackslash{}
-
-\texttt{~~~(A\textbackslash{}otimes~B)\textbackslash{}otimes(C\textbackslash{}otimes~D)\textbackslash{}ar{[}rr{]}\_\{\textbackslash{}alpha\_\{A,B,C\textbackslash{}otimes~D\}\}\&\&A\textbackslash{}otimes(B\textbackslash{}otimes~(C\textbackslash{}otimes~D))}
-
-\} commutes,
-
+\begin{definition}[Monoidal category]
+A \emph{monoidal category} $(\mathcal{C},\otimes,I,\alpha,\lambda,\rho)$ is a category $\mathcal{C}$ equipped with
 \begin{itemize}
-\item for every objects \(A\) and \(B\) in \(\mathcal{C}\), the diagram
+\item a functor $\otimes:\mathcal{C}\times\mathcal{C}\to\mathcal{C}$ called \emph{tensor product},
+\item an object $I$ called \emph{unit object},
+\item three natural isomorphisms $\alpha$, $\lambda$ and $\rho$, called respectively \emph{associator}, \emph{left unitor} and \emph{right unitor}, whose components are
+\begin{equation*}
+\alpha_{A,B,C}:(A\otimes B)\otimes C\to A\otimes (B\otimes C)
+\qquad
+\lambda_A:I\otimes A\to A
+\qquad
+\rho_A:A\otimes I\to A
+\end{equation*}
 \end{itemize}
-
-\[\xymatrix{
+such that
+\begin{itemize}
+\item for every objects $A,B,C,D$ in $\mathcal{C}$, the diagram
+\begin{equation*}
+\xymatrix{
+    ((A\otimes B)\otimes C)\otimes D\ar[d]_{\alpha_{A\otimes B,C,D}}\ar[r]^{\alpha_{A,B,C}\otimes D}& (A\otimes(B\otimes C))\otimes D\ar[r]^{\alpha_{A,B\otimes C,D}}& A\otimes((B\otimes C)\otimes D)\ar[d]^{A\otimes\alpha_{B,C,D}}\\
+    (A\otimes B)\otimes(C\otimes D)\ar[rr]_{\alpha_{A,B,C\otimes D}}& & A\otimes(B\otimes (C\otimes D))
+}
+\end{equation*}
+commutes,
+\item for every objects $A$ and $B$ in $\mathcal{C}$, the diagram
+\begin{equation*}
+\xymatrix{
     (A\otimes I)\otimes B\ar[dr]_{\rho_A\otimes B}\ar[rr]^{\alpha_{A,I,B}}& & \ar[dl]^{A\otimes\lambda_B}A\otimes(I\otimes B)\\
     & A\otimes B& 
-}\] commutes. \}\}
+}
+\end{equation*}
+commutes.
+\end{itemize}
+\end{definition}
 
-\&(B\textbackslash{}otimes C)\textbackslash{}otimes
-A\textbackslash{}ar{[}dr{]}\^{}\{\textbackslash{}alpha\_\{B,C,A\}\}\textbackslash{}\textbackslash{}
-(A\textbackslash{}otimes B)\textbackslash{}otimes
-C\textbackslash{}ar{[}ur{]}\^{}\{\textbackslash{}alpha\_\{A,B,C\}\}\textbackslash{}ar{[}dr{]}\_\{\textbackslash{}gamma\_\{A,B\}\textbackslash{}otimes
-C\}\&\&\&B\textbackslash{}otimes (C\textbackslash{}otimes
-A)\textbackslash{}\textbackslash{} \&(B\textbackslash{}otimes
-A)\textbackslash{}otimes
-C\textbackslash{}ar{[}r{]}\_\{\textbackslash{}alpha\_\{B,A,C\}\}\&B\textbackslash{}otimes(A\textbackslash{}otimes
-C)\textbackslash{}ar{[}ur{]}\_\{B\textbackslash{}otimes\textbackslash{}gamma\_\{A,C\}\}\textbackslash{}\textbackslash{}
-\} and
-
-\[\xymatrix{
+\begin{definition}[Braided, symmetric monoidal category]
+A \emph{braided} monoidal category is a category together with a natural isomorphism of components
+\begin{equation*}
+\gamma_{A,B}:A\otimes B\to B\otimes A
+\end{equation*}
+called \emph{braiding}, such that the two diagrams
+\begin{equation*}
+\xymatrix{
+& A\otimes(B\otimes C)\ar[r]^{\gamma_{A,B\otimes C}}& (B\otimes C)\otimes A\ar[dr]^{\alpha_{B,C,A}}\\
+(A\otimes B)\otimes C\ar[ur]^{\alpha_{A,B,C}}\ar[dr]_{\gamma_{A,B}\otimes C}& & & B\otimes (C\otimes A)\\
+& (B\otimes A)\otimes C\ar[r]_{\alpha_{B,A,C}}& B\otimes(A\otimes C)\ar[ur]_{B\otimes\gamma_{A,C}}\\
+}
+\end{equation*}
+and
+\begin{equation*}
+\xymatrix{
 & (A\otimes B)\otimes C\ar[r]^{\gamma_{A\otimes B,C}}& C\otimes (A\otimes B)\ar[dr]^{\alpha^{-1}_{C,A,B}}& \\
 A\otimes (B\otimes C)\ar[ur]^{\alpha^{-1}_{A,B,C}}\ar[dr]_{A\otimes\gamma_{B,C}}& & & (C\otimes A)\otimes B\\
 & A\otimes(C\otimes B)\ar[r]_{\alpha^{-1}_{A,C,B}}& (A\otimes C)\otimes B\ar[ur]_{\gamma_{A,C}\otimes B}& \\
-}\] commute for every objects \(A\), \(B\) and \(C\).
+}
+\end{equation*}
+commute for every objects $A$, $B$ and $C$.
 
-A \emph{symmetric} monoidal category is a braided monoidal category in
-which the braiding satisfies
+A \emph{symmetric} monoidal category is a braided monoidal category in which the braiding satisfies
+\begin{equation*}
+\gamma_{B,A}\circ\gamma_{A,B}=A\otimes B
+\end{equation*}
+for every objects $A$ and $B$.
+\end{definition}
 
-\[\gamma_{B,A}\circ\gamma_{A,B}=A\otimes B\] for every objects \(A\) and
-\(B\). \}\}
+\begin{definition}[Closed monoidal category]
+A monoidal category $(\mathcal{C},\tens,I)$ is \emph{left closed} when for every object $A$, the functor $B\mapsto A\otimes B$ has a right adjoint, written $B\mapsto(A\limp B)$.
+This means that there exists a bijection
+\begin{equation*}
+\mathcal{C}(A\tens B, C) \cong \mathcal{C}(B,A\limp C)
+\end{equation*}
+which is natural in $B$ and $C$.
+Equivalently, a monoidal category is left closed when it is equipped with a \emph{left closed structure}, which consists of
+\begin{itemize}
+\item an object $A\limp B$,
+\item a morphism $\mathrm{eval}_{A,B}:A\tens (A\limp B)\to B$, called \emph{left evaluation},
+\end{itemize}
+for every objects $A$ and $B$, such that for every morphism $f:A\otimes X\to B$ there exists a unique morphism $h:X\to A\limp B$ making the diagram
+\begin{equation*}
+\xymatrix{
+A\tens X\ar@{.>}[d]_{A\tens h}\ar[dr]^{f}\\
+A\tens(A\limp B)\ar[r]_-{\mathrm{eval}_{A,B}}& B
+}
+\end{equation*}
+commute.
 
-\&B \} commute.
-
-Dually, the monoidal category \(\mathcal{C}\) is \emph{right closed}
-when the functor \(B\mapsto B\otimes A\) admits a right adjoint. The
-notion of \emph{right closed structure} can be defined similarly. \}\}
+Dually, the monoidal category $\mathcal{C}$ is \emph{right closed} when the functor $B\mapsto B\otimes A$ admits a right adjoint. The notion of \emph{right closed structure} can be defined similarly.
+\end{definition}
 
 In a symmetric monoidal category, a left closed structure induces a
 right closed structure and conversely, allowing us to simply speak of a
@@ -99,100 +156,215 @@ right closed structure and conversely, allowing us to simply speak of a
 
 \section{Modeling the additives}\label{modeling-the-additives}
 
-A category has \emph{finite products} when it has products and a
-terminal object.
+\begin{definition}[Product]
+A \emph{product} $(X,\pi_1,\pi_2)$ of two coinitial morphisms $f:A\to B$ and $g:A\to C$ in a category $\mathcal{C}$ is an object $X$ of $\mathcal{C}$ together with two morphisms $\pi_1:X\to A$ and $\pi_2:X\to B$ such that there exists a unique morphism $h:A\to X$ making the diagram
+\begin{equation*}
+\xymatrix{
+& \ar[ddl]_fA\ar@{.>}[d]_h\ar[ddr]^g& \\
+& \ar[dl]^{\pi_1}X\ar[dr]_{\pi_2}& \\
+B& & C
+}
+\end{equation*}
+commute.
+\end{definition}
 
-\textbackslash{}ar{[}r{]}\^{}-\{\textbackslash{}mu\textbackslash{}tens
-M\}\&M\textbackslash{}tens
-M\textbackslash{}ar{[}dd{]}\^{}\{\textbackslash{}mu\}\textbackslash{}\textbackslash{}
-M\textbackslash{}tens(M\textbackslash{}tens
-M)\textbackslash{}ar{[}d{]}\_\{M\textbackslash{}tens\textbackslash{}mu\}\&\&\textbackslash{}\textbackslash{}
-M\textbackslash{}tens
-M\textbackslash{}ar{[}rr{]}\_\{\textbackslash{}mu\}\&\&M\textbackslash{}\textbackslash{}
-\} and
+A category has \emph{finite products} when it has products and a terminal object.
 
-\[\xymatrix{
+\begin{definition}[Monoid]
+A \emph{monoid} $(M,\mu,\eta)$ in a monoidal category $(\mathcal{C},\tens,I)$ is an object $M$ together with two morphisms $\mu:M\tens M \to M$ and $\eta:I\to M$
+such that the diagrams
+\begin{equation*}
+\xymatrix{
+& (M\tens M)\tens M\ar[dl]_{\alpha_{M,M,M}}\ar[r]^-{\mu\tens M}& M\tens M\ar[dd]^{\mu}\\
+M\tens(M\tens M)\ar[d]_{M\tens\mu}& & \\
+M\tens M\ar[rr]_{\mu}& & M\\
+}
+\end{equation*}
+and
+\begin{equation*}
+\xymatrix{
 I\tens M\ar[r]^{\eta\tens M}\ar[dr]_{\lambda_M}& M\tens M\ar[d]_\mu& \ar[l]_{M\tens\eta}\ar[dl]^{\rho_M}M\tens I\\
 & M& 
-}\] commute. \}\}
+}
+\end{equation*}
+commute.
+\end{definition}
+
+\begin{property}
+Categories with products vs monoidal categories.
+\end{property}
+
+\todo[missing in LLWiki]
+
 
 \section{\texorpdfstring{Modeling \hyperref[intuitionistic-linear-logic]{ILL}}{Modeling ILL}}\label{modeling-ill}
 
-Introduced in\footnote{}.
+Introduced in~\cite{mixedlnll}.
 
-\todo[citation]
+\begin{definition}[Linear-non linear (LNL) adjunction]
+A \emph{linear-non linear adjunction} is a symmetric monoidal adjunction between lax monoidal functors
+\begin{equation*}
+\xymatrix{
+(\mathcal{M},\times,\top)\ar@/^/[rr]^{(L,l)}& \bot& \ar@/^/[ll]^{(M,m)}(\mathcal{L},\otimes,I)
+}
+\end{equation*}
+in which the category $\mathcal{M}$ has finite products.
+\end{definition}
 
 \[\oc=L\circ M\]
 
 This section is devoted to defining the concepts necessary to define
 these adjunctions.
 
-\&FA\textbackslash{}bullet(FB\textbackslash{}bullet
-FC)\textbackslash{}ar{[}dr{]}\^{}\{FA\textbackslash{}bullet\textbackslash{}phi\_\{B,C\}\}\textbackslash{}\textbackslash{}
-
-\texttt{~~~F(A\textbackslash{}otimes~B)\textbackslash{}bullet~FC\textbackslash{}ar{[}dr{]}\_\{\textbackslash{}phi\_\{A\textbackslash{}otimes~B,C\}\}\&\&FA\textbackslash{}bullet~F(B\textbackslash{}otimes~C)\textbackslash{}ar{[}d{]}\^{}\{\textbackslash{}phi\_\{A,B\textbackslash{}otimes~C\}\}\textbackslash{}\textbackslash{}}\\
-\texttt{~~~\&F((A\textbackslash{}otimes~B)\textbackslash{}otimes~C)\textbackslash{}ar{[}r{]}\_\{F\textbackslash{}alpha\_\{A,B,C\}\}\&F(A\textbackslash{}otimes(B\textbackslash{}otimes~C))}
-
-\} and
-
-\[\xymatrix{
+\begin{definition}[Monoidal functor]
+A \emph{lax monoidal functor} $(F,f)$ between two monoidal categories $(\mathcal{C},\tens,I)$ and $(\mathcal{D},\bullet,J)$ consists of
+\begin{itemize}
+\item a functor $F:\mathcal{C}\to\mathcal{D}$ between the underlying categories,
+\item a natural transformation $f$ of components $f_{A,B}:FA\bullet FB\to F(A\tens B)$,
+\item a morphism $f:J\to FI$
+\end{itemize}
+such that the diagrams
+\begin{equation*}
+\xymatrix{
+    (FA\bullet FB)\bullet FC\ar[d]_{\phi_{A,B}\bullet FC}\ar[r]^{\alpha_{FA,FB,FC}}& FA\bullet(FB\bullet FC)\ar[dr]^{FA\bullet\phi_{B,C}}\\
+    F(A\otimes B)\bullet FC\ar[dr]_{\phi_{A\otimes B,C}}& & FA\bullet F(B\otimes C)\ar[d]^{\phi_{A,B\otimes C}}\\
+    & F((A\otimes B)\otimes C)\ar[r]_{F\alpha_{A,B,C}}& F(A\otimes(B\otimes C))
+}
+\end{equation*}
+and
+\begin{equation*}
+\vcenter{\vbox{\xymatrix{
     FA\bullet J\ar[d]_{\rho_{FA}}\ar[r]^{FA\bullet\phi}& FA\bullet FI\ar[d]^{\phi_{A,I}}\\
     FA& \ar[l]^{F\rho_A}F(A\otimes I)
-}\] and \(\xymatrix{
+}}}
+\qquad\text{and}\qquad
+\vcenter{\vbox{\xymatrix{
     J\bullet FB\ar[d]_{\lambda_{FB}}\ar[r]^{\phi\bullet FB}& FI\bullet FB\ar[d]^{\phi_{I,B}}\\
     FB& \ar[l]^{F\lambda_B}F(I\otimes B)
-}\) commute for every objects \(A\), \(B\) and \(C\) of \(\mathcal{C}\).
-The morphisms \(f_{A,B}\) and \(f\) are called \emph{coherence maps}.
+}}}
+\end{equation*}
+commute for every objects $A$, $B$ and $C$ of $\mathcal{C}$. The morphisms $f_{A,B}$ and $f$ are called \emph{coherence maps}.
 
-A lax monoidal functor is \emph{strong} when the coherence maps are
-invertible and \emph{strict} when they are identities. \}\}
+A lax monoidal functor is \emph{strong} when the coherence maps are invertible and \emph{strict} when they are identities.
+\end{definition}
 
-\textbackslash{}ar{[}r{]}\^{}\{\textbackslash{}theta\_A\textbackslash{}bullet\textbackslash{}theta\_B\}\&\textbackslash{}ar{[}d{]}\^{}\{g\_\{A,B\}\}GA\textbackslash{}bullet
-GB\textbackslash{}\textbackslash{}
-
-\texttt{~~~F(A\textbackslash{}tens~B)\textbackslash{}ar{[}r{]}\_\{\textbackslash{}theta\_\{A\textbackslash{}tens~B\}\}\&G(A\textbackslash{}tens~B)}
-
-\} and \(\xymatrix{
+\begin{definition}[Monoidal natural transformation]
+Suppose that $(\mathcal{C},\tens,I)$ and $(\mathcal{D},\bullet,J)$ are two monoidal categories and
+$(F,f):(\mathcal{C},\tens,I)\Rightarrow(\mathcal{D},\bullet,J)$
+and
+$(G,g):(\mathcal{C},\tens,I)\Rightarrow(\mathcal{D},\bullet,J)$
+are two monoidal functors between these categories. A \emph{monoidal natural transformation} $\theta:(F,f)\to (G,g)$ between these monoidal functors is a natural transformation $\theta:F\Rightarrow G$ between the underlying functors such that the diagrams
+\begin{equation*}
+\vcenter{\vbox{\xymatrix{
+    FA\bullet FB\ar[d]_{f_{A,B}}\ar[r]^{\theta_A\bullet\theta_B}& \ar[d]^{g_{A,B}}GA\bullet GB\\
+    F(A\tens B)\ar[r]_{\theta_{A\tens B}}& G(A\tens B)
+}}}
+\qquad\text{and}\qquad
+\vcenter{\vbox{\xymatrix{
   & \ar[dl]_{f}J\ar[dr]^{g}& \\
   FI\ar[rr]_{\theta_I}& & GI
-}\) commute for every objects \(A\) and \(B\) of \(\mathcal{D}\). \}\}
+}}}
+\end{equation*}
+commute for every objects $A$ and $B$ of $\mathcal{D}$.
+\end{definition}
+
+\begin{definition}[Monoidal adjunction]
+A \emph{monoidal adjunction} between two monoidal functors
+$(F,f):(\mathcal{C},\tens,I)\Rightarrow(\mathcal{D},\bullet,J)$
+and
+$(G,g):(\mathcal{D},\bullet,J)\Rightarrow(\mathcal{C},\tens,I)$
+is an adjunction between the underlying functors $F$ and $G$ such that the unit and the counit
+$\eta:\mathcal{C}\Rightarrow G\circ F$ and $\varepsilon:F\circ G\Rightarrow\mathcal{D}$
+induce monoidal natural transformations between the corresponding monoidal functors.
+\end{definition}
+
 
 \section{Modeling negation}\label{modeling-negation}
 
 \subsection{*-autonomous categories}\label{autonomous-categories}
 
+\begin{definition}[*-autonomous category]
+Suppose that we are given a symmetric monoidal closed category $(\mathcal{C},\tens,I)$ and an object $R$ of $\mathcal{C}$. For every object $A$, we define a morphism $\partial_{A}:A\to(A\limp R)\limp R$ as follows. By applying the bijection of the adjunction defining (left) closed monoidal categories to the identity morphism $\mathrm{id}_{A\limp R}:A\limp R \to A\limp R$, we get a morphism $A\tens (A\limp R)\to R$, and thus a morphism $(A\limp R)\tens A\to R$ by precomposing with the symmetry $\gamma_{A\limp R,A}$. The morphism $\partial_A$ is finally obtained by applying the bijection of the adjunction defining (left) closed monoidal categories to this morphism. The object $R$ is called \emph{dualizing} when the morphism $\partial_A$ is a bijection for every object $A$ of $\mathcal{C}$. A symmetric monoidal closed category is \emph{*-autonomous} when it admits such a dualizing object.
+\end{definition}
+
 \subsection{Compact closed categories}\label{compact-closed-categories}
 
-\&(A\textbackslash{}tens B)\textbackslash{}tens
-A\textbackslash{}ar{[}dr{]}\^{}\{\textbackslash{}varepsilon\textbackslash{}tens
-A\}\textbackslash{}\textbackslash{} A\textbackslash{}tens
-I\textbackslash{}ar{[}ur{]}\^{}\{A\textbackslash{}tens\textbackslash{}eta\}\&\&\&I\textbackslash{}tens
-A\textbackslash{}ar{[}d{]}\^{}\{\textbackslash{}lambda\_A\}\textbackslash{}\textbackslash{}
-A\textbackslash{}ar{[}u{]}\^{}\{\textbackslash{}rho\_A\^{}\{-1\}\}\textbackslash{}ar@\{=\}{[}rrr{]}\&\&\&A\textbackslash{}\textbackslash{}
-\} and
-
-\[\xymatrix{
+\begin{definition}[Dual objects]
+A \emph{dual object} structure $(A,B,\eta,\varepsilon)$ in a monoidal category $(\mathcal{C},\tens,I)$ is a pair of objects $A$ and $B$ together with two morphisms
+$\eta:I\to B\otimes A$ and $\varepsilon:A\otimes B\to I$
+such that the diagrams
+\begin{equation*}
+\xymatrix{
+& A\tens(B\tens A)\ar[r]^{\alpha_{A,B,A}^{-1}}& (A\tens B)\tens A\ar[dr]^{\varepsilon\tens A}\\
+A\tens I\ar[ur]^{A\tens\eta}& & & I\tens A\ar[d]^{\lambda_A}\\
+A\ar[u]^{\rho_A^{-1}}\ar@{=}[rrr]& & & A\\
+}
+\end{equation*}
+and
+\begin{equation*}
+\xymatrix{
 & (B\tens A)\tens B\ar[r]^{\alpha_{B,A,B}}& B\tens(A\tens B)\ar[dr]^{B\tens\varepsilon}\\
 I\tens B\ar[ur]^{\eta\tens B}& & & B\tens I\ar[d]^{\rho_B}\\
 B\ar[u]^{\lambda_B^{-1}}\ar@{=}[rrr]& & & B\\
-}\] commute. The object \(A\) is called a left dual of \(B\) (and
-conversely \(B\) is a right dual of \(A\)). \}\}
+}
+\end{equation*}
+commute. The object $A$ is called a left dual of $B$ (and conversely $B$ is a right dual of $A$).
+\end{definition}
 
-\&I\textbackslash{}tens
-B\textbackslash{}ar{[}r{]}\^{}-\{\textbackslash{}eta\_A\textbackslash{}tens
-B\}\&(A\^{}*\textbackslash{}tens A)\textbackslash{}tens
-B\textbackslash{}ar{[}r{]}\^{}-\{\textbackslash{}alpha\_\{A\^{}*,A,B\}\}\&A\^{}*\textbackslash{}tens(A\textbackslash{}tens
-B)\textbackslash{}ar{[}r{]}\^{}-\{A\^{}*\textbackslash{}tens
-f\}\&A\textbackslash{}tens C\textbackslash{}\textbackslash{} \} and to
-every morphism \(g:B\to A^*\tens C\), we associate a morphism
-\(\llcorner g\lrcorner:A\tens B\to C\) defined as
+\begin{lemma}
+Two left (resp.\ right) duals of a same object $B$ are necessarily isomorphic.
+\end{lemma}
 
-\[\xymatrix{
+\begin{definition}[Compact closed category]
+A symmetric monoidal category $(\mathcal{C},\tens,I)$ is \emph{compact closed} when every object $A$ has a right dual $A^*$. We write
+$\eta_A:I\to A^*\tens A$ and $\varepsilon_A:A\tens A^*\to I$
+for the corresponding duality morphisms.
+\end{definition}
+
+\begin{lemma}
+In a compact closed category the left and right duals of an object $A$ are isomorphic.
+\end{lemma}
+
+\begin{property}
+A compact closed category $\mathcal{C}$ is monoidal closed, with closure defined by
+$\mathcal{C}(A\tens B,C)\cong\mathcal{C}(B,A^*\tens C)$.
+\end{property}
+
+\begin{proof}
+To every morphism $f:A\tens B\to C$, we associate a morphism $\ulcorner f\urcorner:B\to A^*\tens C$ defined as
+\begin{equation*}
+\xymatrix{
+B\ar[r]^-{\lambda_B^{-1}}& I\tens B\ar[r]^-{\eta_A\tens B}& (A^*\tens A)\tens B\ar[r]^-{\alpha_{A^*,A,B}}& A^*\tens(A\tens B)\ar[r]^-{A^*\tens f}& A\tens C\\
+}
+\end{equation*}
+and to every morphism $g:B\to A^*\tens C$, we associate a morphism $\llcorner g\lrcorner:A\tens B\to C$ defined as
+\begin{equation*}
+\xymatrix{
 A\tens B\ar[r]^-{A\tens g}& A\tens(A^*\tens C)\ar[r]^-{\alpha_{A,A^*,C}^{-1}}& (A\tens A^*)\tens C\ar[r]^-{\varepsilon_A\tens C}& I\tens C\ar[r]^-{\lambda_C}& C
-}\] It is easy to show that
-\(\llcorner \ulcorner f\urcorner\lrcorner=f\) and
-\(\ulcorner\llcorner g\lrcorner\urcorner=g\) from which we deduce the
-required bijection. \}\}
+}
+\end{equation*}
+It is easy to show that $\llcorner \ulcorner f\urcorner\lrcorner=f$ and $\ulcorner\llcorner g\lrcorner\urcorner=g$ from which we deduce the required bijection.
+\end{proof}
+
+\begin{property}
+A compact closed category is a (degenerated) *-autonomous category, with the obvious duality structure. In particular, $(A \otimes B)^* \cong A^*\otimes B^*$.
+\end{property}
+
+\begin{remark}
+The above isomorphism does not hold in *-autonomous categories in general. This means that models which are compact closed categories identify $\otimes$ and $\parr$ as well as $1$ and $\bot$.
+\end{remark}
+
+\begin{proof}
+The dualizing object $R$ is simply $I^*$.
+
+For any $A$, the reverse isomorphism $\delta_A : (A \multimap R)\multimap R \rightarrow A$ is constructed as follows:
+\begin{equation*}
+\mathcal{C}((A \multimap R)\multimap R, A) := \mathcal{C}((A \otimes I^{**})\otimes I^{**}, A) \cong \mathcal{C}((A \otimes I)\otimes I, A) \cong \mathcal{C}(A, A)
+\end{equation*}
+
+Identity on $A$ is taken as the canonical morphism required.
+\end{proof}
+
 
 \section{Other categorical models}\label{other-categorical-models}
 
