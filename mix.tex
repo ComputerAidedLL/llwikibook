@@ -5,15 +5,16 @@ but a nullary version also exists.
 
 \subsection{\texorpdfstring{Binary \(\rulename{Mix}\) rule}{Binary \textbackslash{}rulename\{Mix\} rule}}\label{binary-rulenamemix-rule}
 
-\(\AxRule{\vdash\Gamma}
+\begin{prooftree}
+\AxRule{\vdash\Gamma}
 \AxRule{\vdash\Delta}
 \LabelRule{Mix_2}
 \BinRule{\vdash\Gamma,\Delta}
-\DisplayProof\)
+\end{prooftree}
 
 The \(\rulename{Mix_2}\) rule is equivalent to \(\bot\vdash\one\):
-
-\(\LabelRule{\one}
+\begin{equation*}
+\LabelRule{\one}
 \NulRule{\vdash\one}
 \LabelRule{\one}
 \NulRule{\vdash\one}
@@ -32,11 +33,12 @@ The \(\rulename{Mix_2}\) rule is equivalent to \(\bot\vdash\one\):
 \UnaRule{\vdash\Delta,\bot}
 \LabelRule{\rulename{cut}}
 \BinRule{\vdash\Gamma,\Delta}
-\DisplayProof\)
+\DisplayProof
+\end{equation*}
 
 They are also equivalent to the principle \(A\tens B \vdash A\parr B\):
-
-\(\LabelRule{\one}
+\begin{equation*}
+\LabelRule{\one}
 \NulRule{\vdash\one}
 \LabelRule{\one}
 \NulRule{\vdash\one}
@@ -65,17 +67,19 @@ They are also equivalent to the principle \(A\tens B \vdash A\parr B\):
 \UnaRule{\vdash A\orth,B\orth,A\parr B}
 \LabelRule{\parr}
 \UnaRule{\vdash A\orth\parr B\orth,A\parr B}
-\DisplayProof\)
+\DisplayProof
+\end{equation*}
 
 \subsection{\texorpdfstring{Nullary \(\rulename{Mix}\) rule}{Nullary \textbackslash{}rulename\{Mix\} rule}}\label{nullary-rulenamemix-rule}
 
-\(\LabelRule{Mix_0}
+\begin{prooftree}
+\LabelRule{Mix_0}
 \NulRule{\vdash}
-\DisplayProof\)
+\end{prooftree}
 
 The \(\rulename{Mix_0}\) rule is equivalent to \(\one\vdash\bot\):
-
-\(\LabelRule{Mix_0}
+\begin{equation*}
+\LabelRule{Mix_0}
 \NulRule{\vdash}
 \LabelRule{\bot}
 \UnaRule{\vdash\bot}
@@ -92,16 +96,17 @@ The \(\rulename{Mix_0}\) rule is equivalent to \(\one\vdash\bot\):
 \NulRule{\vdash\one}
 \LabelRule{\rulename{cut}}
 \BinRule{\vdash}
-\DisplayProof\)
+\DisplayProof
+\end{equation*}
 
 The nullary \(\rulename{Mix}\) acts as a unit for the binary one:
-
-\(\AxRule{\vdash\Gamma}
+\begin{prooftree}
+\AxRule{\vdash\Gamma}
 \LabelRule{Mix_0}
 \NulRule{\vdash}
 \LabelRule{Mix_2}
 \BinRule{\vdash\Gamma}
-\DisplayProof\)
+\end{prooftree}
 
 If \(\pi\) is a proof which uses no \(\bot\) rule and no weakening rule,
 then (up to the simplification of the pattern

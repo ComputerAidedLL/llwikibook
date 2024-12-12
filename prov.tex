@@ -37,34 +37,40 @@ A\tens A\orth &\limp\bot
 
 \subsection{Additive structure}\label{additive-structure}
 
-\(\begin{array}{rclcrclcrcl}
+\begin{equation*}
+\begin{array}{rclcrclcrcl}
   A\with B & \limp&  A & \quad&  A\with B & \limp&  B & \quad&  A & \limp&  \top\\
   A & \limp&  A\plus B & \quad&  B & \limp&  A\plus B & \quad&  \zero & \limp&  A
-\end{array}\)
+\end{array}
+\end{equation*}
 
 \subsection{Quantifiers}\label{quantifiers-2}
 
-\(\begin{array}{rcll}
+\begin{equation*}
+\begin{array}{rcll}
   A & \limp&  \forall \xi.A  & \quad  (\xi\notin A) \\
   \exists \xi.A & \limp&  A  & \quad  (\xi\notin A) \\[2ex]
   \forall \xi_1.\forall \xi_2. A & \limp&  \forall \xi. A[^\xi/_{\xi_1},^\xi/_{\xi_2}] \\
   \exists \xi.A[^\xi/_{\xi_1},^\xi/_{\xi_2}] & \limp&  \exists \xi_1. \exists \xi_2.A
-\end{array}\)
+\end{array}
+\end{equation*}
 
 \subsection{Exponential structure}\label{exponential-structure}
 
 Provable formulas involving exponential connectives only provide us with
 the \hyperref[lattice-of-exponential-modalities]{lattice of exponential modalities}.
 
-\(\begin{array}{rclcrcl}
+\begin{equation*}
+\begin{array}{rclcrcl}
   \oc A & \limp&  A & \quad&  A& \limp& \wn A\\
   \oc A & \limp&  1 & \quad&  \bot & \limp&  \wn A
-\end{array}\)
+\end{array}
+\end{equation*}
 
-\subsection{Monoidality of
-exponentials}\label{monoidality-of-exponentials}
+\subsection{Monoidality of exponentials}\label{monoidality-of-exponentials}
 
-\(\begin{array}{rcl}
+\begin{equation*}
+\begin{array}{rcl}
   \wn(A\parr B) & \limp&  \wn A\parr\wn B \\
   \oc A\tens\oc B & \limp&  \oc(A\tens B) \\
 \\
@@ -73,14 +79,17 @@ exponentials}\label{monoidality-of-exponentials}
 \\
  \wn{(A \with B)} & \limp&  \wn{A} \with \wn{B} \\
  \oc{A} \plus \oc{B} & \limp&  \oc{(A \plus B)}
-\end{array}\)
+\end{array}
+\end{equation*}
 
 \subsection{Promotion principles}\label{promotion-principles}
 
-\(\begin{array}{rcl}
+\begin{equation*}
+\begin{array}{rcl}
  \oc{A} \tens \wn{B} & \limp&  \wn{(A \tens B)} \\
  \oc{(A \parr B)} & \limp&  \wn{A} \parr \oc{B}
-\end{array}\)
+\end{array}
+\end{equation*}
 
 \subsection{Commutations}\label{commutations}
 \begin{align*}

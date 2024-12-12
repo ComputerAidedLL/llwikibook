@@ -313,9 +313,9 @@ permutation. An alternative presentation would be to define a sequent as
 a finite sequence of formulas and to add the exchange rules:
 
 \begin{equation*}
-  \AxRule{ \Gamma\_1, A, B, \Gamma\_2 \vdash \Delta }
+  \AxRule{ \Gamma_1, A, B, \Gamma_2 \vdash \Delta }
   \LabelRule{\rulename{exchange}_L}
-  \UnaRule{ \Gamma\_1, B, A, \Gamma\_2 \vdash \Delta }
+  \UnaRule{ \Gamma_1, B, A, \Gamma_2 \vdash \Delta }
   \DisplayProof
   \qquad\qquad
   \AxRule{ \Gamma \vdash \Delta_1, A, B, \Delta_2 }
@@ -565,6 +565,7 @@ where $\pi_1$ and $\pi_2$ exist by induction hypothesis.
 \end{prooftree}
 where $\pi_1$ and $\pi_2$ exist by induction hypothesis.
 \item All other connectives follow the same pattern.
+\qedhere
 \end{itemize}
 \end{proof}
 
@@ -593,7 +594,7 @@ Then each top-level connective is introduced either by its associated (left or
 right) rule or in an instance of the $\zero_L$ or
 $\top_R$ rule.
 
-For $\parr$, consider a proof $\pi\Gamma\vdash\Delta,A\parr
+For $\parr$, consider a proof $\pi:\Gamma\vdash\Delta,A\parr
 B$.
 If $A\parr B$ is introduced by a $\parr_R$ rule (not
 necessarily the last rule in $\pi$), then if we remove this rule
@@ -720,7 +721,7 @@ B } \LabelRule{ \tens }
 \item
   Additive group:
 \begin{equation*}
-\AxRule{ \vdash \Gamma, A} \LabelRule{ \plus\_1 }
+\AxRule{ \vdash \Gamma, A} \LabelRule{ \plus_1 }
 \UnaRule{ \vdash \Gamma, A \plus B }
 \DisplayProof
 \qquad\qquad
