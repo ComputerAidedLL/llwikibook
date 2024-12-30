@@ -26,7 +26,7 @@ The sequent calculus rules are the same ones as for
 with the exponential connectives:
 \begin{equation*}
 \AxRule{\Gamma\vdash A}
-\LabelRule{\oc\rulename{mf} }
+\LabelRule{\oc\rulename{mf}}
 \UnaRule{\oc{\Gamma}\vdash\oc{A}}
 \DisplayProof
 \qquad
@@ -69,7 +69,7 @@ One also often considers the \emph{affine} variant of ELL, called
 unrestricted weakening:
 \begin{prooftree}
 \AxRule{\Gamma\vdash C}
-\LabelRule{ w L}
+\LabelRule{w L}
 \UnaRule{\Gamma,A\vdash C}
 \end{prooftree}
 It enjoys the same properties as ELL.
@@ -136,18 +136,18 @@ The sequent calculus rules are the same ones as for ILL, except for the
 rules dealing with the exponential connectives:
 \begin{equation*}
 \AxRule{\Gamma\vdash A}
-\LabelRule{\oc\rulename{mf} }
+\LabelRule{\oc\rulename{mf}}
 \UnaRule{\oc{\Gamma}\vdash\oc{A}}
 \DisplayProof
 \qquad
 \AxRule{\Gamma,A^{(n)}\vdash C}
-\LabelRule{\rulename{mplex}}
+\LabelRule{\rulename{mux}}
 \UnaRule{\Gamma,\oc{A}\vdash C}
 \DisplayProof
 \end{equation*}
-The rule mplex is the \emph{multiplexing} rule. In its premiss,
-\(A^{(n)}\) stands for n occurrences of formula \(A\). As particular
-instances of mplex for \(n=0\) and 1 respectively, we get weakening and
+The rule $\rulename{mux}$ is the \emph{multiplexing} rule. In its premiss,
+\(A^{(n)}\) stands for $n$ occurrences of formula \(A\). As particular
+instances of multiplexing for \(n=0\) and 1 respectively, we get weakening and
 dereliction:
 \begin{equation*}
 \AxRule{\Gamma \vdash C}

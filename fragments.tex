@@ -280,16 +280,16 @@ of dual modalities \(\oc',\wn'\), each with the same rules as
 provably equivalent to \(\oc A\) (resp. \(\wn A\)).
 
 The \hyperref[sequents-and-proofs]{promotion rule} is
-derivable from the following two rules, called \emph{functorial
+derivable from the following two rules, called \emph{(multi)functorial
 promotion} and \emph{digging}, respectively:
 \begin{equation*}
 \AxRule{\vdash\Gamma,A}
-\LabelRule{f\oc}
+\LabelRule{\oc\rulename{mf}}
 \UnaRule{\vdash\wn\Gamma,\oc A}
 \DisplayProof
 \qquad\qquad\qquad
 \AxRule{\vdash\Gamma,\wn{\wn A}}
-\LabelRule{dig}
+\LabelRule{\wn\wn}
 \UnaRule{\vdash\Gamma,\wn A}
 \DisplayProof
 \end{equation*}
@@ -307,7 +307,7 @@ which \(A^{(n)}\) stands for the sequence \(A,\ldots,A\) containing
 \(n\) occurrences of \(A\):
 \begin{prooftree}
 \AxRule{\vdash\Gamma,A^{(n)}}
-\LabelRule{mux}
+\LabelRule{\rulename{mux}}
 \UnaRule{\vdash\Gamma,\wn A}
 \end{prooftree}
 

@@ -807,7 +807,7 @@ rule \(\AxRule{ A_1, \ldots, A_n \vdash B, B_1, \ldots, B_m }
 \UnaRule{ \oc A_1, \ldots, \oc A_n \vdash \oc B, \wn B_1, \ldots, \wn B_m }
 \DisplayProof\) and a \emph{digging} rule
 \(\AxRule{ \Gamma \vdash \wn\wn A, \Delta }
-\LabelRule{ \wn\wn}
+\LabelRule{\wn\wn}
 \UnaRule{ \Gamma \vdash \wn A, \Delta }
 \DisplayProof\), without modifying the provability.
 
@@ -820,9 +820,9 @@ Note that digging violates the subformula property.
 \wn A, \Delta }
 \DisplayProof , the multiplexing rule
 \(\AxRule{\Gamma\vdash A^{(n)},\Delta}
-\LabelRule{\rulename{mplex}}
+\LabelRule{\rulename{mux}}
 \UnaRule{\Gamma\vdash \wn A,\Delta}
-\DisplayProof\) (where \(A^{(n)}\) stands for n occurrences of formula
+\DisplayProof\) (where \(A^{(n)}\) stands for $n$ occurrences of formula
 \(A\)) is equivalent (for provability) to the triple of rules:
 contraction, weakening, dereliction.
 \end{itemize}
