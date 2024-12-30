@@ -23,16 +23,16 @@ $\vdash\Gamma,A\parr B$.
 \item The other case where the last rule introduces $A\parr B$ is when $\pi$ is an axiom rule, hence $\Gamma=A\orth\tens B\orth$. Then we can conclude with the proof
 \item Otherwise $A\parr B$ is in the context of the last rule. If the last rule is a tensor, then $\pi$ has the shape
 \todo[missing in LLWiki]
-\item or the same with $A\parr B$ in the conclusion of $\pi_2$ instead. By induction hypothesis on $\pi_1$ we get a proof $\pi'_1$ of $\vdash\Gamma_1,A,B,C$, then we can conclude with the proof
+or the same with $A\parr B$ in the conclusion of $\pi_2$ instead. By induction hypothesis on $\pi_1$ we get a proof $\pi'_1$ of $\vdash\Gamma_1,A,B,C$, then we can conclude with the proof
 \todo[missing in LLWiki]
 \item The case of the cut rule has the same structure as the tensor rule.
-\item In the case of the $\with$ rule, we have $A\with B$ in both premisses and we conclude similarly, using the induction hypothesis on both $\pi_1$ and $\pi_2$.
+\item In the case of the $\with$ rule, we have $A\parr B$ in both premisses and we conclude similarly, using the induction hypothesis on both $\pi_1$ and $\pi_2$.
 \item If $A\parr B$ is in the context of a rules for $\parr$, $\plus$, $\bot$ or quantifiers, or in the context of a dereliction, weakening or contraction, the situation is similar as for $\tens$ except that we have only one premiss.
 \item If $A\parr B$ is in the context of $\top$ rules, we can freely change the context of the rule to get the expected one.
 \item The two remaining cases are if the last rule is the rule for $1$ or a promotion. By the constraints these rules impose on the contexts, these cases cannot happen.
 \end{itemize}
 The $\with$ connective is treated in the same way.
-In this cases where $A\with B$ is in the context of a rule with two
+In cases where $A\with B$ is in the context of a rule with two
 premisses, the premiss where this formula is not present will be duplicated,
 with one copy in the premiss for $A$ and one in the premiss for $B$.
 
@@ -40,13 +40,13 @@ The $\forall$ connective is also treated similarly.
 Its peculiarity is that introducing $\forall\xi$ requires that $\xi$ does
 not appear free in the context.
 For all rules with one premiss except the quantifier rules, the set of fresh
-variables in the same in the premiss and the conclusion, so everything works
+variables is the same in the premiss and the conclusion, so everything works
 well.
 Other rules might change the set of free variables, but problems are avoided
 by choosing for $\xi$ a variable that is fresh for the whole proof we are considering.
 \end{proof}
 
-Remark that this result is proved using only commutation rules, except
+Remark that this result is proved using only commutation of rules, except
 when the formula is introduced by an axiom rule. Furthermore, if axioms
 are applied only on atoms, this particular case disappears.
 
@@ -185,7 +185,7 @@ dual. Elements of a branching are called branches.
 \end{definition}
 
 In the example above, the branching will be \([[1,2,2],[1,2,3]]\), which
-corresponds to the granches of the negative inference and to the cases
+corresponds to the branches of the negative inference and to the cases
 of positive inference.
 
 \begin{definition}
@@ -271,7 +271,7 @@ formula.
 We can thus assume that $\Gamma$ contains only positive formulas and reason
 on the nature of the last rule, which is necessarily the introduction of a
 positive connective (it cannot be an axiom rule because an axiom  always has
-at least on non-positive conclusion).
+at least one non-positive conclusion).
 
 Suppose that the last rule of $\pi$ introduces a tensor, so that $\pi$ is
 \begin{prooftree}

@@ -1,9 +1,9 @@
 % \section{A formal account of nets}\label{a-formal-account-of-nets}
 
-The aim of this page is to provide a common framework for describing
+The aim of this chapter is to provide a common framework for describing
 linear logic proof nets, interaction nets, multiport interaction nets,
 and the likes, while factoring out most of the tedious, uninteresting
-details (clearly not the fanciest page of LLWiki).
+details (clearly not the fanciest chapter of this document).
 
 \section{Preliminaries}\label{preliminaries}
 
@@ -19,8 +19,8 @@ details (clearly not the fanciest page of LLWiki).
   between two rules);
 \item
   cuts are thus wires rather than cells/links: this fits with the
-  intuition of GoI, but not with the most common presentations of proof
-  nets;
+  intuition of \hyperref[geometry-of-interaction]{geometry of interaction (GoI)},
+  but not with the most common presentations of proof nets;
 \item
   because the notion of subnet is not trivial in multiport interaction
   nets, and to avoid the use of geometric conditions (boxes must not
@@ -74,14 +74,13 @@ cycles (i.e. we forget about the starting vertice of cycles).
 Consider three wirings \((P,W)\), \((P',W')\) and
 \((P'',W'')\), and two connections \((I,I',f):P\pinj P'\) and
 \((J',J'',g):P'\pinj P''\) such that \(I'\cap J'=\emptyset\). Then
-
-\((W\bowtie_f W')\bowtie_g W''=
-  W\bowtie_f(W'\bowtie_g W'')\)
-
+\begin{equation*}
+(W\bowtie_f W')\bowtie_g W'' = W\bowtie_f(W'\bowtie_g W'')
+\end{equation*}
 and
-
-\(\Inner{W}{W'}_{f}+\Inner{(W\bowtie_f{{W}'})}{{W}''}_g=
-    \Inner{W}{(W'\bowtie_g W'')}_f+\Inner{{W}'}{{W}''}_g.\)
+\begin{equation*}
+\Inner{W}{W'}_{f}+\Inner{(W\bowtie_f{{W}'})}{{W}''}_g = \Inner{W}{(W'\bowtie_g W'')}_f+\Inner{{W}'}{{W}''}_g.
+\end{equation*}
 \end{lemma}
   
 \begin{proof}
@@ -198,7 +197,6 @@ Then a \emph{typing} for net \(R=(P,W,C)\) is a function
 \item for all \(p\in P\), \(\tau(W(p))=\tau(p)\orth\);
 \item for all \(c\in C\) of symbol \(\sigma\), \(\tau(\pi(c))\vdash\tau(\alpha(c))\orth\);
 \end{itemize}
-
 where, in the last formula, we implicitly generalized \(\tau\) to lists
 of ports and \(\cdot\orth\) to lists of formulas, in the obvious,
 componentwise fashion. The \emph{interface} of the typed net

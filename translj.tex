@@ -1,3 +1,5 @@
+\allowdisplaybreaks
+
 \chapter{Translations of intuitionistic logic}\label{translations-of-intuitionistic-logic}
 
 The genesis of linear logic comes with a decomposition of the
@@ -11,25 +13,23 @@ These translations can be extended to \hyperref[translations-of-classical-logic]
 \section{\texorpdfstring{Call-by-name Girard's translation \(A\imp B \mapsto \oc{A}\limp B\)}{Call-by-name Girard's translation A\textbackslash{}imp B \textbackslash{}mapsto \textbackslash{}oc\{A\}\textbackslash{}limp B}}\label{call-by-name-girards-translation-aimp-b-mapsto-ocalimp-b}
 
 Formulas are translated as:
-
-\(\begin{array}{rcl}
-X^n &  = &  X \\
-(A\imp B)^n &  = &  \oc{A^n}\limp B^n \\
-(A\wedge B)^n &  = &  A^n \with B^n \\
-T^n &  = &  \top \\
-(A\vee B)^n &  = &  \oc{A^n}\plus\oc{B^n} \\
-F^n &  = &  \zero \\
-(\forall\xi A)^n &  = &  \forall\xi A^n \\
-(\exists\xi A)^n &  = &  \exists\xi \oc{A^n}
-\end{array}\)
+\begin{align*}
+X^n &  =  X \\
+(A\imp B)^n &  = \oc{A^n}\limp B^n \\
+(A\wedge B)^n &  = A^n \with B^n \\
+T^n & = \top \\
+(A\vee B)^n & = \oc{A^n}\plus\oc{B^n} \\
+F^n & = \zero \\
+(\forall\xi A)^n & = \forall\xi A^n \\
+(\exists\xi A)^n & = \exists\xi \oc{A^n}
+\end{align*}
 
 This is extended to sequents by
 \((\Gamma\vdash A)^n = \oc{\Gamma^n}\vdash A^n\).
 
-This allows one to translate the rules of intuitionistic logic into
-linear logic:
-
-\(\LabelRule{\rulename{ax}}
+This allows one to translate the rules of intuitionistic logic into linear logic:
+\begin{gather*}
+\LabelRule{\rulename{ax}}
 \NulRule{A\vdash A}
 \DisplayProof
 \qquad\mapsto\qquad
@@ -37,9 +37,9 @@ linear logic:
 \NulRule{A^n\vdash A^n}
 \LabelRule{\oc d L}
 \UnaRule{\oc{A^n}\vdash A^n}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A}
 \AxRule{\Delta,A\vdash B}
 \LabelRule{\rulename{cut}}
 \BinRule{\Gamma,\Delta\vdash B}
@@ -51,9 +51,9 @@ linear logic:
 \AxRule{\oc{\Delta^n},\oc{A^n}\vdash B^n}
 \LabelRule{\rulename{cut}}
 \BinRule{\oc{\Gamma^n},\oc{\Delta^n}\vdash B^n}
-\DisplayProof\)
-
-\(\AxRule{\Gamma,A,A\vdash C}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma,A,A\vdash C}
 \LabelRule{c L}
 \UnaRule{\Gamma,A\vdash C}
 \DisplayProof
@@ -61,9 +61,9 @@ linear logic:
 \AxRule{\oc{\Gamma^n},\oc{A^n},\oc{A^n}\vdash C^n}
 \LabelRule{\oc c L}
 \UnaRule{\oc{\Gamma^n},\oc{A^n}\vdash C^n}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash C}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash C}
 \LabelRule{w L}
 \UnaRule{\Gamma,A\vdash C}
 \DisplayProof
@@ -71,9 +71,9 @@ linear logic:
 \AxRule{\oc{\Gamma^n}\vdash C^n}
 \LabelRule{\oc w L}
 \UnaRule{\oc{\Gamma^n},\oc{A^n}\vdash C^n}
-\DisplayProof\)
-
-\(\AxRule{\Gamma,A\vdash B}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma,A\vdash B}
 \LabelRule{\imp R}
 \UnaRule{\Gamma\vdash A\imp B}
 \DisplayProof
@@ -81,9 +81,9 @@ linear logic:
 \AxRule{\oc{\Gamma^n},\oc{A^n}\vdash B^n}
 \LabelRule{\limp R}
 \UnaRule{\oc{\Gamma^n}\vdash \oc{A^n}\limp B^n}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A}
 \AxRule{\Delta,B\vdash C}
 \LabelRule{\imp L}
 \BinRule{\Gamma,\Delta,A\imp B\vdash C}
@@ -103,9 +103,9 @@ linear logic:
 \AxRule{\oc{\Delta^n},\oc{B^n}\vdash C^n}
 \LabelRule{\rulename{cut}}
 \BinRule{\oc{\Gamma^n},\oc{\Delta^n},\oc{(\oc{A^n}\limp B^n)}\vdash C^n}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A}
 \AxRule{\Gamma\vdash B}
 \LabelRule{\wedge R}
 \BinRule{\Gamma\vdash A\wedge B}
@@ -115,9 +115,9 @@ linear logic:
 \AxRule{\oc{\Gamma^n}\vdash B^n}
 \LabelRule{\with R}
 \BinRule{\oc{\Gamma^n}\vdash A^n\with B^n}
-\DisplayProof\)
-
-\(\AxRule{\Gamma,A\vdash C}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma,A\vdash C}
 \LabelRule{\wedge_1 L}
 \UnaRule{\Gamma,A\wedge B\vdash C}
 \DisplayProof
@@ -133,17 +133,17 @@ linear logic:
 \AxRule{\oc{\Gamma^n},\oc{A^n}\vdash C^n}
 \LabelRule{\rulename{cut}}
 \BinRule{\oc{\Gamma^n},\oc{(A^n\with B^n)}\vdash C^n}
-\DisplayProof\)
-
-\(\LabelRule{T R}
+\DisplayProof
+\\[2ex]
+\LabelRule{T R}
 \NulRule{\Gamma\vdash T}
 \DisplayProof
 \qquad\mapsto\qquad
 \LabelRule{\top R}
 \NulRule{\oc{\Gamma^n}\vdash \top}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A}
 \LabelRule{\vee_1 R}
 \UnaRule{\Gamma\vdash A\vee B}
 \DisplayProof
@@ -153,9 +153,9 @@ linear logic:
 \UnaRule{\oc{\Gamma^n}\vdash \oc{A^n}}
 \LabelRule{\plus_1 R}
 \UnaRule{\oc{\Gamma^n}\vdash \oc{A^n}\plus\oc{B^n}}
-\DisplayProof\)
-
-\(\AxRule{\Gamma,A\vdash C}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma,A\vdash C}
 \AxRule{\Gamma,B\vdash C}
 \LabelRule{\vee L}
 \BinRule{\Gamma,A\vee B\vdash C}
@@ -167,9 +167,9 @@ linear logic:
 \BinRule{\oc{\Gamma^n},\oc{A^n}\plus\oc{B^n}\vdash C^n}
 \LabelRule{\oc d L}
 \UnaRule{\oc{\Gamma^n},\oc{(\oc{A^n}\plus\oc{B^n})}\vdash C^n}
-\DisplayProof\)
-
-\(\LabelRule{F L}
+\DisplayProof
+\\[2ex]
+\LabelRule{F L}
 \NulRule{\Gamma,F\vdash C}
 \DisplayProof
 \qquad\mapsto\qquad
@@ -177,9 +177,9 @@ linear logic:
 \NulRule{\oc{\Gamma^n},\zero\vdash C^n}
 \LabelRule{\oc d L}
 \UnaRule{\oc{\Gamma^n},\oc{\zero}\vdash C^n}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A}
 \LabelRule{\forall R}
 \UnaRule{\Gamma\vdash \forall\xi A}
 \DisplayProof
@@ -187,9 +187,9 @@ linear logic:
 \AxRule{\oc{\Gamma^n}\vdash A^n}
 \LabelRule{\forall R}
 \UnaRule{\oc{\Gamma^n}\vdash \forall\xi A^n}
-\DisplayProof\)
-
-\(\AxRule{\Gamma,A[\tau/\xi]\vdash C}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma,A[\tau/\xi]\vdash C}
 \LabelRule{\forall L}
 \UnaRule{\Gamma,\forall\xi A\vdash C}
 \DisplayProof
@@ -205,9 +205,9 @@ linear logic:
 \AxRule{\oc{\Gamma^n},\oc{(A^n[\tau^n/\xi])}\vdash C^n}
 \LabelRule{\rulename{cut}}
 \BinRule{\oc{\Gamma^n},\oc{\forall\xi A^n}\vdash C^n}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A[\tau/\xi]}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A[\tau/\xi]}
 \LabelRule{\exists R}
 \UnaRule{\Gamma\vdash \exists\xi A}
 \DisplayProof
@@ -217,9 +217,9 @@ linear logic:
 \UnaRule{\oc{\Gamma^n}\vdash \oc{(A^n[\tau^n/\xi])}}
 \LabelRule{\exists R}
 \UnaRule{\oc{\Gamma^n}\vdash \exists\xi\oc{A^n}}
-\DisplayProof\)
-
-\(\AxRule{\Gamma,A\vdash C}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma,A\vdash C}
 \LabelRule{\exists L}
 \UnaRule{\Gamma,\exists\xi A\vdash C}
 \DisplayProof
@@ -229,41 +229,39 @@ linear logic:
 \UnaRule{\oc{\Gamma^n},\exists\xi\oc{A^n}\vdash C^n}
 \LabelRule{\oc d L}
 \UnaRule{\oc{\Gamma^n},\oc{\exists\xi\oc{A^n}}\vdash C^n}
-\DisplayProof\)
+\DisplayProof
+\end{gather*}
 
 \section{\texorpdfstring{Call-by-value translation \(A\imp B \mapsto \oc{(A\limp B)}\)}{Call-by-value translation A\textbackslash{}imp B \textbackslash{}mapsto \textbackslash{}oc\{(A\textbackslash{}limp B)\}}}\label{call-by-value-translation-aimp-b-mapsto-ocalimp-b}
 
 Formulas are translated as:
-
-\(\begin{array}{rcl}
-X^v &  = &  \oc{X} \\
-(A\imp B)^v &  = &  \oc{(A^v\limp B^v)} \\
-(A\wedge B)^v &  = &  \oc{(A^v \tens B^v)} \\
-T^v &  = &  \oc{\one} \\
-(A\vee B)^v &  = &  \oc{(A^v\plus B^v)} \\
-F^v &  = &  \oc{\zero} \\
-(\forall\xi A)^v &  = &  \oc{\forall\xi A^v} \\
-(\exists\xi A)^v &  = &  \oc{\exists\xi A^v}
-\end{array}\)
+\begin{align*}
+X^v & = \oc{X} \\
+(A\imp B)^v & = \oc{(A^v\limp B^v)} \\
+(A\wedge B)^v & = \oc{(A^v \tens B^v)} \\
+T^v & = \oc{\one} \\
+(A\vee B)^v & = \oc{(A^v\plus B^v)} \\
+F^v & = \oc{\zero} \\
+(\forall\xi A)^v & = \oc{\forall\xi A^v} \\
+(\exists\xi A)^v & = \oc{\exists\xi A^v}
+\end{align*}
 
 The translation of any formula starts with \(\oc\), we define
 \(A^{\underline{v}}\) such that \(A^v=\oc{A^{\underline{v}}}\).
 
-The translation of sequents is
-\((\Gamma\vdash A)^v = \Gamma^v\vdash A^v\).
+The translation of sequents is \((\Gamma\vdash A)^v = \Gamma^v\vdash A^v\).
 
-This allows one to translate the rules of intuitionistic logic into
-linear logic:
-
-\(\LabelRule{\rulename{ax}}
+This allows one to translate the rules of intuitionistic logic into linear logic:
+\begin{gather*}
+\LabelRule{\rulename{ax}}
 \NulRule{A\vdash A}
 \DisplayProof
 \qquad\mapsto\qquad
 \LabelRule{\rulename{ax}}
 \NulRule{A^v\vdash A^v}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A}
 \AxRule{\Delta,A\vdash B}
 \LabelRule{\rulename{cut}}
 \BinRule{\Gamma,\Delta\vdash B}
@@ -273,9 +271,9 @@ linear logic:
 \AxRule{\Delta^v,A^v\vdash B^v}
 \LabelRule{\rulename{cut}}
 \BinRule{\Gamma^v,\Delta^v\vdash B^v}
-\DisplayProof\)
-
-\(\AxRule{\Gamma,A,A\vdash C}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma,A,A\vdash C}
 \LabelRule{c L}
 \UnaRule{\Gamma,A\vdash C}
 \DisplayProof
@@ -283,9 +281,9 @@ linear logic:
 \AxRule{\Gamma^v,A^v,A^v\vdash C^v}
 \LabelRule{\oc c L}
 \UnaRule{\Gamma^v,A^v\vdash C^v}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash C}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash C}
 \LabelRule{w L}
 \UnaRule{\Gamma,A\vdash C}
 \DisplayProof
@@ -293,9 +291,9 @@ linear logic:
 \AxRule{\Gamma^v\vdash C^v}
 \LabelRule{\oc w L}
 \UnaRule{\Gamma^v,A^v\vdash C^v}
-\DisplayProof\)
-
-\(\AxRule{\Gamma,A\vdash B}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma,A\vdash B}
 \LabelRule{\imp R}
 \UnaRule{\Gamma\vdash A\imp B}
 \DisplayProof
@@ -305,9 +303,9 @@ linear logic:
 \UnaRule{\Gamma^v\vdash A^v\limp B^v}
 \LabelRule{\oc R}
 \UnaRule{\Gamma^v\vdash \oc{(A^v\limp B^v)}}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A}
 \AxRule{\Delta,B\vdash C}
 \LabelRule{\imp L}
 \BinRule{\Gamma,\Delta,A\imp B\vdash C}
@@ -319,9 +317,9 @@ linear logic:
 \BinRule{\Gamma^v,\Delta^v,A^v\limp B^v\vdash C^v}
 \LabelRule{\oc d L}
 \UnaRule{\Gamma^v,\Delta^v,\oc{(A^v\limp B^v)}\vdash C^v}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A}
 \AxRule{\Delta\vdash B}
 \LabelRule{\wedge R}
 \BinRule{\Gamma,\Delta\vdash A\wedge B}
@@ -333,9 +331,9 @@ linear logic:
 \BinRule{\Gamma^v,\Delta^v\vdash A^v\tens B^v}
 \LabelRule{\oc R}
 \UnaRule{\Gamma^v,\Delta^v\vdash \oc{(A^v\tens B^v)}}
-\DisplayProof\)
-
-\(\AxRule{\Gamma,A,B\vdash C}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma,A,B\vdash C}
 \LabelRule{\wedge L}
 \UnaRule{\Gamma,A\wedge B\vdash C}
 \DisplayProof
@@ -345,9 +343,9 @@ linear logic:
 \UnaRule{\Gamma^v,A^v\tens B^v\vdash C^v}
 \LabelRule{\oc d L}
 \UnaRule{\Gamma^v,\oc{(A^v\tens B^v)}\vdash C^v}
-\DisplayProof\)
-
-\(\LabelRule{T R}
+\DisplayProof
+\\[2ex]
+\LabelRule{T R}
 \NulRule{{}\vdash T}
 \DisplayProof
 \qquad\mapsto\qquad
@@ -355,9 +353,9 @@ linear logic:
 \NulRule{{}\vdash \one}
 \LabelRule{\oc R}
 \UnaRule{{}\vdash \oc{\one}}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash C}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash C}
 \LabelRule{T L}
 \UnaRule{\Gamma,T\vdash C}
 \DisplayProof
@@ -367,9 +365,9 @@ linear logic:
 \UnaRule{\Gamma^v,\one\vdash C^v}
 \LabelRule{\oc d L}
 \UnaRule{\Gamma^v,\oc{\one}\vdash C^v}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A}
 \LabelRule{\vee_1 R}
 \UnaRule{\Gamma\vdash A\vee B}
 \DisplayProof
@@ -379,9 +377,9 @@ linear logic:
 \UnaRule{\Gamma^v\vdash A^v\plus B^v}
 \LabelRule{\oc R}
 \UnaRule{\Gamma^v\vdash \oc{(A^v\plus B^v)}}
-\DisplayProof\)
-
-\(\AxRule{\Gamma,A\vdash C}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma,A\vdash C}
 \AxRule{\Gamma,B\vdash C}
 \LabelRule{\vee L}
 \BinRule{\Gamma,A\vee B\vdash C}
@@ -393,9 +391,9 @@ linear logic:
 \BinRule{\Gamma^v,A^v\plus B^v\vdash C^v}
 \LabelRule{\oc d L}
 \UnaRule{\Gamma^v,\oc{(A^v\plus B^v)}\vdash C^v}
-\DisplayProof\)
-
-\(\LabelRule{F L}
+\DisplayProof
+\\[2ex]
+\LabelRule{F L}
 \NulRule{\Gamma,F\vdash C}
 \DisplayProof
 \qquad\mapsto\qquad
@@ -403,9 +401,9 @@ linear logic:
 \NulRule{\Gamma^v,\zero\vdash C^v}
 \LabelRule{\oc d L}
 \UnaRule{\Gamma^v,\oc{\zero}\vdash C^v}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A}
 \LabelRule{\forall R}
 \UnaRule{\Gamma\vdash \forall\xi A}
 \DisplayProof
@@ -415,11 +413,9 @@ linear logic:
 \UnaRule{\Gamma^v\vdash \forall\xi A^v}
 \LabelRule{\oc R}
 \UnaRule{\Gamma^v\vdash \oc{\forall\xi A^v}}
-\DisplayProof\)
-
-We use \((A[\tau/\xi])^v=A^v[\tau^{\underline{v}}/\xi]\).
-
-\(\AxRule{\Gamma,A[\tau/\xi]\vdash C}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma,A[\tau/\xi]\vdash C}
 \LabelRule{\forall L}
 \UnaRule{\Gamma,\forall\xi A\vdash C}
 \DisplayProof
@@ -429,9 +425,9 @@ We use \((A[\tau/\xi])^v=A^v[\tau^{\underline{v}}/\xi]\).
 \UnaRule{\Gamma^v,\forall\xi A^v\vdash C^v}
 \LabelRule{\oc d L}
 \UnaRule{\Gamma^v,\oc{\forall\xi A^v}\vdash C^v}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A[\tau/\xi]}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A[\tau/\xi]}
 \LabelRule{\exists R}
 \UnaRule{\Gamma\vdash \exists\xi A}
 \DisplayProof
@@ -441,9 +437,9 @@ We use \((A[\tau/\xi])^v=A^v[\tau^{\underline{v}}/\xi]\).
 \UnaRule{\Gamma^v\vdash \exists\xi A^v}
 \LabelRule{\oc R}
 \UnaRule{\Gamma^v\vdash \oc{\exists\xi A^v}}
-\DisplayProof\)
-
-\(\AxRule{\Gamma,A\vdash C}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma,A\vdash C}
 \LabelRule{\exists L}
 \UnaRule{\Gamma,\exists\xi A\vdash C}
 \DisplayProof
@@ -453,24 +449,23 @@ We use \((A[\tau/\xi])^v=A^v[\tau^{\underline{v}}/\xi]\).
 \UnaRule{\Gamma^v,\exists\xi A^v\vdash C^v}
 \LabelRule{\oc d L}
 \UnaRule{\Gamma^v,\oc{\exists\xi A^v}\vdash C^v}
-\DisplayProof\)
+\DisplayProof
+\end{gather*}
+We use \((A[\tau/\xi])^v=A^v[\tau^{\underline{v}}/\xi]\).
 
-\subsection{Alternative
-presentation}\label{alternative-presentation-2}
+\subsection{Alternative presentation}\label{alternative-presentation-2}
 
-It is also possible to define \(A^{\underline{v}}\) as the primitive
-construction.
-
-\(\begin{array}{rcl}
-X^{\underline{v}} &  = &  X \\
-(A\imp B)^{\underline{v}} &  = &  \oc{A^{\underline{v}}}\limp\oc{B^{\underline{v}}} \\
-(A\wedge B)^{\underline{v}} &  = &  \oc{A^{\underline{v}}}\tens\oc{B^{\underline{v}}} \\
-T^{\underline{v}} &  = &  \one \\
-(A\vee B)^{\underline{v}} &  = &  \oc{A^{\underline{v}}}\plus\oc{B^{\underline{v}}} \\
-F^{\underline{v}} &  = &  \zero \\
-(\forall\xi A)^{\underline{v}} &  = &  \forall\xi \oc{A^{\underline{v}}} \\
-(\exists\xi A)^{\underline{v}} &  = &  \exists\xi \oc{A^{\underline{v}}}
-\end{array}\)
+It is also possible to define \(A^{\underline{v}}\) as the primitive construction.
+\begin{align*}
+X^{\underline{v}} & = X \\
+(A\imp B)^{\underline{v}} & = \oc{A^{\underline{v}}}\limp\oc{B^{\underline{v}}} \\
+(A\wedge B)^{\underline{v}} & = \oc{A^{\underline{v}}}\tens\oc{B^{\underline{v}}} \\
+T^{\underline{v}} & = \one \\
+(A\vee B)^{\underline{v}} & = \oc{A^{\underline{v}}}\plus\oc{B^{\underline{v}}} \\
+F^{\underline{v}} & = \zero \\
+(\forall\xi A)^{\underline{v}} & = \forall\xi \oc{A^{\underline{v}}} \\
+(\exists\xi A)^{\underline{v}} & = \exists\xi \oc{A^{\underline{v}}}
+\end{align*}
 
 If we define
 \((\Gamma\vdash A)^{\underline{v}} = \oc{\Gamma^{\underline{v}}}\vdash\oc{A^{\underline{v}}}\),
@@ -484,35 +479,32 @@ Girard~\cite{linearlogic} is an optimisation of the previous one using
 properties of \hyperref[positive-formula]{positive formulas}.
 
 Formulas are translated as:
-
-\(\begin{array}{rcl}
-X^w &  = &  \oc{X} \\
-(A\imp B)^w &  = &  \oc{(A^w\limp B^w)} \\
-(A\wedge B)^w &  = &  A^w \tens B^w \\
-T^w &  = &  \one \\
-(A\vee B)^w &  = &  A^w\plus B^w \\
-F^w &  = &  \zero \\
-(\forall\xi A)^w &  = &  \oc{\forall\xi A^w} \\
-(\exists\xi A)^w &  = &  \exists\xi A^w
-\end{array}\)
+\begin{align*}
+X^w & = \oc{X} \\
+(A\imp B)^w & = \oc{(A^w\limp B^w)} \\
+(A\wedge B)^w & = A^w \tens B^w \\
+T^w & = \one \\
+(A\vee B)^w & = A^w\plus B^w \\
+F^w & = \zero \\
+(\forall\xi A)^w & = \oc{\forall\xi A^w} \\
+(\exists\xi A)^w & = \exists\xi A^w
+\end{align*}
 
 The translation of any formula is a \hyperref[positive-formula]{positive formula}.
 
-The translation of sequents is
-\((\Gamma\vdash A)^w = \Gamma^w\vdash A^w\).
+The translation of sequents is \((\Gamma\vdash A)^w = \Gamma^w\vdash A^w\).
 
-This allows one to translate the rules of intuitionistic logic into
-linear logic:
-
-\(\LabelRule{\rulename{ax}}
+This allows one to translate the rules of intuitionistic logic into linear logic:
+\begin{gather*}
+\LabelRule{\rulename{ax}}
 \NulRule{A\vdash A}
 \DisplayProof
 \qquad\mapsto\qquad
 \LabelRule{\rulename{ax}}
 \NulRule{A^w\vdash A^w}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A}
 \AxRule{\Delta,A\vdash B}
 \LabelRule{\rulename{cut}}
 \BinRule{\Gamma,\Delta\vdash B}
@@ -522,9 +514,9 @@ linear logic:
 \AxRule{\Delta^w,A^w\vdash B^w}
 \LabelRule{\rulename{cut}}
 \BinRule{\Gamma^w,\Delta^w\vdash B^w}
-\DisplayProof\)
-
-\(\AxRule{\Gamma,A,A\vdash C}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma,A,A\vdash C}
 \LabelRule{c L}
 \UnaRule{\Gamma,A\vdash C}
 \DisplayProof
@@ -532,9 +524,9 @@ linear logic:
 \AxRule{\Gamma^w,A^w,A^w\vdash C^w}
 \LabelRule{+ c L}
 \UnaRule{\Gamma^w,A^w\vdash C^w}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash C}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash C}
 \LabelRule{w L}
 \UnaRule{\Gamma,A\vdash C}
 \DisplayProof
@@ -542,9 +534,9 @@ linear logic:
 \AxRule{\Gamma^w\vdash C^w}
 \LabelRule{+ w L}
 \UnaRule{\Gamma^w,A^w\vdash C^w}
-\DisplayProof\)
-
-\(\AxRule{\Gamma,A\vdash B}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma,A\vdash B}
 \LabelRule{\imp R}
 \UnaRule{\Gamma\vdash A\imp B}
 \DisplayProof
@@ -554,9 +546,9 @@ linear logic:
 \UnaRule{\Gamma^w\vdash A^w\limp B^w}
 \LabelRule{+ \oc R}
 \UnaRule{\Gamma^w\vdash \oc{(A^w\limp B^w)}}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A}
 \AxRule{\Delta,B\vdash C}
 \LabelRule{\imp L}
 \BinRule{\Gamma,\Delta,A\imp B\vdash C}
@@ -568,9 +560,9 @@ linear logic:
 \BinRule{\Gamma^w,\Delta^w,A^w\limp B^w\vdash C^w}
 \LabelRule{\oc d L}
 \UnaRule{\Gamma^w,\Delta^w,\oc{(A^w\limp B^w)}\vdash C^w}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A}
 \AxRule{\Delta\vdash B}
 \LabelRule{\wedge R}
 \BinRule{\Gamma,\Delta\vdash A\wedge B}
@@ -580,9 +572,9 @@ linear logic:
 \AxRule{\Delta^w\vdash B^w}
 \LabelRule{\tens R}
 \BinRule{\Gamma^w,\Delta^w\vdash A^w\tens B^w}
-\DisplayProof\)
-
-\(\AxRule{\Gamma,A,B\vdash C}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma,A,B\vdash C}
 \LabelRule{\wedge L}
 \UnaRule{\Gamma,A\wedge B\vdash C}
 \DisplayProof
@@ -590,17 +582,17 @@ linear logic:
 \AxRule{\Gamma^w,A^w,B^w\vdash C^w}
 \LabelRule{\tens L}
 \UnaRule{\Gamma^w,A^w\tens B^w\vdash C^w}
-\DisplayProof\)
-
-\(\LabelRule{T R}
+\DisplayProof
+\\[2ex]
+\LabelRule{T R}
 \NulRule{{}\vdash T}
 \DisplayProof
 \qquad\mapsto\qquad
 \LabelRule{\one R}
 \NulRule{{}\vdash \one}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A}
 \LabelRule{\vee_1 R}
 \UnaRule{\Gamma\vdash A\vee B}
 \DisplayProof
@@ -608,9 +600,9 @@ linear logic:
 \AxRule{\Gamma^w\vdash A^w}
 \LabelRule{\plus_1 R}
 \UnaRule{\Gamma^w\vdash A^w\plus B^w}
-\DisplayProof\)
-
-\(\AxRule{\Gamma,A\vdash C}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma,A\vdash C}
 \AxRule{\Gamma,B\vdash C}
 \LabelRule{\vee L}
 \BinRule{\Gamma,A\vee B\vdash C}
@@ -620,17 +612,17 @@ linear logic:
 \AxRule{\Gamma^w,B^w\vdash C^w}
 \LabelRule{\plus L}
 \BinRule{\Gamma^w,A^w\plus B^w\vdash C^w}
-\DisplayProof\)
-
-\(\LabelRule{F L}
+\DisplayProof
+\\[2ex]
+\LabelRule{F L}
 \NulRule{\Gamma,F\vdash C}
 \DisplayProof
 \qquad\mapsto\qquad
 \LabelRule{\zero L}
 \NulRule{\Gamma^w,\zero\vdash C^w}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A}
 \LabelRule{\forall R}
 \UnaRule{\Gamma\vdash \forall\xi A}
 \DisplayProof
@@ -640,11 +632,9 @@ linear logic:
 \UnaRule{\Gamma^w\vdash \forall\xi A^w}
 \LabelRule{+ \oc R}
 \UnaRule{\Gamma^w\vdash \oc{\forall\xi A^w}}
-\DisplayProof\)
-
-We use \((A[\tau/\xi])^w\linequiv A^w[\tau^w/\xi]\).
-
-\(\AxRule{\Gamma,A[\tau/\xi]\vdash C}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma,A[\tau/\xi]\vdash C}
 \LabelRule{\forall L}
 \UnaRule{\Gamma,\forall\xi A\vdash C}
 \DisplayProof
@@ -655,9 +645,9 @@ We use \((A[\tau/\xi])^w\linequiv A^w[\tau^w/\xi]\).
 \UnaRule{\Gamma^w,\forall\xi A^w\vdash C^w}
 \LabelRule{\oc d L}
 \UnaRule{\Gamma^w,\oc{\forall\xi A^w}\vdash C^w}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A[\tau/\xi]}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A[\tau/\xi]}
 \LabelRule{\exists R}
 \UnaRule{\Gamma\vdash \exists\xi A}
 \DisplayProof
@@ -666,9 +656,9 @@ We use \((A[\tau/\xi])^w\linequiv A^w[\tau^w/\xi]\).
 \UnaRule{\Gamma^w\vdash A^w[\tau^w/\xi]}
 \LabelRule{\exists R}
 \UnaRule{\Gamma^w\vdash \exists\xi A^w}
-\DisplayProof\)
-
-\(\AxRule{\Gamma,A\vdash C}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma,A\vdash C}
 \LabelRule{\exists L}
 \UnaRule{\Gamma,\exists\xi A\vdash C}
 \DisplayProof
@@ -676,8 +666,9 @@ We use \((A[\tau/\xi])^w\linequiv A^w[\tau^w/\xi]\).
 \AxRule{\Gamma^w,A^w\vdash C^w}
 \LabelRule{\exists L}
 \UnaRule{\Gamma^w,\exists\xi A^w\vdash C^w}
-\DisplayProof\)
-
+\DisplayProof
+\end{gather*}
+We use \((A[\tau/\xi])^w\linequiv A^w[\tau^w/\xi]\).
 
 %%% Local Variables:
 %%% mode: latex

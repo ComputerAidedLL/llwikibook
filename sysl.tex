@@ -14,22 +14,16 @@ negative; focusing separates values from non-values.
 
 \section{Definitions}\label{definitions}
 
-Positive types:
-\(P ::= 1 \mid P_1 \otimes P_2 \mid 0 \mid P_1 \oplus P_2 \mid \shpos N \mid \oc N\)
-
-Negative types:
-\(N ::= \bot \mid N_1 \parr N_2 \mid \top \mid N_1 \with N_2 \mid \shneg P \mid \wn P\)
-
-Positive values:
-\(v^+ ::= x^+ \mid () \mid (v_1^+, v_2^+) \mid inl(v^+) \mid inr(v^+) \mid \shpos t^- \mid \mu(\wn x^+).c\)
-
-Positive terms: \(t^+ ::= v^+ \mid \mu x^-.c\)
-
-Negative terms:
-\(t^- ::= x^- \mid \mu x^+.c \mid \mu().c \mid \mu(x^+, y^+).c \mid \mu [\cdot] \mid \mu[inl(x^+).c_1 \mid inr(y^+).c_2] \mid \mu(\shpos x^-).c \mid \wn v^+\)
-
-Commands: \(c ::= \langle t^+ \mid t^- \rangle\)
-
+\begin{equation*}
+\begin{array}{ll@{\,}l@{\,}l}
+\text{Positive types:} & P & ::= & 1 \mid P_1 \otimes P_2 \mid 0 \mid P_1 \oplus P_2 \mid \shpos N \mid \oc N \\
+\text{Negative types:} & N & ::= & \bot \mid N_1 \parr N_2 \mid \top \mid N_1 \with N_2 \mid \shneg P \mid \wn P \\
+\text{Positive values:} & v^+ & ::= & x^+ \mid () \mid (v_1^+, v_2^+) \mid inl(v^+) \mid inr(v^+) \mid \shpos t^- \mid \mu(\wn x^+).c \\
+\text{Positive terms:} & t^+ & ::= & v^+ \mid \mu x^-.c \\
+\text{Negative terms:} & t^- & ::= & x^- \mid \mu x^+.c \mid \mu().c \mid \mu(x^+, y^+).c \mid \mu [\cdot] \mid \mu[inl(x^+).c_1 \mid inr(y^+).c_2] \mid \mu(\shpos x^-).c \mid \wn v^+ \\
+\text{Commands:} & c & ::= & \langle t^+ \mid t^- \rangle
+\end{array}
+\end{equation*}
 \section{Typing}\label{typing}
 
 There are as many typing sequents classes as there are terms classes.

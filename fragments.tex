@@ -25,7 +25,7 @@ ways the classes of connectives present in the
   \textbf{Exponential connectives:} the modalities \(\oc\) (\emph{of
   course}) and \(\wn\) (\emph{why not}) handle the structural rules in
   linear logic, and are necessary to recover the expressive power of
-  intuitionistic or classical logic.
+  \hyperref[translations-of-intuitionistic-logic]{intuitionistic} or \hyperref[translations-of-classical-logic]{classical} logic.
 \item
   \textbf{Quantifiers:} just as in classical logic, quantifiers may be
   added to propositional linear logic, at any order. The most frequently
@@ -59,7 +59,7 @@ are usually simpler than the whole system, so that certain properties
 may be first analyzed on fragments, and then extended or adapted to
 increasingly larger fragments. It may also be interesting to see, given
 a property that does not hold for full linear logic, whether it holds
-for a fragment, and where the "breaking point" is situated. Examples of
+for a fragment, and where the ``breaking point'' is situated. Examples of
 such questions include:
 \begin{itemize}
 \item
@@ -79,7 +79,7 @@ such questions include:
   decidable? And if it does, what is its computational complexity?
 \item
   \textbf{computational complexity of cut elimination:} the \emph{cut
-  elimination problem} (Mairson-Terui) for a logical system \emph{S} is
+  elimination problem} (Mairson-Terui~\cite{cutelimcomplexity}) for a logical system \emph{S} is
   defined as follows: given two proofs of \(A\) in \emph{S}, do they
   reduce to the same cut-free proof? Although decidable (thanks to
   strong normalization), this problem is not elementary recursive in
@@ -116,10 +116,10 @@ to be provably equivalent to \(A\tens B\) (and, dually, \(A\parr'B\) to
 be provably equivalent to \(A\parr B\)).
 
 The cut elimination problem for \(MLL\) is \(\mathbf P\)-complete
-(Mairson-Terui), even though there exists a deterministic algorithm
+(Mairson-Terui~\cite{cutelimcomplexity}), even though there exists a deterministic algorithm
 solving the problem in logarithmic space if one considers only
 \hyperref[expansion-of-identities]{eta-expanded} proofs
-(Mairson-Terui). On the other hand, provability for \(MLL\) is
+(Mairson-Terui~\cite{cutelimcomplexity}). On the other hand, provability for \(MLL\) is
 \(\mathbf{NP}\)-complete, and it remains so even in presence of first
 order quantifiers.
 
@@ -195,7 +195,7 @@ quantification, we obtain that \(MALL_2\) is as expressive as
 \(MALL_{02}\).
 
 The cut elimination problem is \(\mathbf{coNP}\)-complete for all of the
-fragments defined above (Mairson-Terui).
+fragments defined above (Mairson-Terui~\cite{cutelimcomplexity}).
 
 Provability is undecidable in any additive fragment as soon as second
 order quantification is considered. It is decidable, although quite
@@ -364,16 +364,15 @@ A \emph{structural formula} is a formula \(C\) such that
 formula of the form \(\wn B\) is structural. However, the promotion rule
 cannot be extended to arbitrary structural formulas, \emph{i.e.}, the
 following rule is \emph{not} admissible:
-
-\(\AxRule{C\vdash A}
+\begin{prooftree}
+\AxRule{C\vdash A}
 \AxRule{C\vdash C\tens C}
 \AxRule{C\vdash\one}
 \TriRule{C\vdash\oc A}
-\DisplayProof\)
-
+\end{prooftree}
 For instance, if
 \(A=C=\alpha\tens\oc{(\alpha\limp\alpha\tens\alpha)}\tens\oc{(\alpha\limp\one)}\),
-the three premises are provable but not the conclusion.
+the three premisses are provable but not the conclusion.
 
 The following rule, called \emph{absorption}, is derivable in the
 standard sequent calculus:
@@ -381,9 +380,7 @@ standard sequent calculus:
 \AxRule{\vdash\Gamma,\wn A,A}
 \UnaRule{\vdash\Gamma,\wn A}
 \end{prooftree}
-
-The absorption rule is useful in the context of proof search in linear
-logic.
+The absorption rule is useful in the context of proof search in linear logic.
 
 \section{The provability problem}\label{the-provability-problem}
 
@@ -394,7 +391,7 @@ property, then the provability in that fragment is decidable. Note of
 course that the converse may fail.
 
 In this section, we summarize the known results about the validity of
-the final model property and the decidability of provability, with its
+the finite model property and the decidability of provability, with its
 complexity, for the various fragments of linear logic introduced above.
 Question marks in the tables below denote open problems. For brevity,
 all fragments are assumed to have units and propositional atoms,

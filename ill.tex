@@ -12,7 +12,8 @@ anymore, but the linear implication \(\limp\) is.
 
 \section{Sequent Calculus}
 
-\(\LabelRule{\rulename{ax}}
+\begin{gather*}
+\LabelRule{\rulename{ax}}
 \NulRule{A\vdash A}
 \DisplayProof
 \qquad
@@ -20,9 +21,9 @@ anymore, but the linear implication \(\limp\) is.
 \AxRule{\Delta,A\vdash C}
 \LabelRule{\rulename{cut}}
 \BinRule{\Gamma,\Delta\vdash C}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A}
 \AxRule{\Delta\vdash B}
 \LabelRule{\tens R}
 \BinRule{\Gamma,\Delta\vdash A\tens B}
@@ -40,9 +41,9 @@ anymore, but the linear implication \(\limp\) is.
 \AxRule{\Gamma\vdash C}
 \LabelRule{\one L}
 \UnaRule{\Gamma,\one\vdash C}
-\DisplayProof\)
-
-\(\AxRule{\Gamma,A\vdash B}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma,A\vdash B}
 \LabelRule{\limp R}
 \UnaRule{\Gamma\vdash A\limp B}
 \DisplayProof
@@ -51,9 +52,9 @@ anymore, but the linear implication \(\limp\) is.
 \AxRule{\Delta,B\vdash C}
 \LabelRule{\limp L}
 \BinRule{\Gamma,\Delta,A\limp B\vdash C}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A}
 \AxRule{\Gamma\vdash B}
 \LabelRule{\with R}
 \BinRule{\Gamma\vdash A\with B}
@@ -71,9 +72,9 @@ anymore, but the linear implication \(\limp\) is.
 \qquad
 \LabelRule{\top R}
 \NulRule{\Gamma\vdash\top}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A}
 \LabelRule{\plus_1 R}
 \UnaRule{\Gamma\vdash A\plus B}
 \DisplayProof
@@ -91,9 +92,9 @@ anymore, but the linear implication \(\limp\) is.
 \qquad
 \LabelRule{\zero L}
 \NulRule{\Gamma,\zero\vdash C}
-\DisplayProof\)
-
-\(\AxRule{\oc{\Gamma}\vdash A}
+\DisplayProof
+\\[2ex]
+\AxRule{\oc{\Gamma}\vdash A}
 \LabelRule{\oc R}
 \UnaRule{\oc{\Gamma}\vdash\oc{A}}
 \DisplayProof
@@ -111,9 +112,9 @@ anymore, but the linear implication \(\limp\) is.
 \AxRule{\Gamma\vdash C}
 \LabelRule{\oc w L}
 \UnaRule{\Gamma,\oc{A}\vdash C}
-\DisplayProof\)
-
-\(\AxRule{\Gamma\vdash A}
+\DisplayProof
+\\[2ex]
+\AxRule{\Gamma\vdash A}
 \LabelRule{\forall R}
 \UnaRule{\Gamma\vdash \forall\xi A}
 \DisplayProof
@@ -131,18 +132,17 @@ anymore, but the linear implication \(\limp\) is.
 \AxRule{\Gamma,A\vdash C}
 \LabelRule{\exists L}
 \UnaRule{\Gamma,\exists\xi A\vdash C}
-\DisplayProof\)
-
-with \(\xi\) not free in \(\Gamma,C\) in the rules \(\forall R\) and
-\(\exists L\).
+\DisplayProof
+\end{gather*}
+with \(\xi\) not free in \(\Gamma,C\) in the rules \(\forall R\) and \(\exists L\).
 
 \section{The intuitionistic fragment of linear logic}\label{the-intuitionistic-fragment-of-linear-logic}
 
 In order to characterize intuitionistic linear logic inside linear
 logic, we define the intuitionistic restriction of linear formulas:
-
-\(J ::= X \mid J\tens J \mid \one \mid J\limp J \mid J\with J \mid \top \mid J\plus J \mid \zero \mid \oc{J} \mid \forall\xi J \mid \exists\xi J\)
-
+\begin{equation*}
+J ::= X \mid J\tens J \mid \one \mid J\limp J \mid J\with J \mid \top \mid J\plus J \mid \zero \mid \oc{J} \mid \forall\xi J \mid \exists\xi J
+\end{equation*}
 \(JLL\) is the \hyperref[fragment]{fragment} of linear logic obtained by restriction to
 intuitionistic formulas.
 
@@ -164,7 +164,7 @@ We only prove the first order case, a proof of the full result is given in the P
 Consider a cut-free proof of $\Gamma\vdash\Delta$ in $JLL_{12}$, we can prove by induction on the length of such a proof that it belongs to $ILL_{12}$.
 \end{proof}
 
-\begin{corollary}[Unique conclusion in $JLL$]
+\begin{corollary}[Unique conclusion in $JLL$]\label{uconcljll}
 If $\Gamma\vdash\Delta$ is provable in $JLL_{12}$ then $\Delta$ is a singleton.
 \end{corollary}
 
@@ -197,9 +197,10 @@ but not in \(ILL_0\).
 In order to go to \(LL\) without \(\limp\), we consider two classes of
 formulas: \emph{input formulas} (\(I\)) and \emph{output formulas}
 (\(O\)).
-
-\(I ::= X\orth \mid I\parr I \mid \bot \mid I\tens O \mid O\tens I \mid I\plus I \mid \zero \mid I\with I \mid \top \mid \wn{I} \mid \exists\xi I \mid \forall\xi I\)
-\(O ::= X \mid O\tens O \mid \one \mid O\parr I \mid I\parr O \mid O\with O \mid \top \mid O\plus O \mid \zero \mid \oc{O} \mid \forall\xi O \mid \exists\xi O\)
+\begin{align*}
+I &::= X\orth \mid I\parr I \mid \bot \mid I\tens O \mid O\tens I \mid I\plus I \mid \zero \mid I\with I \mid \top \mid \wn{I} \mid \exists\xi I \mid \forall\xi I \\
+O &::= X \mid O\tens O \mid \one \mid O\parr I \mid I\parr O \mid O\with O \mid \top \mid O\plus O \mid \zero \mid \oc{O} \mid \forall\xi O \mid \exists\xi O
+\end{align*}
 
 By applying the definition of the linear implication
 \(A\limp B = A\orth\parr B\), any formula of \(JLL\) is mapped to an
@@ -211,8 +212,8 @@ The \hyperref[fragment]{fragment} of linear logic obtained by restriction to
 input/output formulas is thus equivalent to \(JLL\), but the closure of
 the set of input/output formulas under orthogonal allows for a one-sided
 presentation.
-
-\(\LabelRule{\rulename{ax}}
+\begin{gather*}
+\LabelRule{\rulename{ax}}
 \NulRule{\vdash O\orth,O}
 \DisplayProof
 \qquad
@@ -220,9 +221,9 @@ presentation.
 \AxRule{{}\vdash\Delta,O\orth}
 \LabelRule{\rulename{cut}}
 \BinRule{{}\vdash\Gamma,\Delta}
-\DisplayProof\)
-
-\(\AxRule{{}\vdash\Gamma,A}
+\DisplayProof
+\\[2ex]
+\AxRule{{}\vdash\Gamma,A}
 \AxRule{{}\vdash\Delta,B}
 \LabelRule{\tens}
 \BinRule{{}\vdash\Gamma,\Delta,A\tens B}
@@ -240,9 +241,9 @@ presentation.
 \AxRule{{}\vdash\Gamma}
 \LabelRule{\bot}
 \UnaRule{{}\vdash\Gamma,\bot}
-\DisplayProof\)
-
-\(\AxRule{{}\vdash\Gamma,A}
+\DisplayProof
+\\[2ex]
+\AxRule{{}\vdash\Gamma,A}
 \AxRule{{}\vdash\Gamma,B}
 \LabelRule{\with}
 \BinRule{{}\vdash\Gamma,A\with B}
@@ -260,9 +261,9 @@ presentation.
 \qquad
 \LabelRule{\top}
 \NulRule{{}\vdash\Gamma,\top}
-\DisplayProof\)
-
-\(\AxRule{{}\vdash\wn{\Gamma},O}
+\DisplayProof
+\\[2ex]
+\AxRule{{}\vdash\wn{\Gamma},O}
 \LabelRule{\oc}
 \UnaRule{{}\vdash\wn{\Gamma},\oc{O}}
 \DisplayProof
@@ -280,9 +281,9 @@ presentation.
 \AxRule{{}\vdash\Gamma}
 \LabelRule{\wn w}
 \UnaRule{{}\vdash\Gamma,\wn{I}}
-\DisplayProof\)
-
-\(\AxRule{{}\vdash\Gamma,A}
+\DisplayProof
+\\[2ex]
+\AxRule{{}\vdash\Gamma,A}
 \LabelRule{\forall}
 \UnaRule{{}\vdash\Gamma,\forall\xi A}
 \DisplayProof
@@ -290,8 +291,8 @@ presentation.
 \AxRule{{}\vdash\Gamma,A[\tau/\xi]}
 \LabelRule{\exists}
 \UnaRule{{}\vdash\Gamma,\exists\xi A}
-\DisplayProof\)
-
+\DisplayProof
+\end{gather*}
 with \(A\) and \(B\) arbitrary input or output formulas (under the
 condition that the composite formulas containing them are input or
 output formulas) and \(\xi\) not free in \(\Gamma\) in the rule
@@ -302,7 +303,7 @@ If ${}\vdash\Gamma$ is provable in $LL_{12}$ and contains only input and output 
 \end{lemma}
 
 \begin{proof}
-Assume $\Gamma_O$ is obtained by turning the output formulas of $\Gamma$ into $JLL$ formulas and $\Gamma_I$ is obtained by turning the dual of the input formulas of $\Gamma$ into $JLL$ formulas, $\Gamma_I\vdash\Gamma_O$ is provable in $LL_{12}$ thus in $JLL_{12}$. By corollary (Unique conclusion in $JLL$), $\Gamma_O$ is a singleton, thus $\Gamma$ contains exactly one output formula.
+Assume $\Gamma_O$ is obtained by turning the output formulas of $\Gamma$ into $JLL$ formulas and $\Gamma_I$ is obtained by turning the dual of the input formulas of $\Gamma$ into $JLL$ formulas, $\Gamma_I\vdash\Gamma_O$ is provable in $LL_{12}$ thus in $JLL_{12}$. By \cref{uconcljll} (Unique conclusion in $JLL$), $\Gamma_O$ is a singleton, thus $\Gamma$ contains exactly one output formula.
 \end{proof}
 
 

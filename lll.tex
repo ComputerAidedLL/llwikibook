@@ -24,8 +24,8 @@ A ::= X \mid A\tens A \mid A\limp A  \mid \oc{A} \mid \forall X A
 The sequent calculus rules are the same ones as for
 \hyperref[intuitionistic-linear-logic]{ILL}, except for the rules dealing
 with the exponential connectives:
-
-\(\AxRule{\Gamma\vdash A}
+\begin{equation*}
+\AxRule{\Gamma\vdash A}
 \LabelRule{\oc\rulename{mf} }
 \UnaRule{\oc{\Gamma}\vdash\oc{A}}
 \DisplayProof
@@ -38,16 +38,22 @@ with the exponential connectives:
 \AxRule{\Gamma\vdash C}
 \LabelRule{\oc w L}
 \UnaRule{\Gamma,\oc{A}\vdash C}
-\DisplayProof\)
+\DisplayProof
+\end{equation*}
 
 The \emph{depth} of a derivation \(\pi\) is the maximum number of
 \((\oc\rulename{mf})\) rules in a branch of \(\pi\).
 
-We consider the function \(K(.,.)\) defined by:\\
-\(K(0,n)=n, \quad K(k+1,n)=2^{K(k,n)}\).
+We consider the function \(K(.,.)\) defined by:
+\begin{equation*}
+\begin{cases}
+K(0,n) &=n,\\
+K(k+1,n) &=2^{K(k,n)}.
+\end{cases}
+\end{equation*}
 
 \begin{theorem}
-If $\pi$ is an ELL proof of depth d, and R is the corresponding ELL proof-net, then R can be reduced to its normal form by cut elimination in at most $ K(d+1,|\pi|)$ steps, where $|\pi|$is the size of $\pi$.
+If $\pi$ is an ELL proof of depth d, and R is the corresponding ELL proof-net, then R can be reduced to its normal form by cut elimination in at most $ K(d+1,|\pi|)$ steps, where $|\pi|$ is the size of $\pi$.
 \end{theorem}
 
 A function $f$ on integers is \emph{elementary recursive} if there exists
@@ -61,12 +67,11 @@ The functions representable in  ELL are exactly the elementary recursive functio
 One also often considers the \emph{affine} variant of ELL, called
 \emph{elementary affine logic} EAL, which is defined by adding
 unrestricted weakening:
-
-\(\AxRule{\Gamma\vdash C}
+\begin{prooftree}
+\AxRule{\Gamma\vdash C}
 \LabelRule{ w L}
 \UnaRule{\Gamma,A\vdash C}
-\DisplayProof\)
-
+\end{prooftree}
 It enjoys the same properties as ELL.
 
 Elementary linear logic was introduced together with light linear logic~\cite{lightlinearlogic}.
@@ -80,8 +85,8 @@ A ::= X \mid A\tens A \mid A\limp A  \mid \oc{A} \mid \pg{A} \mid \forall X A
 \end{equation*}
 The sequent calculus rules are the same ones as for ILL, except for the
 rules dealing with the exponential connectives:
-
-\(\AxRule{\Gamma\vdash A}
+\begin{equation*}
+\AxRule{\Gamma\vdash A}
 \LabelRule{\oc\rulename{f} }
 \UnaRule{\oc{\Gamma}\vdash\oc{A}}
 \DisplayProof
@@ -99,16 +104,15 @@ rules dealing with the exponential connectives:
 \AxRule{\Gamma\vdash C}
 \LabelRule{\oc w L}
 \UnaRule{\Gamma,\oc{A}\vdash C}
-\DisplayProof\)
-
-In the \((\oc\rulename{f})\) rule, \(\Gamma\) must contain \emph{at most
-one} formula.
+\DisplayProof
+\end{equation*}
+In the \((\oc\rulename{f})\) rule, \(\Gamma\) must contain \emph{at most one} formula.
 
 The \emph{depth} of a derivation \(\pi\) is the maximum number of
 \((\oc\rulename{f})\) and \((\pg)\) rules in a branch of \(\pi\).
 
 \begin{theorem}
-If $\pi$ is an LLL proof of depth d, and R is the corresponding LLL proof-net, then R can be reduced to its normal form by cut elimination in  $ O((d+1)|\pi|^{2^{d+1}})$ steps, where $|\pi|$is the size of $\pi$.
+If $\pi$ is an LLL proof of depth d, and R is the corresponding LLL proof-net, then R can be reduced to its normal form by cut elimination in  $ O((d+1)|\pi|^{2^{d+1}})$ steps, where $|\pi|$ is the size of $\pi$.
 \end{theorem}
 
 The class FP is the class of functions on binary lists which are
@@ -124,15 +128,14 @@ LLL, called \emph{light affine logic}, LAL.
 \section{Soft linear logic}\label{soft-linear-logic}
 
 We consider the intuitionistic version of \emph{soft linear logic}, SLL.
-
 The language of formulas is the same one as that of ILL:
 \begin{equation*}
 A ::= X \mid A\tens A \mid A\limp A \mid A\with A \mid  A\plus A   \mid \oc{A} \mid \forall X A
 \end{equation*}
 The sequent calculus rules are the same ones as for ILL, except for the
 rules dealing with the exponential connectives:
-
-\(\AxRule{\Gamma\vdash A}
+\begin{equation*}
+\AxRule{\Gamma\vdash A}
 \LabelRule{\oc\rulename{mf} }
 \UnaRule{\oc{\Gamma}\vdash\oc{A}}
 \DisplayProof
@@ -140,26 +143,27 @@ rules dealing with the exponential connectives:
 \AxRule{\Gamma,A^{(n)}\vdash C}
 \LabelRule{\rulename{mplex}}
 \UnaRule{\Gamma,\oc{A}\vdash C}
-\DisplayProof\)
-
-The rule mplex is the \emph{multiplexing} rule. In its premise,
+\DisplayProof
+\end{equation*}
+The rule mplex is the \emph{multiplexing} rule. In its premiss,
 \(A^{(n)}\) stands for n occurrences of formula \(A\). As particular
 instances of mplex for \(n=0\) and 1 respectively, we get weakening and
 dereliction:
-
-\(\AxRule{\Gamma \vdash C}
+\begin{equation*}
+\AxRule{\Gamma \vdash C}
 \UnaRule{\Gamma,\oc{A}\vdash C}
 \DisplayProof
 \qquad
 \AxRule{\Gamma,A\vdash C}
 \UnaRule{\Gamma,\oc{A}\vdash C}
-\DisplayProof\)
+\DisplayProof
+\end{equation*}
 
 The \emph{depth} of a derivation \(\pi\) is the maximum number of
 \((\oc\rulename{mf})\) rules in a branch of \(\pi\).
 
 \begin{theorem}
-If $\pi$ is an SLL proof of depth d, and R is the corresponding SLL proof-net, then R can be reduced to its normal form by cut elimination in   $ O(|\pi|^d)$ steps, where $|\pi|$is the size of $\pi$.
+If $\pi$ is an SLL proof of depth d, and R is the corresponding SLL proof-net, then R can be reduced to its normal form by cut elimination in $O(|\pi|^d)$ steps, where $|\pi|$ is the size of $\pi$.
 \end{theorem}
 
 \begin{theorem}
