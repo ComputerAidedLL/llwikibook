@@ -1,36 +1,32 @@
 \chapter{Fragment}\label{fragment}
 
-In general, a \textbf{fragment} of a logical system \emph{S} is a
+In general, a \emph{fragment} of a logical system \emph{S} is a
 logical system obtained by restricting the language of \emph{S}, and by
 restricting the rules of \emph{S} accordingly. In linear logic, the most
 well known fragments are obtained by combining/removing in different
 ways the classes of connectives present in the
 \hyperref[sequent-calculus]{language of linear logic} itself:
-\begin{itemize}
-\item
-  \textbf{Multiplicative connectives:} the conjunction \(\tens\)
+\begin{description}
+\item[Multiplicative connectives:] the conjunction \(\tens\)
   (\emph{tensor}) and the disjunction \(\parr\) (\emph{par}), with their
   respective units \(\one\) (\emph{one}) and \(\bot\) (\emph{bottom});
   these connectives are the combinatorial base of linear logic
   (permutations, circuits, etc.).
-\item
-  \textbf{Additive connectives:} the conjunction \(\with\) (\emph{with})
+\item[Additive connectives:] the conjunction \(\with\) (\emph{with})
   and the disjunction \(\plus\) (\emph{plus}), with their respective
   units \(\top\) (\emph{top}) and \(\zero\) (\emph{zero}); the
   computational content of these connectives, which behave more closely
   to their intuitionistic counterparts (\emph{e.g.}, \(A\with B\limp A\)
   and \(A\with B\limp B\) are provable), is strongly related to choice
   (\emph{if...then...else}, product and sum types, etc.).
-\item
-  \textbf{Exponential connectives:} the modalities \(\oc\) (\emph{of
+\item[Exponential connectives:] the modalities \(\oc\) (\emph{of
   course}) and \(\wn\) (\emph{why not}) handle the structural rules in
   linear logic, and are necessary to recover the expressive power of
   \hyperref[translations-of-intuitionistic-logic]{intuitionistic} or \hyperref[translations-of-classical-logic]{classical} logic.
-\item
-  \textbf{Quantifiers:} just as in classical logic, quantifiers may be
+\item[Quantifiers:] just as in classical logic, quantifiers may be
   added to propositional linear logic, at any order. The most frequently
   considered are the second order ones (in analogy with System F).
-\end{itemize}
+\end{description}
 
 The additive and exponential connectives, if taken alone, yield
 fragments of limited interest, so one usually considers only fragments
@@ -61,24 +57,21 @@ increasingly larger fragments. It may also be interesting to see, given
 a property that does not hold for full linear logic, whether it holds
 for a fragment, and where the ``breaking point'' is situated. Examples of
 such questions include:
-\begin{itemize}
-\item
-  \textbf{logical complexity:} proving cut elimination for full linear
+\begin{description}
+\item[logical complexity:] proving cut elimination for full linear
   logic with second order quantification is equivalent to proving the
   consistency of second order Peano arithmetic (Girard, via
   \hyperref[translations-of-intuitionistic-logic]{translations of System F}
   in linear logic). One may expect that smaller fragments have lower
   logical complexity.
-\item
-  \textbf{provability:} the \emph{provability problem} for a logical
+\item[provability:] the \emph{provability problem} for a logical
   system \emph{S} is defined as follows: given a formula \(A\) in the
   language of \emph{S}, is \(A\) provable in \emph{S}? This problem is
   undecidable in full linear logic with quantifiers, of whatever order
   (again, because \hyperref[translations-of-classical-logic]{classical logic
   can be translated} in linear logic). On what fragments does it become
   decidable? And if it does, what is its computational complexity?
-\item
-  \textbf{computational complexity of cut elimination:} the \emph{cut
+\item[computational complexity of cut elimination:] the \emph{cut
   elimination problem} (Mairson-Terui~\cite{cutelimcomplexity}) for a logical system \emph{S} is
   defined as follows: given two proofs of \(A\) in \emph{S}, do they
   reduce to the same cut-free proof? Although decidable (thanks to
@@ -86,19 +79,17 @@ such questions include:
   full propositional linear logic (Statman, again via the
   above-mentioned translations). Does the problem fall into any
   interesting complexity class when applied to fragments?
-\item
-  \textbf{proof nets:} the definition of proof nets, and in particular
+\item[proof nets:] the definition of proof nets, and in particular
   the formulation of correctness criteria and the study of their
   complexity, is a good example of how a methodology can be applied to a
   small fragment of linear logic and later adapted (more or less
   successfully) to wider fragments.
-\item
-  \textbf{denotational semantics:} several problems related to
+\item[denotational semantics:] several problems related to
   denotational semantics (formulation of
   \hyperref[categorical-semantics]{categorical models}, full abstraction,
   full completeness, injectivity, etc.) may be first attacked in the
   simpler case of fragments, and then extended to wider subsystems.
-\end{itemize}
+\end{description}
 
 \section{Multiplicative fragments}\label{multiplicative-fragments}
 
@@ -399,26 +390,30 @@ all fragments are assumed to have units and propositional atoms,
 
 \subsection{The finite model property}\label{the-finite-model-property}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-\(MLL\) & \(MALL\) & \(MELL\) & \(LL\)\tabularnewline
-yes & yes & no & no\tabularnewline
-\bottomrule
-\end{longtable}
+\begin{center}
+\begin{tabular}{llll}
+\hline
+\(MLL\) & \(MALL\) & \(MELL\) & \(LL\)\\
+yes & yes & no & no\\
+\hline
+\end{tabular}
+\end{center}
 
 \subsection{Provability}\label{provability}
 
-\begin{longtable}[]{@{}lllll@{}}
-\toprule
-& \(MLL\) & \(MALL\) & \(MELL\) & \(LL\)\tabularnewline
+\begin{center}
+\begin{tabular}{lllll}
+\hline
+& \(MLL\) & \(MALL\) & \(MELL\) & \(LL\)\\
 propositional case & \(\mathbf{NP}\)-complete &
-\(\mathbf{PSPACE}\)-complete & ? & undecidable\tabularnewline
+\(\mathbf{PSPACE}\)-complete & ? & undecidable\\
 first order case & \(\mathbf{NP}\)-complete & \(\mathbf{NEXP}\)-complete
-& undecidable & undecidable\tabularnewline
+& undecidable & undecidable\\
 second order case & undecidable & undecidable & undecidable &
-undecidable\tabularnewline
-\bottomrule
-\end{longtable}
+undecidable\\
+\hline
+\end{tabular}
+\end{center}
 
 \section{The cut elimination problem}\label{the-cut-elimination-problem}
 
@@ -428,15 +423,17 @@ introduced above, plus some \hyperref[light-linear-logics]{light linear
 logics}. All fragments are assumed to be propositional; the results do
 not change in presence of quantification of any order.
 
-\begin{longtable}[]{@{}llllll@{}}
-\toprule
+\begin{center}
+\begin{tabular}{llllll}
+\hline
 \(MLL_u\) & \(MLL\) & \(MALL\) & \(MSLL\) & \(MLLL\) &
-\(MELL\)\tabularnewline
+\(MELL\)\\
 \(\mathbf L\) & \(\mathbf{P}\)-complete & \(\mathbf{coNP}\)-complete &
 \(\mathbf{EXP}\)-complete & \(\mathbf{2EXP}\)-complete & not elementary
-recursive\tabularnewline
-\bottomrule
-\end{longtable}
+recursive\\
+\hline
+\end{tabular}
+\end{center}
 
 Notations used in the above table:
 \begin{itemize}

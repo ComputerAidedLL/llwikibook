@@ -18,19 +18,20 @@ write first-order variables as \(x,y,z\), second-order variables as
 
 Formulas, represented by capital letters \(A\), \(B\), \(C\), are built
 using the following connectives:
-
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-\(\alpha\) & atom & \(A\orth\) & negation\tabularnewline
-\(A \tens B\) & tensor & \(A \parr B\) & par\tabularnewline
-\(\one\) & one & \(\bot\) & bottom\tabularnewline
-\(A \plus B\) & plus & \(A \with B\) & with\tabularnewline
-\(\zero\) & zero & \(\top\) & top\tabularnewline
-\(\oc A\) & of course & \(\wn A\) & why not\tabularnewline
+\begin{center}
+\begin{tabular}{llll}
+\hline
+\(\alpha\) & atom & \(A\orth\) & negation\\
+\(A \tens B\) & tensor & \(A \parr B\) & par\\
+\(\one\) & one & \(\bot\) & bottom\\
+\(A \plus B\) & plus & \(A \with B\) & with\\
+\(\zero\) & zero & \(\top\) & top\\
+\(\oc A\) & of course & \(\wn A\) & why not\\
 \(\exists \xi.A\) & there exists & \(\forall \xi.A\) & for
-all\tabularnewline
-\bottomrule
-\end{longtable}
+all\\
+\hline
+\end{tabular}
+\end{center}
 
 Each line (except the first one) corresponds to a particular class of
 connectives, and each class consists in a pair of connectives. Those in
@@ -339,30 +340,25 @@ and \hyperref[equiprovability]{equiprovability} (weaker than equivalence).
 
 \subsection{De Morgan laws}\label{de-morgan-laws}
 
-Negation is involutive:
-\qquad
-\(A\linequiv A\biorth\)
+Negation is involutive: \qquad \(A\linequiv A\biorth\)
 
 Duality between connectives:
-\begin{longtable}[]{@{}lllll@{}}
-\toprule
-\(( A \tens B )\orth\) & \(\linequiv A\orth \parr B\orth\) & &
-\(( A \parr B )\orth\) &
-\(\linequiv A\orth \tens B\orth\)\tabularnewline
-\(\one\orth\) & \(\linequiv \bot\) & & \(\bot\orth\) &
-\(\linequiv \one\)\tabularnewline
-\(( A \plus B )\orth\) & \(\linequiv A\orth \with B\orth\) & &
-\(( A \with B )\orth\) &
-\(\linequiv A\orth \plus B\orth\)\tabularnewline
-\(\zero\orth\) & \(\linequiv \top\) & & \(\top\orth\) &
-\(\linequiv \zero\)\tabularnewline
-\(( \oc A )\orth\) & \(\linequiv \wn ( A\orth )\) & & \(( \wn A )\orth\)
-& \(\linequiv \oc ( A\orth )\)\tabularnewline
-\(( \exists \xi.A )\orth\) & \(\linequiv \forall \xi.( A\orth )\) & &
-\(( \forall \xi.A )\orth\) &
-\(\linequiv \exists \xi.( A\orth )\)\tabularnewline
-\bottomrule
-\end{longtable}
+\begin{equation*}
+\begin{array}{rclcrcl}
+\hline
+( A \tens B )\orth & \linequiv & A\orth \parr B\orth & \quad &
+( A \parr B )\orth & \linequiv & A\orth \tens B\orth\\
+\one\orth & \linequiv & \bot & & \bot\orth & \linequiv & \one\\
+( A \plus B )\orth & \linequiv & A\orth \with B\orth & &
+( A \with B )\orth & \linequiv & A\orth \plus B\orth\\
+\zero\orth & \linequiv & \top & & \top\orth & \linequiv & \zero\\
+( \oc A )\orth & \linequiv & \wn ( A\orth ) & &
+( \wn A )\orth & \linequiv & \oc ( A\orth )\\
+( \exists \xi.A )\orth & \linequiv & \forall \xi.( A\orth ) & &
+( \forall \xi.A )\orth & \linequiv & \exists \xi.( A\orth )\\
+\hline
+\end{array}
+\end{equation*}
 
 \subsection{Fundamental equivalences}\label{fundamental-equivalences}
 
