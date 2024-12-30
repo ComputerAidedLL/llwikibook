@@ -21,10 +21,28 @@ $\vdash\Gamma,A\parr B$.
 \begin{itemize}
 \item If the last rule of $\pi$ is the introduction of the $\parr$ in $A\parr B$, then the premiss is exacty $\vdash\Gamma,A,B$ so we can conclude.
 \item The other case where the last rule introduces $A\parr B$ is when $\pi$ is an axiom rule, hence $\Gamma=A\orth\tens B\orth$. Then we can conclude with the proof
+\begin{prooftree}
+\LabelRule{\rulename{ax}}
+\NulRule{\vdash A, A\orth}
+\LabelRule{\rulename{ax}}
+\NulRule{\vdash B, B\orth}
+\LabelRule{\tens}
+\BinRule{\vdash A, B, A\orth\tens B\orth}
+\end{prooftree}
 \item Otherwise $A\parr B$ is in the context of the last rule. If the last rule is a tensor, then $\pi$ has the shape
-\todo[missing in LLWiki]
+\begin{prooftree}
+\AxRule{\pi_1\vdash \Gamma_1, A\parr B, C}
+\AxRule{\pi_2\vdash \Gamma_2, D}
+\LabelRule{\tens}
+\BinRule{\vdash\Gamma_1, \Gamma_2, A\parr B, C\tens D}
+\end{prooftree}
 or the same with $A\parr B$ in the conclusion of $\pi_2$ instead. By induction hypothesis on $\pi_1$ we get a proof $\pi'_1$ of $\vdash\Gamma_1,A,B,C$, then we can conclude with the proof
-\todo[missing in LLWiki]
+\begin{prooftree}
+\AxRule{\pi'_1\vdash \Gamma_1, A, B, C}
+\AxRule{\pi_2\vdash \Gamma_2, D}
+\LabelRule{\tens}
+\BinRule{\vdash\Gamma_1, \Gamma_2, A, B, C\tens D}
+\end{prooftree}
 \item The case of the cut rule has the same structure as the tensor rule.
 \item In the case of the $\with$ rule, we have $A\parr B$ in both premisses and we conclude similarly, using the induction hypothesis on both $\pi_1$ and $\pi_2$.
 \item If $A\parr B$ is in the context of a rules for $\parr$, $\plus$, $\bot$ or quantifiers, or in the context of a dereliction, weakening or contraction, the situation is similar as for $\tens$ except that we have only one premiss.
