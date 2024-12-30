@@ -570,9 +570,9 @@ assume that each connective is explicitly introduced by its associated
 rule (except in the case where there is an occurrence of the \(\top\)
 rule).
 
-\subsection{Reversibility}\label{reversibility-1}
+\subsection{Reversibility}\label{reversibility}
 
-\begin{definition}[reversibility]
+\begin{definition}[reversibility]\label{reversibledef}
 A connective $c$ is called \emph{reversible} if
 \begin{itemize}
 \item for every proof $\pi:\Gamma\vdash\Delta,c(A_1,\ldots,A_n)$, there is a proof $\pi'$ with the same conclusion in which $c(A_1,\ldots,A_n)$ is introduced by the last rule,
@@ -580,7 +580,7 @@ A connective $c$ is called \emph{reversible} if
 \end{itemize}
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}\label{reversibilityproperty}
 The connectives $\parr$, $\bot$, $\with$, $\top$ and $\forall$ are reversible.
 \end{proposition}
 

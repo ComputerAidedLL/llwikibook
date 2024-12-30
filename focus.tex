@@ -1,9 +1,11 @@
-\section{Reversibility and focusing}\label{reversibility-and-focusing}
+\section{Focusing}\label{reversibility-and-focusing}
 
-\subsection{Reversibility}\label{reversibility}
+\subsection{Asynchrony}\label{asynchrony}
+
+The connectives $\parr$, $\with$, $\bot$, $\top$ and $\forall$ are called \emph{asynchronous}.
 
 \begin{theorem}
-Negative connectives are reversible:
+Asynchronous connectives are \hyperref[reversibledef]{reversible}:
 \begin{itemize}
 \item A sequent $\vdash\Gamma,A\parr B$ is provable if and only if $\vdash\Gamma,A,B$ is provable.
 \item A sequent $\vdash\Gamma,A\with B$ is provable if and only if $\vdash\Gamma,A$ and $\vdash\Gamma,B$ are provable.
@@ -13,55 +15,56 @@ Negative connectives are reversible:
 \end{theorem}
 
 \begin{proof}
-We start with the case of the $\parr$ connective.
-If $\vdash\Gamma,A,B$ is provable, then by the introduction rule for $\parr$
-we know that $\vdash\Gamma,A\parr B$ is provable.
-For the reverse implication we proceed by induction on a proof $\pi$ of
-$\vdash\Gamma,A\parr B$.
-\begin{itemize}
-\item If the last rule of $\pi$ is the introduction of the $\parr$ in $A\parr B$, then the premiss is exacty $\vdash\Gamma,A,B$ so we can conclude.
-\item The other case where the last rule introduces $A\parr B$ is when $\pi$ is an axiom rule, hence $\Gamma=A\orth\tens B\orth$. Then we can conclude with the proof
-\begin{prooftree}
-\LabelRule{\rulename{ax}}
-\NulRule{\vdash A, A\orth}
-\LabelRule{\rulename{ax}}
-\NulRule{\vdash B, B\orth}
-\LabelRule{\tens}
-\BinRule{\vdash A, B, A\orth\tens B\orth}
-\end{prooftree}
-\item Otherwise $A\parr B$ is in the context of the last rule. If the last rule is a tensor, then $\pi$ has the shape
-\begin{prooftree}
-\AxRule{\pi_1\vdash \Gamma_1, A\parr B, C}
-\AxRule{\pi_2\vdash \Gamma_2, D}
-\LabelRule{\tens}
-\BinRule{\vdash\Gamma_1, \Gamma_2, A\parr B, C\tens D}
-\end{prooftree}
-or the same with $A\parr B$ in the conclusion of $\pi_2$ instead. By induction hypothesis on $\pi_1$ we get a proof $\pi'_1$ of $\vdash\Gamma_1,A,B,C$, then we can conclude with the proof
-\begin{prooftree}
-\AxRule{\pi'_1\vdash \Gamma_1, A, B, C}
-\AxRule{\pi_2\vdash \Gamma_2, D}
-\LabelRule{\tens}
-\BinRule{\vdash\Gamma_1, \Gamma_2, A, B, C\tens D}
-\end{prooftree}
-\item The case of the cut rule has the same structure as the tensor rule.
-\item In the case of the $\with$ rule, we have $A\parr B$ in both premisses and we conclude similarly, using the induction hypothesis on both $\pi_1$ and $\pi_2$.
-\item If $A\parr B$ is in the context of a rules for $\parr$, $\plus$, $\bot$ or quantifiers, or in the context of a dereliction, weakening or contraction, the situation is similar as for $\tens$ except that we have only one premiss.
-\item If $A\parr B$ is in the context of $\top$ rules, we can freely change the context of the rule to get the expected one.
-\item The two remaining cases are if the last rule is the rule for $1$ or a promotion. By the constraints these rules impose on the contexts, these cases cannot happen.
-\end{itemize}
-The $\with$ connective is treated in the same way.
-In cases where $A\with B$ is in the context of a rule with two
-premisses, the premiss where this formula is not present will be duplicated,
-with one copy in the premiss for $A$ and one in the premiss for $B$.
+See proof of \cref{reversibilityproperty}.
+% We start with the case of the $\parr$ connective.
+% If $\vdash\Gamma,A,B$ is provable, then by the introduction rule for $\parr$
+% we know that $\vdash\Gamma,A\parr B$ is provable.
+% For the reverse implication we proceed by induction on a proof $\pi$ of
+% $\vdash\Gamma,A\parr B$.
+% \begin{itemize}
+% \item If the last rule of $\pi$ is the introduction of the $\parr$ in $A\parr B$, then the premiss is exacty $\vdash\Gamma,A,B$ so we can conclude.
+% \item The other case where the last rule introduces $A\parr B$ is when $\pi$ is an axiom rule, hence $\Gamma=A\orth\tens B\orth$. Then we can conclude with the proof
+% \begin{prooftree}
+% \LabelRule{\rulename{ax}}
+% \NulRule{\vdash A, A\orth}
+% \LabelRule{\rulename{ax}}
+% \NulRule{\vdash B, B\orth}
+% \LabelRule{\tens}
+% \BinRule{\vdash A, B, A\orth\tens B\orth}
+% \end{prooftree}
+% \item Otherwise $A\parr B$ is in the context of the last rule. If the last rule is a tensor, then $\pi$ has the shape
+% \begin{prooftree}
+% \AxRule{\pi_1 : {} \vdash \Gamma_1, A\parr B, C}
+% \AxRule{\pi_2 : {} \vdash \Gamma_2, D}
+% \LabelRule{\tens}
+% \BinRule{\vdash\Gamma_1, \Gamma_2, A\parr B, C\tens D}
+% \end{prooftree}
+% or the same with $A\parr B$ in the conclusion of $\pi_2$ instead. By induction hypothesis on $\pi_1$ we get a proof $\pi'_1$ of $\vdash\Gamma_1,A,B,C$, then we can conclude with the proof
+% \begin{prooftree}
+% \AxRule{\pi'_1 : {} \vdash \Gamma_1, A, B, C}
+% \AxRule{\pi_2 : {} \vdash \Gamma_2, D}
+% \LabelRule{\tens}
+% \BinRule{\vdash\Gamma_1, \Gamma_2, A, B, C\tens D}
+% \end{prooftree}
+% \item The case of the cut rule has the same structure as the tensor rule.
+% \item In the case of the $\with$ rule, we have $A\parr B$ in both premisses and we conclude similarly, using the induction hypothesis on both $\pi_1$ and $\pi_2$.
+% \item If $A\parr B$ is in the context of a rules for $\parr$, $\plus$, $\bot$ or quantifiers, or in the context of a dereliction, weakening or contraction, the situation is similar as for $\tens$ except that we have only one premiss.
+% \item If $A\parr B$ is in the context of $\top$ rules, we can freely change the context of the rule to get the expected one.
+% \item The two remaining cases are if the last rule is the rule for $1$ or a promotion. By the constraints these rules impose on the contexts, these cases cannot happen.
+% \end{itemize}
+% The $\with$ connective is treated in the same way.
+% In cases where $A\with B$ is in the context of a rule with two
+% premisses, the premiss where this formula is not present will be duplicated,
+% with one copy in the premiss for $A$ and one in the premiss for $B$.
 
-The $\forall$ connective is also treated similarly.
-Its peculiarity is that introducing $\forall\xi$ requires that $\xi$ does
-not appear free in the context.
-For all rules with one premiss except the quantifier rules, the set of fresh
-variables is the same in the premiss and the conclusion, so everything works
-well.
-Other rules might change the set of free variables, but problems are avoided
-by choosing for $\xi$ a variable that is fresh for the whole proof we are considering.
+% The $\forall$ connective is also treated similarly.
+% Its peculiarity is that introducing $\forall\xi$ requires that $\xi$ does
+% not appear free in the context.
+% For all rules with one premiss except the quantifier rules, the set of fresh
+% variables is the same in the premiss and the conclusion, so everything works
+% well.
+% Other rules might change the set of free variables, but problems are avoided
+% by choosing for $\xi$ a variable that is fresh for the whole proof we are considering.
 \end{proof}
 
 Remark that this result is proved using only commutation of rules, except
@@ -69,21 +72,17 @@ when the formula is introduced by an axiom rule. Furthermore, if axioms
 are applied only on atoms, this particular case disappears.
 
 A consequence of this fact is that, when searching for a proof of some
-sequent \(\vdash\Gamma\), one can always start by decomposing negative
+sequent \(\vdash\Gamma\), one can always start by decomposing asynchronous
 connectives in \(\Gamma\) without losing provability. Applying this
 result to successive connectives, we can get generalized formulations
 for more complex formulas. For instance:
-\begin{itemize}
-\item
-  \(\vdash\Gamma,(A\parr B)\parr(B\with C)\) is provable
-\item
-  iff \(\vdash\Gamma,A\parr B,B\with C\) is provable
-\item
-  iff \(\vdash\Gamma,A\parr B,B\) and \(\vdash\Gamma,A\parr B,C\) are
-  provable
-\item
-  iff \(\vdash\Gamma,A,B,B\) and \(\vdash\Gamma,A,B,C\) are provable
-\end{itemize}
+\begin{align*}
+&\vdash\Gamma,(A\parr B)\parr(B\with C) \text{ is provable} \\
+\text{iff } &\vdash\Gamma,A\parr B,B\with C \text{ is provable} \\
+\text{iff } &\vdash\Gamma,A\parr B,B\text{ and }\vdash\Gamma,A\parr B,C \text{ are
+  provable} \\
+\text{iff } &\vdash\Gamma,A,B,B\text{ and }\vdash\Gamma,A,B,C \text{ are provable}
+\end{align*}
 
 So without loss of generality, we can assume that any proof of
 \(\vdash\Gamma,(A\parr B)\parr(B\with C)\) ends like
@@ -97,18 +96,17 @@ So without loss of generality, we can assume that any proof of
 \end{prooftree}
 
 In order to define a general statement for compound formulas, as well as
-an analogous result for positive connectives, we need to give a proper
+an analogous result for synchronous connectives, we need to give a proper
 status to clusters of connectives of the same polarity.
 
-\subsection{Generalized connectives and
-rules}\label{generalized-connectives-and-rules}
+\subsection{Generalized connectives and rules}\label{generalized-connectives-and-rules}
 
 \begin{definition}
-A \emph{positive generalized connective} is a parametrized formula
+A \emph{synchronous generalized connective} is a parametrized formula
 $P[X_1,\ldots,X_n]$ made from the variables $X_i$ using the connectives
 $\tens$, $\plus$, $\one$, $\zero$.
 
-A \emph{negative generalized connective} is a parametrized formula
+An \emph{asynchronous generalized connective} is a parametrized formula
 $N[X_1,\ldots,X_n]$ made from the variables $X_i$ using the connectives
 $\parr$, $\with$, $\bot$, $\top$.
 
@@ -123,7 +121,7 @@ definition, mainly for simplicity. Extending the notion to quantifiers
 would only require taking proper care of the scope of variables.
 
 Sequent calculus provides introduction rules for each connective.
-Negative connectives have one rule, positive ones may have any number of
+Asynchronous connectives have one rule, synchronous ones may have any number of
 rules, namely 2 for \(\plus\) and 0 for \(\zero\). We can derive
 introduction rules for the generalized connectives by combining the
 different possible introduction rules for each of their components.
@@ -151,8 +149,8 @@ but these rules only differ by the commutation of independent rules. In
 particular, their premisses are the same. The dual of \(N\) is
 \(P[X_1,X_2,X_3]=(X_1\tens X_2)\tens(X_2\plus X_3)\), for which we have
 two possible derivations:
-
-\(\AxRule{ \vdash \Gamma_1, X_1 }
+\begin{equation*}
+  \AxRule{ \vdash \Gamma_1, X_1 }
   \AxRule{ \vdash \Gamma_2, X_2 }
   \BinRule{ \vdash \Gamma_1, \Gamma_2, X_1\tens X_2 }
   \AxRule{ \vdash \Gamma_3, X_2 }
@@ -166,22 +164,23 @@ two possible derivations:
   \AxRule{ \vdash \Gamma_3, X_3 }
   \UnaRule{ \vdash \Gamma_3, X_2\plus X_3 }
   \BinRule{ \vdash \Gamma_1, \Gamma_2, \Gamma_3, (X_1\tens X_2)\tens(X_2\plus X_3) }
-  \DisplayProof\)
+  \DisplayProof
+\end{equation*}
 
 These are actually different, in particular their premisses differ. Each
 possible derivation corresponds to the choice of one side of the
 \(\plus\) connective.
 
-We can remark that the branches of the negative inference precisely
-correspond to the possible positive inferences:
+We can remark that the branches of the asynchronous inference precisely
+correspond to the possible synchronous inferences:
 \begin{itemize}
 \item
-  the first branch of the negative inference has a premiss
-  \(X_1,X_2,X_2\) and the first positive inference has three premisses,
+  the first branch of the asynchronous inference has a premiss
+  \(X_1,X_2,X_2\) and the first synchronous inference has three premisses,
   holding \(X_1\), \(X_2\) and \(X_2\) respectively.
 \item
-  the second branch of the negative inference has a premiss
-  \(X_1,X_2,X_3\) and the second positive inference has three premisses,
+  the second branch of the asynchronous inference has a premiss
+  \(X_1,X_2,X_3\) and the second synchronous inference has three premisses,
   holding \(X_1\), \(X_2\) and \(X_3\) respectively.
 \end{itemize}
 
@@ -198,19 +197,19 @@ $ \mathcal{I}_\one := [[]] $,
 $ \mathcal{I}_\zero := [] $,
 $ \mathcal{I}_{X_i} := [[i]] $.
 
-The branching of a negative generalized connective is the branching of its
+The branching of an asynchronous generalized connective is the branching of its
 dual. Elements of a branching are called branches.
 \end{definition}
 
 In the example above, the branching will be \([[1,2,2],[1,2,3]]\), which
-corresponds to the branches of the negative inference and to the cases
-of positive inference.
+corresponds to the branches of the asynchronous inference and to the cases
+of the synchronous inference.
 
 \begin{definition}
 Let $\mathcal{I}$ be a branching.
 Write $\mathcal{I}$ as $[I_1,\ldots,I_k]$ and write each $I_j$ as
 $[i_{j,1},\ldots,i_{j,\ell_j}]$.
-The derived rule for a negative generalized connective $N$ with
+The derived rule for an asynchronous generalized connective $N$ with
 branching $\mathcal{I}$ is
 \begin{prooftree}
     \AxRule{ \vdash \Gamma, A_{i_{1,1}}, \ldots, A_{i_{1,\ell_1}} }
@@ -220,7 +219,7 @@ branching $\mathcal{I}$ is
     \TriRule{ \vdash \Gamma, N[A_1,\ldots,A_n] }
 \end{prooftree}
   
-For each branch $I=[i_1,\ldots,i_\ell]$ of a positive generalized connective
+For each branch $I=[i_1,\ldots,i_\ell]$ of a synchronous generalized connective
 $P$, the derived rule for branch $I$ of $P$ is
 \begin{prooftree}
     \AxRule{ \vdash \Gamma_1, A_{i_1} }
@@ -231,113 +230,109 @@ $P$, the derived rule for branch $I$ of $P$ is
 \end{prooftree}
 \end{definition}
 
-The reversibility property of negative connectives can be rephrased in a
+The reversibility property of asynchronous connectives can be rephrased in a
 generalized way as
 
 \begin{theorem}
-Let $N$ be a negative generalized connective. A sequent
+Let $N$ be an asynchronous generalized connective. A sequent
 $\vdash\Gamma,N[A_1,\ldots,A_n]$ is provable if and only if, for each
 $[i_1,\ldots,i_k]\in\mathcal{I}_N$, the sequent
 $\vdash\Gamma,A_{i_1},\ldots,A_{i_k}$ is provable.
 \end{theorem}
 
-The corresponding property for positive connectives is the focusing
+The corresponding property for synchronous connectives is the focusing
 property, defined in the next section.
 
-\subsection{Focusing}\label{focusing}
+\subsection{Synchrony}\label{synchrony}
 
 \begin{definition}
-A formula is \emph{positive} if it has a main connective among
+A formula is \emph{synchronous} if it has a main connective among
 $\tens$, $\plus$, $\one$, $\zero$.
-It is called \emph{negative} if it has a main connective among
+It is called \emph{asynchronous} if it has a main connective among
 $\parr$, $\with$, $\bot$, $\top$.
-It is called \emph{neutral} if it is neither positive nor negative.
+It is called \emph{neutral} if it is neither synchronous nor asynchronous.
 \end{definition}
 
 If we extended the theory to include quantifiers in generalized
-connectives, then the definition of positive and negative formulas would
+connectives, then the definition of synchronous and asynchronous formulas would
 be extended to include them too.
 
 \begin{definition}
-A proof $\pi\vdash\Gamma,A$ is said to be \emph{positively focused on $A$} if it has the shape
+A proof $\pi : {} \vdash\Gamma,A$ is said to be \emph{synchronously focused on $A$} if it has the shape
 \begin{prooftree}
-    \AxRule{ \pi_1 \vdash \Gamma_1, A_{i_1} }
+    \AxRule{ \pi_1 : {} \vdash \Gamma_1, A_{i_1} }
     \AxRule{ \cdots }
-    \AxRule{ \pi_\ell \vdash \Gamma_\ell, A_{i_\ell} }
+    \AxRule{ \pi_\ell : {} \vdash \Gamma_\ell, A_{i_\ell} }
     \LabelRule{P_{[i_1,\ldots,i_\ell]}}
     \TriRule{ \vdash  \Gamma_1, \ldots, \Gamma_\ell, P[A_1,\ldots,A_n] }
 \end{prooftree}  
-where $P$ is a positive generalized connective, the $A_i$ ar non-positive
+where $P$ is a synchronous generalized connective, the $A_i$ are non-synchronous
 and $A=P[A_1,\ldots,A_n]$. The formula $A$ is called the \emph{focus} of the proof $\pi$.
 \end{definition}
 
-In other words, a proof is positively focused on a conclusion \(A\) if
-its last rules build \(A\) from some of its non-positive subformulas in
+In other words, a proof is synchronously focused on a conclusion \(A\) if
+its last rules build \(A\) from some of its non-synchronous subformulas in
 one cluster of inferences. Note that this notion only makes sense for a
-sequent made only of positive formulas, since by this definition a proof
-is obviously positively focused on any of its non-positive conclusions,
+sequent made only of synchronous formulas, since by this definition a proof
+is obviously synchronously focused on any of its non-synchronous conclusions,
 using the degenerate generalized connective \(P[X]=X\).
 
 \begin{theorem}
-A sequent $\vdash\Gamma$ is cut-free provable if and only if it is provable by a cut-free proof that is positively focused.
+A sequent $\vdash\Gamma$ is cut-free provable if and only if it is provable by a cut-free proof that is synchronously focused.
 \end{theorem}
 
 \begin{proof}
 We reason by induction on a proof $\pi$ of $\Gamma$.
-As noted above, the result  trivially holds if $\Gamma$ has a non-positive
-formula.
-We can thus assume that $\Gamma$ contains only positive formulas and reason
+As noted above, the result  trivially holds if $\Gamma$ has a non-synchronous formula.
+We can thus assume that $\Gamma$ contains only synchronous formulas and reason
 on the nature of the last rule, which is necessarily the introduction of a
-positive connective (it cannot be an axiom rule because an axiom  always has
-at least one non-positive conclusion).
+synchronous connective (it cannot be an axiom rule because an axiom always has
+at least one non-synchronous conclusion).
 
 Suppose that the last rule of $\pi$ introduces a tensor, so that $\pi$ is
 \begin{prooftree}
-    \AxRule{ \rho \vdash \Gamma, A }
-    \AxRule{ \theta \vdash \Delta, B }
+    \AxRule{ \rho : {} \vdash \Gamma, A }
+    \AxRule{ \theta : {} \vdash \Delta, B }
     \BinRule{ \vdash \Gamma, \Delta, A\tens B }
 \end{prooftree}
   
-By induction hypothesis, there are positively focused proofs $\rho'\vdash\Gamma,A$
-and $\theta'\vdash\Delta,B$.
-If $A$ is the focus of $\rho'$ and $B$ is the focus of $\theta'$, then the
-proof
+By induction hypothesis, there are synchronously focused proofs $\rho' : {} \vdash\Gamma,A$ and $\theta' : {} \vdash\Delta,B$.
+If $A$ is the focus of $\rho'$ and $B$ is the focus of $\theta'$, then the proof
 \begin{prooftree}
-    \AxRule{ \rho' \vdash \Gamma, A }
-    \AxRule{ \theta' \vdash \Delta, B }
+    \AxRule{ \rho' : {} \vdash \Gamma, A }
+    \AxRule{ \theta' : {} \vdash \Delta, B }
     \BinRule{ \vdash \Gamma, \Delta, A\tens B }
 \end{prooftree}  
-is positively focused on $A\tens B$, so we can conclude.
-Otherwise, one of the two proofs is positively focused on another conclusion.
-Without loss of generality, suppose that $\rho'$ is not positively focused on $A$.
+is synchronously focused on $A\tens B$, so we can conclude.
+Otherwise, one of the two proofs is synchronously focused on another conclusion.
+Without loss of generality, suppose that $\rho'$ is not synchronously focused on $A$.
 Then it decomposes as
 \begin{prooftree}
-    \AxRule{ \rho_1 \vdash \Gamma_1, C_{i_1} }
+    \AxRule{ \rho_1 : {} \vdash \Gamma_1, C_{i_1} }
     \AxRule{ \cdots }
-    \AxRule{ \rho_\ell \vdash \Gamma_\ell, C_{i_\ell} }
+    \AxRule{ \rho_\ell : {} \vdash \Gamma_\ell, C_{i_\ell} }
     \TriRule{ \vdash  \Gamma_1, \ldots, \Gamma_\ell, P[C_1,\ldots,C_n] }
 \end{prooftree}  
-where the $C_i$ are not positive and $A$ belongs to some context $\Gamma_j$
+where the $C_i$ are not synchronous and $A$ belongs to some context $\Gamma_j$
 that we will write $\Gamma'_j,A$.
 Then we can conclude with the proof
 \begin{prooftree}
-    \AxRule{ \rho_1 \vdash \Gamma_1, C_{i_1} \quad\cdots }
-    \AxRule{ \rho_j \vdash \Gamma_j, A, C_{i_j} }
-    \AxRule{ \theta \vdash \Delta, B }
+    \AxRule{ \rho_1 : {} \vdash \Gamma_1, C_{i_1} \quad\cdots }
+    \AxRule{ \rho_j : {} \vdash \Gamma_j, A, C_{i_j} }
+    \AxRule{ \theta : {} \vdash \Delta, B }
     \BinRule{ \vdash \Gamma_j, \Delta, A\tens B, C_{i_j} }
-    \AxRule{ \cdots\quad \rho_\ell \vdash \Gamma_\ell, C_{i_\ell} }
+    \AxRule{ \cdots\quad \rho_\ell : {} \vdash \Gamma_\ell, C_{i_\ell} }
     \TriRule{ \vdash \Gamma_1, \ldots, \Gamma_\ell, \Delta, A\tens B, P[C_1,\ldots,C_n] }
 \end{prooftree}
-which is positively focused on $P[C_1,\ldots,C_n]$.
+which is synchronously focused on $P[C_1,\ldots,C_n]$.
 
 If the last rule of $\pi$ introduces a $\plus$, we proceed the same way
 except that there is only one premiss.
 If the last rule of $\pi$ introduces a $\one$, then it is the only rule of
-$\pi$, which is thus positively focused on this $\one$.
+$\pi$, which is thus synchronously focused on this $\one$.
 \end{proof}
 
-As in the reversibility theorem, this proof only makes use of
-commutation of independent rules.
+As in the reversibility theorem (\cref{reversibilityproperty}), this proof only makes use of commutation of independent rules.
 
 These results say nothing about exponential modalities, because they
 respect neither reversibility nor focusing. However, if we consider
