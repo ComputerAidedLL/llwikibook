@@ -83,6 +83,7 @@ define \({\mathcal A} \tens {\mathcal B}\) by
 \(\web {{\mathcal A} \tens {\mathcal B}} = \web{\mathcal A} \times \web{\mathcal B}\)
 and
 \(\mathfrak F\left({\mathcal A} \tens {\mathcal B}\right) = \left\{a\times b;\ a\in \mathfrak F\left(\mathcal A\right),\ b\in\mathfrak F\left(\mathcal B\right)\right\}\biorth\).
+
 It can be shown that
 \(\mathfrak F\left({\mathcal A} \tens {\mathcal B}\right) = \left\{ c \subseteq \web{\mathcal A}\times\web{\mathcal B};\  \left.c\right|_l\in \mathfrak F\left(\mathcal A\right),\ \left.c\right|_r\in\mathfrak F\left(\mathcal B\right)\right\}\),
 where \(\left.c\right|_l\) and \(\left.c\right|_r\) are the obvious
@@ -98,7 +99,6 @@ Then, setting
 \({\mathcal A}\limp{\mathcal B} = \left({\mathcal A}\otimes {\mathcal B}\orth\right)\orth\),
 \(\mathfrak F\left({\mathcal A}\limp{\mathcal B}\right)\subseteq {\web{\mathcal A}\times\web{\mathcal B}}\)
 is characterized as follows:
-
 \begin{align*}
         f\in \mathfrak F\left({\mathcal A}\limp{\mathcal B}\right) &\iff \forall a\in \mathfrak F\left({\mathcal A}\right), f\cdot a \in\mathfrak F\left({\mathcal B}\right) \text{ and } \forall b\in \mathfrak F\left({\mathcal B}\orth\right), f\orth\cdot b \in\mathfrak F\left({\mathcal A}\orth\right)
         \\
@@ -106,7 +106,6 @@ is characterized as follows:
         \\
         &\iff \forall \alpha\in \web{{\mathcal A}}, f\cdot \left\{\alpha\right\} \in\mathfrak F\left({\mathcal B}\right) \text{ and } \forall b\in \mathfrak F\left({\mathcal B}\orth\right), f\orth\cdot b \in\mathfrak F\left({\mathcal A}\orth\right)
 \end{align*}
-
 The elements of
 \(\mathfrak F\left({\mathcal A}\limp{\mathcal B}\right)\) are called
 finitary relations from \({\mathcal A}\) to \({\mathcal B}\). By the
@@ -185,11 +184,12 @@ and
 make this functor a comonad.
 
 \begin{example}\label{example.-3}
-We have isomorphisms
-\(\left\{([],\emptyset)\right\}\in\mathbf{Fin}(\oc\zero,\one)\) and
-
-\(\left\{ \left(\overline\alpha_l+\overline\beta_r,\left(\overline\alpha,\overline\beta\right)\right);\ (\overline\alpha_l,\overline\alpha)\in\oc\lambda_{{\mathcal A},{\mathcal B}}\wedge(\overline\beta_r,\overline\beta)\in\oc\rho_{{\mathcal A},{\mathcal B}}\right\} \in\mathbf{Fin}(\oc({\mathcal A}\oplus{\mathcal B}),\oc{\mathcal A}\tens\oc{\mathcal B}).\)
-
+We have isomorphisms:
+\begin{align*}
+\left\{([],\emptyset)\right\}&\in\mathbf{Fin}(\oc\zero,\one)
+\\
+\left\{ \left(\overline\alpha_l+\overline\beta_r,\left(\overline\alpha,\overline\beta\right)\right);\ (\overline\alpha_l,\overline\alpha)\in\oc\lambda_{{\mathcal A},{\mathcal B}}\wedge(\overline\beta_r,\overline\beta)\in\oc\rho_{{\mathcal A},{\mathcal B}}\right\} &\in\mathbf{Fin}(\oc({\mathcal A}\oplus{\mathcal B}),\oc{\mathcal A}\tens\oc{\mathcal B}).
+\end{align*}
 More generally, we have
 \(\oc\left({\mathcal A}_1\oplus\cdots\oplus{\mathcal A}_n\right)\cong\oc{\mathcal A}_1\tens\cdots\tens\oc{\mathcal A}_n\).
 \end{example}

@@ -21,13 +21,13 @@ bijection, as easily checked.
 
 The tensor product is the usual cartesian product of sets
 \(X\tens Y=X\times Y\) (which is not a cartesian product in the category
-\(\mathbf{Rel}\) in the categorical sense). It is a bifunctor: given
+\(\mathbf{Rel}\) in the categorical sense, \cref{cartesianproduct}). It is a bifunctor: given
 \(s_i\in\mathbf{Rel}(X_i,Y_i)\) (for \(i=1,2\)), one sets
 \(s_1\tens s_2=\set{((a_1,a_2),(b_1,b_2))}{(a_i,b_i)\in s_i\ \text{for}\ i=1,2}\).
 The unit of this tensor product is \(\one=\{*\}\) where \(*\) is an
 arbitrary element.
 
-For defining a monoidal category, it is not sufficient to provide the
+For defining a monoidal category (\cref{monoidalcategory}), it is not sufficient to provide the
 definition of the tensor product functor \(\tens\) and its unit
 \(\one\), one has also to provide natural isomorphisms
 \(\lambda_X\in\mathbf{Rel}(\one\tens X,X)\),
@@ -47,7 +47,7 @@ precise, the SMCC (symmetric monoidal closed category) \(\mathbf{Rel}\)
 is the tuple \((\mathbf{Rel},\tens,\one,\lambda,\rho,\alpha,\sigma)\),
 but we shall simply denote it as \(\mathbf{Rel}\).
 
-The SMCC \(\mathbf{Rel}\) is closed. This means that, given any object
+The SMCC \(\mathbf{Rel}\) is closed (\cref{smcc}). This means that, given any object
 \(X\) of \(\mathbf{Rel}\) (a set), the functor \(Z\mapsto Z\tens X\)
 (from \(\mathbf{Rel}\) to \(\mathbf{Rel}\)) admits a right adjoint
 \(Y\mapsto (X\limp Y)\) (from \(\mathbf{Rel}\) to \(\mathbf{Rel}\)). In
@@ -70,7 +70,7 @@ hence
 \(\eta_X=\mathsf{fun}(\mathsf{ev}\circ\sigma)\in\mathbf{Rel}(X,(X\limp\bot)\limp\bot)\).
 It is clear that \(\eta=\set{(a,((a,*),*))}{a\in X}\) and hence \(\eta\)
 is a natural isomorphism: one says that the SMCC \(\mathbf{Rel}\) is a
-*-autonomous category, with \(\bot\) as dualizing object.
+*-autonomous category (\cref{staraut}), with \(\bot\) as dualizing object.
 
 \subsection{Additives}\label{additives-2}
 

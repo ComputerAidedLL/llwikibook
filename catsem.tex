@@ -1,6 +1,6 @@
 \chapter{Categorical semantics}\label{categorical-semantics}
 
-Constructing denotational models of linear can be a tedious work.
+Constructing denotational models of linear logic can be a tedious work.
 Categorical semantics are useful to identify the fundamental structure
 of these models, and thus simplify and make more abstract the
 elaboration of those models.
@@ -61,7 +61,7 @@ setting.
 A model of \wantedpage{IMLL} is a \emph{closed symmetric monoidal category}. We
 recall the definition of these categories below.
 
-\begin{definition}[Monoidal category]
+\begin{definition}[Monoidal category]\label{monoidalcategory}
 A \emph{monoidal category} $(\mathcal{C},\otimes,I,\alpha,\lambda,\rho)$ is a category $\mathcal{C}$ equipped with
 \begin{itemize}
 \item a functor $\otimes:\mathcal{C}\times\mathcal{C}\to\mathcal{C}$ called \emph{tensor product},
@@ -126,7 +126,7 @@ A \emph{symmetric} monoidal category is a braided monoidal category in which the
 for every objects $A$ and $B$.
 \end{definition}
 
-\begin{definition}[Closed monoidal category]
+\begin{definition}[Closed monoidal category]\label{smcc}
 A monoidal category $(\mathcal{C},\tens,I)$ is \emph{left closed} when for every object $A$, the functor $B\mapsto A\otimes B$ has a right adjoint, written $B\mapsto(A\limp B)$.
 This means that there exists a bijection
 \begin{equation*}
@@ -156,7 +156,7 @@ right closed structure and conversely, allowing us to simply speak of a
 
 \section{Modeling the additives}\label{modeling-the-additives}
 
-\begin{definition}[Product]
+\begin{definition}[Product]\label{cartesianproduct}
 A \emph{product} $(X,\pi_1,\pi_2)$ of two coinitial morphisms $f:A\to B$ and $g:A\to C$ in a category $\mathcal{C}$ is an object $X$ of $\mathcal{C}$ together with two morphisms $\pi_1:X\to A$ and $\pi_2:X\to B$ such that there exists a unique morphism $h:A\to X$ making the diagram
 \begin{equation*}
 \xymatrix{
@@ -199,9 +199,7 @@ Categories with products vs monoidal categories.
 
 \section{\texorpdfstring{Modeling \hyperref[intuitionistic-linear-logic]{ILL}}{Modeling ILL}}\label{modeling-ill}
 
-Introduced in~\cite{mixedlnll}.
-
-\begin{definition}[Linear-non linear (LNL) adjunction]
+\begin{definition}[Linear-non linear (LNL) adjunction~\cite{mixedlnll}]
 A \emph{linear-non linear adjunction} is a symmetric monoidal adjunction between lax monoidal functors
 \begin{equation*}
 \xymatrix{
@@ -283,7 +281,7 @@ induce monoidal natural transformations between the corresponding monoidal funct
 
 \subsection{*-autonomous categories}\label{autonomous-categories}
 
-\begin{definition}[*-autonomous category]
+\begin{definition}[*-autonomous category]\label{staraut}
 Suppose that we are given a symmetric monoidal closed category $(\mathcal{C},\tens,I)$ and an object $R$ of $\mathcal{C}$. For every object $A$, we define a morphism $\partial_{A}:A\to(A\limp R)\limp R$ as follows. By applying the bijection of the adjunction defining (left) closed monoidal categories to the identity morphism $\mathrm{id}_{A\limp R}:A\limp R \to A\limp R$, we get a morphism $A\tens (A\limp R)\to R$, and thus a morphism $(A\limp R)\tens A\to R$ by precomposing with the symmetry $\gamma_{A\limp R,A}$. The morphism $\partial_A$ is finally obtained by applying the bijection of the adjunction defining (left) closed monoidal categories to this morphism. The object $R$ is called \emph{dualizing} when the morphism $\partial_A$ is a bijection for every object $A$ of $\mathcal{C}$. A symmetric monoidal closed category is \emph{*-autonomous} when it admits such a dualizing object.
 \end{definition}
 

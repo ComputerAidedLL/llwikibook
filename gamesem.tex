@@ -1,7 +1,7 @@
 \chapter{Game semantics}\label{game-semantics}
 
-This article presents the game-theoretic \wantedpage{fully complete model} of \(MLL\). Formulas
-are interpreted by games between two players, Player and Opponent, and
+This chapter presents the game-theoretic \wantedpage{fully complete model} of \(MLL\).
+Formulas are interpreted by games between two players, Player and Opponent, and
 proofs are interpreted by strategies for Player.
 
 \section{Preliminary definitions and notations}\label{preliminary-definitions-and-notations}
@@ -52,7 +52,7 @@ multiple sets of moves, along with a restriction operation.
 \subsection{Game constructions}\label{game-constructions}
 
 We first give the definition for a game, then all the constructions used
-to interpret the connectives and operations of \(MLL\)
+to interpret the connectives and operations of \(MLL\).
 
 \begin{definition}[Games]
 A \emph{game} $ A$ is a triple $(M_A,\lambda_A,P_A)$ where:
@@ -130,6 +130,10 @@ they immediately copy on the left (resp. right) component the last
 Opponent's move on the right (resp.left) component. In the following
 definition, let \(L\) (resp. \(R\)) denote the left (resp. right)
 occurrence of \(A\) in \(A\limp A\).
+
+\begin{definition}[Identities]
+If $A$ is a game, we define a strategy $id_A: A\limp A$ by $id_A = \{s\in P_{A\limp A}~|~\forall s'\sqsubseteq^P s,~s'\upharpoonright L = s' \upharpoonright R\}$.
+\end{definition}
 
 With these definitions, we get the following theorem:
 
